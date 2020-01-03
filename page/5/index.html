@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.62.1" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>developer bsscco</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Responsive card-based &amp; code-light Hugo theme">
+		<meta property="og:title" content="developer bsscco" />
+<meta property="og:description" content="Responsive card-based &amp; code-light Hugo theme" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/" />
+<meta property="og:updated_time" content="2019-10-06T00:00:00+00:00" />
+
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="developer bsscco"/>
+<meta name="twitter:description" content="Responsive card-based &amp; code-light Hugo theme"/>
+
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/themes/dark-green.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="developer bsscco">
+	<link rel="manifest" href="/manifest.json">
+		
+</head>
+<body>
+	<header class="header">
+	<a class="logo" href="/">developer bsscco</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+			<div class="cards">
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-send-data-to-a-new-screen/">Flutter로 개발하기(06) - 새 화면에 데이터 넘기기</a></h1>
+	<div class="post__content">Send data to a new screen https://flutter.dev/docs/cookbook/navigation/passing-data
+기억하세요. 플러터에서 화면은 단지 위젯일 뿐입니다. 이 예제에서 우리는 Todo 목록을 만들고 Todo를 tap 했을 때 Todo를 보여줄 새 화면(위젯)으로 이동할 겁니다.
+1. Todo 클래스 정의하기 class Todo { final String title; final String description; Todo(this.title, this.description); } 2. Todo 목록 만들기 final todos = List&lt;Todo&gt;.generate( 20, (i) =&gt; Todo( &#39;Todo $i&#39;, &#39;A description of what needs to be done for Todo $i&#39;, ), ); ------------------------------------------------------------ ListView.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-16T07:51:41Z">March 16, 2019</time>
+	</div>
+
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-navigate-to-a-new-screen-and-back/">Flutter로 개발하기(05) - 새로운 화면 열기</a></h1>
+	<div class="post__content">Navigate to a new screen and back https://flutter.dev/docs/cookbook/navigation/navigation-basics
+플러터에서는 화면이나 페이지를 Route라고 부릅니다. 안드로이드에서는 액티비티와 대응되고, iOS에서는 뷰컨트롤러와 대응됩니다. Route 또한 위젯입니다.
+1. 두 Route 만들기 class FirstRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;First Route&#39;), ), body: Center( child: RaisedButton( child: Text(&#39;Open route&#39;), onPressed: () { // Navigate to second route when tapped.  }, ), ), ); } } class SecondRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#34;Second Route&#34;), ), body: Center( child: RaisedButton( onPressed: () { // Navigate back to first route when tapped.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-14T07:51:41Z">March 14, 2019</time>
+	</div>
+
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-dealing-with-box-constraints/">Flutter로 개발하기(04) - 위젯의 크기 제약조건</a></h1>
+	<div class="post__content">Dealing with box constraints https://flutter.dev/docs/development/ui/layout/box-constraints
+플러터에서 위젯은 자신의 렌더박스에 그려집니다. 렌더박스의 크기는 부모 위젯으로부터 받은 제약조건에 의해 결정됩니다. 제약조건은 최소, 최대 너비와 높이로 구성됩니다.
+제약조건의 유형은 일반적으로 3가지로 분류됩니다.
+ 가능한 한 큰 크기로 결정하기. Center, ListView 위젯이 그렇습니다. 자식 위젯과 같은 크기로 결정하기. Transform, Opacity 위젯이 그렇습니다. 특정한 값으로 크기를 결정하기. Image, Text 위젯이 그렇습니다.  Container 같은 위젯들은 생성자 인자에 따라 다른 제약조건 유형을 가집니다. Container는 기본적으로 가능한 한 큰 크기를 가지려고 하지만, 생성자 인자로 너비가 주어지면 그 값에 의해 크기가 결정됩니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-13T07:49:13Z">March 13, 2019</time>
+	</div>
+
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-layout-tutorial/">Flutter로 개발하기(03) - 레이아웃 튜토리얼</a></h1>
+	<div class="post__content">Layout tutorial https://flutter.dev/docs/development/ui/layout/tutorial
+이 가이드에서는 아래 보이는 앱을 만들면서 레이아웃을 짜는 법을 배워봅니다.
+Step 0: 앱 베이스코드 만들기 플러터 어플리케이션 프로젝트를 만들고 다음과 같이 코드를 수정합니다.
+import &#39;package:flutter/material.dart&#39;; void main() =&gt; runApp(MyApp()); class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &#39;Flutter layout demo&#39;, home: Scaffold( appBar: AppBar( title: Text(&#39;Flutter layout demo&#39;), ), body: Center( child: Text(&#39;Hello World&#39;), ), ), ); } } Step 1: 레이아웃 그려보기 타이틀 섹션 버튼 섹션 작은 부분부터 bottom-up 방식으로 레이아웃을 그려보면 레아아웃 중첩을 어떻게 코딩해야 할지 감을 잡을 수 있습니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-12T07:51:41Z">March 12, 2019</time>
+	</div>
+
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-layouts-in-flutter/">Flutter로 개발하기(02) - 레이아웃 위젯 소개</a></h1>
+	<div class="post__content">Layouts in Flutter https://flutter.dev/docs/development/ui/layout
+위젯 배치하기 1. 레이아웃 위젯을 선택합니다. Column, Row, Center 등
+2. visible 위젯을 생성합니다. Text(&#39;Hello World&#39;), Image.asset( &#39;images/lake.jpg&#39;, fit: BoxFit.cover, ), Icon( Icons.star, color: Colors.red[500], ), 3. visible 위젯을 레이아웃 위젯에 추가합니다. Center( child: Text(&#39;Hello World&#39;), ), 4. 레이아웃 위젯을 페이지에 추가합니다. class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &#39;Flutter layout demo&#39;, home: Scaffold( appBar: AppBar( title: Text(&#39;Flutter layout demo&#39;), ), body: Center( child: Text(&#39;Hello World&#39;), ), ), ); } } 여러 위젯을 수직, 수평으로 배치하기 위젯 Aligning Row Row( mainAxisAlignment: MainAxisAlignment.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-11T07:49:13Z">March 11, 2019</time>
+	</div>
+
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-introduction-to-widgets/">Flutter로 개발하기(01) - 위젯 소개</a></h1>
+	<div class="post__content">Introduction to widgets https://flutter.dev/docs/development/ui/widgets-intro
+플러터 위젯은 React로부터 영감을 받아 반응형 스타일로 제작됐습니다.
+플러터 위젯의 중심 아이디어는 위젯으로만 UI를 제작하는 것입니다. 위젯은 자신에게 주어진 상태에 따라 어떻게 그릴 것인가를 기술하는 객체입니다. 위젯의 상태가 바뀌면 위젯은 다시 빌드되는데, 이때 프레임워크는 이전 상태와 다음 상태를 비교해서 render tree가 최소한만 변경되도록 합니다.
+Hello World 플러터 앱은 runApp() 함수를 호출하는 것에서부터 시작됩니다.
+import &#39;package:flutter/meterial.dart&#39;; void main() { runApp( Center( child: Text( &#39;Hello, world!&#39;, textDirection: TextDirection.ltr, ), ), ); } runApp() 함수는 주어진 위젯으로 위젯트리의 루트를 만듭니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-09T06:49:58Z">March 09, 2019</time>
+	</div>
+
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-get-started-with-server-side-dart/">서버사이드 Dart(5) - 서버사이드 시작하기</a></h1>
+	<div class="post__content">Get Started with Server-Side Dart https://www.dartlang.org/tutorials/server/get-started
+What's the point?  Dart SDK에는 개발도구들과 라이브러리들이 담겨있다. 앱을 만들기 위해 WebStorm과 같은 IDE를 써라. 모든 Dart 앱들은 main() 함수에서 시작한다. Dart는 top-level 함수를 지원한다.  Download Dart and an IDE Get the Dart SDK
+What did you get? 다운로드한 Dart SDK 보면 그 안에서 bin 디렉토리의 도구들과 lib 디렉토리의 라이브러리들을 볼 수 있다.
+lib 디렉토리엔 dart:core, dart:html, dart:io와 같은 라이브러리가 들어있다. bin 디렉토리엔 pub 패키지 관리자, Dart VM의 커맨드라인 버전 같은 유용한 커맨드라인 도구들이 들어있다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-05T08:49:14Z">March 05, 2019</time>
+	</div>
+
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-a-tour-of-the-dart-io-library/">서버사이드 Dart(4) - dart:io 라이브러리 여행하기</a></h1>
+	<div class="post__content">A Tour of the dart:io Library https://www.dartlang.org/server/io-library-tour
+dart:io는 files, directories, processes, sockets, WebSockets, and HTTP clients and servers를 다루는 API를 제공한다.
+ note: 웹서버를 위해 쓸 수 있지만 웹앱을 위한 라이브러리는 아니다.
+ dart:io 라이브러리는 비동기 지향적으로 API를 구현했다. 동기 메소드는 앱을 쉽게 블로킹 시키기 때문이다. 대부분의 연산들은 Future 또는 Stream을 리턴한다. 이런 패턴은 모던 서버 플랫폼인 Node와 같다.
+import 'dart:io'; dart:io를 사용하려면 먼저 import 해야 한다.
+Files and directories dart:io는 커맨드라인 앱에서 파일을 읽고 쓰거나 디렉토리들을 탐색하는 데 사용할 수 있다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-03T22:16:46Z">March 03, 2019</time>
+	</div>
+
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-api-overview/">서버사이드 Dart(3) - 다트의 주요 라이브러리들</a></h1>
+	<div class="post__content">Dart API https://api.dartlang.org/stable/2.2.0/index.html
+기초가 되는 Dart 라이브러리:
+ dart:core: strings, numbers, collections, errors, URIs 같은 코어 기능들이 있다. dart:html: 웹앱을 위한 DOM 조작 기능들이 있다. dart:io: 웹앱이 아닌 앱을 위한 I/O 기능들이 있다.  dart:core를 제외하고 필요한 라이브러리는 import 해야 한다.
+import &#39;dart:async&#39;; import &#39;dart:math&#39;; [pub 패키지 매니저](pub package manager)에서 더 많은 라이브러리들을 설치할 수 있다.
+Libraries Core dart:async
+Future, Stream 같은 클래스와 함께 비동기 프로그래밍을 지원하는 기능들이 들어있다.
+dart:collection</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-03T21:16:19Z">March 03, 2019</time>
+	</div>
+
+</article>
+					</div>
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-what-is-in-dart-sdk/">서버사이드 Dart(2) - 다트 SDK에 있는 도구들</a></h1>
+	<div class="post__content">What’s in the SDK https://www.dartlang.org/tools/sdk#whats-in-the-sdk
+dart standalone VM.
+dartdoc API 문서 생성기
+# 패키지의 루트 디렉토리에서 사용해야 한다. $ dartdoc Generating documentation for 'server_code_lab' into &lt;path-to-server-code-lab&gt;/server_code_lab/doc/api/ parsing lib/client/piratesapi.dart... parsing lib/common/messages.dart... parsing lib/common/utils.dart... parsing lib/server/piratesapi.dart... Parsed 4 files in 8.1 seconds. generating docs for library pirate.messages from messages.dart... generating docs for library pirate.server from piratesapi.dart... generating docs for library pirate.utils from utils.dart... generating docs for library server_code_lab.piratesApi.client from piratesapi.dart... Documented 4 libraries in 9.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-03T09:48:14Z">March 03, 2019</time>
+	</div>
+
+</article>
+					</div>
+			</div>
+	</main>
+	
+<div class="pagination block">
+				<a class="pagination__item pagination__item--desktop" href="/">1</a>
+				<a class="pagination__item pagination__item--desktop" href="/page/2/">2</a>
+				<a class="pagination__item pagination__item--desktop" href="/page/3/">3</a>
+				<a class="pagination__item pagination__item--desktop" href="/page/4/">4</a>
+				<span class="pagination__item pagination__item--active" data-total="8">5</span>
+				<a class="pagination__item pagination__item--desktop" href="/page/6/">6</a>
+			<span class="pagination__item pagination__item--gap">&hellip;</span>
+				<a class="pagination__item pagination__item--desktop" href="/page/8/">8</a>
+</div>
+
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:bsscco@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/bsscco">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2020 bsscco. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="/js/custom.js"></script>
+</body>
+</html>

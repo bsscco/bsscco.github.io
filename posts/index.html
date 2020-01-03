@@ -1,1039 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en-us">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.62.1" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>Posts | developer bsscco</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Posts" />
+<meta property="og:description" content="Responsive card-based &amp; code-light Hugo theme" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/posts/" />
+<meta property="og:updated_time" content="2019-10-06T00:00:00+00:00" />
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="bsscco" />
-  <meta property="og:url" content="/posts/" />
-  <link rel="canonical" href="/posts/" /><script type="application/ld+json">
-  {
-      "@context" : "http://schema.org",
-      "@type" : "BlogPosting",
-      "mainEntityOfPage": {
-           "@type": "WebPage",
-           "@id": "\/"
-      },
-      "articleSection" : "posts",
-      "name" : "Posts",
-      "headline" : "Posts",
-      "description" : "",
-      "inLanguage" : "en-US",
-      "author" : "bsscco",
-      "creator" : "bsscco",
-      "publisher": "bsscco",
-      "accountablePerson" : "bsscco",
-      "copyrightHolder" : "bsscco",
-      "copyrightYear" : "2019",
-      "datePublished": "2019-10-06 00:00:00 \x2b0000 UTC",
-      "dateModified" : "2019-10-06 00:00:00 \x2b0000 UTC",
-      "url" : "\/posts\/",
-      "keywords" : [  ]
-  }
-</script>
-<title>Posts - developer bsscco</title>
-  <meta property="og:title" content="Posts - developer bsscco" />
-  <meta property="og:type" content="article" />
-  <meta name="description" content="" />
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="Responsive card-based &amp; code-light Hugo theme"/>
 
-  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
-  <link rel="stylesheet"
-    href="/css/github-markdown.min.css" />
-  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
-  <link rel="stylesheet" href="/css/index.css">
-  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
-  
-  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
-  
-  
-
-  
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/themes/dark-green.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="developer bsscco">
+	<link rel="manifest" href="/manifest.json">
+		
 </head>
-
-
 <body>
-  <article class="posts">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        
-<header>
-  <div class="signatures site-title">
-    <a href="/">developer bsscco</a>
-  </div>
+	<header class="header">
+	<a class="logo" href="/">developer bsscco</a>
+	
 </header>
-<div class="row end-xs">
-  
-  
-</div>
-<div class="header-line"></div>
+	<div class="primary">
+	
+	<main class="main">
+		
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/">Home</a>
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">Posts</li>
+	</ol>
+</nav>
+		<div class="page block">
+			<h1 class="page__title">Posts</h1>
+			
+		</div>
+		<div class="cards">
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-10-06-using-network-image-efficiently/">네트워크 이미지를 효율적으로 사용하기</a></h1>
+	<div class="post__content">네트워크 이미지를 효율적으로 사용하기 리사이징 방법 1. 서버로부터 리사이징된 이미지를 다운로드 받는다.
+예) https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}
+장점 : 네트워크 통신리소스 감소
+2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.
+예) Glide.override()
+장점 : 비트맵용 앱메모리 감소
+override()를 호출하지 않아도 되는 경우
+내려받은 이미지가 ImageView로 들어갈 때 Gide가 Bitmap 사이즈를 ImageView의 사이즈 만큼 자동으로 맞춰줌!
+override()를 호출해야 하는 경우
+ImageView의 가로세로 사이즈가 모두 WrapContent인 경우엔 자동으로 맞춰주지 않음!</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-10-06T00:00:00Z">October 06, 2019</time>
+	</div>
 
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-07-10-do-it-kotlin-programming-ch-04/">Do it! 코틀린 프로그래밍 04 프로그램의 흐름 제어</a></h1>
+	<div class="post__content">04 프로그램의 흐름 제어 01 조건문  조건문도 표현식
+val max = if (a &gt; b) a else 0  조건문에서 in연산자와 범위연산자 사용하기
+if(num in 1..100) // 범위에는 100도 포함  when문
+자바의 switch문과 다르게 표현식도 허용!
+when (num) { in 1..100 -&gt; print(&quot;1..100&quot;) 200, 300 -&gt; print(&quot;200, 300&quot;) is Float -&gt; print(&quot;Float&quot;) else -&gt; print(&quot;else&quot;) }  02 반복문  범위 반복문
+for(n in 1..10 step 2) { // 상행 println(n) } for(n in 10 downTo 1 step 2){ // 하행 println(n) }  03 흐름의 중단과 반환  익명함수와 람다식에서 return사용하기</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-07-10T10:27:28Z">July 10, 2019</time>
+	</div>
 
-        <h1 class="taxonomy-term"></h1>
-        <div id="posts-list">
-          <section>
-            <h1 class="site-date-catalog">2019</h1>
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-07-10-do-it-kotlin-programming-ch-03/">Do it! 코틀린 프로그래밍 03 함수와 함수형 프로그래밍</a></h1>
+	<div class="post__content">03 함수와 함수형 프로그래밍 01 함수 선언하고 호출하기  반환하지 않는다 = Unit
+함수 매개변수는 val로 선언되기 때문에 바꿀 수 없다!
+default 매개변수 지원!
+함수 오버로딩이 필요가 없어짐!
+fun sum(a: Int, b = 0) { ... }  named 인자 지원!
+sum(a = 1, b = 2)  가변 인자
+fun foo(vararg numbers: Int) { ... }  02 함수형 프로그래밍  함수형 프로그래밍이란?
+ 순수함수를 작성해서 프로그램의 사이드이펙트를 줄이는 기법 람다식과 고차함수를 사용한다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-07-10T09:27:28Z">July 10, 2019</time>
+	</div>
 
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-10-06 00:00:00 UTC">Oct 06</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-10-06-using-network-image-efficiently/">네트워크 이미지를 효율적으로 사용하기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-07-10 10:27:28 UTC">Jul 10</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-07-10-do-it-kotlin-programming-ch-04/">Do it! 코틀린 프로그래밍 04 프로그램의 흐름 제어</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-07-10 09:27:28 UTC">Jul 10</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-07-10-do-it-kotlin-programming-ch-03/">Do it! 코틀린 프로그래밍 03 함수와 함수형 프로그래밍</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-07-10 08:26:28 UTC">Jul 10</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-07-10-do-it-kotlin-programming-ch-02/">Do it! 코틀린 프로그래밍 02 변수와 자료형, 연산자 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-07-09 00:00:00 UTC">Jul 09</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-07-09-droid-knights-2019-rx-binding/">드로이드나이츠 2019 RxBinding 발표영상 리뷰</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-07-08 00:00:00 UTC">Jul 08</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-07-08-today-i-learned-1001-ch02/">Today I Leaned - 천일문 입문편 Ch.02 문장의 시제(by 동사)</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-07-03 00:00:00 UTC">Jul 03</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-07-03-today-i-learned-1001-ch01/">Today I Leaned - 천일문 입문편 Ch.01 문장의 구조(by 동사)</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-07-02 00:00:00 UTC">Jul 02</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-07-02-today-i-learned-1001-ch00/">Today I Leaned - 천일문 입문편 Ch.00 품사</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-26 00:00:01 UTC">Jun 26</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/">Udacity Developing Android Apps with Kotlin 레슨10 Designing for Everyone 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-26 00:00:00 UTC">Jun 26</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/">Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-19 00:00:01 UTC">Jun 19</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/">Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-19 00:00:00 UTC">Jun 19</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/">Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-12 00:00:01 UTC">Jun 12</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/">Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-12 00:00:00 UTC">Jun 12</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/">Udacity Developing Android Apps with Kotlin 레슨5 App Architecture (UI Layer) 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-05 00:00:01 UTC">Jun 05</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/">Udacity Developing Android Apps with Kotlin 레슨4 Activity &amp; Fragment Lifecycle 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-05 00:00:00 UTC">Jun 05</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/">Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-05-30 00:00:01 UTC">May 30</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/">Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-05-30 00:00:00 UTC">May 30</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/">Udacity Developing Android Apps with Kotlin 레슨1 Build your First App 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-05-26 00:00:00 UTC">May 26</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-05-26-effective-dart-summary-/">이펙티브 Dart 한 장으로 요약!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-05-25 00:00:00 UTC">May 25</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-2.3/">Dart 2.3 - UI를 빌딩에 최적화 됐어요.</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-04-24 09:51:41 UTC">Apr 24</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-til-2019-04-24/">Flutter Today I Learned - 2019-04-24</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-04-23 09:51:41 UTC">Apr 23</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-til-2019-04-23/">Flutter Today I Learned - 2019-04-23</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-04-22 09:51:41 UTC">Apr 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-til-2019-04-22/">Flutter Today I Learned - 2019-04-22</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-04-16 21:51:41 UTC">Apr 16</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-widget-hierarchy/">Flutter 위젯의 계층구조</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-04-09 21:51:41 UTC">Apr 09</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-layout-widgets/">Flutter로 개발하기(27) - 레이아웃 위젯 목록</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-04-07 09:51:41 UTC">Apr 07</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/rx-subscribe-on-and-observe-on/">RxJava SubscribeOn과 ObserveOn의 동작 차이</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-04-01 09:51:41 UTC">Apr 01</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-prepare-development-well/">Flutter로 개발하기(26) - 개발 제대로 준비하기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-31 09:51:41 UTC">Mar 31</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-bloc-tools/">Flutter로 개발하기(25) - Bloc 도구</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-30 09:51:41 UTC">Mar 30</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-bloc-todos-tutorial/">Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-25 09:51:41 UTC">Mar 25</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-bloc-tutorials/">Flutter로 개발하기(23) - Bloc 튜토리얼</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-24 09:51:41 UTC">Mar 24</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-bloc-introduction/">Flutter로 개발하기(22) - Bloc 소개</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-23 09:51:41 UTC">Mar 23</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-bloc-library-sample/">Flutter로 개발하기(21) - Bloc패턴 샘플</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-18 09:51:41 UTC">Mar 18</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-list-of-state-management-approaches/">Flutter로 개발하기(18) - 상태관리 접근법들</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-17 22:51:41 UTC">Mar 17</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-simple-app-state-management/">Flutter로 개발하기(17) - 간단한 상태관리 앱</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-17 21:51:41 UTC">Mar 17</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-state-management/">Flutter로 개발하기(16) - 상태 관리</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-17 17:51:41 UTC">Mar 17</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-slivers/">Flutter로 개발하기(15) - Sliver와 제스처</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-17 00:51:41 UTC">Mar 17</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-introduction-to-animations/">Flutter로 개발하기(10) - 애니메이션 소개</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-16 22:51:41 UTC">Mar 16</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-animating-a-widget-across-screens/">Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-16 18:51:41 UTC">Mar 16</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-navigate-with-named-routes/">Flutter로 개발하기(08) - named route를 통해 화면 관리하기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-16 17:51:41 UTC">Mar 16</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-return-data-from-a-screen/">Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-16 07:51:41 UTC">Mar 16</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-send-data-to-a-new-screen/">Flutter로 개발하기(06) - 새 화면에 데이터 넘기기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-14 07:51:41 UTC">Mar 14</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-navigate-to-a-new-screen-and-back/">Flutter로 개발하기(05) - 새로운 화면 열기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-13 07:49:13 UTC">Mar 13</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-dealing-with-box-constraints/">Flutter로 개발하기(04) - 위젯의 크기 제약조건</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-12 07:51:41 UTC">Mar 12</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-layout-tutorial/">Flutter로 개발하기(03) - 레이아웃 튜토리얼</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-11 07:49:13 UTC">Mar 11</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-layouts-in-flutter/">Flutter로 개발하기(02) - 레이아웃 위젯 소개</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-09 06:49:58 UTC">Mar 09</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-introduction-to-widgets/">Flutter로 개발하기(01) - 위젯 소개</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-05 08:49:14 UTC">Mar 05</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-get-started-with-server-side-dart/">서버사이드 Dart(5) - 서버사이드 시작하기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-03 22:16:46 UTC">Mar 03</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-a-tour-of-the-dart-io-library/">서버사이드 Dart(4) - dart:io 라이브러리 여행하기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-03 21:16:19 UTC">Mar 03</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-api-overview/">서버사이드 Dart(3) - 다트의 주요 라이브러리들</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-03 09:48:14 UTC">Mar 03</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-what-is-in-dart-sdk/">서버사이드 Dart(2) - 다트 SDK에 있는 도구들</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-03 01:17:20 UTC">Mar 03</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-server-side-dart/">서버사이드 Dart(1) - 학습 참고 목록</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-02 22:35:49 UTC">Mar 02</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-sample-code/">Dart 샘플코드 번역</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-02 22:05:06 UTC">Mar 02</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-effective-dart-4/">이펙티브 Dart(4) - 사용성 가이드</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-03-02 08:05:06 UTC">Mar 02</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-effective-dart-3/">이펙티브 Dart(3) - 문서화 가이드</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-28 08:05:06 UTC">Feb 28</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-effective-dart-2/">이펙티브 Dart(2) - 스타일 가이드</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-27 08:05:06 UTC">Feb 27</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-effective-dart-1/">이펙티브 Dart(1) - 개요</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-25 08:55:16 UTC">Feb 25</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-a-tour-of-the-dart-language-4/">Dart 언어 여행하기 요약(4)</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-24 22:44:28 UTC">Feb 24</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-a-tour-of-the-dart-language-3/">Dart 언어 여행하기 요약(3)</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-21 23:30:49 UTC">Feb 21</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-a-tour-of-the-dart-language-2/">Dart 언어 여행하기 요약(2)</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-21 22:57:49 UTC">Feb 21</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-a-tour-of-the-dart-language-1/">Dart 언어 여행하기 요약(1)</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-21 22:40:12 UTC">Feb 21</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/how-read-the-brackets/">(), {}, [], &lt;&gt; 어떻게 읽어야 할까?</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-21 00:19:30 UTC">Feb 21</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-asynchronous-programming-streams/">Dart 비동기 프로그래밍 Streams 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-20 23:59:00 UTC">Feb 20</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-asynchronous-programming-futures/">Dart 비동기 프로그래밍 Futures 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-18 00:00:00 UTC">Feb 18</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/jira-shortcut/">Jira 보드 단축키 꿀팁</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-16 15:41:07 UTC">Feb 16</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-firebase-for-flutter/">Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-14 23:11:44 UTC">Feb 14</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/flutter-build-beautiful-ui-with-flutter/">Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-02-14 23:02:51 UTC">Feb 14</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/dart-from-java-to-dart/">Flutter 코드랩 리뷰 - 자바에서 다트로 넘어가기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-          <section>
-            <h1 class="site-date-catalog">2018</h1>
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-07-10-do-it-kotlin-programming-ch-02/">Do it! 코틀린 프로그래밍 02 변수와 자료형, 연산자 요약</a></h1>
+	<div class="post__content">02 변수와 자료형, 연산자 01 코틀린 패키지  import~ as 연산자: 클래스에 이름 짓기
+파일 안에 여러 클래스가 있으면 파일명에 .kt가 붙어서 보여진다. 1:1 매치되는 경우에는 .kt가 안 보인다.
+여러 클래스가 같은 이름을 가질 때 conflict를 예방하기 위해 파일 안에 패키지를 명시하는 게 좋다.
+02 변수와 자료형  코틀린 자료형은 모두 참조형(클래스)이다.
+Int, Float 같은 기본 자료형은 코틀린 컴파일러에서 원시 자료형으로 변환된다.
+코드에서 부동소수점 표기법
+// val exp0 = 가수E지수 val exp1 = 3.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-07-10T08:26:28Z">July 10, 2019</time>
+	</div>
 
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2018-11-21 00:00:00 UTC">Nov 21</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/slack-shortcut/">Slack 단축키 꿀팁</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2018-11-21 00:00:00 UTC">Nov 21</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/appsflyer-onelink/">Appsflyer 원링크 파라메터 정리</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2018-11-21 00:00:00 UTC">Nov 21</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/appsflyer-attribution-model/">Appsflyer 어트리뷰션 모델에서 헷갈리는 것들 정리</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2018-11-18 00:00:00 UTC">Nov 18</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/about-git/">Git 개념 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-          
-        </div>
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-07-09-droid-knights-2019-rx-binding/">드로이드나이츠 2019 RxBinding 발표영상 리뷰</a></h1>
+	<div class="post__content">RxBinding 소개 참고 [DroidKnights 2019 - Track 1] 하동현 - 지금까지 이런 간단한 Logic 처리는 없었다
+RxBinding 정의 뷰 이벤트를 Observable로 받아서 사용할 수 있는 라이브러리 by 제이크와튼
+언제 쓰나요?  뷰 이벤트 스트림을 조합해서 한 번에 처리하고 싶을 때 뷰 이벤트 스트림에 다양한 조건을 깔끔하게 추가하고 싶을 때  코드 비교 RxBinding 사용 전 https://gist.github.com/bsscco/65e70856ab1ab725efaee8aec22294bc
+class MainActivity : AppCompatActivity() { private var isButtonClickProcessing = false @SuppressLint(&#34;CheckResult&#34;) override fun onCreate(savedInstanceState: Bundle?</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-07-09T00:00:00Z">July 09, 2019</time>
+	</div>
 
-        <div class="site-footer">
-  
-  <div class="site-footer-item">
-    <a href="https://github.com/bsscco" target="_blank">Github</a>
-  </div>
-  
-  
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-07-08-today-i-learned-1001-ch02/">Today I Leaned - 천일문 입문편 Ch.02 문장의 시제(by 동사)</a></h1>
+	<div class="post__content">Ch.02 문장의 시제(by 동사) 현재 단순형
+I am beautiful.
+I make a suit.
+진행형
+be동사는 없음.
+I am making a suit.
+완료형
+be동사는 없음.
+I have maden a suit.
+과거 단순형
+I was beautiful.
+I made a suit.
+진행형
+be동사는 없음.
+I was making a suit.
+완료형
+be동사는 없음.
+I had maden a suit.
+미래 단순형
+I will be beautiful.
+I will make a suit.
+진행형
+be동사는 없음.
+I will be making a suit.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-07-08T00:00:00Z">July 08, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-07-03-today-i-learned-1001-ch01/">Today I Leaned - 천일문 입문편 Ch.01 문장의 구조(by 동사)</a></h1>
+	<div class="post__content">Ch.01 문장의 구조(by 동사) 문장의 구성요소 주어 S: 명사
+동사 V: 동사
+목적어 O: 명사
+보어 C: 명사, 형용사
+수식어 M: 부사, 전명구
+문장의 구조(형식) 1: S + V(완전 자동사)
+2: S + V(불완전 자동사) + S.C
+3: S + V(완전 타동사) + O
+4: S + V(완전 타동사, 수여동사) + I.O + D.O
+5: S + V(불완전 타동사, 사역동사) + O + O.C
+1형식 S + V 2형식 S + V +S.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-07-03T00:00:00Z">July 03, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-07-02-today-i-learned-1001-ch00/">Today I Leaned - 천일문 입문편 Ch.00 품사</a></h1>
+	<div class="post__content">Ch.00 품사 품사란? 문장에서 단어의 역할
+품사의 종류 명사 noun
+대명사 pronoun
+형용사 adjective
+동사 verb
+부사 adverb
+접속사전치사 preposition
+감탄사
+명사란? 이름
+고유명사란? 한 사람이나 하나의 장소의 고유이름. 첫글자를 대문자로 시작
+명사구란? to부정사, 동명사
+명사절이란? that절, 관계대명사 what절, whether if절, 의문사절, 복합관계대명사절
+대명사란? 앞에 나온 명사를 두 번째 언급할 때부터는 대신명사로 바꿔 말한다.
+동사란? 움직임, 상태를 의미하는 단어
+조동사란? 동사 앞에서 동사를 돕는 단어
+구동사란? (동사 + 전치사)구
+turn down, turn in, depend on, get off, get on, look forward to, put off</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-07-02T00:00:00Z">July 02, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/">Udacity Developing Android Apps with Kotlin 레슨10 Designing for Everyone 요약</a></h1>
+	<div class="post__content">Lesson 10: Designing for Everyone 1. Party Planning 2. Styling on Android 안드로이드 스타일링 계층도
+테마 정의: 앱의 전체적인 색감
+스타일 정의: 재활용 가능한 뷰의 스타일
+재활용 불가능한 각 뷰의 디자인속성
+3. Design Through the Looking Glass 4. Exercise: Add TextView Attributes 5. Themes and Fonts downloadable fonts의 특징
+6. Exercise: Apply a Theme 테마 적용하기
+7. Exercise: Add Styles to Headers 스타일 적용하기
+8. How Styling Information is Communicated to a View 9.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-26T00:00:01Z">June 26, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/">Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</a></h1>
+	<div class="post__content">Lesson 9: Behind the scenes 1. Offline Movie Night 2. Exercise: Introduction offline caching에 대해 배울 거야!
+3. What’s in a Cache 캐시란, 다음에 곧 쓸 데이터를 로컬에 저장해뒀다가 필요할 때 다시 쓰는 것
+우리앱에서 레포지토리 패턴을 써야 하는 이유  앱 실행 시에 다운로드받아 캐시해 사용할 만한 데이터들이 있다. 필터 목록 같은 데이터. 이 데이터를 따로 관리하는 클래스를 두는 것보다, 레포지토리 패턴을 써서 레포지토리 안에서 필요한 데이터만 캐시 시키면 레포지토리를 쓰는 곳에서는 캐시되는 데이터인지 실시간 데이터인지 알 필요 없어서 관심사의 분리가 된다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-26T00:00:00Z">June 26, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+		</div>
+	</main>
+	
+<div class="pagination block">
+				<span class="pagination__item pagination__item--active" data-total="8">1</span>
+				<a class="pagination__item pagination__item--desktop" href="/posts/page/2/">2</a>
+				<a class="pagination__item pagination__item--desktop" href="/posts/page/3/">3</a>
+			<span class="pagination__item pagination__item--gap">&hellip;</span>
+				<a class="pagination__item pagination__item--desktop" href="/posts/page/8/">8</a>
 </div>
 
-      </div>
-    </div>
-  </article>
-
-  <script src="/js/highlight.pack.js"></script>
-
-
-<script>
-  hljs.initHighlightingOnLoad();
-  
-  
-  
-    
-    
-  
-</script>
-
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:bsscco@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/bsscco">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2020 bsscco. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="/js/custom.js"></script>
 </body>
-
 </html>

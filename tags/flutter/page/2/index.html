@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>flutter | developer bsscco</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="flutter" />
+<meta property="og:description" content="Responsive card-based &amp; code-light Hugo theme" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/tags/flutter/" />
+<meta property="og:updated_time" content="2019-05-25T00:00:00+00:00" />
+
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="flutter"/>
+<meta name="twitter:description" content="Responsive card-based &amp; code-light Hugo theme"/>
+
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/themes/dark-green.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="alternate" type="application/rss+xml" href="/tags/flutter/index.xml" title="developer bsscco">
+	<link rel="manifest" href="/manifest.json">
+		
+</head>
+<body>
+	<header class="header">
+	<a class="logo" href="/">developer bsscco</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/">Home</a>
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/tags/">Tags</a>
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">flutter</li>
+	</ol>
+</nav>
+		<div class="page block">
+			<h1 class="page__title">flutter</h1>
+			
+		</div>
+		<div class="cards">
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-bloc-introduction/">Flutter로 개발하기(22) - Bloc 소개</a></h1>
+	<div class="post__content">Bloc document - 소개 원문: https://felangel.github.io/bloc
+시작하기 개요 Bloc은 세 가지 패키지로 구성됩니다.
+ bloc - 코어 라이브러리 flutter_bloc - bloc을 사용하기 위한 플러터 위젯 angular_bloc - bloc을 사용하기 위한 앵귤러 컴포넌트  설치 플터터의 경우 pubspec.yaml에서
+dependencies: bloc: ^0.10.0 flutter_bloc: ^0.8.0 그리고 flutter packages get
+Import 플러터의 경우
+import &#39;package:bloc/bloc.dart&#39;; import &#39;package:flutter_bloc/flutter_bloc.dart&#39;; 왜 Bloc인가요?  Bloc은 비지니스 로직으로부터 프리젠테이션 로직을 쉽게 분리시켜줍니다. 빠르게 작성할 수 있는 코드, 쉽게 테스트 할 수 있는 코드, 재사용 가능한 코드를 만들 수 있게 해줍니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-24T09:51:41Z">March 24, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-bloc-library-sample/">Flutter로 개발하기(21) - Bloc패턴 샘플</a></h1>
+	<div class="post__content">bloc_library sample 참고 예제: https://github.com/brianegan/flutter_architecture_samples/tree/master/bloc_library
+이 샘플은 상태관리를 위해 bloc과 flutter_bloc 라이브러리를 사용했습니다. 더 자세한 내용과 튜토리얼은 bloc library document를 확인하세요.
+핵심 개념  상태를 위로 올리기  여러 위젯에서 같은 bloc이 필요할 땐 공통의 조상 위젯에 BlocProvider를 사용합니다.   Events는 bloc의 입력입니다.  이들은 일반적으로 버튼 누르기와 같은 유저 인터렉션 또는 페이지 로드 같은 라이프사이클 이벤트로 디스패치됩니다.   States는 bloc의 출력이며 앱 상태의 한 부분을 대표합니다.  컴포넌트들은 상태를 공지 받을 수 있고 그 상태에 의해 다시 그려질 수 있습니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-23T09:51:41Z">March 23, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-list-of-state-management-approaches/">Flutter로 개발하기(18) - 상태관리 접근법들</a></h1>
+	<div class="post__content">List of state management approaches 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/options
+개요  구글 IO 2018에서 발표했던 영상 플러터로 반응형 모바일앱 만들기와, 관련 글 Brian Egan의 플러터 설계 샘플  setState  플러터 튜토리얼 플러터앱에 상호작용 추가하기 Agung Surya의 플러터에서 기본 상태 관리  InheritedWidget &amp; Scoped model  Eric Windmill의 효과적으로 플러터 InheritedWidget 사용하기 Ryan Edge의 당신은 Redux가 필요 없을지도 모른다. Tensor Programming 영상 scoped model 패턴으로 상태 관리하기 MTechViral의 Inherited Widget과 Scoped Model 설명 영상 scoped model scoped model 패키지 Didier Bolelens의 Widget-State-Context-InheritedWidget  Redux  DartConf 2018에서 발표했던 영상 Redux로 애니메이션 관리하기와 관련 글 플러터 Redux 패키지 Xavi Rigau의 플러터 Redux 소개 Paulina Szklarska의 플러터+Redux로 쇼핑앱을 만드는 방법 Tensor Programming 영상 플러터 Redux로 Todo앱 만들기 Jack Wong의 플러터 Redux 예제 Hillel Coren의 Redux로 규모가 큰 플러터앱 만들기 Alibaba의 리더스 기반으로 플러터 앱 다루기  BLoC / Rx  Sagar Suri의 BLoC 패턴을 사용한 플러터 프로젝트 설계 Felix Angelov의 Bloc 라이브러리 Didier Boelens의 반응형 프로그래밍, 스트림, BLoC Usecase  MobX  MobX.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-18T09:51:41Z">March 18, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-simple-app-state-management/">Flutter로 개발하기(17) - 간단한 상태관리 앱</a></h1>
+	<div class="post__content">Simple app state management 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple
+이번 예제 로그인화면, 카탈로그화면, 장바구니화면으로 구성된 앱입니다.
+우리는 최소한 6개의 위젯을 만들 겁니다.
+상태를 위로 올리기 플러터에서는 상태를 사용하는 위젯 위(부모 위젯)에 그 상태를 유지하는 게 좋습니다.
+// BAD: 이렇게 하지 마세요. void myTapHandler() { var cartWidget = somehowGetMyCartWidget(); // 부모 위젯  cartWidget.updateWith(item); } // BAD: 이렇게 하지 마세요. Widget build(BuildContext context) { // 부모 위젯의 build() 메소드  return SomeWidget(); } void updateWith(Item item) { // UI를 직접 바꿉니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-17T22:51:41Z">March 17, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-state-management/">Flutter로 개발하기(16) - 상태 관리</a></h1>
+	<div class="post__content">상태 관리 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro
+선언적으로 생각하기 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative
+플러터는 안드로이드 SDK, iOS UIKit과 달리 선언적입니다. 선언적이라는 뜻은 플러터가 알아서 현재 상태에 맞는 UI를 빌드한다는 뜻입니다.
+사용자가 액션을 취했을 때 우리가 상태를 바꾸고 UI를 갱신시키는 것(like widget.setText())은 선언적이지 않습니다. 플러터에서는 우리가 상태를 바꾸기만 하면 UI는 알아서 리빌드 됩니다.
+임시상태와 앱상태 구분하기 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app
+임시 상태 임시 상태는 위젯 안에 담을 수 있는 상태를 말합니다. 따라서 UI 상태, 지역 상태라도 불립니다.
+임시 상태의 몇 가지 예시</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-17T21:51:41Z">March 17, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-slivers/">Flutter로 개발하기(15) - Sliver와 제스처</a></h1>
+	<div class="post__content">Slivers 원문: https://flutter.dev/docs/development/ui/advanced/slivers
+Sliver는 스크롤 영역의 일부입니다. 맞춤 스크롤 효과를 만들기 위해 Sliver를 사용할 수 있습니다.
+플러터에서 Sliver 구현 예로 SliverList, SliverGrid, SliverAppBar가 있습니다. Slivers, Demystified, Flutter Publication도 참고하세요.
+제스처 원문: https://flutter.dev/docs/development/ui/advanced/gestures
+플러터의 제스처 체계는 2가지 층으로 나뉩니다. 첫 번째 층은 raw 포인터 이벤트이고, 두 번째 층은 제스처입니다.
+포인터 포인터 이벤트의 4가지 유형
+ PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent  포인터가 down 됐을 때 프레임워크는 화면에서 해당하는 위치에 위젯이 있는지 결정하기 위해 hit test를 합니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-17T17:51:41Z">March 17, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-introduction-to-animations/">Flutter로 개발하기(10) - 애니메이션 소개</a></h1>
+	<div class="post__content">Introduction to animations https://flutter.dev/docs/development/ui/animations
+플러터 애니메이션 프레임워크를 배울 수 있는 리소스는 다음과 같습니다.
+  애니메이션 튜토리얼 플러터 애니메이션 패키지에 있는 기본 클래스들(controllers, Animatable, curves, listeners, builders)을 설명합니다.
+  플러터로 0에서 1까지 part1, part2 어떻게 움직이는 표를 만드는지 보여주는 미디엄 아티클입니다.
+  플러터로 아름다운 UI 만들기 간단한 채팅앱을 만드는 코드랩입니다. 스탭7에서 메시지를 추가할 때 애니메이션을 사용합니다.
+  애니메이션 유형 트윈 애니메이션 트윈 애니메이션에는 시작점과 끝점이 있고, 그 사이에 속도가 변화되는 커브를 지정할 수 있습니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-17T00:51:41Z">March 17, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-animating-a-widget-across-screens/">Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기</a></h1>
+	<div class="post__content">Animating a Widget across screens https://flutter.dev/docs/cookbook/navigation/hero-animations
+현재 화면에서 다른 화면을 열 때 사용자에게 연속성을 주어야 하는 경우가 종종 있습니다. 연속성을 구현하기 위한 일반적인 기술은 현재 화면의 위젯이 다음 화면으로 이동하는 애니메이션을 적용하는 것입니다. 두 화면 간에 시각적 요소를 연결하려면 Hero 위젯을 사용하면 됩니다.
+같은 이미지를 보여주는 2개의 화면 만들기 class MainScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;Main Screen&#39;), ), body: GestureDetector( onTap: () { Navigator.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-16T22:51:41Z">March 16, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-navigate-with-named-routes/">Flutter로 개발하기(08) - named route를 통해 화면 관리하기</a></h1>
+	<div class="post__content">Navigate with named routes https://flutter.dev/docs/cookbook/navigation/named-routes
+만약 여러 곳에서 같은 화면으로 navigate 해야 할 때 매번 Route 코드를 추가해야 하는 중복이 발생할 수 있습니다. 이 문제를 해결해주는 게 &ldquo;named route&quot;입니다. named route로 navigate를 하려면 Navigator.pushNamed()를 이용해야 합니다.
+1. 두 화면 만들기 class FirstScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;첫 번째 화면&#39;), ), body: Center( child: RaisedButton( child: Text(&#39;새 화면 실행하기&#39;), onPressed: () { }, ), ), ); } } class SecondScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#34;두 번째 화면&#34;), ), body: Center( child: RaisedButton( onPressed: () { }, child: Text(&#39;돌아가기&#39;), ), ), ); } } 2.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-16T18:51:41Z">March 16, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-return-data-from-a-screen/">Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기</a></h1>
+	<div class="post__content">Return data from a screen https://flutter.dev/docs/cookbook/navigation/returning-data
+1. 홈 화면 정의하기 class HomeScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;Returning Data Demo&#39;), ), // 다음 단계에서 SelectionButton 위젯을 만들 겁니다.  body: Center(child: SelectionButton()), ); } } 2. 선택 화면을 실행하는 버튼 추가하기 class SelectionButton extends StatelessWidget { @override Widget build(BuildContext context) { return RaisedButton( onPressed: () { _navigateAndDisplaySelection(context); }, child: Text(&#39;옵션을 선택하세요!&#39;), ); } _navigateAndDisplaySelection(BuildContext context) async { // Navigator.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-16T17:51:41Z">March 16, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+		</div>
+	</main>
+	
+<div class="pagination block">
+				<a class="pagination__item pagination__item--desktop" href="/tags/flutter/">1</a>
+				<span class="pagination__item pagination__item--active" data-total="3">2</span>
+				<a class="pagination__item pagination__item--desktop" href="/tags/flutter/page/3/">3</a>
+</div>
+
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:bsscco@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/bsscco">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2020 bsscco. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="/js/custom.js"></script>
+</body>
+</html>

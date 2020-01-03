@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>Posts | developer bsscco</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Posts" />
+<meta property="og:description" content="Responsive card-based &amp; code-light Hugo theme" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/posts/" />
+<meta property="og:updated_time" content="2019-10-06T00:00:00+00:00" />
+
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="Responsive card-based &amp; code-light Hugo theme"/>
+
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/themes/dark-green.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="developer bsscco">
+	<link rel="manifest" href="/manifest.json">
+		
+</head>
+<body>
+	<header class="header">
+	<a class="logo" href="/">developer bsscco</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/">Home</a>
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">Posts</li>
+	</ol>
+</nav>
+		<div class="page block">
+			<h1 class="page__title">Posts</h1>
+			
+		</div>
+		<div class="cards">
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/how-read-the-brackets/">(), {}, [], &lt;&gt; 어떻게 읽어야 할까?</a></h1>
+	<div class="post__content">(), 나는 영어로 쓰인 개발문서 읽을 때 소리내듯이 머릿속에서 읽어야 이해가 잘 된다. 그런데 문서 안에 (), {}가 들어있으면 어떻게 읽어야 할지 몰라 읽는 흐름이 끊길 때가 있다. 그래서 찾아봤다.
+여기 링크에 따르면 아래와 같이 부르기도 하고, (1)
+ angle brackets for &lt;&gt; round brackets for () curly brackets for {} square brackets for []  아래와 같이 부르기도 하나보다. (2)
+ braces: {} parentheses: () brackets: [] angle brackets: &lt;&gt;  나는 (2)처럼 읽는 게 더 익숙하다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-02-21T22:40:12Z">February 21, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-asynchronous-programming-streams/">Dart 비동기 프로그래밍 Streams 요약</a></h1>
+	<div class="post__content">https://www.dartlang.org/tutorials/language/streams
+Future는 결과가 준비됐을 때 우리에게 알려준다. Stream은 이벤트가 발생할 때마다 우리에게 알려준다.
+import &#39;dart:async&#39;; Stream&lt;Future&lt;int&gt;&gt; countStream(int to) async* { for (int i = 1; i &lt;= to; i++) { yield Future.delayed(Duration(seconds: 1), () =&gt; i); // 1초 후에 i를 반환하는 Future를 발생시킨다.  } } Future&lt;void&gt; printSumStream(Stream&lt;Future&lt;int&gt;&gt; stream) async { var sum = &#39;&#39;; await for (var value in stream) { // 스트림의 이벤트 발생이 끝날 때가지 기다린다.  sum += (await value).</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-02-21T00:19:30Z">February 21, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-asynchronous-programming-futures/">Dart 비동기 프로그래밍 Futures 요약</a></h1>
+	<div class="post__content">https://www.dartlang.org/tutorials/language/futures
+import &#39;dart:async&#39;; Future&lt;void&gt; printAsyncMsg() async { String result = await execLongTask(); // 반환값 Future&lt;String&gt;가 작업을 끝낼 때까지 기다린다.  print(result); // Future의 작업이 끝나면 result에 String값이 담기고, 그 다음 print()가 호출된다. } Future&lt;String&gt; execLongTask() { // Future를 반환한다.  return Future.delayed(Duration(seconds: 1), () =&gt; &#39;This is async msg.&#39;); } printSyncMsg() { print(&#39;This is sync msg.&#39;); // 호출받자마자 바로 출력한다. } main() { printAsyncMsg(); // 비동기 함수를 먼저 호출한다.  printSyncMsg(); // 동기 함수를 뒤에 호출한다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-02-20T23:59:00Z">February 20, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/jira-shortcut/">Jira 보드 단축키 꿀팁</a></h1>
+	<div class="post__content"> 보드로 이동(G → A) : 보드에 포커스가 안 들어가서 단축키가 안 먹힐 때 써준다. 이전/다음 컬럼의 카드 선택(P/N) 위/아래 카드 선택(K/J) 명령(.) : 카드에서 특정 컬럼을 수정할 때 유용하다. 카드 정보패널 열기/닫기(T) 카드 열기(O) 카드를 열었다가 보드로 돌아가기(at Chrome)(Cmd + ←) 검색(/) 검색 종료(Esc) 단축키 도움말(?) 단축기 도움말 닫기(Esc)  </div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-02-18T00:00:00Z">February 18, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-firebase-for-flutter/">Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스</a></h1>
+	<div class="post__content">Flutter를 위한 Firebase
+https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html
+ 프로젝트 소스 : https://github.com/bsscco/baby_name_votes 눈에 띄는 내용  named 생성자를 지원한다.   class Record { final String name; final int votes; Record.fromMap(Map&lt;String, dynamic&gt; map) : assert(map[&#39;name&#39;] != null), assert(map[&#39;votes&#39;] != null), name = map[&#39;name&#39;], votes = map[&#39;votes&#39;]; }    StreamBuilder는 인자를 통해 받은 스트림이 변경되면 다시 빌드하는 기능을 한다.   Widget _buildBody(BuildContext context) { return StreamBuilder&lt;QuerySnapshot&gt;( stream: Firestore.instance.collection(&#39;baby&#39;).snapshots(), builder: (context, snapshot) { if (!</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-02-16T15:41:07Z">February 16, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-build-beautiful-ui-with-flutter/">Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기</a></h1>
+	<div class="post__content">Flutter로 아름다운 UI 만들기 https://codelabs.developers.google.com/codelabs/flutter/index.html
+프로젝트 소스 : https://github.com/bsscco/friendly_chat
+ Flutter의 장점  한 번 작성하면 iOS, Android에 배포 가능하다. Material Design과 Cupertino 위젯과 동작들을 지원한다. 스크롤링, 네비게이션 패턴, 폰트, 그 이상을 지원한다. 반응형 functional 프로그래밍을 지원한다. 겁나 빠른 핫리로드를 지원한다. Dart로 쓰여진 코드는 Android, iOS의 환경에 맞게 컴파일된다.   눈에 띄는 내용  마진에 들어가는 숫자는 디바이스에 따라 적절한 픽셀로 변환된다. (Android는 dip로 변환) CrossAxisAlignment.start 는 부모의 메인 Axis의 교차 Axis를 기준으로 앞쪽에 위치하도록 하겠다는 뜻이다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-02-14T23:11:44Z">February 14, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-from-java-to-dart/">Flutter 코드랩 리뷰 - 자바에서 다트로 넘어가기</a></h1>
+	<div class="post__content">Java에서 Dart로 넘어가기 https://codelabs.developers.google.com/codelabs/from-java-to-dart/index.html
+ 생성자   // 다음 두 생성자는 완전히 같은 동작을 한다. Bicycle(this.cadence); // 이거 추천 Bicycle(int cadence) { this.cadence = cadence; }    변수 선언   var bike = bicycle(1, 2, 0); // 변수 생성 final bike = bicycle(1, 2, 0); // 상수 생성    toString()   @override String toString() =&gt; &#39;Bicycle: $speedmph&#39;;    String  single qoutes, double qoutes 둘 다 사용 가능하다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-02-14T23:02:51Z">February 14, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/appsflyer-attribution-model/">Appsflyer 어트리뷰션 모델에서 헷갈리는 것들 정리</a></h1>
+	<div class="post__content">참고 : https://support.appsflyer.com/hc/en-us/articles/207447053-What-is-AppsFlyer-s-Attribution-Model-
+New-Attribution 구분  이미 특정 media_source로 New-attribution된 사용자는 다른 어떤 media_source에도 New-attribution으로 인식되지 않습니다.  Attribution Lookback window View-through lookback window(1-7days)  사용자가 앱스플라이어를 통한 광고를 보고, 정해진 View-through lookback window 이내에 클릭 없이 앱을 설치한 경우 New-attribution으로 인정합니다. window 기본값은 1day onelink에서 설정할 수 있는 값은 아니고, 외부 partners setting에서 파트너마다 설정할 수 있습니다.  Click-through lookback window(1-30days)  사용자가 앱스플라이어 링크 또는 광고를 클릭하고, 정해진 Click-through lookback window 이내에 앱을 설치한 경우 New-attribution으로 인정합니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2018-11-21T00:00:00Z">November 21, 2018</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/appsflyer-onelink/">Appsflyer 원링크 파라메터 정리</a></h1>
+	<div class="post__content">ex)
+https://ohouse.onelink.me/1234567?pid=Social%20Facebook&amp;c=bssccocampaign&amp;af_channel=bssccochannel&amp;is_retargeting=true&amp;af_click_lookback=15d&amp;af_dp=ohouseapp%3A%2F%2Fohou.se%2Fcards%2F1234&amp;af_web_dp=https%3A%2F%2Fohou.se%2Fcards%2F1234 pid media_source
+c campagin
+af_channel channel
+is_retargeting Re-attribution, Re-engagement 트래킹을 허용할 것인가?
+true일 경우에 New-installs라도 New-Attribution으로 인식 안 됨.
+af_click_lookback Click-through lookback window값
+af_view_lookback View-through lookback window값
+af_dp 네이티브 앱용 딥링크
+af_web_dp 웹용 딥링크
+af_reengagement_window Re-engagement window값</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2018-11-21T00:00:00Z">November 21, 2018</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/slack-shortcut/">Slack 단축키 꿀팁</a></h1>
+	<div class="post__content"> 검색(Cmd+F) : 예전 메시지를 찾는 데에 유용하다. Quick Switcher(Cmd+K) : 채널 또는 DM방으로 빠르게 찾아갈 수 있다. 활동(Cmd+Shift+M)  내가 멘션 돼있는 메시지를 최신순으로 빠르게 확인할 수 있다. 다른 사람의 이모지가 달린 내 메시지를 최신순으로 빠르게 확인할 수 있다.   All threads(Cmd+Shift+T) : 내가 관여된 채널의 메시지를 최신순으로 빠르게 확인할 수 있다. Starred items(Cmd+Shift+S) : 까먹지 않으려고 star해놓은 메시지들을 확인할 수 있다. 텍스트 볼드(Cmd+B) 텍스트 삭선(Cmd+Shift+X) 텍스트 코드양식(Cmd+Shift+C) 텍스트 인용구양식(Cmd+Shift+&gt;) 코드 스니펫 쓰기(Cmd+Shift+Enter)  </div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2018-11-21T00:00:00Z">November 21, 2018</time>
+	</div>
+
+</article>
+				</div>
+			
+		</div>
+	</main>
+	
+<div class="pagination block">
+				<a class="pagination__item pagination__item--desktop" href="/posts/">1</a>
+				<a class="pagination__item pagination__item--desktop" href="/posts/page/2/">2</a>
+				<a class="pagination__item pagination__item--desktop" href="/posts/page/3/">3</a>
+			<span class="pagination__item pagination__item--gap">&hellip;</span>
+				<a class="pagination__item pagination__item--desktop" href="/posts/page/6/">6</a>
+				<span class="pagination__item pagination__item--active" data-total="8">7</span>
+				<a class="pagination__item pagination__item--desktop" href="/posts/page/8/">8</a>
+</div>
+
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:bsscco@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/bsscco">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2020 bsscco. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="/js/custom.js"></script>
+</body>
+</html>

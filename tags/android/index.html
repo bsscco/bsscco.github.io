@@ -1,254 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en-us">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.62.1" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>android | developer bsscco</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="android" />
+<meta property="og:description" content="Responsive card-based &amp; code-light Hugo theme" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/tags/android/" />
+<meta property="og:updated_time" content="2019-10-06T00:00:00+00:00" />
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="bsscco" />
-  <meta property="og:url" content="/tags/android/" />
-  <link rel="canonical" href="/tags/android/" /><script type="application/ld+json">
-  {
-      "@context" : "http://schema.org",
-      "@type" : "BlogPosting",
-      "mainEntityOfPage": {
-           "@type": "WebPage",
-           "@id": "\/"
-      },
-      "articleSection" : "tags",
-      "name" : "android",
-      "headline" : "android",
-      "description" : "",
-      "inLanguage" : "en-US",
-      "author" : "bsscco",
-      "creator" : "bsscco",
-      "publisher": "bsscco",
-      "accountablePerson" : "bsscco",
-      "copyrightHolder" : "bsscco",
-      "copyrightYear" : "2019",
-      "datePublished": "2019-10-06 00:00:00 \x2b0000 UTC",
-      "dateModified" : "2019-10-06 00:00:00 \x2b0000 UTC",
-      "url" : "\/tags\/android\/",
-      "keywords" : [  ]
-  }
-</script>
-<title>android - developer bsscco</title>
-  <meta property="og:title" content="android - developer bsscco" />
-  <meta property="og:type" content="article" />
-  <meta name="description" content="" />
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="android"/>
+<meta name="twitter:description" content="Responsive card-based &amp; code-light Hugo theme"/>
 
-  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
-  <link rel="stylesheet"
-    href="/css/github-markdown.min.css" />
-  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
-  <link rel="stylesheet" href="/css/index.css">
-  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
-  
-  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
-  
-  
-
-  
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/themes/dark-green.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="alternate" type="application/rss+xml" href="/tags/android/index.xml" title="developer bsscco">
+	<link rel="manifest" href="/manifest.json">
+		
 </head>
-
-
 <body>
-  <article class="posts">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        
-<header>
-  <div class="signatures site-title">
-    <a href="/">developer bsscco</a>
-  </div>
+	<header class="header">
+	<a class="logo" href="/">developer bsscco</a>
+	
 </header>
-<div class="row end-xs">
-  
-  
+	<div class="primary">
+	
+	<main class="main">
+		
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/">Home</a>
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/tags/">Tags</a>
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">android</li>
+	</ol>
+</nav>
+		<div class="page block">
+			<h1 class="page__title">android</h1>
+			
+		</div>
+		<div class="cards">
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-10-06-using-network-image-efficiently/">네트워크 이미지를 효율적으로 사용하기</a></h1>
+	<div class="post__content">네트워크 이미지를 효율적으로 사용하기 리사이징 방법 1. 서버로부터 리사이징된 이미지를 다운로드 받는다.
+예) https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}
+장점 : 네트워크 통신리소스 감소
+2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.
+예) Glide.override()
+장점 : 비트맵용 앱메모리 감소
+override()를 호출하지 않아도 되는 경우
+내려받은 이미지가 ImageView로 들어갈 때 Gide가 Bitmap 사이즈를 ImageView의 사이즈 만큼 자동으로 맞춰줌!
+override()를 호출해야 하는 경우
+ImageView의 가로세로 사이즈가 모두 WrapContent인 경우엔 자동으로 맞춰주지 않음!</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-10-06T00:00:00Z">October 06, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/">Udacity Developing Android Apps with Kotlin 레슨10 Designing for Everyone 요약</a></h1>
+	<div class="post__content">Lesson 10: Designing for Everyone 1. Party Planning 2. Styling on Android 안드로이드 스타일링 계층도
+테마 정의: 앱의 전체적인 색감
+스타일 정의: 재활용 가능한 뷰의 스타일
+재활용 불가능한 각 뷰의 디자인속성
+3. Design Through the Looking Glass 4. Exercise: Add TextView Attributes 5. Themes and Fonts downloadable fonts의 특징
+6. Exercise: Apply a Theme 테마 적용하기
+7. Exercise: Add Styles to Headers 스타일 적용하기
+8. How Styling Information is Communicated to a View 9.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-26T00:00:01Z">June 26, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/">Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</a></h1>
+	<div class="post__content">Lesson 9: Behind the scenes 1. Offline Movie Night 2. Exercise: Introduction offline caching에 대해 배울 거야!
+3. What’s in a Cache 캐시란, 다음에 곧 쓸 데이터를 로컬에 저장해뒀다가 필요할 때 다시 쓰는 것
+우리앱에서 레포지토리 패턴을 써야 하는 이유  앱 실행 시에 다운로드받아 캐시해 사용할 만한 데이터들이 있다. 필터 목록 같은 데이터. 이 데이터를 따로 관리하는 클래스를 두는 것보다, 레포지토리 패턴을 써서 레포지토리 안에서 필요한 데이터만 캐시 시키면 레포지토리를 쓰는 곳에서는 캐시되는 데이터인지 실시간 데이터인지 알 필요 없어서 관심사의 분리가 된다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-26T00:00:00Z">June 26, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/">Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약</a></h1>
+	<div class="post__content">Lesson 8: Connect to the Internet 1. Greetings Earth Friends! 2. Introduction 3. RESTful Services URI가 URL을 포함하는 개념
+4. Libraries 5. App Walkthrough and Starter Code 6. Exercise: Connecting to the Internet 7. Permissions 8. Exercise: Parsing the JSON Response moshi가 gson이나 jackson보다 더 좋은 이유가 있을까? https://medium.com/@IlyaEremin/android-json-parsers-comparison-2017-8b5221721e31
+jackson이 성능에서 가장 좋은데 친숙하지 않은 API가 단점이라고 함.
+moshi는 제이크 와튼이 만든 거라 함께 사용한 듯
+9. Exercise: Coroutines and Deferred Deferred&lt;List&lt;MarsProperty&gt;&gt; .</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-19T00:00:01Z">June 19, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/">Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약</a></h1>
+	<div class="post__content">Lesson 7: RecyclerView RecyclerView  1. Recycle Woman 2. Introduction 3. Your first RecyclerView Room+ViewModel과 Adapter의 연결 구조
+ViewHolder의 역할
+4. Exercise: Add a RecyclerView 5. Exercise: Display SleepQuality Data 프래그먼트에서 db 데이터를 observe 하다가 데이터가 갱신되면 adapter.data에 대입해주는 부분이 있음.
+6. Exercise: Recycling ViewHolders 7. Displaying Sleep Quality ViewHolder에는 많은 기능이 있다. 활용하자.
+ getAdapterPosition() getLayoutPosition() getItemId()  8. Exercise: Display the SleepQuality List 9. Exercise: Refactor onBindViewHolder onBindViewHolder 로직을 ViewHolder의 bind 메소드로 이동</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-19T00:00:00Z">June 19, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/">Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약</a></h1>
+	<div class="post__content">Lesson 6: App Architecture (Persistence) 1. Wake Up, Aleks! 2. Introduction  Room Database DAO Application Architecture with Room Coroutines  Room  3. SQLite Primer SQLite 문법에 대한 간단 설명
+4. Designing Entities Room DB layer 구조
+5. Exercise: Creating the SleepNight Entity data class를 사용해 Entity 클래스 만들기
+6. Data Access Object (DAO) DAO 어노테이션의 종류
+7. Exercise: DAO - SleepDatabaseDao DAO 클래스 만들기
+8. Creating a Room Database Room DB를 만드는 순서</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-12T00:00:01Z">June 12, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/">Udacity Developing Android Apps with Kotlin 레슨5 App Architecture (UI Layer) 요약</a></h1>
+	<div class="post__content">Lesson 5: App Architecture (UI Layer) 1. Architecting on the fly 2. Lesson Introduction  Application Architecture ViewModel LiveData Data Binding  3. Exercise: Tour of the App ktx를 쓰고 싶은 곳에서만 ktx가 구현된 파일을 import 할 수 있구나
+4. Where the App Falls Short 5. What is Architecture 안드로이드 MVVM 패턴
+ M : Repository + Data provider V : UI Controller VM : ViewModel(ViewModel 클래스의 기능은 Presenter의 기능과 다르지 않다)  UI Controller는 데이터를 표현하고, 사용자입력을 잡아내는 역할을 한다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-12T00:00:00Z">June 12, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/">Udacity Developing Android Apps with Kotlin 레슨4 Activity &amp; Fragment Lifecycle 요약</a></h1>
+	<div class="post__content">Lesson 4: Activity &amp; Fragment Lifecycle Activity lifecycle 네모:state, 네모없는 텍스트: callback
+액티비티가 생성(객체 생성)됐으면 initialized
+액티비티가 보이면 started 상태 또는 resumed 상태
+액티비티에 포커스가 있으면 resumed 상태
+액티비티가 안 보이면 created
+액티비티가 파괴됐으면 destroyed
+Fragment lifecycle onCreate에서 레이아웃을 inflate 하지 말고 onCreateView에서 inflate 하기
+프래그먼트가 처음 그려질 때 activity를 참조하지 말고 onActivityCreated에서 참조하기
+onAttach : 프래그먼트가 액티비티에 붙었을 때 딱 한 번만 호출됨
+onActivityCreated : 액티비티의 onCreate가 반환된 직후에 호출됨.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-05T00:00:01Z">June 05, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/">Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약</a></h1>
+	<div class="post__content">Lesson 3: App Navigation Fragment 다양한 크기의 기기들에 대응할 수 있는 컴포넌트
+Activity Back stack vs Fragment Back stack
+Activity Back stack
+백버튼을 누르면 현재 액티비티는 닫힌다.
+Fragment Back stack
+Activity 안에서 네비게이션 되고, Fragment Manager로 추가/삭제 할 수 있다.
+Navigation graph는 activity 안에서 multi fragment를 다루는 기술이다.
+TitleFragment.kt
+val binding = DataBindingUtil.inflate&lt;FragmentTitleBinding&gt;(inflater, R.layout.fragment_title, container, false) return binding.root  Navigation Navigation 원칙   Starting Place가 있어야 한다.
+  언제나 Go Back 할 수 있어야 한다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-05T00:00:00Z">June 05, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/">Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약</a></h1>
+	<div class="post__content">Lesson 2: Layouts  TextView.fontFamily donloadable font  apk에 폰트 사이즈 적재 없이 사용 가능 fonts source가 google fonts로 제한되는 게 단점   데이터 바인딩 라이브러리 사용  app/build.gradle  android {  dataBinding {  enabled = true   }   }   activity_main.xml  &hellip;    findViewById 대체  MainActivity.kt  private lateinit var binding: ActivityMainBinding &hellip; binding = DataBindingUtils.setContentView(this, R.layout.activity_main) binding.name.text = &ldquo;BSSCCO&rdquo;     데이터 바인딩  개념  데이터와 뷰를 한 번 연결시켜두면 이후엔 데이터만 수정해도 뷰는 알아서 바뀐다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-05-30T00:00:01Z">May 30, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+		</div>
+	</main>
+	
+<div class="pagination block">
+				<span class="pagination__item pagination__item--active" data-total="2">1</span>
+				<a class="pagination__item pagination__item--desktop" href="/tags/android/page/2/">2</a>
 </div>
-<div class="header-line"></div>
 
-
-        <h1 class="taxonomy-term">android</h1>
-        <div id="posts-list">
-          <section>
-            <h1 class="site-date-catalog">2019</h1>
-
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-10-06 00:00:00 UTC">Oct 06</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-10-06-using-network-image-efficiently/">네트워크 이미지를 효율적으로 사용하기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-26 00:00:01 UTC">Jun 26</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/">Udacity Developing Android Apps with Kotlin 레슨10 Designing for Everyone 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-26 00:00:00 UTC">Jun 26</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/">Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-19 00:00:01 UTC">Jun 19</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/">Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-19 00:00:00 UTC">Jun 19</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/">Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-12 00:00:01 UTC">Jun 12</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/">Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-12 00:00:00 UTC">Jun 12</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/">Udacity Developing Android Apps with Kotlin 레슨5 App Architecture (UI Layer) 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-05 00:00:01 UTC">Jun 05</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/">Udacity Developing Android Apps with Kotlin 레슨4 Activity &amp; Fragment Lifecycle 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-06-05 00:00:00 UTC">Jun 05</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/">Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-05-30 00:00:01 UTC">May 30</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/">Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2019-05-30 00:00:00 UTC">May 30</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/">Udacity Developing Android Apps with Kotlin 레슨1 Build your First App 요약</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-          
-        </div>
-
-        <div class="site-footer">
-  
-  <div class="site-footer-item">
-    <a href="https://github.com/bsscco" target="_blank">Github</a>
-  </div>
-  
-  
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:bsscco@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/bsscco">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
 </div>
-
-      </div>
-    </div>
-  </article>
-
-  <script src="/js/highlight.pack.js"></script>
-
-
-<script>
-  hljs.initHighlightingOnLoad();
-  
-  
-  
-    
-    
-  
-</script>
-
+	<div class="footer__copyright">© 2020 bsscco. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="/js/custom.js"></script>
 </body>
-
 </html>

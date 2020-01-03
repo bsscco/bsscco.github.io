@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>flutter | developer bsscco</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="flutter" />
+<meta property="og:description" content="Responsive card-based &amp; code-light Hugo theme" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/tags/flutter/" />
+<meta property="og:updated_time" content="2019-05-25T00:00:00+00:00" />
+
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="flutter"/>
+<meta name="twitter:description" content="Responsive card-based &amp; code-light Hugo theme"/>
+
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/themes/dark-green.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="alternate" type="application/rss+xml" href="/tags/flutter/index.xml" title="developer bsscco">
+	<link rel="manifest" href="/manifest.json">
+		
+</head>
+<body>
+	<header class="header">
+	<a class="logo" href="/">developer bsscco</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/">Home</a>
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/tags/">Tags</a>
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">flutter</li>
+	</ol>
+</nav>
+		<div class="page block">
+			<h1 class="page__title">flutter</h1>
+			
+		</div>
+		<div class="cards">
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-send-data-to-a-new-screen/">Flutter로 개발하기(06) - 새 화면에 데이터 넘기기</a></h1>
+	<div class="post__content">Send data to a new screen https://flutter.dev/docs/cookbook/navigation/passing-data
+기억하세요. 플러터에서 화면은 단지 위젯일 뿐입니다. 이 예제에서 우리는 Todo 목록을 만들고 Todo를 tap 했을 때 Todo를 보여줄 새 화면(위젯)으로 이동할 겁니다.
+1. Todo 클래스 정의하기 class Todo { final String title; final String description; Todo(this.title, this.description); } 2. Todo 목록 만들기 final todos = List&lt;Todo&gt;.generate( 20, (i) =&gt; Todo( &#39;Todo $i&#39;, &#39;A description of what needs to be done for Todo $i&#39;, ), ); ------------------------------------------------------------ ListView.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-16T07:51:41Z">March 16, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-navigate-to-a-new-screen-and-back/">Flutter로 개발하기(05) - 새로운 화면 열기</a></h1>
+	<div class="post__content">Navigate to a new screen and back https://flutter.dev/docs/cookbook/navigation/navigation-basics
+플러터에서는 화면이나 페이지를 Route라고 부릅니다. 안드로이드에서는 액티비티와 대응되고, iOS에서는 뷰컨트롤러와 대응됩니다. Route 또한 위젯입니다.
+1. 두 Route 만들기 class FirstRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;First Route&#39;), ), body: Center( child: RaisedButton( child: Text(&#39;Open route&#39;), onPressed: () { // Navigate to second route when tapped.  }, ), ), ); } } class SecondRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#34;Second Route&#34;), ), body: Center( child: RaisedButton( onPressed: () { // Navigate back to first route when tapped.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-14T07:51:41Z">March 14, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-dealing-with-box-constraints/">Flutter로 개발하기(04) - 위젯의 크기 제약조건</a></h1>
+	<div class="post__content">Dealing with box constraints https://flutter.dev/docs/development/ui/layout/box-constraints
+플러터에서 위젯은 자신의 렌더박스에 그려집니다. 렌더박스의 크기는 부모 위젯으로부터 받은 제약조건에 의해 결정됩니다. 제약조건은 최소, 최대 너비와 높이로 구성됩니다.
+제약조건의 유형은 일반적으로 3가지로 분류됩니다.
+ 가능한 한 큰 크기로 결정하기. Center, ListView 위젯이 그렇습니다. 자식 위젯과 같은 크기로 결정하기. Transform, Opacity 위젯이 그렇습니다. 특정한 값으로 크기를 결정하기. Image, Text 위젯이 그렇습니다.  Container 같은 위젯들은 생성자 인자에 따라 다른 제약조건 유형을 가집니다. Container는 기본적으로 가능한 한 큰 크기를 가지려고 하지만, 생성자 인자로 너비가 주어지면 그 값에 의해 크기가 결정됩니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-13T07:49:13Z">March 13, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-layout-tutorial/">Flutter로 개발하기(03) - 레이아웃 튜토리얼</a></h1>
+	<div class="post__content">Layout tutorial https://flutter.dev/docs/development/ui/layout/tutorial
+이 가이드에서는 아래 보이는 앱을 만들면서 레이아웃을 짜는 법을 배워봅니다.
+Step 0: 앱 베이스코드 만들기 플러터 어플리케이션 프로젝트를 만들고 다음과 같이 코드를 수정합니다.
+import &#39;package:flutter/material.dart&#39;; void main() =&gt; runApp(MyApp()); class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &#39;Flutter layout demo&#39;, home: Scaffold( appBar: AppBar( title: Text(&#39;Flutter layout demo&#39;), ), body: Center( child: Text(&#39;Hello World&#39;), ), ), ); } } Step 1: 레이아웃 그려보기 타이틀 섹션 버튼 섹션 작은 부분부터 bottom-up 방식으로 레이아웃을 그려보면 레아아웃 중첩을 어떻게 코딩해야 할지 감을 잡을 수 있습니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-12T07:51:41Z">March 12, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-layouts-in-flutter/">Flutter로 개발하기(02) - 레이아웃 위젯 소개</a></h1>
+	<div class="post__content">Layouts in Flutter https://flutter.dev/docs/development/ui/layout
+위젯 배치하기 1. 레이아웃 위젯을 선택합니다. Column, Row, Center 등
+2. visible 위젯을 생성합니다. Text(&#39;Hello World&#39;), Image.asset( &#39;images/lake.jpg&#39;, fit: BoxFit.cover, ), Icon( Icons.star, color: Colors.red[500], ), 3. visible 위젯을 레이아웃 위젯에 추가합니다. Center( child: Text(&#39;Hello World&#39;), ), 4. 레이아웃 위젯을 페이지에 추가합니다. class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &#39;Flutter layout demo&#39;, home: Scaffold( appBar: AppBar( title: Text(&#39;Flutter layout demo&#39;), ), body: Center( child: Text(&#39;Hello World&#39;), ), ), ); } } 여러 위젯을 수직, 수평으로 배치하기 위젯 Aligning Row Row( mainAxisAlignment: MainAxisAlignment.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-11T07:49:13Z">March 11, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-introduction-to-widgets/">Flutter로 개발하기(01) - 위젯 소개</a></h1>
+	<div class="post__content">Introduction to widgets https://flutter.dev/docs/development/ui/widgets-intro
+플러터 위젯은 React로부터 영감을 받아 반응형 스타일로 제작됐습니다.
+플러터 위젯의 중심 아이디어는 위젯으로만 UI를 제작하는 것입니다. 위젯은 자신에게 주어진 상태에 따라 어떻게 그릴 것인가를 기술하는 객체입니다. 위젯의 상태가 바뀌면 위젯은 다시 빌드되는데, 이때 프레임워크는 이전 상태와 다음 상태를 비교해서 render tree가 최소한만 변경되도록 합니다.
+Hello World 플러터 앱은 runApp() 함수를 호출하는 것에서부터 시작됩니다.
+import &#39;package:flutter/meterial.dart&#39;; void main() { runApp( Center( child: Text( &#39;Hello, world!&#39;, textDirection: TextDirection.ltr, ), ), ); } runApp() 함수는 주어진 위젯으로 위젯트리의 루트를 만듭니다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-09T06:49:58Z">March 09, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-firebase-for-flutter/">Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스</a></h1>
+	<div class="post__content">Flutter를 위한 Firebase
+https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html
+ 프로젝트 소스 : https://github.com/bsscco/baby_name_votes 눈에 띄는 내용  named 생성자를 지원한다.   class Record { final String name; final int votes; Record.fromMap(Map&lt;String, dynamic&gt; map) : assert(map[&#39;name&#39;] != null), assert(map[&#39;votes&#39;] != null), name = map[&#39;name&#39;], votes = map[&#39;votes&#39;]; }    StreamBuilder는 인자를 통해 받은 스트림이 변경되면 다시 빌드하는 기능을 한다.   Widget _buildBody(BuildContext context) { return StreamBuilder&lt;QuerySnapshot&gt;( stream: Firestore.instance.collection(&#39;baby&#39;).snapshots(), builder: (context, snapshot) { if (!</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-02-16T15:41:07Z">February 16, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-build-beautiful-ui-with-flutter/">Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기</a></h1>
+	<div class="post__content">Flutter로 아름다운 UI 만들기 https://codelabs.developers.google.com/codelabs/flutter/index.html
+프로젝트 소스 : https://github.com/bsscco/friendly_chat
+ Flutter의 장점  한 번 작성하면 iOS, Android에 배포 가능하다. Material Design과 Cupertino 위젯과 동작들을 지원한다. 스크롤링, 네비게이션 패턴, 폰트, 그 이상을 지원한다. 반응형 functional 프로그래밍을 지원한다. 겁나 빠른 핫리로드를 지원한다. Dart로 쓰여진 코드는 Android, iOS의 환경에 맞게 컴파일된다.   눈에 띄는 내용  마진에 들어가는 숫자는 디바이스에 따라 적절한 픽셀로 변환된다. (Android는 dip로 변환) CrossAxisAlignment.start 는 부모의 메인 Axis의 교차 Axis를 기준으로 앞쪽에 위치하도록 하겠다는 뜻이다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-02-14T23:11:44Z">February 14, 2019</time>
+	</div>
+
+</article>
+				</div>
+			
+		</div>
+	</main>
+	
+<div class="pagination block">
+				<a class="pagination__item pagination__item--desktop" href="/tags/flutter/">1</a>
+				<a class="pagination__item pagination__item--desktop" href="/tags/flutter/page/2/">2</a>
+				<span class="pagination__item pagination__item--active" data-total="3">3</span>
+</div>
+
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:bsscco@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/bsscco">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2020 bsscco. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="/js/custom.js"></script>
+</body>
+</html>
