@@ -1,0 +1,15 @@
+baseURL = "/"
+title = "developer bsscco"
+theme = "yinyang"
+
+[author]
+name = "bsscco"
+homepage = "https://github.com/bsscco"
+
+[params]
+headTitle = "developer bsscco"
+mainSections = ["posts"]
+
+[[params.socials]]
+name = "Github"
+link = "https://github.com/bsscco"

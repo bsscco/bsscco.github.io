@@ -1,0 +1,304 @@
+---
+title: Flutter 위젯의 계층구조
+date: 2019-04-16 21:51:41
+tags: [flutter]
+---
+
+참고
+- https://api.flutter.dev/flutter/widgets/Widget-class.html
+
+## Widget
+- **Widget** - immutable한 UI 정보입니다. mutable 상태를 가지게 하려면 StatefulWidget을 사용해야 합니다.   
+    - **PreferredSizeWidget** - unconstrained일 때 미리 설정한 기본크기를 가지게 하는 위젯 
+        - `AppBar` - 머터리얼 디자인 앱바
+        - `CupertinoTabBar` -  iOS 스타일의 bottom 네비게이션 탭바
+        - ObstructingPerferredSizeWidget - 기본크기를 가지고, 뒤에 있는 위젯들을 완전히 막는 위젯
+            - `CupertinoNavigationBar` - iOS 스타일의 네비게이션바
+        - PreferredSize - 자식의 레이아웃에 어떤 영향도 끼치지 않으면서 단지 부모에 의해 사용될 기본크기를 가지는 위젯
+        - `TabBar` - 머터리얼 디자인 탭바. 일반적으로 앱바 아래에 생성하고 TabBarView와 함께 사용합니다.
+        
+    - **ProxyWidget** - 새 위젯을 만들지 않고 자식 위젯을 제공받는 위젯
+        - *IngeritedWidget* - 상태를 후손 위젯들이 read할 수 있게 하는 위젯
+            - ButtonTheme
+            - ChipTheme
+            - CupertinoTheme
+            - DefaultAssetBundle
+            - DefaultTextStyle
+            - Directionality
+            - DropdownButtonHideUnderline
+            - FlexibleSpaceBarSettings
+            - IconTheme
+            - InheritedModel
+            - InheritedNotifier
+            - ListTileTheme
+            - MediaQuery
+            - PrimaryScrollController
+            - ScrollConfiguration
+            - SliderTheme
+            - TickerMode
+        - *ParentDataWidget* - 자식이 부모 위젯의 레이아웃을 설정할 수 있게끔 해주는 위젯
+            - Flexible - Row, Column, Flex의 자식이 어떻게 유연(flexes)해질지 제어하는 위젯
+                - `Expanded` - Row, Column, Flex의 자식을 늘리는(expands) 위젯
+            - KeepAlive - SliverGrid, SliverList 같은 SliverWithKeepAliveWidget들에서 사용합니다. 자식이 lazy list에 있을 때도 살아서 머무르도록 하기 위해 필요함(needing)으로 마크합니다.
+            - LayoutId - CustomMultiChildLayout에서 자식들을 구별시키기 위한 메타데이터
+            - `Positioned` - Stack의 자식의 위치를 제어하는 위젯
+            - `TableCell` - Table의 자식을 어떻게 정렬할지 제어하는 위젯
+            
+    - **RenderObjectWidget** - RenderObjectElement들을 위한 설정을 제공하는 위젯. RenderObjectElement는 실제로 렌더링을 제공하는 RenderObject를 감싼 클래스 
+        - *`LayoutBuilder`* - 부모 위젯의 크기를 알 수 있는 위젯 트리를 빌드하는 위젯
+        - *LeafRenderObjectWidget* - RenderObject의 서브클래스들을 설정할 수 있는, 그리고 자식이 없는 RenderObjectWidget들을 위한 슈퍼클래스 
+            - ErrorWidget - 예외 메시지를 렌더링 하는 위젯
+            - PerformanceOverlay - 성능 통계를 렌더링 하는 위젯
+            - RawImage - dart:ui.Image를 직접 렌더링 하는 위젯
+            - RichText - rich한 텍스트 구문을 렌더링 하는 위젯
+            - Texture - 사각형의 텍스쳐를 렌더링 하는 위젯
+            - WidgetToRenderBoxAdapter - RenderBox를 위젯 트리에 배치하기 위한 어댑터
+        - *ListWheelViewport* - ???? wheel 위에서 자식들의 서브셋을 보여주는 위젯
+        - *MultiChildRenderObjectWidget* - RenderObject 서브클래스들을 설정할 수 있는, 그리고 단일 자식 리스트를 가지는 RenderObjectWidget들을 위한 슈퍼클래스. 이 슈퍼클래스는 오직 자식 리스트만 제공합니다. 갱신 로직은 제공하지 않습니다. 
+            - CustomMultiChildLayout - 자식들의 크기와 위치를 지정하는 delegate를 사용하는 위젯
+            - Flex - 자식들을 한 방향으로 배열하는 위젯
+                - `Column` - 자식들을 수직 방향으로 배열하는 위젯
+                - `Row` - 자식들을 수평 방향으로 배열하는 위젯
+            - Flow - 자식들의 크기와 위치를 FlowDelegate의 로직에 따라 효과적으로 지정하는 위젯 
+            - ListBody - 주어진 방향으로 자식들을 순차적으로 배열하는 위젯. 다른 방향에서는 부모의 dimension으로 자식들을 강제합니다. 이 위젯은 거의 사용되지 않습니다. 대신에 ListView나 Column 사용을 고려하세요.
+            - ShrinkWrappingViewport - 안쪽에서 더 크면 shrink 되는 위젯. 자식들을 mainAxis로 wrap 시킵니다.
+            - `Stack` - 자신의 영역 안에서 자식들의 위치를 상대적으로 지정할 수 있는 위젯 
+                - `IndexedStack` - 하나의 자식만 보여주는 Stack
+            - Viewport - 안쪽에서 더 큰 위젯. 스크롤링을 통해 자식들의 서브셋을 볼 수 있습니다.
+                - NestedScrollViewViewport - NestedScrollView에 의해 사용되는 Viewport
+            - `Wrap` - 주어진 방향으로 자식들이 배열하다가 넘치면 다음 줄에 배열하는 위젯 
+        - *RenderObjectToWidgetAdapter* - RenderObject에서 Element 트리로 가는 브릿지
+        - *SingleChildRenderObjectWidget* - RenderObject 서브클래스들을 설정할 수 있는, 그리고 단일 자식을 가지는 RenderObjectWidget들을 위한 슈퍼클래스. 이 슈퍼클래스는 오직 단일 자식만 제공합니다. 갱신 로직은 제공하지 않습니다.
+            - `AbsorbPointer` - hit testing을 하는 동안 (absorbing=true) 포인터 이벤트를 막습니다.
+            - `Align` - 자신의 영역에서 자식을 정렬하는 위젯 선택적으로 자식의 크기를 기반으로 자신의 크기를 지정할 수 있습니다.  
+                - `Center` - 자신의 영역에서 자식을 중앙정렬 하는 위젯
+            - AnimatedSize - 자식의 크기가 변경될 때마다 주어진 시간 동안 자동으로 transition 되는 animated 위젯
+            - AnnotatedRegion - 레이아웃 트리의 지역을 구분하기 위해 명시하는 용도로 쓰는 위젯
+            - `AspectRatio` - 특정 비율로 자식의 크기를 지정하는 위젯
+            - BackdropFilter - 필터를 적용하는 위젯
+            - `Baseline` - 자식의 베이스라인을 따라서 자식의 위치를 지정하는 위젯
+            - BlockSemantics - ???
+            - `ClipOval` - 원을 사용해서 자식을 clip 하는 위젯
+            - ClipPath - path를 사용해서 자식을 clip 하는 위젯
+            - ClipRect - 사각형을 사용해 자식을 clip 하는 위젯
+            - `ClipRRect` - 둥근 사각형을 사용해서 자식을 clip 하는 위
+            - CompositedTransformFollower - CompositedTransformTarget을 따르는 위젯
+            - CompositedTransformTarget - CompositedTransformFollower에 의해 targeted 될 수 있는 위젯
+            - `ConstrainedBox` - 자식에 constraints를 지정할 수 있는 위젯 
+            - CustomPaint - 캔버스를 제공하는 위젯
+            - CustomSingleChildLayout - delegate로 자식의 레이아웃을 지정하는 위젯
+            - DecoratedBox - 자식이 그려진 전후에 Decoration을 그리는 위젯
+            - ExcludeSemantics - ???
+            - `FadeTransition` - 위젯의 투명도를 애니메이션합니다.
+            - `FittedBox` - fit 속성에 따라서 자식의 비율과 위치를 지정하는 위젯 
+            - `FractionallySizedBox` - 사용 가능한 공간의 fraction으로 자식의 크기를 지정하는 위젯 
+            - `FractionalTransition` - 자식을 그리기 전에 이동 transformation을 적용하는 위젯
+            - `IgnorePointer` - hit testing 하는 동안 (ignoring=true) invisible 됩니다.
+            - IndexedSemantics - ???
+            - `IntrinsicHeight` - intrinsic 높이로 자식의 크기를 지정하는 위젯
+            - `IntrinsicWidth` -  intrinsic 너비로 자식의 크기를 지정하는 위젯
+            - `LimitedBox` - unconstrained 일 때 크기를 제한하는 위젯
+            - Listener - 포인터 이벤트의 응답으로 콜백을 호출하는 위젯
+            - MergeSemantics - ???
+            - MetaData - 렌더 트리에서 불투명한 메타 데이터를 고정하는 위젯
+            - Offstage - 자식을 페인팅 없이, hit testing 없이, 부모 안에서 공간을 차지함 없이 트리에 배치하는 위젯 
+            - `Opacity` - 자식에게 투명도를 만들어주는 위젯 
+            - OverflowBox - ??? 
+            - `Padding`
+            - PhysicalModel
+            - PhysicalShape
+            - RepaintBoundary
+            - `RotatedBox`
+            - Semantics
+            - ShaderMask
+            - SizeChangedLayoutNotifier
+            - `SizedBox`
+            - SizedOverflowBox
+            - SliverFillRemaining
+            - SliverOverlapAbsorber
+            - SliverOverlapInjector
+            - `SliverPadding`
+            - SliverToBoxAdapter
+            - `Transform`
+            - `UnconstrainedBox`
+        - *SliverWithKeepAliveWidget*
+            - SliverMultiBoxAdapterWidget
+        - *`Table`*
+        
+    - **StatefulWidget**
+        - AndroidView 
+        - AnimatedCrossFade
+        - AnimatedList 
+        - AnimatedSwitcher 
+        - AnimatedWidget 
+        - `AppBar` 
+        - AutomaticKeepAlive 
+        - BottomAppBar 
+        - `BottomNavigationBar` 
+        - `BottomSheet` 
+        - `Checkbox` 
+        - CupertinoActivityIndicator 
+        - CupertinoApp 
+        - CupertinoButton 
+        - CupertinoDatePicker 
+        - CupertinoNavigationBar 
+        - CupertinoPicker 
+        - CupertinoScrollbar 
+        - CupertinoSegmentedControl 
+        - CupertinoSlider 
+        - CupertinoSliverNavigationBar 
+        - CupertinoSliverRefreshControl 
+        - CupertinoSwitch 
+        - CupertinoTabScaffold 
+        - CupertinoTabView 
+        - CupertinoTextField 
+        - CupertinoTimerPicker 
+        - DefaultTabController 
+        - `Dismissible` 
+        - `Draggable` 
+        - DragTarget 
+        - DrawerController 
+        - DropdownButton 
+        - EditableText 
+        - ExpandIcon 
+        - ExpansionPanelList 
+        - ExpansionTile 
+        - `FadeInImage` 
+        - FlexibleSpaceBar 
+        - FocusScope 
+        - Form 
+        - FormField 
+        - `FutureBuilder` 
+        - GlowingOverscrollIndicator 
+        - `Hero` 
+        - `Image` 
+        - ImplicitlyAnimatedWidget 
+        - Ink 
+        - InkResponse 
+        - InputDecorator 
+        - LicensePage 
+        - ListWheelScrollView 
+        - Localizations 
+        - Material 
+        - `MaterialApp` 
+        - MergeableMaterial 
+        - `MonthPicker` 
+        - `Navigator` 
+        - `NestedScrollView` 
+        - `Overlay` 
+        - `PageView` 
+        - PaginatedDataTable 
+        - PopupMenuButton 
+        - PopupMenuEntry 
+        - `ProgressIndicator` 
+        - `Radio`
+        - RawChip 
+        - RawGestureDetector 
+        - RawKeyboardListener 
+        - RawMaterialButton 
+        - `RefreshIndicator` 
+        - ReorderableListView 
+        - `Scaffold` 
+        - Scrollable 
+        - Scrollbar 
+        - SemanticsDebugger 
+        - Slider 
+        - `SliverAppBar` 
+        - SnackBarAction 
+        - StatefulBuilder 
+        - StatusTransitionWidget 
+        - Stepper 
+        - StreamBuilderBase 
+        - Switch 
+        - `TabBar`
+        - `TabBarView` 
+        - `TextField` 
+        - TextSelectionGestureDetector 
+        - `Tooltip` 
+        - UiKitView 
+        - UniqueWidget 
+        - UserAccountsDrawerHeader 
+        - ValueListenableBuilder 
+        - WidgetInspector 
+        - WidgetsApp 
+        - WillPopScope 
+        - `YearPicker`
+        
+    - **StatelessWidget**
+        - `AboutDialog` 
+        - AboutListTile 
+        - ActionChip 
+        - `AlertDialog` 
+        - AnimatedIcon 
+        - BackButton 
+        - BackButtonIcon
+        - Banner
+        - Builder
+        - ButtonBar
+        - `Card`
+        - CheckboxListTile
+        - CheckedModeBanner
+        - `Chip`
+        - ChoiceChip
+        - CircleAvatar
+        - CloseButton
+        - `Container`
+        - CupertinoActionSheet
+        - CupertinoActionSheetAction
+        - CupertinoAlertDialog
+        - CupertinoDialog
+        - CupertinoDialogAction
+        - CupertinoFullscreenDialogTransition
+        - CupertinoNavigationBarBackButton
+        - CupertinoPageScaffold
+        - CupertinoPageTransition
+        - CupertinoPopupSurface
+        - CupertinoTabBar
+        - DataTable
+        - `DayPicker`
+        - `Dialog`
+        - `Divider`
+        - `Drawer`
+        - `DrawerHeader`
+        - `DropdownMenuItem`
+        - FilterChip
+        - `FloatingActionButton`
+        - FlutterLogo
+        - `GestureDetector`
+        - `GridPaper`
+        - `GridTile`
+        - `GridTileBar`
+        - `Icon`
+        - `IconButton`
+        - `ImageIcon`
+        - InputChip
+        - KeyedSubtree
+        - `ListTile`
+        - MaterialButton
+        - ModalBarrier
+        - NavigationToolbar
+        - NotificationListener
+        - OrientationBuilder
+        - PageStorage
+        - `Placeholder`
+        - PositionedDirectional
+        - PreferredSize
+        - RadioListTile
+        - `SafeArea`
+        - `ScrollView`
+        - SimpleDialog
+        - SimpleDialogOption
+        - SingleChildScrollView
+        - SliverPersistentHeader
+        - SliverSafeArea
+        - `SnackBar`
+        - `Spacer`
+        - SwitchListTile
+        - `Tab`
+        - TabPageSelector
+        - TabPageSelectorIndicator
+        - `Text`
+        - Theme
+        - Title
+        - `VerticalDivider`
+        - `Visibility`

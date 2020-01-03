@@ -1,0 +1,76 @@
+---
+title: Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약
+date: 2019-05-30 00:00:01
+tags: [android, kotlin]
+---
+
+# Lesson 2: Layouts
+
+- TextView.fontFamily donloadable font
+    - apk에 폰트 사이즈 적재 없이 사용 가능
+    - fonts source가 google fonts로 제한되는 게 단점
+- 데이터 바인딩 라이브러리 사용
+    - app/build.gradle
+        - android {
+            - dataBinding {
+                - enabled = true
+            - }
+        - }
+    - activity_main.xml
+        - <layout> ... </layout>
+    - findViewById 대체
+        - MainActivity.kt
+            - private lateinit var binding: ActivityMainBinding
+            - ...
+            - binding = DataBindingUtils.setContentView(this, R.layout.activity_main)
+            - binding.name.text = "BSSCCO"
+    - 데이터 바인딩
+        - 개념
+            - 데이터와 뷰를 한 번 연결시켜두면 이후엔 데이터만 수정해도 뷰는 알아서 바뀐다.
+            - 데이터가 바뀔 때 뷰의 속성들을 일일히 수정할 필요 없이 레이아웃을 구성하는 단계에서 레이아웃 파일 안에다 데이터값을 명시해두면 된다.
+        - MyName.kt
+            - // val 말고 var로 선언 양방향 데이터 바인딩이 되어야 하기 때문
+            - // @={}는 양방향
+            - // @{}는 read-only
+            - // {} 안에서 잘못된 수식을 쓰면 에러를 안 잡아줘서 고생할 수도 있으니 계산함수를 미리 정의해두고 그걸 호출하자
+            - // 수식 쓸 때 UTF-8 관련 에러도 날 수 있어어 위와 같이 쓰는 게 좋음.
+            - data class MyName(var name: String = "")
+        - activity_main.xml
+            - <layout>
+            - ...
+            - <data>
+                - <variable
+                    - name="myName"
+                    - type="co.bsscco.aboutme.MyName"
+                - />
+            - </data>
+            - ...
+            - <TextView
+                - android:id="@+id/name"
+                - android:text="@={myName.name}
+            - />
+            - </layout>
+        - MainActivity.kt
+            - private val myName: MyName = MyName("BS")
+            - ...
+            - binding.myName = myName
+            - binding.button.setOnClickListener {
+                - myName.name = binding.nameEdit.text.toString()
+                - binding.invalidateAll()
+            - }
+- ConstraintLayout
+    - 이점
+        - UI를 반응형으로 만들 수 있다.
+        - view hierarchy의 깊이를 크게 줄일 수 있다.
+        - constraints를 사용해서 뷰 배치를 자유롭게 할 수있다.
+    - 디자인모드로 레이아웃을 짜고나서 텍스트모드에서 불필요한 속성을 제거하는 작업을 해주어야 XML코드가 깔끔해진다.
+    - 특징
+        - absolute positioning
+        - relative positiㅓoning
+        - 축에서 비율로 위치 지정 bias
+        - 가로세로 비율 ratio
+        - 축에서 체인으로 묶기 chain
+            - spread cahin
+            - spread inside chain
+            - weighted chain(=linear layout의 weight)
+            - packed chain
