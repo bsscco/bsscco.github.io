@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-send-data-to-a-new-screen/" />
+  <link rel="canonical" href="/posts/flutter-send-data-to-a-new-screen/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(06) - 새 화면에 데이터 넘기기",
+      "headline" : "Flutter로 개발하기(06) - 새 화면에 데이터 넘기기",
+      "description" : "Send data to a new screen https:\/\/flutter.dev\/docs\/cookbook\/navigation\/passing-data\n기억하세요. 플러터에서 화면은 단지 위젯일 뿐입니다. 이 예제에서 우리는 Todo 목록을 만들고 Todo를 tap 했을 때 Todo를 보여줄 새 화면(위젯)으로 이동할 겁니다.\n1. Todo 클래스 정의하기 class Todo { final String title; final String description; Todo(this.title, this.description); } 2. Todo 목록 만들기 final todos = List\x26lt;Todo\x26gt;.generate( 20, (i) =\x26gt; Todo( \x26#39;Todo $i\x26#39;, \x26#39;A description of what needs to be done for Todo $i\x26#39;, ), ); ------------------------------------------------------------ ListView.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-16 07:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-16 07:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-send-data-to-a-new-screen\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(06) - 새 화면에 데이터 넘기기 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(06) - 새 화면에 데이터 넘기기 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Send data to a new screen https://flutter.dev/docs/cookbook/navigation/passing-data
+기억하세요. 플러터에서 화면은 단지 위젯일 뿐입니다. 이 예제에서 우리는 Todo 목록을 만들고 Todo를 tap 했을 때 Todo를 보여줄 새 화면(위젯)으로 이동할 겁니다.
+1. Todo 클래스 정의하기 class Todo { final String title; final String description; Todo(this.title, this.description); } 2. Todo 목록 만들기 final todos = List&lt;Todo&gt;.generate( 20, (i) =&gt; Todo( &#39;Todo $i&#39;, &#39;A description of what needs to be done for Todo $i&#39;, ), ); ------------------------------------------------------------ ListView." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(06) - 새 화면에 데이터 넘기기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-16 07:51:41 UTC">
+                16 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="send-data-to-a-new-screen">Send data to a new screen</h1>
+<p><a href="https://flutter.dev/docs/cookbook/navigation/passing-data">https://flutter.dev/docs/cookbook/navigation/passing-data</a></p>
+<p>기억하세요. 플러터에서 화면은 단지 위젯일 뿐입니다. 이 예제에서 우리는 Todo 목록을 만들고 Todo를 tap 했을 때 Todo를 보여줄 새 화면(위젯)으로 이동할 겁니다.</p>
+<h2 id="1-todo--">1. Todo 클래스 정의하기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Todo</span> {
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> title;
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> description;
+
+  Todo(<span style="color:#66d9ef">this</span>.title, <span style="color:#66d9ef">this</span>.description);
+}
+</code></pre></div><h2 id="2-todo--">2. Todo 목록 만들기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">final</span> todos <span style="color:#f92672">=</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span>.generate(
+  <span style="color:#ae81ff">20</span>,
+  (i) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Todo(
+        <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Todo </span><span style="color:#e6db74">$</span>i<span style="color:#e6db74">&#39;</span>,
+        <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">A description of what needs to be done for Todo </span><span style="color:#e6db74">$</span>i<span style="color:#e6db74">&#39;</span>,
+      ),
+);
+
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+
+ListView.builder(
+  itemCount: todos.length,
+  itemBuilder: (context, index) {
+    <span style="color:#66d9ef">return</span> ListTile(
+      title: Text(todos[index].title),
+    );
+  },
+);
+</code></pre></div><h2 id="3-todo---">3. Todo를 보여줄 상세화면 만들기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DetailScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#66d9ef">final</span> Todo todo;
+
+  DetailScreen({Key key, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todo}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(todo.title),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(<span style="color:#ae81ff">16.0</span>),
+        child: Text(todo.description),
+      ),
+    );
+  }
+}
+</code></pre></div><h2 id="4-----">4. 상세화면으로 이동하면서 데이터도 같이 넘기기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">ListView.builder(
+  itemCount: todos.length,
+  itemBuilder: (context, index) {
+    <span style="color:#66d9ef">return</span> ListTile(
+      title: Text(todos[index].title),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> DetailScreen(todo: todos[index]),
+          ),
+        );
+      },
+    );
+  },
+);
+</code></pre></div><h2 id="--">완전한 예제 코드</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/foundation.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/material.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Todo</span> {
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> title;
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> description;
+
+  Todo(<span style="color:#66d9ef">this</span>.title, <span style="color:#66d9ef">this</span>.description);
+}
+
+<span style="color:#66d9ef">void</span> main() {
+  runApp(MaterialApp(
+    title: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Passing Data</span><span style="color:#e6db74">&#39;</span>,
+    home: TodosScreen(
+      todos: List.generate(
+        <span style="color:#ae81ff">20</span>,
+        (i) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Todo(
+              <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Todo </span><span style="color:#e6db74">$</span>i<span style="color:#e6db74">&#39;</span>,
+              <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">A description of what needs to be done for Todo </span><span style="color:#e6db74">$</span>i<span style="color:#e6db74">&#39;</span>,
+            ),
+      ),
+    ),
+  ));
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos;
+
+  TodosScreen({Key key, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todos}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Todos</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      body: ListView.builder(
+        itemCount: todos.length,
+        itemBuilder: (context, index) {
+          <span style="color:#66d9ef">return</span> ListTile(
+            title: Text(todos[index].title),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> DetailScreen(todo: todos[index]),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DetailScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#66d9ef">final</span> Todo todo;
+
+  DetailScreen({Key key, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todo}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(todo.title),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(<span style="color:#ae81ff">16.0</span>),
+        child: Text(todo.description),
+      ),
+    );
+  }
+}
+</code></pre></div><p><img src="https://flutter.dev/images/cookbook/passing-data.gif" alt="passing-data.gif"></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-navigate-to-a-new-screen-and-back/">Flutter로 개발하기(05) - 새로운 화면 열기</a></li>
+    
+    <li><a href="/posts/flutter-dealing-with-box-constraints/">Flutter로 개발하기(04) - 위젯의 크기 제약조건</a></li>
+    
+    <li><a href="/posts/flutter-layout-tutorial/">Flutter로 개발하기(03) - 레이아웃 튜토리얼</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

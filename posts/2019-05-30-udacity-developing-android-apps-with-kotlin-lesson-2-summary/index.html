@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/" />
+  <link rel="canonical" href="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약",
+      "headline" : "Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약",
+      "description" : "Lesson 2: Layouts  TextView.fontFamily donloadable font  apk에 폰트 사이즈 적재 없이 사용 가능 fonts source가 google fonts로 제한되는 게 단점   데이터 바인딩 라이브러리 사용  app\/build.gradle  android {  dataBinding {  enabled = true   }   }   activity_main.xml  \x26hellip;    findViewById 대체  MainActivity.kt  private lateinit var binding: ActivityMainBinding \x26hellip; binding = DataBindingUtils.setContentView(this, R.layout.activity_main) binding.name.text = \x26ldquo;BSSCCO\x26rdquo;     데이터 바인딩  개념  데이터와 뷰를 한 번 연결시켜두면 이후엔 데이터만 수정해도 뷰는 알아서 바뀐다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-05-30 00:00:01 \x2b0000 UTC",
+      "dateModified" : "2019-05-30 00:00:01 \x2b0000 UTC",
+      "url" : "\/posts\/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary\/",
+      "keywords" : [ "android","kotlin", ]
+  }
+</script>
+<title>Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약 - developer bsscco</title>
+  <meta property="og:title" content="Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Lesson 2: Layouts  TextView.fontFamily donloadable font  apk에 폰트 사이즈 적재 없이 사용 가능 fonts source가 google fonts로 제한되는 게 단점   데이터 바인딩 라이브러리 사용  app/build.gradle  android {  dataBinding {  enabled = true   }   }   activity_main.xml  &hellip;    findViewById 대체  MainActivity.kt  private lateinit var binding: ActivityMainBinding &hellip; binding = DataBindingUtils.setContentView(this, R.layout.activity_main) binding.name.text = &ldquo;BSSCCO&rdquo;     데이터 바인딩  개념  데이터와 뷰를 한 번 연결시켜두면 이후엔 데이터만 수정해도 뷰는 알아서 바뀐다." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-05-30 00:00:01 UTC">
+                30 May 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="lesson-2-layouts">Lesson 2: Layouts</h1>
+<ul>
+<li>TextView.fontFamily donloadable font
+<ul>
+<li>apk에 폰트 사이즈 적재 없이 사용 가능</li>
+<li>fonts source가 google fonts로 제한되는 게 단점</li>
+</ul>
+</li>
+<li>데이터 바인딩 라이브러리 사용
+<ul>
+<li>app/build.gradle
+<ul>
+<li>android {
+<ul>
+<li>dataBinding {
+<ul>
+<li>enabled = true</li>
+</ul>
+</li>
+<li>}</li>
+</ul>
+</li>
+<li>}</li>
+</ul>
+</li>
+<li>activity_main.xml
+<ul>
+<li><!-- raw HTML omitted --> &hellip; <!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li>findViewById 대체
+<ul>
+<li>MainActivity.kt
+<ul>
+<li>private lateinit var binding: ActivityMainBinding</li>
+<li>&hellip;</li>
+<li>binding = DataBindingUtils.setContentView(this, R.layout.activity_main)</li>
+<li>binding.name.text = &ldquo;BSSCCO&rdquo;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>데이터 바인딩
+<ul>
+<li>개념
+<ul>
+<li>데이터와 뷰를 한 번 연결시켜두면 이후엔 데이터만 수정해도 뷰는 알아서 바뀐다.</li>
+<li>데이터가 바뀔 때 뷰의 속성들을 일일히 수정할 필요 없이 레이아웃을 구성하는 단계에서 레이아웃 파일 안에다 데이터값을 명시해두면 된다.</li>
+</ul>
+</li>
+<li>MyName.kt
+<ul>
+<li>// val 말고 var로 선언 양방향 데이터 바인딩이 되어야 하기 때문</li>
+<li>// @={}는 양방향</li>
+<li>// @{}는 read-only</li>
+<li>// {} 안에서 잘못된 수식을 쓰면 에러를 안 잡아줘서 고생할 수도 있으니 계산함수를 미리 정의해두고 그걸 호출하자</li>
+<li>// 수식 쓸 때 UTF-8 관련 에러도 날 수 있어어 위와 같이 쓰는 게 좋음.</li>
+<li>data class MyName(var name: String = &ldquo;&quot;)</li>
+</ul>
+</li>
+<li>activity_main.xml
+<ul>
+<li>
+<!-- raw HTML omitted -->
+</li>
+<li>&hellip;</li>
+<li>
+<!-- raw HTML omitted -->
+</li>
+<li>
+<!-- raw HTML omitted -->
+</li>
+<li>&hellip;</li>
+<li>&lt;TextView
+<ul>
+<li>android:id=&rdquo;@+id/name&rdquo;</li>
+<li>android:text=&rdquo;@={myName.name}</li>
+</ul>
+</li>
+<li>/&gt;</li>
+<li>
+<!-- raw HTML omitted -->
+</li>
+</ul>
+</li>
+<li>MainActivity.kt
+<ul>
+<li>private val myName: MyName = MyName(&ldquo;BS&rdquo;)</li>
+<li>&hellip;</li>
+<li>binding.myName = myName</li>
+<li>binding.button.setOnClickListener {
+<ul>
+<li>myName.name = binding.nameEdit.text.toString()</li>
+<li>binding.invalidateAll()</li>
+</ul>
+</li>
+<li>}</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ConstraintLayout
+<ul>
+<li>이점
+<ul>
+<li>UI를 반응형으로 만들 수 있다.</li>
+<li>view hierarchy의 깊이를 크게 줄일 수 있다.</li>
+<li>constraints를 사용해서 뷰 배치를 자유롭게 할 수있다.</li>
+</ul>
+</li>
+<li>디자인모드로 레이아웃을 짜고나서 텍스트모드에서 불필요한 속성을 제거하는 작업을 해주어야 XML코드가 깔끔해진다.</li>
+<li>특징
+<ul>
+<li>absolute positioning</li>
+<li>relative positiㅓoning</li>
+<li>축에서 비율로 위치 지정 bias</li>
+<li>가로세로 비율 ratio</li>
+<li>축에서 체인으로 묶기 chain
+<ul>
+<li>spread cahin</li>
+<li>spread inside chain</li>
+<li>weighted chain(=linear layout의 weight)</li>
+<li>packed chain</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/">Udacity Developing Android Apps with Kotlin 레슨1 Build your First App 요약</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

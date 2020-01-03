@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-navigate-to-a-new-screen-and-back/" />
+  <link rel="canonical" href="/posts/flutter-navigate-to-a-new-screen-and-back/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(05) - 새로운 화면 열기",
+      "headline" : "Flutter로 개발하기(05) - 새로운 화면 열기",
+      "description" : "Navigate to a new screen and back https:\/\/flutter.dev\/docs\/cookbook\/navigation\/navigation-basics\n플러터에서는 화면이나 페이지를 Route라고 부릅니다. 안드로이드에서는 액티비티와 대응되고, iOS에서는 뷰컨트롤러와 대응됩니다. Route 또한 위젯입니다.\n1. 두 Route 만들기 class FirstRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(\x26#39;First Route\x26#39;), ), body: Center( child: RaisedButton( child: Text(\x26#39;Open route\x26#39;), onPressed: () { \/\/ Navigate to second route when tapped.  }, ), ), ); } } class SecondRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(\x26#34;Second Route\x26#34;), ), body: Center( child: RaisedButton( onPressed: () { \/\/ Navigate back to first route when tapped.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-14 07:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-14 07:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-navigate-to-a-new-screen-and-back\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(05) - 새로운 화면 열기 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(05) - 새로운 화면 열기 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Navigate to a new screen and back https://flutter.dev/docs/cookbook/navigation/navigation-basics
+플러터에서는 화면이나 페이지를 Route라고 부릅니다. 안드로이드에서는 액티비티와 대응되고, iOS에서는 뷰컨트롤러와 대응됩니다. Route 또한 위젯입니다.
+1. 두 Route 만들기 class FirstRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;First Route&#39;), ), body: Center( child: RaisedButton( child: Text(&#39;Open route&#39;), onPressed: () { // Navigate to second route when tapped.  }, ), ), ); } } class SecondRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#34;Second Route&#34;), ), body: Center( child: RaisedButton( onPressed: () { // Navigate back to first route when tapped." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(05) - 새로운 화면 열기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-14 07:51:41 UTC">
+                14 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="navigate-to-a-new-screen-and-back">Navigate to a new screen and back</h1>
+<p><a href="https://flutter.dev/docs/cookbook/navigation/navigation-basics">https://flutter.dev/docs/cookbook/navigation/navigation-basics</a></p>
+<p>플러터에서는 화면이나 페이지를 Route라고 부릅니다. 안드로이드에서는 액티비티와 대응되고, iOS에서는 뷰컨트롤러와 대응됩니다. Route 또한 위젯입니다.</p>
+<h2 id="1--route-">1. 두 Route 만들기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FirstRoute</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">First Route</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Open route</span><span style="color:#e6db74">&#39;</span>),
+          onPressed: () {
+            <span style="color:#75715e">// Navigate to second route when tapped.
+</span><span style="color:#75715e"></span>          },
+        ),
+      ),
+    );
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SecondRoute</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Second Route</span><span style="color:#e6db74">&#34;</span>),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            <span style="color:#75715e">// Navigate back to first route when tapped.
+</span><span style="color:#75715e"></span>          },
+          child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Go back!</span><span style="color:#e6db74">&#39;</span>),
+        ),
+      ),
+    );
+  }
+}
+</code></pre></div><h2 id="2---route-">2. 두 번째 Route로 이동하기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">onPressed: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> SecondRoute()),
+  );
+},
+</code></pre></div><p>push() 메소드는 Route를 Route 스택에 추가합니다. Route는 직접 만들 수도 있고, MaterialPageRoute를 사용해서 만들 쑤도 있습니다. MaterialPageRoute는 화면전환이 일어날 때 각 플랫폼에 적절한 애니메이션을 적용해줍니다.</p>
+<h2 id="3---route-">3. 첫 번째 Route로 돌아오기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">onPressed: () {
+  Navigator.pop(context);
+}
+</code></pre></div><p>pop() 메소드는 Route를 Route 스택에서 제거합니다.</p>
+<p><img src="https://flutter.dev/images/cookbook/navigation-basics.gif" alt="routtes.gif"></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-dealing-with-box-constraints/">Flutter로 개발하기(04) - 위젯의 크기 제약조건</a></li>
+    
+    <li><a href="/posts/flutter-layout-tutorial/">Flutter로 개발하기(03) - 레이아웃 튜토리얼</a></li>
+    
+    <li><a href="/posts/flutter-layouts-in-flutter/">Flutter로 개발하기(02) - 레이아웃 위젯 소개</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/dart-asynchronous-programming-streams/" />
+  <link rel="canonical" href="/posts/dart-asynchronous-programming-streams/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Dart 비동기 프로그래밍 Streams 요약",
+      "headline" : "Dart 비동기 프로그래밍 Streams 요약",
+      "description" : "https:\/\/www.dartlang.org\/tutorials\/language\/streams\nFuture는 결과가 준비됐을 때 우리에게 알려준다. Stream은 이벤트가 발생할 때마다 우리에게 알려준다.\nimport \x26#39;dart:async\x26#39;; Stream\x26lt;Future\x26lt;int\x26gt;\x26gt; countStream(int to) async* { for (int i = 1; i \x26lt;= to; i\x2b\x2b) { yield Future.delayed(Duration(seconds: 1), () =\x26gt; i); \/\/ 1초 후에 i를 반환하는 Future를 발생시킨다.  } } Future\x26lt;void\x26gt; printSumStream(Stream\x26lt;Future\x26lt;int\x26gt;\x26gt; stream) async { var sum = \x26#39;\x26#39;; await for (var value in stream) { \/\/ 스트림의 이벤트 발생이 끝날 때가지 기다린다.  sum \x2b= (await value).",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-02-21 00:19:30 \x2b0000 UTC",
+      "dateModified" : "2019-02-21 00:19:30 \x2b0000 UTC",
+      "url" : "\/posts\/dart-asynchronous-programming-streams\/",
+      "keywords" : [ "dart", ]
+  }
+</script>
+<title>Dart 비동기 프로그래밍 Streams 요약 - developer bsscco</title>
+  <meta property="og:title" content="Dart 비동기 프로그래밍 Streams 요약 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="https://www.dartlang.org/tutorials/language/streams
+Future는 결과가 준비됐을 때 우리에게 알려준다. Stream은 이벤트가 발생할 때마다 우리에게 알려준다.
+import &#39;dart:async&#39;; Stream&lt;Future&lt;int&gt;&gt; countStream(int to) async* { for (int i = 1; i &lt;= to; i&#43;&#43;) { yield Future.delayed(Duration(seconds: 1), () =&gt; i); // 1초 후에 i를 반환하는 Future를 발생시킨다.  } } Future&lt;void&gt; printSumStream(Stream&lt;Future&lt;int&gt;&gt; stream) async { var sum = &#39;&#39;; await for (var value in stream) { // 스트림의 이벤트 발생이 끝날 때가지 기다린다.  sum &#43;= (await value)." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Dart 비동기 프로그래밍 Streams 요약</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-02-21 00:19:30 UTC">
+                21 Feb 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <p><a href="https://www.dartlang.org/tutorials/language/streams">https://www.dartlang.org/tutorials/language/streams</a></p>
+<p>Future는 결과가 준비됐을 때 우리에게 알려준다.
+Stream은 이벤트가 발생할 때마다 우리에게 알려준다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">dart:async</span><span style="color:#e6db74">&#39;</span>;
+
+Stream<span style="color:#f92672">&lt;</span>Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> countStream(<span style="color:#66d9ef">int</span> to) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> to; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
+    <span style="color:#66d9ef">yield</span> Future.delayed(Duration(seconds: <span style="color:#ae81ff">1</span>), () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> i); <span style="color:#75715e">// 1초 후에 i를 반환하는 Future를 발생시킨다.
+</span><span style="color:#75715e"></span>  }
+}
+
+Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> printSumStream(Stream<span style="color:#f92672">&lt;</span>Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> stream) <span style="color:#66d9ef">async</span> {
+  <span style="color:#66d9ef">var</span> sum <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#39;</span>;
+  <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> value <span style="color:#66d9ef">in</span> stream) {
+    <span style="color:#75715e">// 스트림의 이벤트 발생이 끝날 때가지 기다린다.
+</span><span style="color:#75715e"></span>    sum <span style="color:#f92672">+</span><span style="color:#f92672">=</span> (<span style="color:#66d9ef">await</span> value).toString(); <span style="color:#75715e">// 이벤트도 Future라서 Future의 작업이 끝날 때까지 기다린다.
+</span><span style="color:#75715e"></span>    print(sum); <span style="color:#75715e">// sum에 Future가 반환한 값을 더해서 출력한다.
+</span><span style="color:#75715e"></span>  }
+}
+
+printSyncMsg() {
+  print(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">This is sync msg.</span><span style="color:#e6db74">&#39;</span>);
+}
+
+main() <span style="color:#66d9ef">async</span> {
+  <span style="color:#66d9ef">var</span> stream <span style="color:#f92672">=</span> countStream(<span style="color:#ae81ff">3</span>);
+  printSumStream(stream);
+  printSyncMsg();
+}
+</code></pre></div>
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/dart-asynchronous-programming-futures/">Dart 비동기 프로그래밍 Futures 요약</a></li>
+    
+    <li><a href="/posts/dart-from-java-to-dart/">Flutter 코드랩 리뷰 - 자바에서 다트로 넘어가기</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

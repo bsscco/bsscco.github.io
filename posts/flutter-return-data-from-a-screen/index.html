@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-return-data-from-a-screen/" />
+  <link rel="canonical" href="/posts/flutter-return-data-from-a-screen/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기",
+      "headline" : "Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기",
+      "description" : "Return data from a screen https:\/\/flutter.dev\/docs\/cookbook\/navigation\/returning-data\n1. 홈 화면 정의하기 class HomeScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(\x26#39;Returning Data Demo\x26#39;), ), \/\/ 다음 단계에서 SelectionButton 위젯을 만들 겁니다.  body: Center(child: SelectionButton()), ); } } 2. 선택 화면을 실행하는 버튼 추가하기 class SelectionButton extends StatelessWidget { @override Widget build(BuildContext context) { return RaisedButton( onPressed: () { _navigateAndDisplaySelection(context); }, child: Text(\x26#39;옵션을 선택하세요!\x26#39;), ); } _navigateAndDisplaySelection(BuildContext context) async { \/\/ Navigator.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-16 17:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-16 17:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-return-data-from-a-screen\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Return data from a screen https://flutter.dev/docs/cookbook/navigation/returning-data
+1. 홈 화면 정의하기 class HomeScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;Returning Data Demo&#39;), ), // 다음 단계에서 SelectionButton 위젯을 만들 겁니다.  body: Center(child: SelectionButton()), ); } } 2. 선택 화면을 실행하는 버튼 추가하기 class SelectionButton extends StatelessWidget { @override Widget build(BuildContext context) { return RaisedButton( onPressed: () { _navigateAndDisplaySelection(context); }, child: Text(&#39;옵션을 선택하세요!&#39;), ); } _navigateAndDisplaySelection(BuildContext context) async { // Navigator." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-16 17:51:41 UTC">
+                16 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="return-data-from-a-screen">Return data from a screen</h1>
+<p><a href="https://flutter.dev/docs/cookbook/navigation/returning-data">https://flutter.dev/docs/cookbook/navigation/returning-data</a></p>
+<h2 id="1---">1. 홈 화면 정의하기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HomeScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Returning Data Demo</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      <span style="color:#75715e">// 다음 단계에서 SelectionButton 위젯을 만들 겁니다.
+</span><span style="color:#75715e"></span>      body: Center(child: SelectionButton()),
+    );
+  }
+}
+</code></pre></div><h2 id="2-----">2. 선택 화면을 실행하는 버튼 추가하기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SelectionButton</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> RaisedButton(
+      onPressed: () {
+        _navigateAndDisplaySelection(context);
+      },
+      child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">옵션을 선택하세요!</span><span style="color:#e6db74">&#39;</span>),
+    );
+  }
+
+  _navigateAndDisplaySelection(BuildContext context) <span style="color:#66d9ef">async</span> {
+    <span style="color:#75715e">// Navigator.push() 는 Future를 반환합니다. 선택 화면이 pop 되면, Future에 완전한 값이 담길 겁니다.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Navigator.push(
+      context,
+      <span style="color:#75715e">// 다음 단계에서 SelectionScreen 위젯을 만들 겁니다.
+</span><span style="color:#75715e"></span>      MaterialPageRoute(builder: (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> SelectionScreen()),
+    );
+  }
+}
+</code></pre></div><h2 id="3-2-----">3. 2개의 버튼을 가지는 선택 화면 띄우기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SelectionScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">옵션을 선택하세요.</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+            Padding(
+              padding: <span style="color:#66d9ef">const</span> EdgeInsets.all(<span style="color:#ae81ff">8.0</span>),
+              child: RaisedButton(
+                onPressed: () {},
+                child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Yep!</span><span style="color:#e6db74">&#39;</span>),
+              ),
+            ),
+            Padding(
+              padding: <span style="color:#66d9ef">const</span> EdgeInsets.all(<span style="color:#ae81ff">8.0</span>),
+              child: RaisedButton(
+                onPressed: () {},
+                child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Nope.</span><span style="color:#e6db74">&#39;</span>),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+</code></pre></div><h2 id="4--tap-----">4. 버튼을 tap 했을 때 선택 화면 닫기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">child: RaisedButton(
+  onPressed: () {
+    Navigator.pop(context, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Yep!</span><span style="color:#e6db74">&#39;</span>);
+  },
+  child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Yep!</span><span style="color:#e6db74">&#39;</span>),
+),
+
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+
+child: RaisedButton(
+  onPressed: () {
+    Navigator.pop(context, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Nope.</span><span style="color:#e6db74">&#39;</span>);
+  },
+  child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Nope.</span><span style="color:#e6db74">&#39;</span>),
+),
+              
+              
+</code></pre></div><h2 id="5-----snackbar-">5. 홈 화면으로 돌아왔을 때 SnackBar 보여주기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">_navigateAndDisplaySelection(BuildContext context) <span style="color:#66d9ef">async</span> {
+    <span style="color:#66d9ef">final</span> result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> SelectionScreen()),
+    );
+
+    <span style="color:#75715e">// 선택 화면의 값이 반환된 후에 이전 스낵바를 숨기고 새로운 값을 보여줍니다.
+</span><span style="color:#75715e"></span>    Scaffold.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$</span>result<span style="color:#e6db74">&#34;</span>)));
+  }
+</code></pre></div><h2 id="--">완전한 예제 코드</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/material.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">void</span> main() {
+  runApp(MaterialApp(
+    title: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Returning Data</span><span style="color:#e6db74">&#39;</span>,
+    home: HomeScreen(),
+  ));
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HomeScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Returning Data Demo</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      body: Center(child: SelectionButton()),
+    );
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SelectionButton</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> RaisedButton(
+      onPressed: () {
+        _navigateAndDisplaySelection(context);
+      },
+      child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Pick an option, any option!</span><span style="color:#e6db74">&#39;</span>),
+    );
+  }
+
+  _navigateAndDisplaySelection(BuildContext context) <span style="color:#66d9ef">async</span> {
+    <span style="color:#66d9ef">final</span> result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> SelectionScreen()),
+    );
+
+    Scaffold.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$</span>result<span style="color:#e6db74">&#34;</span>)));
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SelectionScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Pick an option</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+            Padding(
+              padding: <span style="color:#66d9ef">const</span> EdgeInsets.all(<span style="color:#ae81ff">8.0</span>),
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.pop(context, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Yep!</span><span style="color:#e6db74">&#39;</span>);
+                },
+                child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Yep!</span><span style="color:#e6db74">&#39;</span>),
+              ),
+            ),
+            Padding(
+              padding: <span style="color:#66d9ef">const</span> EdgeInsets.all(<span style="color:#ae81ff">8.0</span>),
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.pop(context, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Nope.</span><span style="color:#e6db74">&#39;</span>);
+                },
+                child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Nope.</span><span style="color:#e6db74">&#39;</span>),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+
+</code></pre></div><p><img src="https://flutter.dev/images/cookbook/returning-data.gif" alt="returning-data.gif"></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-send-data-to-a-new-screen/">Flutter로 개발하기(06) - 새 화면에 데이터 넘기기</a></li>
+    
+    <li><a href="/posts/flutter-navigate-to-a-new-screen-and-back/">Flutter로 개발하기(05) - 새로운 화면 열기</a></li>
+    
+    <li><a href="/posts/flutter-dealing-with-box-constraints/">Flutter로 개발하기(04) - 위젯의 크기 제약조건</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

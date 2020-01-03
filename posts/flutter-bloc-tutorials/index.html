@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-bloc-tutorials/" />
+  <link rel="canonical" href="/posts/flutter-bloc-tutorials/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(23) - Bloc 튜토리얼",
+      "headline" : "Flutter로 개발하기(23) - Bloc 튜토리얼",
+      "description" : "Bloc document - 튜토리얼 원문: https:\/\/felangel.github.io\/bloc\n플러터 Counter Setup 터미널에서\nflutter create flutter_counter pubspec.yaml에서\nname: flutter_counter description: A new Flutter project. version: 1.0.0\x2b1 environment: sdk: \x26#34;\x26gt;=2.0.0-dev.68.0 \x26lt;3.0.0\x26#34; dependencies: flutter: sdk: flutter bloc: ^0.10.0 flutter_bloc: ^0.8.0 meta: ^1.1.6 dev_dependencies: flutter_test: sdk: flutter flutter: uses-material-design: true 다시 터미널에서\nflutter packages get Counter Events enum CounterEvent { increment, decrement } Counter Bloc(Counter States 포함) class CounterBloc extends Bloc\x26lt;CounterEvent, int\x26gt; { @override int get initialState =\x26gt; 0; \/\/ 초기 상태 생성  @override Stream\x26lt;int\x26gt; mapEventToState(int currentState, CounterEvent event) async* { \/\/ 이벤트 처리  switch (event) { case CounterEvent.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-25 09:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-25 09:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-bloc-tutorials\/",
+      "keywords" : [ "flutter","bloc pattern", ]
+  }
+</script>
+<title>Flutter로 개발하기(23) - Bloc 튜토리얼 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(23) - Bloc 튜토리얼 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Bloc document - 튜토리얼 원문: https://felangel.github.io/bloc
+플러터 Counter Setup 터미널에서
+flutter create flutter_counter pubspec.yaml에서
+name: flutter_counter description: A new Flutter project. version: 1.0.0&#43;1 environment: sdk: &#34;&gt;=2.0.0-dev.68.0 &lt;3.0.0&#34; dependencies: flutter: sdk: flutter bloc: ^0.10.0 flutter_bloc: ^0.8.0 meta: ^1.1.6 dev_dependencies: flutter_test: sdk: flutter flutter: uses-material-design: true 다시 터미널에서
+flutter packages get Counter Events enum CounterEvent { increment, decrement } Counter Bloc(Counter States 포함) class CounterBloc extends Bloc&lt;CounterEvent, int&gt; { @override int get initialState =&gt; 0; // 초기 상태 생성  @override Stream&lt;int&gt; mapEventToState(int currentState, CounterEvent event) async* { // 이벤트 처리  switch (event) { case CounterEvent." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(23) - Bloc 튜토리얼</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-25 09:51:41 UTC">
+                25 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="bloc-document---">Bloc document - 튜토리얼</h1>
+<p>원문: <a href="https://felangel.github.io/bloc">https://felangel.github.io/bloc</a></p>
+<h2 id="heading">플러터</h2>
+<h3 id="counter">Counter</h3>
+<p><img src="https://felangel.github.io/bloc/gifs/flutter_counter.gif" alt="flutter_counter.gif"></p>
+<h4 id="setup">Setup</h4>
+<p>터미널에서</p>
+<pre><code>flutter create flutter_counter
+</code></pre><p>pubspec.yaml에서</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name: flutter_counter
+description: A new Flutter project.
+version: <span style="color:#ae81ff">1.0</span><span style="color:#ae81ff">.0</span><span style="color:#ae81ff">+1</span>
+
+environment:
+  sdk: <span style="color:#e6db74">&#34;&gt;=2.0.0-dev.68.0 &lt;3.0.0&#34;</span>
+
+dependencies:
+  flutter:
+    sdk: flutter
+  bloc: ^<span style="color:#ae81ff">0.10</span><span style="color:#ae81ff">.0</span>
+  flutter_bloc: ^<span style="color:#ae81ff">0.8</span><span style="color:#ae81ff">.0</span>
+  meta: ^<span style="color:#ae81ff">1.1</span><span style="color:#ae81ff">.6</span>
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: <span style="color:#66d9ef">true</span>
+</code></pre></div><p>다시 터미널에서</p>
+<pre><code>flutter packages get
+</code></pre><h4 id="counter-events">Counter Events</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">enum CounterEvent { increment, decrement }
+</code></pre></div><h4 id="counter-bloccounter-states-">Counter Bloc(Counter States 포함)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CounterBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>CounterEvent, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// 초기 상태 생성
+</span><span style="color:#75715e"></span>
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Stream<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> mapEventToState(<span style="color:#66d9ef">int</span> currentState, CounterEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+    <span style="color:#75715e">// 이벤트 처리
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">switch</span> (event) {
+      <span style="color:#66d9ef">case</span> CounterEvent.decrement:
+        <span style="color:#66d9ef">yield</span> currentState <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">break</span>;
+      <span style="color:#66d9ef">case</span> CounterEvent.increment:
+        <span style="color:#66d9ef">yield</span> currentState <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">break</span>;
+    }
+  }
+}
+</code></pre></div><h4 id="counter-app">Counter App</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">void</span> main() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> runApp(MyApp());
+
+<span style="color:#75715e">// CounterBloc을 생성하고 dispose할 수 있도록 StatefulWidget으로 선언합니다.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  State<span style="color:#f92672">&lt;</span>StatefulWidget<span style="color:#f92672">&gt;</span> createState() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> MyAppState();
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAppState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>MyApp<span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">final</span> CounterBloc _counterBloc <span style="color:#f92672">=</span> CounterBloc();
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> MaterialApp(
+      title: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Flutter Demo</span><span style="color:#e6db74">&#39;</span>,
+      <span style="color:#75715e">// CounterPage의 위젯트리에서 CounterBloc 인스턴스를 사용할 수 있도록 CounterPage를 BlocProvider로 감쌉니다.
+</span><span style="color:#75715e"></span>      home: BlocProvider<span style="color:#f92672">&lt;</span>CounterBloc<span style="color:#f92672">&gt;</span>(
+        bloc: _counterBloc,
+        child: CounterPage(),
+      ),
+    );
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">void</span> dispose() {
+    _counterBloc.dispose();
+    <span style="color:#66d9ef">super</span>.dispose();
+  }
+}
+</code></pre></div><h4 id="counter-page">Counter Page</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CounterPage</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#75715e">// BlocProvider.of&lt;CounterBloc&gt;(context)를 사용해서 CounterBloc 인스턴스 접근합니다.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> CounterBloc _counterBloc <span style="color:#f92672">=</span> BlocProvider.of<span style="color:#f92672">&lt;</span>CounterBloc<span style="color:#f92672">&gt;</span>(context);
+
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Counter</span><span style="color:#e6db74">&#39;</span>)),
+      <span style="color:#75715e">// 바뀐 상태를 기반으로 리빌드 하기 위해서 BlocBuilder로 감쌉니다.
+</span><span style="color:#75715e"></span>      body: BlocBuilder<span style="color:#f92672">&lt;</span>CounterEvent, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(
+        bloc: _counterBloc,
+        builder: (BuildContext context, <span style="color:#66d9ef">int</span> count) {
+          <span style="color:#66d9ef">return</span> Center(
+            child: Text(
+              <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">$</span>count<span style="color:#e6db74">&#39;</span>,
+              style: TextStyle(fontSize: <span style="color:#ae81ff">24.0</span>),
+            ),
+          );
+        },
+      ),
+      floatingActionButton: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: <span style="color:#ae81ff">5.0</span>),
+            child: FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                _counterBloc.dispatch(CounterEvent.increment);
+              },
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: <span style="color:#ae81ff">5.0</span>),
+            child: FloatingActionButton(
+              child: Icon(Icons.remove),
+              onPressed: () {
+                _counterBloc.dispatch(CounterEvent.decrement);
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+</code></pre></div><h3 id="infinite-list">Infinite List</h3>
+<p><img src="https://felangel.github.io/bloc/gifs/flutter_infinite_list.gif" alt="flutter_infinite_list.gif"></p>
+<p>원문: <a href="https://felangel.github.io/bloc/#/flutterinfinitelisttutorial?id=flutter-infinite-list-tutorial">https://felangel.github.io/bloc/#/flutterinfinitelisttutorial?id=flutter-infinite-list-tutorial</a></p>
+<h3 id="login">Login</h3>
+<p><img src="https://felangel.github.io/bloc/gifs/flutter_login.gif" alt="flutter_login.gif"></p>
+<p>원문: <a href="https://felangel.github.io/bloc/#/flutterlogintutorial?id=flutter-login-tutorial">https://felangel.github.io/bloc/#/flutterlogintutorial?id=flutter-login-tutorial</a></p>
+<h3 id="weather">Weather</h3>
+<p><img src="https://felangel.github.io/bloc/gifs/flutter_weather.gif" alt="flutter_weather.gif"></p>
+<p>원문: <a href="https://felangel.github.io/bloc/#/flutterweathertutorial?id=flutter-weather-tutorial">https://felangel.github.io/bloc/#/flutterweathertutorial?id=flutter-weather-tutorial</a></p>
+<h3 id="todos">Todos</h3>
+<p><img src="https://felangel.github.io/bloc/gifs/flutter_todos.gif" alt="flutter_todos.gif"></p>
+<p>원문: <a href="https://felangel.github.io/bloc/#/fluttertodostutorial?id=flutter-todos-tutorial">https://felangel.github.io/bloc/#/fluttertodostutorial?id=flutter-todos-tutorial</a></p>
+<h2 id="angular-dart">Angular Dart</h2>
+<p>생략</p>
+<h2 id="flutter--angular-dart">Flutter + Angular Dart</h2>
+<p>생략</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-bloc-introduction/">Flutter로 개발하기(22) - Bloc 소개</a></li>
+    
+    <li><a href="/posts/flutter-bloc-library-sample/">Flutter로 개발하기(21) - Bloc패턴 샘플</a></li>
+    
+    <li><a href="/posts/flutter-list-of-state-management-approaches/">Flutter로 개발하기(18) - 상태관리 접근법들</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

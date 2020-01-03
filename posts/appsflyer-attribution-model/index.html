@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/appsflyer-attribution-model/" />
+  <link rel="canonical" href="/posts/appsflyer-attribution-model/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Appsflyer 어트리뷰션 모델에서 헷갈리는 것들 정리",
+      "headline" : "Appsflyer 어트리뷰션 모델에서 헷갈리는 것들 정리",
+      "description" : "참고 : https:\/\/support.appsflyer.com\/hc\/en-us\/articles\/207447053-What-is-AppsFlyer-s-Attribution-Model-\nNew-Attribution 구분  이미 특정 media_source로 New-attribution된 사용자는 다른 어떤 media_source에도 New-attribution으로 인식되지 않습니다.  Attribution Lookback window View-through lookback window(1-7days)  사용자가 앱스플라이어를 통한 광고를 보고, 정해진 View-through lookback window 이내에 클릭 없이 앱을 설치한 경우 New-attribution으로 인정합니다. window 기본값은 1day onelink에서 설정할 수 있는 값은 아니고, 외부 partners setting에서 파트너마다 설정할 수 있습니다.  Click-through lookback window(1-30days)  사용자가 앱스플라이어 링크 또는 광고를 클릭하고, 정해진 Click-through lookback window 이내에 앱을 설치한 경우 New-attribution으로 인정합니다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2018",
+      "datePublished": "2018-11-21 00:00:00 \x2b0000 UTC",
+      "dateModified" : "2018-11-21 00:00:00 \x2b0000 UTC",
+      "url" : "\/posts\/appsflyer-attribution-model\/",
+      "keywords" : [ "appsflyer", ]
+  }
+</script>
+<title>Appsflyer 어트리뷰션 모델에서 헷갈리는 것들 정리 - developer bsscco</title>
+  <meta property="og:title" content="Appsflyer 어트리뷰션 모델에서 헷갈리는 것들 정리 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="참고 : https://support.appsflyer.com/hc/en-us/articles/207447053-What-is-AppsFlyer-s-Attribution-Model-
+New-Attribution 구분  이미 특정 media_source로 New-attribution된 사용자는 다른 어떤 media_source에도 New-attribution으로 인식되지 않습니다.  Attribution Lookback window View-through lookback window(1-7days)  사용자가 앱스플라이어를 통한 광고를 보고, 정해진 View-through lookback window 이내에 클릭 없이 앱을 설치한 경우 New-attribution으로 인정합니다. window 기본값은 1day onelink에서 설정할 수 있는 값은 아니고, 외부 partners setting에서 파트너마다 설정할 수 있습니다.  Click-through lookback window(1-30days)  사용자가 앱스플라이어 링크 또는 광고를 클릭하고, 정해진 Click-through lookback window 이내에 앱을 설치한 경우 New-attribution으로 인정합니다." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Appsflyer 어트리뷰션 모델에서 헷갈리는 것들 정리</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2018-11-21 00:00:00 UTC">
+                21 Nov 2018
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <p><img src="https://support.appsflyer.com/hc/article_attachments/360000998949/user_journey.png" alt="attribution-model">
+참고 : <a href="https://support.appsflyer.com/hc/en-us/articles/207447053-What-is-AppsFlyer-s-Attribution-Model-">https://support.appsflyer.com/hc/en-us/articles/207447053-What-is-AppsFlyer-s-Attribution-Model-</a></p>
+<h4 id="new-attribution-">New-Attribution 구분</h4>
+<ul>
+<li>이미 특정 media_source로 New-attribution된 사용자는 다른 어떤 media_source에도 New-attribution으로 인식되지 않습니다.</li>
+</ul>
+<h2 id="attribution-lookback-window">Attribution Lookback window</h2>
+<h4 id="view-through-lookback-window1-7days">View-through lookback window(1-7days)</h4>
+<ul>
+<li>사용자가 앱스플라이어를 통한 광고를 보고, 정해진 View-through lookback window 이내에 클릭 없이 앱을 설치한 경우 New-attribution으로 인정합니다.</li>
+<li>window 기본값은 1day</li>
+<li>onelink에서 설정할 수 있는 값은 아니고, 외부 partners setting에서 파트너마다 설정할 수 있습니다.</li>
+</ul>
+<h4 id="click-through-lookback-window1-30days">Click-through lookback window(1-30days)</h4>
+<ul>
+<li>사용자가 앱스플라이어 링크 또는 광고를 클릭하고, 정해진 Click-through lookback window 이내에 앱을 설치한 경우 New-attribution으로 인정합니다.</li>
+<li>window 기본값은 7days</li>
+<li>Link Management에서 Click-through window 값을 설정할 수 있습니다.
+<img src="/2018-11-21/click-through-window-setting.png" alt="click-through-window-setting"></li>
+</ul>
+<h2 id="retargeting">Retargeting</h2>
+<h4 id="re-attribution-window1-24months-re-installs-re-attribution">Re-attribution window(1-24months), Re-installs, Re-attribution</h4>
+<ul>
+<li>사용자가 앱설치 후 정해진 Re-attribution window 이내에 재설치하면 Re-installs로 간주하고 Re-attribution으로 인정합니다.</li>
+<li>window 기본값은 90days</li>
+<li>App Setting에서 Re-attribution window 값을 설정할 수 있습니다.
+<img src="https://support.appsflyer.com/hc/article_attachments/115008565543/Attribution_Window.png" alt="re-attribution-window"></li>
+</ul>
+<h4 id="re-engagement">Re-engagement</h4>
+<ul>
+<li>사용자가 앱설치 후 앱을 제거하지 않은 채로, 정해진 Re-attribution window 이내에 retargeting-campaign(view or click)을 경험하면 Re-engagement로 인정합니다.</li>
+</ul>
+<h4 id="re-engagement-window">Re-engagement window</h4>
+<ul>
+<li>Re-engagement 캠페인의 이벤트 수집 기간입니다.</li>
+<li>window 기본값은 30days</li>
+</ul>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/appsflyer-onelink/">Appsflyer 원링크 파라메터 정리</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

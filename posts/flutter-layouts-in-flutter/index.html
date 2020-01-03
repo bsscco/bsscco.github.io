@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-layouts-in-flutter/" />
+  <link rel="canonical" href="/posts/flutter-layouts-in-flutter/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(02) - 레이아웃 위젯 소개",
+      "headline" : "Flutter로 개발하기(02) - 레이아웃 위젯 소개",
+      "description" : "Layouts in Flutter https:\/\/flutter.dev\/docs\/development\/ui\/layout\n위젯 배치하기 1. 레이아웃 위젯을 선택합니다. Column, Row, Center 등\n2. visible 위젯을 생성합니다. Text(\x26#39;Hello World\x26#39;), Image.asset( \x26#39;images\/lake.jpg\x26#39;, fit: BoxFit.cover, ), Icon( Icons.star, color: Colors.red[500], ), 3. visible 위젯을 레이아웃 위젯에 추가합니다. Center( child: Text(\x26#39;Hello World\x26#39;), ), 4. 레이아웃 위젯을 페이지에 추가합니다. class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: \x26#39;Flutter layout demo\x26#39;, home: Scaffold( appBar: AppBar( title: Text(\x26#39;Flutter layout demo\x26#39;), ), body: Center( child: Text(\x26#39;Hello World\x26#39;), ), ), ); } } 여러 위젯을 수직, 수평으로 배치하기 위젯 Aligning Row Row( mainAxisAlignment: MainAxisAlignment.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-11 07:49:13 \x2b0000 UTC",
+      "dateModified" : "2019-03-11 07:49:13 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-layouts-in-flutter\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(02) - 레이아웃 위젯 소개 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(02) - 레이아웃 위젯 소개 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Layouts in Flutter https://flutter.dev/docs/development/ui/layout
+위젯 배치하기 1. 레이아웃 위젯을 선택합니다. Column, Row, Center 등
+2. visible 위젯을 생성합니다. Text(&#39;Hello World&#39;), Image.asset( &#39;images/lake.jpg&#39;, fit: BoxFit.cover, ), Icon( Icons.star, color: Colors.red[500], ), 3. visible 위젯을 레이아웃 위젯에 추가합니다. Center( child: Text(&#39;Hello World&#39;), ), 4. 레이아웃 위젯을 페이지에 추가합니다. class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &#39;Flutter layout demo&#39;, home: Scaffold( appBar: AppBar( title: Text(&#39;Flutter layout demo&#39;), ), body: Center( child: Text(&#39;Hello World&#39;), ), ), ); } } 여러 위젯을 수직, 수평으로 배치하기 위젯 Aligning Row Row( mainAxisAlignment: MainAxisAlignment." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(02) - 레이아웃 위젯 소개</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-11 07:49:13 UTC">
+                11 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="layouts-in-flutter">Layouts in Flutter</h1>
+<p><a href="https://flutter.dev/docs/development/ui/layout">https://flutter.dev/docs/development/ui/layout</a></p>
+<h2 id="-">위젯 배치하기</h2>
+<h3 id="1---">1. 레이아웃 위젯을 선택합니다.</h3>
+<p>Column, Row, Center 등</p>
+<h3 id="2-visible--">2. visible 위젯을 생성합니다.</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Hello World</span><span style="color:#e6db74">&#39;</span>),
+
+Image.asset(
+  <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/lake.jpg</span><span style="color:#e6db74">&#39;</span>,
+  fit: BoxFit.cover,
+),
+
+Icon(
+  Icons.star,
+  color: Colors.red[<span style="color:#ae81ff">500</span>],
+),
+</code></pre></div><h3 id="3-visible----">3. visible 위젯을 레이아웃 위젯에 추가합니다.</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Center(
+  child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Hello World</span><span style="color:#e6db74">&#39;</span>),
+),
+</code></pre></div><h3 id="4----">4. 레이아웃 위젯을 페이지에 추가합니다.</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> MaterialApp(
+      title: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Flutter layout demo</span><span style="color:#e6db74">&#39;</span>,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Flutter layout demo</span><span style="color:#e6db74">&#39;</span>),
+        ),
+        body: Center(
+          child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Hello World</span><span style="color:#e6db74">&#39;</span>),
+        ),
+      ),
+    );
+  }
+}
+</code></pre></div><h2 id="----">여러 위젯을 수직, 수평으로 배치하기</h2>
+<h3 id="-aligning">위젯 Aligning</h3>
+<h4 id="row">Row</h4>
+<p><img src="https://flutter.dev/ui/layout/row-diagram-ad51795e19e3e1d412815b287c9caa694ad357892e3ab8b3ef1da0c4c6e011db.png" alt="aligning-row.png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic1.jpg</span><span style="color:#e6db74">&#39;</span>),
+    Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic2.jpg</span><span style="color:#e6db74">&#39;</span>),
+    Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic3.jpg</span><span style="color:#e6db74">&#39;</span>),
+  ],
+);
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/row-spaceevenly-visual-bae00ee7fc0b8a0fbe46d74b113f9f0e4e4942e55609cf263cefca81f986d871.png" alt="aligning-row.png"></p>
+<h4 id="column">Column</h4>
+<p><img src="https://flutter.dev/ui/layout/column-diagram-4e2ce8e33c32a09d090280fb7b2925baaf58f6de7876a551c207ab904e2fafc6.png" alt="aligning-column.png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Column(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic1.jpg</span><span style="color:#e6db74">&#39;</span>),
+    Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic2.jpg</span><span style="color:#e6db74">&#39;</span>),
+    Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic3.jpg</span><span style="color:#e6db74">&#39;</span>),
+  ],
+);
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/column-visual-40850f31d83815ccf693076198ae200ed46bc633e185de8484081cde83e9f1d3.png" alt="aligning-column.png"></p>
+<h3 id="-sizing">위젯 Sizing</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Expanded(
+      child: Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic1.jpg</span><span style="color:#e6db74">&#39;</span>),
+    ),
+    Expanded(
+      child: Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic2.jpg</span><span style="color:#e6db74">&#39;</span>),
+    ),
+    Expanded(
+      child: Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic3.jpg</span><span style="color:#e6db74">&#39;</span>),
+    ),
+  ],
+);
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/row-expanded-2-visual-7003ec3a27b38a2cc925b97abfd933fe6d2fce62494400e0e3c9790b715cd0d1.png" alt="sizing-row-1.png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Expanded(
+      child: Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic1.jpg</span><span style="color:#e6db74">&#39;</span>),
+    ),
+    Expanded(
+      flex: <span style="color:#ae81ff">2</span>,
+      child: Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic2.jpg</span><span style="color:#e6db74">&#39;</span>),
+    ),
+    Expanded(
+      child: Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic3.jpg</span><span style="color:#e6db74">&#39;</span>),
+    ),
+  ],
+);
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/row-expanded-visual-fa9a01df7b96ba5cb33162b91369658fea86554139953e3cc0357de83281133d.png" alt="sizing-row-2.png"></p>
+<h3 id="-packing">위젯 Packing</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Icon(Icons.star, color: Colors.green[<span style="color:#ae81ff">500</span>]),
+    Icon(Icons.star, color: Colors.green[<span style="color:#ae81ff">500</span>]),
+    Icon(Icons.star, color: Colors.green[<span style="color:#ae81ff">500</span>]),
+    Icon(Icons.star, color: Colors.black),
+    Icon(Icons.star, color: Colors.black),
+  ],
+)
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/packed-5583166ea8f018a2c3c829cb075eb63b465cf859e74ae1d7792d2c50813e32aa.png" alt="packing-row.png"></p>
+<h3 id="row-column--">Row와 Column을 다양하게 중첩하기</h3>
+<p>원하는 만큼 레이아웃들을 조합하고 커스터마이징 할 수 있습니다.</p>
+<h2 id="--">공통 레이아웃 위젯</h2>
+<h3 id="--1">기본 위젯</h3>
+<ul>
+<li>Container: 자식 위젯에 패딩, 마진, 테두리, 배경색, 그 외 데코레이들을 위젯에 추가합니다.</li>
+<li>GridView: 자식 위젯들을 스크롤 가능한 그리드 형태로 배치합니다.</li>
+<li>ListView: 자식 위젯들을 스크롤 가능한 리스트 형태로 배치합니다.</li>
+<li>Stack: 자식 위젯들을 중첩시킵니다.</li>
+</ul>
+<h3 id="--2">머터리얼 위젯</h3>
+<ul>
+<li>Card: 자식 위젯들을 라운드 모서리와 그림자를 가지는 박스 안에 담습니다.</li>
+<li>ListTile: 행 안에 최대 3줄의 텍스트, 타이틀, 아이콘을 넣습니다.</li>
+</ul>
+<h3 id="container">Container</h3>
+<p>패딩, 마진, 테두리, 테두리, 배경색을 추가하기 위해 컨테이너로 감쌉니다.</p>
+<p><img src="https://flutter.dev/ui/layout/margin-padding-border-9616dd0d7af45b95e6fcface25cd933b6b4a0fda51c1ab1bb9287bc8ed92c356.png" alt="container.png"></p>
+<h4 id="container-">Container 배경색</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget _buildImageColumn() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Container(
+      decoration: BoxDecoration(
+        color: Colors.black26,
+      ),
+      child: Column(
+        children: [
+          _buildImageRow(<span style="color:#ae81ff">1</span>),
+          _buildImageRow(<span style="color:#ae81ff">3</span>),
+        ],
+      ),
+    );
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/container-c31fce287ed0d6c2b0de32af625b2351bd8a08c236a2e60578f940c7b4aceece.png" alt="container-bg.png"></p>
+<h4 id="container--1">Container 테두리</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget _buildDecoratedImage(<span style="color:#66d9ef">int</span> imageIndex) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(width: <span style="color:#ae81ff">10</span>, color: Colors.black38),
+          borderRadius: <span style="color:#66d9ef">const</span> BorderRadius.all(<span style="color:#66d9ef">const</span> Radius.circular(<span style="color:#ae81ff">8</span>)),
+        ),
+        margin: <span style="color:#66d9ef">const</span> EdgeInsets.all(<span style="color:#ae81ff">4</span>),
+        child: Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic</span><span style="color:#e6db74">$</span>imageIndex<span style="color:#e6db74">.jpg</span><span style="color:#e6db74">&#39;</span>),
+      ),
+    );
+
+Widget _buildImageRow(<span style="color:#66d9ef">int</span> imageIndex) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Row(
+      children: [
+        _buildDecoratedImage(imageIndex),
+        _buildDecoratedImage(imageIndex <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),
+      ],
+    );
+</code></pre></div><h3 id="gridview">GridView</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget _buildGrid() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> GridView.extent(
+    maxCrossAxisExtent: <span style="color:#ae81ff">150</span>,
+    padding: <span style="color:#66d9ef">const</span> EdgeInsets.all(<span style="color:#ae81ff">4</span>),
+    mainAxisSpacing: <span style="color:#ae81ff">4</span>,
+    crossAxisSpacing: <span style="color:#ae81ff">4</span>,
+    children: _buildGridTileList(<span style="color:#ae81ff">30</span>));
+
+List<span style="color:#f92672">&lt;</span>Container<span style="color:#f92672">&gt;</span> _buildGridTileList(<span style="color:#66d9ef">int</span> count) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> List.generate(
+    count, (i) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Container(child: Image.asset(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic</span><span style="color:#e6db74">$</span>i<span style="color:#e6db74">.jpg</span><span style="color:#e6db74">&#39;</span>)));
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/gridview-extent-b36976ff50ecc7d55518fa41c10ac3d6de2c0e8a19d550e607461b46e8722395.png" alt="grid.png"></p>
+<h3 id="listview">ListView</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget _buildList() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> ListView(
+      children: [
+        _tile(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">CineArts at the Empire</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">85 W Portal Ave</span><span style="color:#e6db74">&#39;</span>, Icons.theaters),
+        _tile(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">The Castro Theater</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">429 Castro St</span><span style="color:#e6db74">&#39;</span>, Icons.theaters),
+        _tile(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Alamo Drafthouse Cinema</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">2550 Mission St</span><span style="color:#e6db74">&#39;</span>, Icons.theaters),
+        _tile(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Roxie Theater</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">3117 16th St</span><span style="color:#e6db74">&#39;</span>, Icons.theaters),
+        _tile(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">United Artists Stonestown Twin</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">501 Buckingham Way</span><span style="color:#e6db74">&#39;</span>,
+            Icons.theaters),
+        _tile(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">AMC Metreon 16</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">135 4th St #3000</span><span style="color:#e6db74">&#39;</span>, Icons.theaters),
+        Divider(),
+        _tile(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Kescaped_code#39;s Kitchen</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">757 Monterey Blvd</span><span style="color:#e6db74">&#39;</span>, Icons.restaurant),
+        _tile(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Emmyescaped_code#39;s Restaurant</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">1923 Ocean Ave</span><span style="color:#e6db74">&#39;</span>, Icons.restaurant),
+        _tile(
+            <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Chaiya Thai Restaurant</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">272 Claremont Blvd</span><span style="color:#e6db74">&#39;</span>, Icons.restaurant),
+        _tile(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">La Ciccia</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">291 30th St</span><span style="color:#e6db74">&#39;</span>, Icons.restaurant),
+      ],
+    );
+
+ListTile _tile(<span style="color:#66d9ef">String</span> title, <span style="color:#66d9ef">String</span> subtitle, IconData icon) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> ListTile(
+      title: Text(title,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: <span style="color:#ae81ff">20</span>,
+          )),
+      subtitle: Text(subtitle),
+      leading: Icon(
+        icon,
+        color: Colors.blue[<span style="color:#ae81ff">500</span>],
+      ),
+    );
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/listview-34918a738b5d18af88d16a8773e563a3b97f2ffd2710304c5543f8541cbd1345.png" alt="list.png"></p>
+<h3 id="stack">Stack</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget _buildStack() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Stack(
+    alignment: <span style="color:#66d9ef">const</span> Alignment(<span style="color:#ae81ff">0.6</span>, <span style="color:#ae81ff">0.6</span>),
+    children: [
+      CircleAvatar(
+        backgroundImage: AssetImage(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">images/pic.jpg</span><span style="color:#e6db74">&#39;</span>),
+        radius: <span style="color:#ae81ff">100</span>,
+      ),
+      Container(
+        decoration: BoxDecoration(
+          color: Colors.black45,
+        ),
+        child: Text(
+          <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Mia B</span><span style="color:#e6db74">&#39;</span>,
+          style: TextStyle(
+            fontSize: <span style="color:#ae81ff">20</span>,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    ],
+  );
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/stack-8b743fe7d0f5fe7e58e3a257572f4b48b1552194f7e3f3ffa15a87edaf99a749.png" alt="stack.png"></p>
+<h3 id="card">Card</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget _buildCard() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> SizedBox(
+    height: <span style="color:#ae81ff">210</span>,
+    child: Card(
+      child: Column(
+        children: [
+          ListTile(
+            title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">1625 Main Street</span><span style="color:#e6db74">&#39;</span>,
+                style: TextStyle(fontWeight: FontWeight.w500)),
+            subtitle: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">My City, CA 99984</span><span style="color:#e6db74">&#39;</span>),
+            leading: Icon(
+              Icons.restaurant_menu,
+              color: Colors.blue[<span style="color:#ae81ff">500</span>],
+            ),
+          ),
+          Divider(),
+          ListTile(
+            title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">(408) 555-1212</span><span style="color:#e6db74">&#39;</span>,
+                style: TextStyle(fontWeight: FontWeight.w500)),
+            leading: Icon(
+              Icons.contact_phone,
+              color: Colors.blue[<span style="color:#ae81ff">500</span>],
+            ),
+          ),
+          ListTile(
+            title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">costa@example.com</span><span style="color:#e6db74">&#39;</span>),
+            leading: Icon(
+              Icons.contact_mail,
+              color: Colors.blue[<span style="color:#ae81ff">500</span>],
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+</code></pre></div><p><img src="https://flutter.dev/ui/layout/card-3db18421d33c96f34f8d19889a5f28c61287063a62c9770f311fd56aeff0b364.png" alt="card.png"></p>
+<h3 id="listtile">ListTile</h3>
+<p>Card나 ListView 안에서 자주 사용되지만 어느 곳에나 사용할 수 있습니다.</p>
+<p><img src="https://flutter.dev/ui/layout/card-3db18421d33c96f34f8d19889a5f28c61287063a62c9770f311fd56aeff0b364.png" alt="list-tile.png"></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-introduction-to-widgets/">Flutter로 개발하기(01) - 위젯 소개</a></li>
+    
+    <li><a href="/posts/flutter-firebase-for-flutter/">Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스</a></li>
+    
+    <li><a href="/posts/flutter-build-beautiful-ui-with-flutter/">Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

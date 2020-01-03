@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>firebase on developer bsscco</title>
+    <link>/tags/firebase/</link>
+    <description>Recent content in firebase on developer bsscco</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 16 Feb 2019 15:41:07 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/firebase/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스</title>
+      <link>/posts/flutter-firebase-for-flutter/</link>
+      <pubDate>Sat, 16 Feb 2019 15:41:07 +0000</pubDate>
+      
+      <guid>/posts/flutter-firebase-for-flutter/</guid>
+      <description>Flutter를 위한 Firebase
+https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html
+ 프로젝트 소스 : https://github.com/bsscco/baby_name_votes 눈에 띄는 내용  named 생성자를 지원한다.   class Record { final String name; final int votes; Record.fromMap(Map&amp;lt;String, dynamic&amp;gt; map) : assert(map[&amp;#39;name&amp;#39;] != null), assert(map[&amp;#39;votes&amp;#39;] != null), name = map[&amp;#39;name&amp;#39;], votes = map[&amp;#39;votes&amp;#39;]; }    StreamBuilder는 인자를 통해 받은 스트림이 변경되면 다시 빌드하는 기능을 한다.   Widget _buildBody(BuildContext context) { return StreamBuilder&amp;lt;QuerySnapshot&amp;gt;( stream: Firestore.instance.collection(&amp;#39;baby&amp;#39;).snapshots(), builder: (context, snapshot) { if (!</description>
+    </item>
+    
+  </channel>
+</rss>

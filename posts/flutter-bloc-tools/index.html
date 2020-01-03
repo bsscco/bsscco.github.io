@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-bloc-tools/" />
+  <link rel="canonical" href="/posts/flutter-bloc-tools/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(25) - Bloc 도구",
+      "headline" : "Flutter로 개발하기(25) - Bloc 도구",
+      "description" : "Bloc document - 도구 https:\/\/felangel.github.io\/bloc\nintelliJ Bloc Plugin for IntelliJ and Android Studio 소개 IntelliJ와 안드로이드 스튜디오를 위한 Bloc 플러그인은 Bloc 라이브러리를 지원하고 Bloc 생성을 효과적으로 돕습니다.\n설치 IntelliJ와 안드로이드 스튜디오 마켓플레이스에서 플러그인을 찾을 수 있습니다. Bloc Code Generator\n어떻게 사용하나요? 파일 프로젝트 뷰에서 오른쪽 클릭을 합니다. -\x26gt; New -\x26gt; New Bloc -\x26gt; Generate New Bloc\n배포 Plugin Repository를 사용하세요.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-31 09:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-31 09:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-bloc-tools\/",
+      "keywords" : [ "flutter","bloc pattern", ]
+  }
+</script>
+<title>Flutter로 개발하기(25) - Bloc 도구 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(25) - Bloc 도구 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Bloc document - 도구 https://felangel.github.io/bloc
+intelliJ Bloc Plugin for IntelliJ and Android Studio 소개 IntelliJ와 안드로이드 스튜디오를 위한 Bloc 플러그인은 Bloc 라이브러리를 지원하고 Bloc 생성을 효과적으로 돕습니다.
+설치 IntelliJ와 안드로이드 스튜디오 마켓플레이스에서 플러그인을 찾을 수 있습니다. Bloc Code Generator
+어떻게 사용하나요? 파일 프로젝트 뷰에서 오른쪽 클릭을 합니다. -&gt; New -&gt; New Bloc -&gt; Generate New Bloc
+배포 Plugin Repository를 사용하세요." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(25) - Bloc 도구</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-31 09:51:41 UTC">
+                31 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="bloc-document---">Bloc document - 도구</h1>
+<p><a href="https://felangel.github.io/bloc">https://felangel.github.io/bloc</a></p>
+<h2 id="intellij">intelliJ</h2>
+<h3 id="bloc-plugin-for-intellij-and-android-studio">Bloc Plugin for IntelliJ and Android Studio</h3>
+<p><img src="https://github.com/felangel/bloc/raw/master/extensions/intellij/dialog.png" alt="dialog.png"></p>
+<h4 id="heading">소개</h4>
+<p>IntelliJ와 안드로이드 스튜디오를 위한 Bloc 플러그인은 Bloc 라이브러리를 지원하고 Bloc 생성을 효과적으로 돕습니다.</p>
+<h4 id="heading-1">설치</h4>
+<p>IntelliJ와 안드로이드 스튜디오 마켓플레이스에서 플러그인을 찾을 수 있습니다. <a href="https://plugins.jetbrains.com/plugin/12129-bloc-code-generator">Bloc Code Generator</a></p>
+<h5 id="-">어떻게 사용하나요?</h5>
+<p>파일 프로젝트 뷰에서 오른쪽 클릭을 합니다. -&gt; New -&gt; New Bloc -&gt; Generate New Bloc</p>
+<h4 id="heading-2">배포</h4>
+<p><a href="http://www.jetbrains.org/intellij/sdk/docs/plugin_repository/index.html">Plugin Repository</a>를 사용하세요.</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-bloc-todos-tutorial/">Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</a></li>
+    
+    <li><a href="/posts/flutter-bloc-tutorials/">Flutter로 개발하기(23) - Bloc 튜토리얼</a></li>
+    
+    <li><a href="/posts/flutter-bloc-introduction/">Flutter로 개발하기(22) - Bloc 소개</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

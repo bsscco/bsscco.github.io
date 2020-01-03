@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/" />
+  <link rel="canonical" href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약",
+      "headline" : "Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약",
+      "description" : "Lesson 8: Connect to the Internet 1. Greetings Earth Friends! 2. Introduction 3. RESTful Services URI가 URL을 포함하는 개념\n4. Libraries 5. App Walkthrough and Starter Code 6. Exercise: Connecting to the Internet 7. Permissions 8. Exercise: Parsing the JSON Response moshi가 gson이나 jackson보다 더 좋은 이유가 있을까? https:\/\/medium.com\/@IlyaEremin\/android-json-parsers-comparison-2017-8b5221721e31\njackson이 성능에서 가장 좋은데 친숙하지 않은 API가 단점이라고 함.\nmoshi는 제이크 와튼이 만든 거라 함께 사용한 듯\n9. Exercise: Coroutines and Deferred Deferred\x26lt;List\x26lt;MarsProperty\x26gt;\x26gt; .",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-06-19 00:00:01 \x2b0000 UTC",
+      "dateModified" : "2019-06-19 00:00:01 \x2b0000 UTC",
+      "url" : "\/posts\/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary\/",
+      "keywords" : [ "android","kotlin", ]
+  }
+</script>
+<title>Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약 - developer bsscco</title>
+  <meta property="og:title" content="Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Lesson 8: Connect to the Internet 1. Greetings Earth Friends! 2. Introduction 3. RESTful Services URI가 URL을 포함하는 개념
+4. Libraries 5. App Walkthrough and Starter Code 6. Exercise: Connecting to the Internet 7. Permissions 8. Exercise: Parsing the JSON Response moshi가 gson이나 jackson보다 더 좋은 이유가 있을까? https://medium.com/@IlyaEremin/android-json-parsers-comparison-2017-8b5221721e31
+jackson이 성능에서 가장 좋은데 친숙하지 않은 API가 단점이라고 함.
+moshi는 제이크 와튼이 만든 거라 함께 사용한 듯
+9. Exercise: Coroutines and Deferred Deferred&lt;List&lt;MarsProperty&gt;&gt; ." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-06-19 00:00:01 UTC">
+                19 Jun 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="lesson-8-connect-to-the-internet">Lesson 8: Connect to the Internet</h1>
+<h2 id="1-greetings-earth-friends">1. Greetings Earth Friends!</h2>
+<h2 id="2-introduction">2. Introduction</h2>
+<p><img src="/2019-06-19/Untitled-406f7b9d-12f6-4b7c-b824-3b9a333d4946.png" alt=""></p>
+<h2 id="3-restful-services">3. RESTful Services</h2>
+<p>URI가 URL을 포함하는 개념</p>
+<p><img src="/2019-06-19/Untitled-4da1af00-81d2-4576-8cb7-da5773608797.png" alt=""></p>
+<h2 id="4-libraries">4. Libraries</h2>
+<h2 id="5-app-walkthrough-and-starter-code">5. App Walkthrough and Starter Code</h2>
+<p><img src="/2019-06-19/Untitled-469df0d6-abe1-49a1-a1cf-be1f767c238c.png" alt=""></p>
+<h2 id="6-exercise-connecting-to-the-internet">6. Exercise: Connecting to the Internet</h2>
+<p><img src="/2019-06-19/Untitled-401d64ed-a3fb-427e-8b84-73b548a1ffcd.png" alt=""></p>
+<h2 id="7-permissions">7. Permissions</h2>
+<h2 id="8-exercise-parsing-the-json-response">8. Exercise: Parsing the JSON Response</h2>
+<h3 id="moshi-gson-jackson----">moshi가 gson이나 jackson보다 더 좋은 이유가 있을까?</h3>
+<p><a href="https://medium.com/@IlyaEremin/android-json-parsers-comparison-2017-8b5221721e31">https://medium.com/@IlyaEremin/android-json-parsers-comparison-2017-8b5221721e31</a></p>
+<p>jackson이 성능에서 가장 좋은데 친숙하지 않은 API가 단점이라고 함.</p>
+<p>moshi는 제이크 와튼이 만든 거라 함께 사용한 듯</p>
+<h2 id="9-exercise-coroutines-and-deferred">9. Exercise: Coroutines and Deferred</h2>
+<pre><code>Deferred&lt;List&lt;MarsProperty&gt;&gt;
+
+...
+
+private fun getMarsRealEstateProperties() {
+   coroutineScope.launch {
+       var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
+       try {
+            var listResult = getPropertiesDeferred.await() // retrofit에 suspend기능의 메소드가 추가됨.
+           _response.value = &quot;Success: ${listResult.size} Mars properties retrieved&quot;
+       } catch (e: Exception) {
+           _response.value = &quot;Failure: ${e.message}&quot;
+       }
+   }
+}
+</code></pre>
+<h2 id="10-googler-interview-jake-wharton">10. Googler Interview: Jake Wharton</h2>
+<h2 id="11-exercise-display-an-internet-image">11. Exercise: Display an Internet Image</h2>
+<h2 id="12-exercise-display-images-in-a-grid">12. Exercise: Display Images in a Grid</h2>
+<p>ViewModel의 LiveData&lt;List<!-- raw HTML omitted -->&gt; → layout xml의 바인딩 어댑터로 적용</p>
+<h2 id="13-exercise-error-handling-with-recyclerview">13. Exercise: Error Handling with RecyclerView</h2>
+<h2 id="14-parcel-and-parcelables">14. Parcel and Parcelables</h2>
+<p>코틀린에서 @Parcelize 어노테이션이면 Parcelable 완성</p>
+<h2 id="15-exercise-add-the-detail-screen">15. Exercise: Add the Detail Screen</h2>
+<h2 id="16-summary">16. Summary</h2>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/">Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약</a></li>
+    
+    <li><a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/">Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약</a></li>
+    
+    <li><a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/">Udacity Developing Android Apps with Kotlin 레슨5 App Architecture (UI Layer) 요약</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

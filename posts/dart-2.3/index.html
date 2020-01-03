@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/dart-2.3/" />
+  <link rel="canonical" href="/posts/dart-2.3/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Dart 2.3 - UI를 빌딩에 최적화 됐어요.",
+      "headline" : "Dart 2.3 - UI를 빌딩에 최적화 됐어요.",
+      "description" : "원문 : https:\/\/medium.com\/dartlang\/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff\n새로운 language features spread 연산자 리스트의 요소들을 다른 리스트 안으로 풀어서 넣어주는 \x26hellip; 연산자 (spread operator)\nWidget build(BuildContext context) { return Column(children: [ Header(), ...buildMainElements(), \/\/ spread 연산자  Footer(), ]); } List\x26lt;Widget\x26gt; buildMainElements() { ... } collection if 조건에 맞지 않으면 요소가 들어가지 않게 해주는 문법. 단, list 리터럴에서만 사용할 수 있어요!\nWidget build(BuildContext context) { return Column(children: [ Text(mainText), if (page != pages.last) \/\/ collection if  FlatButton(child: Text(\x26#39;Next\x26#39;)), ]); } collection for 리스트의 요소들을 다른 리스트 안으로 풀어서 넣되, 들어가는 요소들에 가공을 더해주는 문법.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-05-25 00:00:00 \x2b0000 UTC",
+      "dateModified" : "2019-05-25 00:00:00 \x2b0000 UTC",
+      "url" : "\/posts\/dart-2.3\/",
+      "keywords" : [ "dart","flutter", ]
+  }
+</script>
+<title>Dart 2.3 - UI를 빌딩에 최적화 됐어요. - developer bsscco</title>
+  <meta property="og:title" content="Dart 2.3 - UI를 빌딩에 최적화 됐어요. - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="원문 : https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff
+새로운 language features spread 연산자 리스트의 요소들을 다른 리스트 안으로 풀어서 넣어주는 &hellip; 연산자 (spread operator)
+Widget build(BuildContext context) { return Column(children: [ Header(), ...buildMainElements(), // spread 연산자  Footer(), ]); } List&lt;Widget&gt; buildMainElements() { ... } collection if 조건에 맞지 않으면 요소가 들어가지 않게 해주는 문법. 단, list 리터럴에서만 사용할 수 있어요!
+Widget build(BuildContext context) { return Column(children: [ Text(mainText), if (page != pages.last) // collection if  FlatButton(child: Text(&#39;Next&#39;)), ]); } collection for 리스트의 요소들을 다른 리스트 안으로 풀어서 넣되, 들어가는 요소들에 가공을 더해주는 문법." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Dart 2.3 - UI를 빌딩에 최적화 됐어요.</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-05-25 00:00:00 UTC">
+                25 May 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <p>원문 : <a href="https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff">https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff</a></p>
+<h2 id="-language-features">새로운 language features</h2>
+<h3 id="spread-">spread 연산자</h3>
+<p>리스트의 요소들을 다른 리스트 안으로 풀어서 넣어주는 &hellip; 연산자 (spread operator)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget build(BuildContext context) {
+  <span style="color:#66d9ef">return</span> Column(children: [
+    Header(),
+    ...buildMainElements(), <span style="color:#75715e">// spread 연산자
+</span><span style="color:#75715e"></span>    Footer(),
+  ]);
+}
+
+List<span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span> buildMainElements() { ... }
+</code></pre></div><h3 id="collection-if">collection if</h3>
+<p>조건에 맞지 않으면 요소가 들어가지 않게 해주는 문법. 단, list 리터럴에서만 사용할 수 있어요!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget build(BuildContext context) {
+  <span style="color:#66d9ef">return</span> Column(children: [
+    Text(mainText),
+    <span style="color:#66d9ef">if</span> (page <span style="color:#f92672">!</span><span style="color:#f92672">=</span> pages.last) <span style="color:#75715e">// collection if
+</span><span style="color:#75715e"></span>      FlatButton(child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Next</span><span style="color:#e6db74">&#39;</span>)),
+  ]);
+}
+</code></pre></div><h3 id="collection-for">collection for</h3>
+<p>리스트의 요소들을 다른 리스트 안으로 풀어서 넣되, 들어가는 요소들에 가공을 더해주는 문법. 단, list 리터럴에서만 사용할 수 있어요!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget build(BuildContext context) {
+  <span style="color:#66d9ef">return</span> Column(children: [
+    Text(mainText),
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> section <span style="color:#66d9ef">in</span> sections) <span style="color:#75715e">// collection for
+</span><span style="color:#75715e"></span>      HeadingAction(section.heading),
+  ]);
+}
+</code></pre></div>
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-til-2019-04-24/">Flutter Today I Learned - 2019-04-24</a></li>
+    
+    <li><a href="/posts/flutter-til-2019-04-23/">Flutter Today I Learned - 2019-04-23</a></li>
+    
+    <li><a href="/posts/flutter-til-2019-04-22/">Flutter Today I Learned - 2019-04-22</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

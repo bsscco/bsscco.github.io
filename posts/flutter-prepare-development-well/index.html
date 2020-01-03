@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-prepare-development-well/" />
+  <link rel="canonical" href="/posts/flutter-prepare-development-well/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(26) - 개발 제대로 준비하기",
+      "headline" : "Flutter로 개발하기(26) - 개발 제대로 준비하기",
+      "description" : "도구 및 학습  Flutter 60 FPS UI of the Future - 베를린 2017 드로이드콘 플러터 소개 발표 Flutter for Android developers - 안드로이드 개발자를 위한 플러터 공식 문서[한글] Flutter Development - 플러터 개발 기본 개념 학습할 수 있는 공식 문서 Flutter Studio - WYGIWYG 방식으로 플러터 UI를 구성할 수 있고, 구성한 UI를 코드로 뽑아낼 수도 있는 웹사이트 Flutter Layout Cheat Sheet - 플러터 레이아웃 시스템을 익힐 수 있는 미디엄 글 Flutter widget index - 플러터 위젯들을 학습할 수 있는 공식 문서 Learn Google Flutter Fast - 플러터에 대한 오픈BOOK pdf Tensor Programming - 플러터 기초부터 중급까지 유튜브 강의[영어] Bloc Library - 플러터에서 가장 많이 쓰이는 상태 관리 라이브러리 Json Placeholder - REST API 형태의 가짜 데이터를 제공하는 서비스  ",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-04-01 09:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-04-01 09:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-prepare-development-well\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(26) - 개발 제대로 준비하기 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(26) - 개발 제대로 준비하기 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="도구 및 학습  Flutter 60 FPS UI of the Future - 베를린 2017 드로이드콘 플러터 소개 발표 Flutter for Android developers - 안드로이드 개발자를 위한 플러터 공식 문서[한글] Flutter Development - 플러터 개발 기본 개념 학습할 수 있는 공식 문서 Flutter Studio - WYGIWYG 방식으로 플러터 UI를 구성할 수 있고, 구성한 UI를 코드로 뽑아낼 수도 있는 웹사이트 Flutter Layout Cheat Sheet - 플러터 레이아웃 시스템을 익힐 수 있는 미디엄 글 Flutter widget index - 플러터 위젯들을 학습할 수 있는 공식 문서 Learn Google Flutter Fast - 플러터에 대한 오픈BOOK pdf Tensor Programming - 플러터 기초부터 중급까지 유튜브 강의[영어] Bloc Library - 플러터에서 가장 많이 쓰이는 상태 관리 라이브러리 Json Placeholder - REST API 형태의 가짜 데이터를 제공하는 서비스  " />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(26) - 개발 제대로 준비하기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-04-01 09:51:41 UTC">
+                01 Apr 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h2 id="--">도구 및 학습</h2>
+<ul>
+<li><a href="https://berlin2017.droidcon.cod.newthinking.net/sites/global.droidcon.cod.newthinking.net/files/media/documents/Flutter%20-%2060FPS%20UI%20of%20the%20future%20%20-%20DroidconDE%2017.pdf">Flutter 60 FPS UI of the Future</a> - 베를린 2017 드로이드콘 플러터 소개 발표</li>
+<li><a href="https://flutter-kr.io/docs/get-started/flutter-for/android-devs">Flutter for Android developers</a> - 안드로이드 개발자를 위한 플러터 공식 문서[한글]</li>
+<li><a href="https://flutter.dev/docs/development">Flutter Development</a> - 플러터 개발 기본 개념 학습할 수 있는 공식 문서</li>
+<li><a href="https://flutterstudio.app/">Flutter Studio</a> - WYGIWYG 방식으로 플러터 UI를 구성할 수 있고, 구성한 UI를 코드로 뽑아낼 수도 있는 웹사이트</li>
+<li><a href="https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e">Flutter Layout Cheat Sheet</a> - 플러터 레이아웃 시스템을 익힐 수 있는 미디엄 글</li>
+<li><a href="https://flutter.dev/docs/reference/widgets">Flutter widget index</a> - 플러터 위젯들을 학습할 수 있는 공식 문서</li>
+<li><a href="https://drive.google.com/file/d/1d19SQry7jXwGd-wy3MeXJ35uCoy4veib/view">Learn Google Flutter Fast</a> - 플러터에 대한 오픈BOOK pdf</li>
+<li><a href="https://www.youtube.com/channel/UCYqCZOwHbnPwyjawKfE21wg">Tensor Programming</a> - 플러터 기초부터 중급까지 유튜브 강의[영어]</li>
+<li><a href="https://felangel.github.io/bloc/#/">Bloc Library</a> - 플러터에서 가장 많이 쓰이는 상태 관리 라이브러리</li>
+<li><a href="https://jsonplaceholder.typicode.com/">Json Placeholder</a> - REST API 형태의 가짜 데이터를 제공하는 서비스</li>
+</ul>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-bloc-tools/">Flutter로 개발하기(25) - Bloc 도구</a></li>
+    
+    <li><a href="/posts/flutter-bloc-todos-tutorial/">Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</a></li>
+    
+    <li><a href="/posts/flutter-bloc-tutorials/">Flutter로 개발하기(23) - Bloc 튜토리얼</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

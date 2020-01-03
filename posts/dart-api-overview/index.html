@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/dart-api-overview/" />
+  <link rel="canonical" href="/posts/dart-api-overview/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "서버사이드 Dart(3) - 다트의 주요 라이브러리들",
+      "headline" : "서버사이드 Dart(3) - 다트의 주요 라이브러리들",
+      "description" : "Dart API https:\/\/api.dartlang.org\/stable\/2.2.0\/index.html\n기초가 되는 Dart 라이브러리:\n dart:core: strings, numbers, collections, errors, URIs 같은 코어 기능들이 있다. dart:html: 웹앱을 위한 DOM 조작 기능들이 있다. dart:io: 웹앱이 아닌 앱을 위한 I\/O 기능들이 있다.  dart:core를 제외하고 필요한 라이브러리는 import 해야 한다.\nimport \x26#39;dart:async\x26#39;; import \x26#39;dart:math\x26#39;; [pub 패키지 매니저](pub package manager)에서 더 많은 라이브러리들을 설치할 수 있다.\nLibraries Core dart:async\nFuture, Stream 같은 클래스와 함께 비동기 프로그래밍을 지원하는 기능들이 들어있다.\ndart:collection",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-03 21:16:19 \x2b0000 UTC",
+      "dateModified" : "2019-03-03 21:16:19 \x2b0000 UTC",
+      "url" : "\/posts\/dart-api-overview\/",
+      "keywords" : [ "dart", ]
+  }
+</script>
+<title>서버사이드 Dart(3) - 다트의 주요 라이브러리들 - developer bsscco</title>
+  <meta property="og:title" content="서버사이드 Dart(3) - 다트의 주요 라이브러리들 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Dart API https://api.dartlang.org/stable/2.2.0/index.html
+기초가 되는 Dart 라이브러리:
+ dart:core: strings, numbers, collections, errors, URIs 같은 코어 기능들이 있다. dart:html: 웹앱을 위한 DOM 조작 기능들이 있다. dart:io: 웹앱이 아닌 앱을 위한 I/O 기능들이 있다.  dart:core를 제외하고 필요한 라이브러리는 import 해야 한다.
+import &#39;dart:async&#39;; import &#39;dart:math&#39;; [pub 패키지 매니저](pub package manager)에서 더 많은 라이브러리들을 설치할 수 있다.
+Libraries Core dart:async
+Future, Stream 같은 클래스와 함께 비동기 프로그래밍을 지원하는 기능들이 들어있다.
+dart:collection" />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">서버사이드 Dart(3) - 다트의 주요 라이브러리들</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-03 21:16:19 UTC">
+                03 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="dart-api">Dart API</h1>
+<p><a href="https://api.dartlang.org/stable/2.2.0/index.html">https://api.dartlang.org/stable/2.2.0/index.html</a></p>
+<p>기초가 되는 Dart 라이브러리:</p>
+<ul>
+<li><code>dart:core</code>: strings, numbers, collections, errors, URIs 같은 코어 기능들이 있다.</li>
+<li><code>dart:html</code>: 웹앱을 위한 DOM 조작 기능들이 있다.</li>
+<li><code>dart:io</code>: 웹앱이 아닌 앱을 위한 I/O 기능들이 있다.</li>
+</ul>
+<p><code>dart:core</code>를 제외하고 필요한 라이브러리는 import 해야 한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">dart:async</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">dart:math</span><span style="color:#e6db74">&#39;</span>;
+</code></pre></div><p>[pub 패키지 매니저](pub package manager)에서 더 많은 라이브러리들을 설치할 수 있다.</p>
+<h2 id="libraries">Libraries</h2>
+<h3 id="core">Core</h3>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-async/dart-async-library.html">dart:async</a></strong></p>
+<p>Future, Stream 같은 클래스와 함께 비동기 프로그래밍을 지원하는 기능들이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-collection/dart-collection-library.html">dart:collection</a></strong></p>
+<p><code>dart:core</code>의 collection 클래스를 보충하는 클래스와 유틸이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-convert/dart-convert-library.html">dart:convert</a></strong></p>
+<p>json, utf-8 등 다른 데이터 표현들 사이에 컨버팅을 위한 인코더, 디코더가 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-core/dart-core-library.html">dart:core</a></strong></p>
+<p>빌트인 타입들과 collection, 핵심 기능들이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-developer/dart-developer-library.html">dart:developer</a></strong></p>
+<p>디버거, 인스펙터 같은 개발도구와 인터렉션하는 기능들이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-math/dart-math-library.html">dart:math</a></strong></p>
+<p>수학 상수와 함수들, 랜덤수 발생기가 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></strong></p>
+<p>unsigned 8 byte integer, SIMD numeric type 등 고정사이즈 데이를 효과적으로 다룰 수 있는 list들이 들어있다.</p>
+<h3 id="vm">VM</h3>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-cli/dart-cli-library.html">dart:cli</a></strong></p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-io/dart-io-library.html">dart:io</a></strong></p>
+<p>웹앱이 아닌 앱을 위한 파일, 소켓, HTTP 등의 IO 기능들이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-isolate/dart-isolate-library.html">dart:isolate</a></strong></p>
+<p>isolate를 사용해 병행프로그래밍을 할 수 있다. isolate는 스레드와 달리 isolate 간에 메모리를 공유하지 않고 메시지로만 통신한다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-mirrors/dart-mirrors-library.html">dart:mirrors</a></strong></p>
+<p>Dart의 기초적인 리플렉션 기능들이 들어있다. 리플렉션은 인스펙션과 동적 invocation을 지원한다.</p>
+<h3 id="web">Web</h3>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-html/dart-html-library.html">dart:html</a></strong></p>
+<p>브라우저, DOM과 인터렉션이 필요한 웹앱을 위한 HTML 요소와 기능들이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-indexed_db/dart-indexed_db-library.html">dart:indexed_db</a></strong></p>
+<p>클라이언트에서 쓰는 key-value 저장소에 대한 기능들이 들어있다. 이 저장소는 인덱스를 지원한다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-js/dart-js-library.html">dart:js</a></strong></p>
+<p>자바스크립트를 운용하기 위한 기능들이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-js_util/dart-js_util-library.html">dart:js_util</a></strong></p>
+<p>Utility methods to efficiently manipulate typed JSInterop objects in cases where the name to call is not known at runtime. You should only use these methods when the same effect cannot be achieved with @JS annotations. These methods would be extension methods on JSObject if Dart supported extension methods.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-svg/dart-svg-library.html">dart:svg</a></strong></p>
+<p>SVG포맷을 지원하는 기능들이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-web_audio/dart-web_audio-library.html">dart:web_audio</a></strong></p>
+<p>브라우저에서 높은 수준의 오디오 프래그래밍을 할 수 있는 기능들이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-web_gl/dart-web_gl-library.html">dart:web_gl</a></strong></p>
+<p>브라우저에서 3D 프로그래밍을 할 수 있는 기능들이 들어있다.</p>
+<p><strong><a href="https://api.dartlang.org/stable/2.2.0/dart-web_sql/dart-web_sql-library.html">dart:web_sql</a></strong></p>
+<p>브라우저에서 SQL로 데이터를 저장할 수 있는 기능들이 들어있다.</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/dart-what-is-in-dart-sdk/">서버사이드 Dart(2) - 다트 SDK에 있는 도구들</a></li>
+    
+    <li><a href="/posts/dart-server-side-dart/">서버사이드 Dart(1) - 학습 참고 목록</a></li>
+    
+    <li><a href="/posts/dart-sample-code/">Dart 샘플코드 번역</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

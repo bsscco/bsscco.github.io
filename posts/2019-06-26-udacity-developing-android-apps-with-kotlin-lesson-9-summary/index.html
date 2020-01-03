@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/" />
+  <link rel="canonical" href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약",
+      "headline" : "Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약",
+      "description" : "Lesson 9: Behind the scenes 1. Offline Movie Night 2. Exercise: Introduction offline caching에 대해 배울 거야!\n3. What’s in a Cache 캐시란, 다음에 곧 쓸 데이터를 로컬에 저장해뒀다가 필요할 때 다시 쓰는 것\n우리앱에서 레포지토리 패턴을 써야 하는 이유  앱 실행 시에 다운로드받아 캐시해 사용할 만한 데이터들이 있다. 필터 목록 같은 데이터. 이 데이터를 따로 관리하는 클래스를 두는 것보다, 레포지토리 패턴을 써서 레포지토리 안에서 필요한 데이터만 캐시 시키면 레포지토리를 쓰는 곳에서는 캐시되는 데이터인지 실시간 데이터인지 알 필요 없어서 관심사의 분리가 된다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-06-26 00:00:00 \x2b0000 UTC",
+      "dateModified" : "2019-06-26 00:00:00 \x2b0000 UTC",
+      "url" : "\/posts\/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary\/",
+      "keywords" : [ "android","kotlin", ]
+  }
+</script>
+<title>Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약 - developer bsscco</title>
+  <meta property="og:title" content="Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Lesson 9: Behind the scenes 1. Offline Movie Night 2. Exercise: Introduction offline caching에 대해 배울 거야!
+3. What’s in a Cache 캐시란, 다음에 곧 쓸 데이터를 로컬에 저장해뒀다가 필요할 때 다시 쓰는 것
+우리앱에서 레포지토리 패턴을 써야 하는 이유  앱 실행 시에 다운로드받아 캐시해 사용할 만한 데이터들이 있다. 필터 목록 같은 데이터. 이 데이터를 따로 관리하는 클래스를 두는 것보다, 레포지토리 패턴을 써서 레포지토리 안에서 필요한 데이터만 캐시 시키면 레포지토리를 쓰는 곳에서는 캐시되는 데이터인지 실시간 데이터인지 알 필요 없어서 관심사의 분리가 된다." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-06-26 00:00:00 UTC">
+                26 Jun 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="lesson-9-behind-the-scenes">Lesson 9: Behind the scenes</h1>
+<h2 id="1-offline-movie-night">1. Offline Movie Night</h2>
+<h2 id="2-exercise-introduction">2. Exercise: Introduction</h2>
+<p>offline caching에 대해 배울 거야!</p>
+<h2 id="3-whats-in-a-cache">3. What’s in a Cache</h2>
+<p>캐시란, 다음에 곧 쓸 데이터를 로컬에 저장해뒀다가 필요할 때 다시 쓰는 것</p>
+<p><img src="/2019-06-26/Untitled-65cb43d4-e27c-487d-8850-7ccc9c5d07af.png" alt=""></p>
+<h3 id="-----">우리앱에서 레포지토리 패턴을 써야 하는 이유</h3>
+<ol>
+<li>앱 실행 시에 다운로드받아 캐시해 사용할 만한 데이터들이 있다. 필터 목록 같은 데이터. 이 데이터를 따로 관리하는 클래스를 두는 것보다, 레포지토리 패턴을 써서 레포지토리 안에서 필요한 데이터만 캐시 시키면 레포지토리를 쓰는 곳에서는 캐시되는 데이터인지 실시간 데이터인지 알 필요 없어서 관심사의 분리가 된다.</li>
+<li>네트워크 서비스를 대신해서 테스트할 수 있는 mock을 교체하기 쉽다.</li>
+</ol>
+<p><img src="/2019-06-26/Untitled-140815fb-a316-44ff-858c-10fe2637d17d.png" alt=""></p>
+<p>캐시 인벨리데이션에 대해 생각해야 한다.</p>
+<p><img src="/2019-06-26/Untitled-d536c9ae-e217-4091-a2e1-28d5db8558c7.png" alt=""></p>
+<p>구조화된 데이터를 캐시하기에 적절한 Room DB</p>
+<p><img src="/2019-06-26/Untitled-93eb24f3-a377-4691-a37c-0fdf35865683.png" alt=""></p>
+<p>작은 데이터를 캐시하기에 적절한 SharedPreferences</p>
+<p><img src="/2019-06-26/Untitled-db06a2fa-29fe-4b79-b5e9-5dfd7cc13157.png" alt=""></p>
+<p>이미지나 데이터파일을 캐시하기에 적절한 파일</p>
+<h2 id="4-how-to-store-data">4. How to store data</h2>
+<p><img src="/2019-06-26/Untitled-9ffa5e69-f555-4a04-a038-0a564f06794e.png" alt=""></p>
+<p>네트워크 → Application Code → Database → Notify Application Code → UI</p>
+<h2 id="5-decorating-a-room">5. Decorating a Room</h2>
+<p><img src="/2019-06-26/Untitled-52416e63-4cb0-40a9-ad08-1a4021f27c57.png" alt=""></p>
+<p>VideoDao</p>
+<p><img src="/2019-06-26/Untitled-ab0b8c34-843c-4bda-97ea-284c0a596092.png" alt=""></p>
+<p>Room 메소드 종류</p>
+<h2 id="6-building-a-room">6. Building a Room</h2>
+<p><img src="/2019-06-26/Untitled-81ed769b-2ed2-4c47-af2c-ecaf9f963cae.png" alt=""></p>
+<p><img src="/2019-06-26/Untitled-9bfe0e20-a11f-4c74-8496-e5088614bb7f.png" alt=""></p>
+<p><img src="/2019-06-26/Untitled-6123917f-f798-41e9-9a48-5ba9f902baaf.png" alt=""></p>
+<p>domain object(database) / DTO(network)</p>
+<h2 id="7-exercise-add-a-databasevideo-entity">7. Exercise: Add a DatabaseVideo Entity</h2>
+<pre><code>fun List&lt;DatabaseVideo&gt;.asDomainModel(): List&lt;Video&gt; {
+// DO to DTO
+    return map {
+        Video (
+           url = it.url,
+           title = it.title,
+           description = it.description,
+           updated = it.updated,
+           thumbnail = it.thumbnail)
+    }
+}
+
+fun NetworkVideoContainer.asDatabaseModel(): Array&lt;DatabaseVideo&gt; {
+// DTO to DO
+    return videos.map {
+        DatabaseVideo (
+           title = it.title,
+           description = it.description,
+           url = it.url,
+           updated = it.updated,
+           thumbnail = it.thumbnail)
+    }.toTypedArray()
+}
+</code></pre>
+<h2 id="8-exercise-add-the-videodao">8. Exercise: Add the VideoDao</h2>
+<h2 id="9-exercise-refactor-the-videodao">9. Exercise: Refactor the VideoDao</h2>
+<pre><code>@Dao
+interface VideoDao {
+    @Query(&quot;select * from databasevideo&quot;)
+    fun getVideos(): LiveData&lt;List&lt;DatabaseVideo&gt;&gt;
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(vararg videos: DatabaseVideo)
+}
+</code></pre>
+<h2 id="10-exercise-add-the-videosdatabase">10. Exercise: Add the VideosDatabase</h2>
+<h2 id="11-room-review">11. Room Review</h2>
+<h2 id="12-googler-interview-sumir-kataria">12. Googler Interview: Sumir Kataria</h2>
+<p>work manager</p>
+<h2 id="13-using-a-room">13. Using a Room</h2>
+<p>repository pattern: separation of concerns</p>
+<h2 id="14-exercise-build-a-repository">14. Exercise: Build a Repository</h2>
+<pre><code>class VideosRepository(private val database: VideosDatabase) {
+
+   val videos: LiveData&lt;List&lt;Video&gt;&gt; = Transformations.map(database.videoDao.getVideos()) {
+      it.asDomainModel()
+   }
+
+   suspend fun refreshVideos() {
+       withContext(Dispatchers.IO) {
+           val playlist = Network.devbytes.getPlaylist().await()
+           database.videoDao.insertAll(*playlist.asDatabaseModel())
+                    // *playlist : Array를 vararg로 사용할 수 있게 하는 연산자
+       }
+   }
+}
+</code></pre>
+<h2 id="15-exercise-use-the-repository">15. Exercise: Use the Repository</h2>
+<pre><code>class DevByteViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val viewModelJob = SupervisorJob()
+    private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+    private val database = getDatabase(application)
+    private val videosRepository = VideosRepository(database)
+
+    init {
+        viewModelScope.launch {
+            videosRepository.refreshVideos()
+        }
+    }
+
+    val playlist = videosRepository.videos
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+}
+</code></pre>
+<h2 id="16-video-offline-caching-review">16. Video: Offline Caching Review</h2>
+<h2 id="17-workmanager-for-the-background">17. WorkManager for the background</h2>
+<p><img src="/2019-06-26/Untitled-82fafcc4-1f5e-4dc6-b662-297154e9d89a.png" alt=""></p>
+<p>백그라운드 작업의 종류</p>
+<p><img src="/2019-06-26/Untitled-6b2e629d-2be4-4f5a-adf3-cc2ab512f80a.png" alt=""></p>
+<p>WorkManager의 특징</p>
+<p><img src="/2019-06-26/Untitled-66277db8-9913-4b65-a794-f0d900d5a9f6.png" alt=""></p>
+<p>WorkManager의 실행환경 제약들</p>
+<p><img src="/2019-06-26/Untitled-5a7d6a11-dd89-4ad2-badf-ce57ae11276f.png" alt=""></p>
+<p>Pre-fetching 가이드</p>
+<h2 id="18-exercise-create-a-worker">18. Exercise: Create a Worker</h2>
+<h2 id="19-exercise-schedule-background-work">19. Exercise: Schedule Background Work</h2>
+<p>Appliaction.onCreate 에서 너무 많은 작업을 하면 앱 실행 시 렉이 길어진다! 그래서 이 프로젝트에선 아래와 같이 코딩했음.</p>
+<pre><code>private fun delayedInit() {
+    applicationScope.launch {
+        setupRecurringWork()
+    }
+}
+
+private fun setupRecurringWork() {
+    val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.UNMETERED)
+            .setRequiresBatteryNotLow(true)
+            .setRequiresCharging(true)
+                .apply {
+                if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+                    setRequiresDeviceIdle(true)
+                }
+            }.build()
+
+    val repeatingRequest
+            = PeriodicWorkRequestBuilder&lt;RefreshDataWorker&gt;(1, TimeUnit.DAYS)
+            .setConstraints(constraints)
+            .build()
+
+    WorkManager.getInstance().enqueueUniquePeriodicWork(
+            RefreshDataWorker.WORK_NAME,
+            ExistingPeriodicWorkPolicy.KEEP,
+            repeatingRequest)
+}
+</code></pre>
+<h2 id="20-wrapping-up-caching">20. Wrapping up Caching</h2>
+<h2 id="heading">마치면서</h2>
+<p>Repository.getData → save in database → auto-notified to Repository.LiveData → ViewModel has Repository.LiveData → Fragment has observed ViewModel.LiveData</p>
+<p>매우 깔끔한 캐싱 전략! 심지어</p>
+<p>WorkManager를 사용한 프리패칭까지!</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/">Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약</a></li>
+    
+    <li><a href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/">Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약</a></li>
+    
+    <li><a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/">Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

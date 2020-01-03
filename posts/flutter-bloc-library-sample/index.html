@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-bloc-library-sample/" />
+  <link rel="canonical" href="/posts/flutter-bloc-library-sample/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(21) - Bloc패턴 샘플",
+      "headline" : "Flutter로 개발하기(21) - Bloc패턴 샘플",
+      "description" : "bloc_library sample 참고 예제: https:\/\/github.com\/brianegan\/flutter_architecture_samples\/tree\/master\/bloc_library\n이 샘플은 상태관리를 위해 bloc과 flutter_bloc 라이브러리를 사용했습니다. 더 자세한 내용과 튜토리얼은 bloc library document를 확인하세요.\n핵심 개념  상태를 위로 올리기  여러 위젯에서 같은 bloc이 필요할 땐 공통의 조상 위젯에 BlocProvider를 사용합니다.   Events는 bloc의 입력입니다.  이들은 일반적으로 버튼 누르기와 같은 유저 인터렉션 또는 페이지 로드 같은 라이프사이클 이벤트로 디스패치됩니다.   States는 bloc의 출력이며 앱 상태의 한 부분을 대표합니다.  컴포넌트들은 상태를 공지 받을 수 있고 그 상태에 의해 다시 그려질 수 있습니다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-23 09:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-23 09:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-bloc-library-sample\/",
+      "keywords" : [ "flutter","bloc pattern", ]
+  }
+</script>
+<title>Flutter로 개발하기(21) - Bloc패턴 샘플 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(21) - Bloc패턴 샘플 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="bloc_library sample 참고 예제: https://github.com/brianegan/flutter_architecture_samples/tree/master/bloc_library
+이 샘플은 상태관리를 위해 bloc과 flutter_bloc 라이브러리를 사용했습니다. 더 자세한 내용과 튜토리얼은 bloc library document를 확인하세요.
+핵심 개념  상태를 위로 올리기  여러 위젯에서 같은 bloc이 필요할 땐 공통의 조상 위젯에 BlocProvider를 사용합니다.   Events는 bloc의 입력입니다.  이들은 일반적으로 버튼 누르기와 같은 유저 인터렉션 또는 페이지 로드 같은 라이프사이클 이벤트로 디스패치됩니다.   States는 bloc의 출력이며 앱 상태의 한 부분을 대표합니다.  컴포넌트들은 상태를 공지 받을 수 있고 그 상태에 의해 다시 그려질 수 있습니다." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(21) - Bloc패턴 샘플</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-23 09:51:41 UTC">
+                23 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="bloc-library-sample">bloc_library sample</h1>
+<p>참고 예제: <a href="https://github.com/brianegan/flutter_architecture_samples/tree/master/bloc_library">https://github.com/brianegan/flutter_architecture_samples/tree/master/bloc_library</a></p>
+<p>이 샘플은 상태관리를 위해 <a href="https://pub.dartlang.org/packages/bloc">bloc</a>과 <a href="https://pub.dartlang.org/packages/flutter_bloc">flutter_bloc</a> 라이브러리를 사용했습니다.
+더 자세한 내용과 튜토리얼은 <a href="https://felangel.github.io/bloc">bloc library document</a>를 확인하세요.</p>
+<h2 id="-">핵심 개념</h2>
+<ul>
+<li>상태를 위로 올리기
+<ul>
+<li>여러 위젯에서 같은 bloc이 필요할 땐 공통의 조상 위젯에 <code>BlocProvider</code>를 사용합니다.</li>
+</ul>
+</li>
+<li><code>Events</code>는 bloc의 입력입니다.
+<ul>
+<li>이들은 일반적으로 버튼 누르기와 같은 유저 인터렉션 또는 페이지 로드 같은 라이프사이클 이벤트로 디스패치됩니다.</li>
+</ul>
+</li>
+<li><code>States</code>는 bloc의 출력이며 앱 상태의 한 부분을 대표합니다.
+<ul>
+<li>컴포넌트들은 상태를 공지 받을 수 있고 그 상태에 의해 다시 그려질 수 있습니다.</li>
+</ul>
+</li>
+<li>한 상태에서 다른 상태로 바뀌는 것을 <code>Transition</code>이라고 부릅니다.
+<ul>
+<li><code>Transition</code>은 현재 상태, 이벤트, 다음 상태로 구성됩니다.</li>
+</ul>
+</li>
+<li>bloc은 들어오는 <code>Events</code> 스트림을 나가는 <code>States</code> 스트림으로 변환합니다.</li>
+</ul>
+<h2 id="--">앱 상태 갱신하기</h2>
+<p>모든 bloc은 <code>dispatch</code> 메소드를 가집니다. <code>Dispatch</code>는 이벤트를 취해서 <code>mapEventToState</code>를 트리거합니다. Dispatch는 새로운 이벤트를 bloc에게 알리고 상태 변경을 트리거 합니다.</p>
+<h2 id="bloc---">Bloc 사이에서 데이터 공유하기</h2>
+<p>이 샘플에서 <code>FilteredTodosBloc</code>은 <code>TodosBloc</code>을 의존합니다. <code>TodosBloc</code>의 변경에 의해 filtered todos도 갱신됩니다. 이 접근은 어떻게 우리가 다른 bloc들로부터 bloc들을 구성해서 반응형 앱을 빌드할 수 있는지 설명합니다. 앱이 시작되면 <code>TodosBloc</code>은 todos를 레포지토리로부터 공급받고, 그 순간부터 모든 todos의 변경은 <code>TodosBloc</code>을 통해 실행됩니다. 이는 변경사항을 비동기적으로 영속화합니다. <code>FilteredTodosBloc</code>은 <code>TodosBloc</code> 상태 변경들을 감지해 filtered todos를 갱신합니다.</p>
+<h2 id="ui-">UI 갱신하기</h2>
+<p><code>BlocBuilder</code>는 bloc과 빌더함수가 요구되는 플러터 위젯입니다. <code>BlocBuilder</code>는 새로운 상태에 대해 위젯을 빌드합니다. <code>BlocBuilder</code>는 <code>StreamBuilder</code>와 비슷하지만 중복코드를 감소시켜주고 불필요한 리빌드를 피할 수 있도록 최적화되어 있습니다.</p>
+<h2 id="heading">테스트하기</h2>
+<p>일반적으로 이 앱은 &ldquo;테스팅 피라미드: 많은 유닛테스트, 보다 적은 위젯테스트, 보다 적은 통합테스트&quot;를 준수합니다.</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-list-of-state-management-approaches/">Flutter로 개발하기(18) - 상태관리 접근법들</a></li>
+    
+    <li><a href="/posts/flutter-simple-app-state-management/">Flutter로 개발하기(17) - 간단한 상태관리 앱</a></li>
+    
+    <li><a href="/posts/flutter-state-management/">Flutter로 개발하기(16) - 상태 관리</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

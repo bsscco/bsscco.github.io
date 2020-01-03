@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/2019-10-06-using-network-image-efficiently/" />
+  <link rel="canonical" href="/posts/2019-10-06-using-network-image-efficiently/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "네트워크 이미지를 효율적으로 사용하기",
+      "headline" : "네트워크 이미지를 효율적으로 사용하기",
+      "description" : "네트워크 이미지를 효율적으로 사용하기 리사이징 방법 1. 서버로부터 리사이징된 이미지를 다운로드 받는다.\n예) https:\/\/image.ohou.se\/image\/central_crop\/bucketplace-v2-development\/xxxxxxx.jpg\/{가로px}\/{세로px}\n장점 : 네트워크 통신리소스 감소\n2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.\n예) Glide.override()\n장점 : 비트맵용 앱메모리 감소\noverride()를 호출하지 않아도 되는 경우\n내려받은 이미지가 ImageView로 들어갈 때 Gide가 Bitmap 사이즈를 ImageView의 사이즈 만큼 자동으로 맞춰줌!\noverride()를 호출해야 하는 경우\nImageView의 가로세로 사이즈가 모두 WrapContent인 경우엔 자동으로 맞춰주지 않음!",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-10-06 00:00:00 \x2b0000 UTC",
+      "dateModified" : "2019-10-06 00:00:00 \x2b0000 UTC",
+      "url" : "\/posts\/2019-10-06-using-network-image-efficiently\/",
+      "keywords" : [ "android", ]
+  }
+</script>
+<title>네트워크 이미지를 효율적으로 사용하기 - developer bsscco</title>
+  <meta property="og:title" content="네트워크 이미지를 효율적으로 사용하기 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="네트워크 이미지를 효율적으로 사용하기 리사이징 방법 1. 서버로부터 리사이징된 이미지를 다운로드 받는다.
+예) https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}
+장점 : 네트워크 통신리소스 감소
+2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.
+예) Glide.override()
+장점 : 비트맵용 앱메모리 감소
+override()를 호출하지 않아도 되는 경우
+내려받은 이미지가 ImageView로 들어갈 때 Gide가 Bitmap 사이즈를 ImageView의 사이즈 만큼 자동으로 맞춰줌!
+override()를 호출해야 하는 경우
+ImageView의 가로세로 사이즈가 모두 WrapContent인 경우엔 자동으로 맞춰주지 않음!" />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">네트워크 이미지를 효율적으로 사용하기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-10-06 00:00:00 UTC">
+                06 Oct 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h2 id="---">네트워크 이미지를 효율적으로 사용하기</h2>
+<h3 id="-">리사이징 방법</h3>
+<p><strong>1. 서버로부터 리사이징된 이미지를 다운로드 받는다.</strong></p>
+<p><strong>예)</strong> <a href="https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/%7B%EA%B0%80%EB%A1%9Cpx%7D/%7B%EC%84%B8%EB%A1%9Cpx%7D">https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}</a></p>
+<p><strong>장점 :</strong> 네트워크 통신리소스 감소</p>
+<p><strong>2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.</strong></p>
+<p><strong>예)</strong> Glide.override()</p>
+<p><strong>장점 :</strong> 비트맵용 앱메모리 감소</p>
+<p><strong>override()를 호출하지 않아도 되는 경우</strong></p>
+<p>내려받은 이미지가 ImageView로 들어갈 때 Gide가 Bitmap 사이즈를 ImageView의 사이즈 만큼 자동으로 맞춰줌!</p>
+<p><strong>override()를 호출해야 하는 경우</strong></p>
+<p>ImageView의 가로세로 사이즈가 모두 WrapContent인 경우엔 자동으로 맞춰주지 않음!</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/">Udacity Developing Android Apps with Kotlin 레슨10 Designing for Everyone 요약</a></li>
+    
+    <li><a href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/">Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</a></li>
+    
+    <li><a href="/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/">Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

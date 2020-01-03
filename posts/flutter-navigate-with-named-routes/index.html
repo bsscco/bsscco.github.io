@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-navigate-with-named-routes/" />
+  <link rel="canonical" href="/posts/flutter-navigate-with-named-routes/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(08) - named route를 통해 화면 관리하기",
+      "headline" : "Flutter로 개발하기(08) - named route를 통해 화면 관리하기",
+      "description" : "Navigate with named routes https:\/\/flutter.dev\/docs\/cookbook\/navigation\/named-routes\n만약 여러 곳에서 같은 화면으로 navigate 해야 할 때 매번 Route 코드를 추가해야 하는 중복이 발생할 수 있습니다. 이 문제를 해결해주는 게 \x26ldquo;named route\x26quot;입니다. named route로 navigate를 하려면 Navigator.pushNamed()를 이용해야 합니다.\n1. 두 화면 만들기 class FirstScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(\x26#39;첫 번째 화면\x26#39;), ), body: Center( child: RaisedButton( child: Text(\x26#39;새 화면 실행하기\x26#39;), onPressed: () { }, ), ), ); } } class SecondScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(\x26#34;두 번째 화면\x26#34;), ), body: Center( child: RaisedButton( onPressed: () { }, child: Text(\x26#39;돌아가기\x26#39;), ), ), ); } } 2.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-16 18:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-16 18:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-navigate-with-named-routes\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(08) - named route를 통해 화면 관리하기 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(08) - named route를 통해 화면 관리하기 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Navigate with named routes https://flutter.dev/docs/cookbook/navigation/named-routes
+만약 여러 곳에서 같은 화면으로 navigate 해야 할 때 매번 Route 코드를 추가해야 하는 중복이 발생할 수 있습니다. 이 문제를 해결해주는 게 &ldquo;named route&quot;입니다. named route로 navigate를 하려면 Navigator.pushNamed()를 이용해야 합니다.
+1. 두 화면 만들기 class FirstScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;첫 번째 화면&#39;), ), body: Center( child: RaisedButton( child: Text(&#39;새 화면 실행하기&#39;), onPressed: () { }, ), ), ); } } class SecondScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#34;두 번째 화면&#34;), ), body: Center( child: RaisedButton( onPressed: () { }, child: Text(&#39;돌아가기&#39;), ), ), ); } } 2." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(08) - named route를 통해 화면 관리하기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-16 18:51:41 UTC">
+                16 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="navigate-with-named-routes">Navigate with named routes</h1>
+<p><a href="https://flutter.dev/docs/cookbook/navigation/named-routes">https://flutter.dev/docs/cookbook/navigation/named-routes</a></p>
+<p>만약 여러 곳에서 같은 화면으로 navigate 해야 할 때 매번 Route 코드를 추가해야 하는 중복이 발생할 수 있습니다. 이 문제를 해결해주는 게 &ldquo;named route&quot;입니다. named route로 navigate를 하려면 Navigator.pushNamed()를 이용해야 합니다.</p>
+<h2 id="1---">1. 두 화면 만들기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FirstScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">첫 번째 화면</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">새 화면 실행하기</span><span style="color:#e6db74">&#39;</span>),
+          onPressed: () {
+          },
+        ),
+      ),
+    );
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SecondScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">두 번째 화면</span><span style="color:#e6db74">&#34;</span>),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+          },
+          child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">돌아가기</span><span style="color:#e6db74">&#39;</span>),
+        ),
+      ),
+    );
+  }
+}
+</code></pre></div><h2 id="2-route-">2. Route들 정의하기</h2>
+<p>MaterialApp 위젯의 속성들 중 initialRoute 속성은 앱의 시작 Route를 설정하게 해줍니다. routes 속성은 앱에서 사용가능한 Route들을 설정하게 해줍니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">MaterialApp(
+  <span style="color:#75715e">// 앱은 &#39;/&#39; named route에서 시작됩니다. 이 예제에서는 FirstScreen이 &#39;/&#39;가 될 것입니다.
+</span><span style="color:#75715e"></span>  initialRoute: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/</span><span style="color:#e6db74">&#39;</span>,
+  routes: {
+    <span style="color:#75715e">// &#39;/&#39;와 FirstScreen을 매치시킵니다.
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">:</span> (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> FirstScreen(),
+    <span style="color:#75715e">// &#39;/second&#39;와 SecondScreen을 매치시킵니다.
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/second</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">:</span> (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> SecondScreen(),
+  },
+);
+</code></pre></div><p>initialRoute 속성을 사용할 때는 home 속성을 사용하지 말아야 합니다.</p>
+<h2 id="3----">3. 두 번째 화면으로 이동하기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// in FirstScreen
+</span><span style="color:#75715e"></span>onPressed: () {
+  Navigator.pushNamed(context, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/second</span><span style="color:#e6db74">&#39;</span>);
+}
+</code></pre></div><h2 id="4----">4. 첫 번째 화면으로 돌아오기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// in SecondScreen
+</span><span style="color:#75715e"></span>onPressed: () {
+  Navigator.pop(context);
+}
+</code></pre></div><h2 id="--">완전한 예제 코드</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/material.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">void</span> main() {
+  runApp(MaterialApp(
+    title: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Named Routes Demo</span><span style="color:#e6db74">&#39;</span>,
+    initialRoute: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/</span><span style="color:#e6db74">&#39;</span>,
+    routes: {
+      <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">:</span> (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> FirstScreen(),
+      <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/second</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">:</span> (context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> SecondScreen(),
+    },
+  ));
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FirstScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">First Screen</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Launch screen</span><span style="color:#e6db74">&#39;</span>),
+          onPressed: () {
+            Navigator.pushNamed(context, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/second</span><span style="color:#e6db74">&#39;</span>);
+          },
+        ),
+      ),
+    );
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SecondScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Second Screen</span><span style="color:#e6db74">&#34;</span>),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Go back!</span><span style="color:#e6db74">&#39;</span>),
+        ),
+      ),
+    );
+  }
+}
+</code></pre></div><p><img src="https://flutter.dev/images/cookbook/navigation-basics.gif" alt="navigation-basics.gif"></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-return-data-from-a-screen/">Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기</a></li>
+    
+    <li><a href="/posts/flutter-send-data-to-a-new-screen/">Flutter로 개발하기(06) - 새 화면에 데이터 넘기기</a></li>
+    
+    <li><a href="/posts/flutter-navigate-to-a-new-screen-and-back/">Flutter로 개발하기(05) - 새로운 화면 열기</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

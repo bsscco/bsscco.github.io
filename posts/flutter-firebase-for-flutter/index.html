@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-firebase-for-flutter/" />
+  <link rel="canonical" href="/posts/flutter-firebase-for-flutter/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스",
+      "headline" : "Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스",
+      "description" : "Flutter를 위한 Firebase\nhttps:\/\/codelabs.developers.google.com\/codelabs\/flutter-firebase\/index.html\n 프로젝트 소스 : https:\/\/github.com\/bsscco\/baby_name_votes 눈에 띄는 내용  named 생성자를 지원한다.   class Record { final String name; final int votes; Record.fromMap(Map\x26lt;String, dynamic\x26gt; map) : assert(map[\x26#39;name\x26#39;] != null), assert(map[\x26#39;votes\x26#39;] != null), name = map[\x26#39;name\x26#39;], votes = map[\x26#39;votes\x26#39;]; }    StreamBuilder는 인자를 통해 받은 스트림이 변경되면 다시 빌드하는 기능을 한다.   Widget _buildBody(BuildContext context) { return StreamBuilder\x26lt;QuerySnapshot\x26gt;( stream: Firestore.instance.collection(\x26#39;baby\x26#39;).snapshots(), builder: (context, snapshot) { if (!",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-02-16 15:41:07 \x2b0000 UTC",
+      "dateModified" : "2019-02-16 15:41:07 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-firebase-for-flutter\/",
+      "keywords" : [ "flutter","firebase", ]
+  }
+</script>
+<title>Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스 - developer bsscco</title>
+  <meta property="og:title" content="Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Flutter를 위한 Firebase
+https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html
+ 프로젝트 소스 : https://github.com/bsscco/baby_name_votes 눈에 띄는 내용  named 생성자를 지원한다.   class Record { final String name; final int votes; Record.fromMap(Map&lt;String, dynamic&gt; map) : assert(map[&#39;name&#39;] != null), assert(map[&#39;votes&#39;] != null), name = map[&#39;name&#39;], votes = map[&#39;votes&#39;]; }    StreamBuilder는 인자를 통해 받은 스트림이 변경되면 다시 빌드하는 기능을 한다.   Widget _buildBody(BuildContext context) { return StreamBuilder&lt;QuerySnapshot&gt;( stream: Firestore.instance.collection(&#39;baby&#39;).snapshots(), builder: (context, snapshot) { if (!" />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-02-16 15:41:07 UTC">
+                16 Feb 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <p>Flutter를 위한 Firebase</p>
+<p><a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html">https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html</a></p>
+<ul>
+<li>프로젝트 소스 : <a href="https://github.com/bsscco/baby_name_votes">https://github.com/bsscco/baby_name_votes</a></li>
+<li>눈에 띄는 내용
+<ul>
+<li>named 생성자를 지원한다.
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Record</span> {
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> name;
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> votes;
+  Record.fromMap(Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>, <span style="color:#66d9ef">dynamic</span><span style="color:#f92672">&gt;</span> map)
+    <span style="color:#f92672">:</span> <span style="color:#66d9ef">assert</span>(map[<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">name</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>),
+      <span style="color:#66d9ef">assert</span>(map[<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">votes</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>),
+      name <span style="color:#f92672">=</span> map[<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">name</span><span style="color:#e6db74">&#39;</span>],
+      votes <span style="color:#f92672">=</span> map[<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">votes</span><span style="color:#e6db74">&#39;</span>];
+}
+</code></pre></div></li>
+</ul>
+</li>
+<li>StreamBuilder는 인자를 통해 받은 스트림이 변경되면 다시 빌드하는 기능을 한다.
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Widget _buildBody(BuildContext context) {
+  <span style="color:#66d9ef">return</span> StreamBuilder<span style="color:#f92672">&lt;</span>QuerySnapshot<span style="color:#f92672">&gt;</span>(
+    stream: Firestore.instance.collection(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">baby</span><span style="color:#e6db74">&#39;</span>).snapshots(),
+    builder: (context, snapshot) {
+      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>snapshot.hasData) {
+        <span style="color:#66d9ef">return</span> LinearProgressIndicator();
+      }
+      <span style="color:#66d9ef">return</span> _buildList(context, snapshot.data.documents);
+    },
+  );
+}
+</code></pre></div></li>
+</ul>
+</li>
+<li>Firestore의 Transaction기능을 사용하면 Firestore로부터 순서가 보장되는 transaction을 가져와서 document를 갱신할 수 있다. 아마 이 transaction들은 수많은 기기에서 동시에 실행되는 상황을 대비해서 바로 실행되지 않고 Firestore 내부에 있는 큐에 담긴 다음에 순차적으로 실행되지 않을까 추측한다.</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-build-beautiful-ui-with-flutter/">Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

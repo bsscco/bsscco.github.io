@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/dart-effective-dart-4/" />
+  <link rel="canonical" href="/posts/dart-effective-dart-4/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "이펙티브 Dart(4) - 사용성 가이드",
+      "headline" : "이펙티브 Dart(4) - 사용성 가이드",
+      "description" : "Effective Dart: Usage https:\/\/www.dartlang.org\/guides\/language\/effective-dart\/usage\n  Libraries\n DO part of 지시어에서 URI를 사용해라. DON’T 다른 패키지의 src 디렉토리를 가지고 있는 라이브러리는 import 하지 마라. PREFER relative paths when importing libraries within your own package’s lib directory.    Strings   Collections   Functions   Parameters   Variables   Merbers   Constructors   Error handling   Asynchrony   Libraries DO use strings in part of directives.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-02 22:05:06 \x2b0000 UTC",
+      "dateModified" : "2019-03-02 22:05:06 \x2b0000 UTC",
+      "url" : "\/posts\/dart-effective-dart-4\/",
+      "keywords" : [ "dart", ]
+  }
+</script>
+<title>이펙티브 Dart(4) - 사용성 가이드 - developer bsscco</title>
+  <meta property="og:title" content="이펙티브 Dart(4) - 사용성 가이드 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Effective Dart: Usage https://www.dartlang.org/guides/language/effective-dart/usage
+  Libraries
+ DO part of 지시어에서 URI를 사용해라. DON’T 다른 패키지의 src 디렉토리를 가지고 있는 라이브러리는 import 하지 마라. PREFER relative paths when importing libraries within your own package’s lib directory.    Strings   Collections   Functions   Parameters   Variables   Merbers   Constructors   Error handling   Asynchrony   Libraries DO use strings in part of directives." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">이펙티브 Dart(4) - 사용성 가이드</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-02 22:05:06 UTC">
+                02 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <p>Effective Dart: Usage
+<a href="https://www.dartlang.org/guides/language/effective-dart/usage">https://www.dartlang.org/guides/language/effective-dart/usage</a></p>
+<ul>
+<li>
+<p><a href="/2019/03/02/effective-dart-4/#Libraries">Libraries</a></p>
+<ul>
+<li><strong>DO</strong> <code>part of</code> 지시어에서 URI를 사용해라.</li>
+<li><strong>DON’T</strong> 다른 패키지의 src 디렉토리를 가지고 있는 라이브러리는 import 하지 마라.</li>
+<li><strong>PREFER</strong> relative paths when importing libraries within your own package’s lib directory.</li>
+</ul>
+</li>
+<li>
+<h2 id="strings20190302effective-dart-4strings"><a href="/2019/03/02/effective-dart-4/#Strings">Strings</a></h2>
+</li>
+<li>
+<h2 id="collections20190302effective-dart-4collections"><a href="/2019/03/02/effective-dart-4/#Collections">Collections</a></h2>
+</li>
+<li>
+<h2 id="functions20190302effective-dart-4functions"><a href="/2019/03/02/effective-dart-4/#Functions">Functions</a></h2>
+</li>
+<li>
+<h2 id="parameters20190302effective-dart-4parameters"><a href="/2019/03/02/effective-dart-4/#Parameters">Parameters</a></h2>
+</li>
+<li>
+<h2 id="variables20190302effective-dart-4variables"><a href="/2019/03/02/effective-dart-4/#Variables">Variables</a></h2>
+</li>
+<li>
+<h2 id="merbers20190302effective-dart-4members"><a href="/2019/03/02/effective-dart-4/#Members">Merbers</a></h2>
+</li>
+<li>
+<h2 id="constructors20190302effective-dart-4constructors"><a href="/2019/03/02/effective-dart-4/#Constructors">Constructors</a></h2>
+</li>
+<li>
+<h2 id="error-handling20190302effective-dart-4error-handling"><a href="/2019/03/02/effective-dart-4/#Error-handling">Error handling</a></h2>
+</li>
+<li>
+<h2 id="asynchrony20190302effective-dart-4asynchrony"><a href="/2019/03/02/effective-dart-4/#Asynchrony">Asynchrony</a></h2>
+</li>
+</ul>
+<h2 id="libraries">Libraries</h2>
+<h5 id="do-use-strings-in-part-of-directives"><strong>DO</strong> use strings in part of directives.</h5>
+<p><code>part of</code> 지시어에서 URI를 사용해라. <code>part of</code>에 URI 대신에 라이브러리 이름을 지정하면 툴이 메인 라이브러리 파일을 찾기 어려워지기 때문이다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// 본체 파일
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">library</span> my_library;
+
+<span style="color:#66d9ef">part</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">some/other/file.dart</span><span style="color:#e6db74">&#34;</span>;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// 일부분을 담당하는 파일
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">part of</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">../../my_library.dart</span><span style="color:#e6db74">&#34;</span>; <span style="color:#75715e">// (O)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">part of</span> my_library; <span style="color:#75715e">// (X)
+</span></code></pre></div><h5 id="dont-import-libraries-that-are-inside-the-src-directory-of-another-package"><strong>DON’T</strong> import libraries that are inside the src directory of another package.</h5>
+<p>다른 패키지의 src 디렉토리를 가지고 있는 라이브러리는 import 하지 마라. src 디렉토리를 가지고 있는 라이브러리는 소스코드들이 유지보수자들에 의해 언제든 바뀔 수 있기 때문에 안전하지 않다.</p>
+<h5 id="prefer-relative-paths-when-importing-libraries-within-your-own-packages-lib-directory"><strong>PREFER</strong> relative paths when importing libraries within your own package’s lib directory.</h5>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/dart-effective-dart-3/">이펙티브 Dart(3) - 문서화 가이드</a></li>
+    
+    <li><a href="/posts/dart-effective-dart-2/">이펙티브 Dart(2) - 스타일 가이드</a></li>
+    
+    <li><a href="/posts/dart-effective-dart-1/">이펙티브 Dart(1) - 개요</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

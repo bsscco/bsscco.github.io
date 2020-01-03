@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/" />
+  <link rel="canonical" href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약",
+      "headline" : "Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약",
+      "description" : "Lesson 6: App Architecture (Persistence) 1. Wake Up, Aleks! 2. Introduction  Room Database DAO Application Architecture with Room Coroutines  Room  3. SQLite Primer SQLite 문법에 대한 간단 설명\n4. Designing Entities Room DB layer 구조\n5. Exercise: Creating the SleepNight Entity data class를 사용해 Entity 클래스 만들기\n6. Data Access Object (DAO) DAO 어노테이션의 종류\n7. Exercise: DAO - SleepDatabaseDao DAO 클래스 만들기\n8. Creating a Room Database Room DB를 만드는 순서",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-06-12 00:00:01 \x2b0000 UTC",
+      "dateModified" : "2019-06-12 00:00:01 \x2b0000 UTC",
+      "url" : "\/posts\/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary\/",
+      "keywords" : [ "android","kotlin", ]
+  }
+</script>
+<title>Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약 - developer bsscco</title>
+  <meta property="og:title" content="Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Lesson 6: App Architecture (Persistence) 1. Wake Up, Aleks! 2. Introduction  Room Database DAO Application Architecture with Room Coroutines  Room  3. SQLite Primer SQLite 문법에 대한 간단 설명
+4. Designing Entities Room DB layer 구조
+5. Exercise: Creating the SleepNight Entity data class를 사용해 Entity 클래스 만들기
+6. Data Access Object (DAO) DAO 어노테이션의 종류
+7. Exercise: DAO - SleepDatabaseDao DAO 클래스 만들기
+8. Creating a Room Database Room DB를 만드는 순서" />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-06-12 00:00:01 UTC">
+                12 Jun 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="lesson-6-app-architecture-persistence">Lesson 6: App Architecture (Persistence)</h1>
+<h2 id="1-wake-up-aleks">1. Wake Up, Aleks!</h2>
+<h2 id="2-introduction">2. Introduction</h2>
+<ul>
+<li>Room Database</li>
+<li>DAO</li>
+<li>Application Architecture with Room</li>
+<li>Coroutines</li>
+</ul>
+<h1 id="room">Room</h1>
+<hr>
+<h2 id="3-sqlite-primer">3. SQLite Primer</h2>
+<p>SQLite 문법에 대한 간단 설명</p>
+<h2 id="4-designing-entities">4. Designing Entities</h2>
+<p><img src="/2019-06-12/Untitled-28e707d7-0703-4e42-b08c-c832f51b8a08.png" alt=""></p>
+<p>Room DB layer 구조</p>
+<h2 id="5-exercise-creating-the-sleepnight-entity">5. Exercise: Creating the SleepNight Entity</h2>
+<p><img src="/2019-06-12/Untitled-378777d8-8daf-488b-95e7-7b5cc17a0182.png" alt=""></p>
+<p>data class를 사용해 Entity 클래스 만들기</p>
+<h2 id="6-data-access-object-dao">6. Data Access Object (DAO)</h2>
+<p><img src="/2019-06-12/Untitled-b4c160a9-fb7b-4bf3-b70f-6d0355a727fb.png" alt=""></p>
+<p>DAO 어노테이션의 종류</p>
+<h2 id="7-exercise-dao---sleepdatabasedao">7. Exercise: DAO - SleepDatabaseDao</h2>
+<p><img src="/2019-06-12/Untitled-915fbc8d-7ed7-4dd5-bf30-138b10dcea78.png" alt=""></p>
+<p>DAO 클래스 만들기</p>
+<h2 id="8-creating-a-room-database">8. Creating a Room Database</h2>
+<p><img src="/2019-06-12/Untitled-98fd58a9-18f3-41fa-a743-0e54463f7a0c.png" alt=""></p>
+<p>Room DB를 만드는 순서</p>
+<h2 id="9-exercise-creating-a-room-database">9. Exercise: Creating a Room Database</h2>
+<pre><code>@Database(entities = [SleepNight::class], version = 1, exportSchema = false)
+abstract class SleepDatabase : RoomDatabase() {
+
+abstract val sleepDatabaseDao: SleepDatabaseDao
+
+companion object {
+
+    @Volatile
+    private var INSTANCE: SleepDatabase? = null
+
+    fun getInstance(context: Context): SleepDatabase {
+        synchronized(this) {
+            var instance = INSTANCE 
+
+            if (instance == null) {
+                instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        SleepDatabase::class.java,
+                        &quot;sleep_history_database&quot;
+                )
+                        .fallbackToDestructiveMigration()
+                        .build()
+                INSTANCE = instance
+            }
+            return instance
+        }
+     }
+  }
+}
+</code></pre>
+<ul>
+<li>exportScheme는 기본이 true이고, true일 때 스키마파일을 폴더에 저장시킨다고 한다.</li>
+<li>@Volatile의 의미 : <a href="https://woovictory.github.io/2019/01/04/Android-What-is-Singleton-Pattern/">https://woovictory.github.io/2019/01/04/Android-What-is-Singleton-Pattern</a>
+<ul>
+<li>synchronized 블록으로 감쌌더라도 INSTANCE의 null값이 스레드 캐시에 저장돼있는 상태라면, 다른 스레드에서 먼저 INSTANCE에 DB인스턴스를 대입했더라도 스레드 캐시에 있는 null값을 사용할 확률이 있다. INSTANCE를 volatile로 선언해서 항상 메인 메모리에서 읽어오도록 하면 스레드 캐시에 저장했을 때 발생하는 문제를 예방할 수 있다.</li>
+</ul>
+</li>
+<li>.fallbackToDestructiveMigration() 옵션은 DB 버전이 올라갔을 때 DB 데이터를 제거하고 DB를 새로 만든다.</li>
+</ul>
+<h2 id="10-testing-the-room-database">10. Testing the Room Database</h2>
+<pre><code>@RunWith(AndroidJUnit4::class)
+class SleepDatabaseTest {ㅇ
+
+    private lateinit var sleepDao: SleepDatabaseDao
+    private lateinit var db: SleepDatabase
+
+    @Before
+    fun createDb() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        // Using an in-memory database because the information stored here disappears when the
+        // process is killed.
+        db = Room.inMemoryDatabaseBuilder(context, SleepDatabase::class.java)
+                // Allowing main thread queries, just for testing.
+                .allowMainThreadQueries()
+                .build()
+        sleepDao = db.sleepDatabaseDao
+    }
+
+    @After
+    @Throws(IOException::class)
+    fun closeDb() {
+        db.close()
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun insertAndGetNight() {
+        val night = SleepNight()
+        sleepDao.insert(night)
+        val tonight = sleepDao.getTonight()
+        assertEquals(tonight?.sleepQuality, -1)
+    }
+}
+</code></pre>
+<p>Room 유닛테스트는 쿼리 테스트용으로 좋을 것 같다.</p>
+<h2 id="11-displaying-sleep-data">11. Displaying Sleep Data</h2>
+<p>메인 액티비티 레이아웃과 두 프래그먼트 레이아웃을 살펴봄.</p>
+<p><!-- raw HTML omitted --> 태그 : <!-- raw HTML omitted -->는 루트 레이아웃이 꼭 있어야 하는데, <!-- raw HTML omitted -->는 루트 레이아웃이 필요 없다. 다른 레이아웃에 삽입될 때 <!-- raw HTML omitted --> 태그는 사라지고 자식태그들만 붙여진다.</p>
+<h2 id="12-adding-a-viewmodel">12. Adding A ViewModel</h2>
+<p>비지니스 로직은 ViewModel로 구현하고, DB 명령은 coroutines를 사용해 백그라운드 스레드로 실행할 것이라고 함.</p>
+<h2 id="13-exercise-adding-a-viewmodel">13. Exercise: Adding a ViewModel</h2>
+<p>ViewModel과 ViewModelFactory를 구현하고 ViewModel을 레이아웃 파일에 연결함.</p>
+<h1 id="coroutines">Coroutines</h1>
+<hr>
+<h2 id="14-multithreading-and-coroutines">14. Multithreading and Coroutines</h2>
+<p><img src="/2019-06-12/Untitled-1f06d69e-6537-410e-a454-a1d3ecf8398a.png" alt=""></p>
+<p>코루틴의 특징</p>
+<p><img src="/2019-06-12/Untitled-929eff06-cd7a-4c00-b491-e90d3936b29a.png" alt=""></p>
+<p>코루틴을 쓰려면 필요한 것들</p>
+<p><img src="/2019-06-12/Untitled-eb3308c9-b2dc-4f12-a9b2-473e5861cbc9.png" alt=""></p>
+<p><a href="https://twitter.com/akarnokd/status/979732723152687106">https://twitter.com/akarnokd/status/979732723152687106</a></p>
+<h2 id="15-exercise-coroutines-for-long-running-operations">15. Exercise: Coroutines for Long-running Operations</h2>
+<pre><code>private var viewModelJob = Job() // 이 ViewModel의 모든 코루틴을 취소시킬 수 있는 객체
+</code></pre>
+<h3 id="scope---">Scope 개념 잘 모르겠음!</h3>
+<p>Room Dao로 반환한 LiveData는 Room DB 데이터가 바뀌면 자동으로 갱신되는 장점이 있다!</p>
+<h2 id="16-googler-interview-florina-muntenescu">16. Googler Interview: Florina Muntenescu</h2>
+<h2 id="17-navigation-and-sleep-quality">17. Navigation and Sleep Quality</h2>
+<p><img src="/2019-06-12/Untitled-8442a097-6d39-4cac-a072-3cdcf597f278.png" alt=""></p>
+<h2 id="18-exercise-recording-sleep-quality">18. Exercise: Recording Sleep Quality</h2>
+<pre><code>sleepTrackerViewModel.navigateToSleepQuality.observe(this, Observer { night -&gt;
+    night?.let {
+        this.findNavController().navigate(
+                SleepTrackerFragmentDirections
+                        .actionSleepTrackerFragmentToSleepQualityFragment(night.nightId))
+        // Reset state to make sure we only navigate once, even if the device
+        // has a configuration change.
+        sleepTrackerViewModel.doneNavigating()
+    }
+})
+</code></pre>
+<p>state가 아닌 event는 이런 식으로 View(Fragment)단에서 LiveData를 observe 해서 처리하는 패턴이 보임.</p>
+<p>SleepQualityFragment에서 DB 데이터를 바꾸고 SleepTrackerFragment로 돌아왔을 때 SleepTrackerFragment에서 사용하는 LiveData도 자동으로 갱신된 것을 볼 수 있다. 심지어 라이프사이클을 잘 알기 때문에 자동으로 적절한 시점에 갱신 된다. 화면 간 상태 동기화 문제를 Bus 기법이나 다른 보일러플레이트 코드 없이도 간단하게 해결할 수 있는 장점이 있다. 단, 상태 동기화가 필요한 데이터의 DB화하는 또 다른 수고가 생긴다.</p>
+<h2 id="19-transformation-maps">19. Transformation Maps</h2>
+<h2 id="20-exercise-button-states-and-snackbar">20. Exercise: Button States and SnackBar</h2>
+<pre><code>val stopButtonVisible = Transformations.map(tonight) {
+    null != it
+}
+
+val clearButtonVisible = Transformations.map(nights) {
+    it?.isNotEmpty()
+}
+</code></pre>
+<p>LiveData 가공은 Transformations.map()! 다시 한 번 각인됨.</p>
+<h2 id="21-where-to-go-next">21. Where to go next?</h2>
+<p><img src="/2019-06-12/Untitled-e01f203d-4bbc-4450-9043-96372b076921.png" alt=""></p>
+<p>ViewModelFactory를 쓰는 이유 하나 더 생각 남 : DI를 쓰면 코드 수정을 최소화해서 테스트하기 편하기 때문</p>
+<h2 id="heading">마치면서</h2>
+<p>다른 화면 사이에서 Room~LiveData 자동 갱신 연계가 매우 인상적이었다. 정말 간결하고 쓰기 편하다고 생각한다.</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/">Udacity Developing Android Apps with Kotlin 레슨5 App Architecture (UI Layer) 요약</a></li>
+    
+    <li><a href="/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/">Udacity Developing Android Apps with Kotlin 레슨4 Activity &amp; Fragment Lifecycle 요약</a></li>
+    
+    <li><a href="/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/">Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

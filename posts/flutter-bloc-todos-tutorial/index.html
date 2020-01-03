@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-bloc-todos-tutorial/" />
+  <link rel="canonical" href="/posts/flutter-bloc-todos-tutorial/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(24) - Bloc 튜토리얼 Todos",
+      "headline" : "Flutter로 개발하기(24) - Bloc 튜토리얼 Todos",
+      "description" : "Bloc document - Todos 튜토리얼 원문: https:\/\/felangel.github.io\/bloc\nSetup flutter create flutter_todos name: flutter_todos description: A new Flutter project. environment: sdk: \x26#34;\x26gt;=2.0.0 \x26lt;3.0.0\x26#34; dependencies: meta: \x26#34;\x26gt;=1.1.0 \x26lt;2.0.0\x26#34; equatable: ^0.2.0 flutter_bloc: ^0.9.0 flutter: sdk: flutter dependency_overrides: todos_app_core: git: url: https:\/\/github.com\/felangel\/flutter_architecture_samples path: todos_app_core ref: expose-repositories todos_repository_core: git: url: https:\/\/github.com\/felangel\/flutter_architecture_samples path: todos_repository_core ref: expose-repositories todos_repository_simple: git: url: https:\/\/github.com\/felangel\/flutter_architecture_samples path: todos_repository_simple ref: expose-repositories flutter: uses-material-design: true flutter packages get  우리는 몇개의 의존성들을 오버라이딩 할 겁니다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-30 09:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-30 09:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-bloc-todos-tutorial\/",
+      "keywords" : [ "flutter","bloc pattern", ]
+  }
+</script>
+<title>Flutter로 개발하기(24) - Bloc 튜토리얼 Todos - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(24) - Bloc 튜토리얼 Todos - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Bloc document - Todos 튜토리얼 원문: https://felangel.github.io/bloc
+Setup flutter create flutter_todos name: flutter_todos description: A new Flutter project. environment: sdk: &#34;&gt;=2.0.0 &lt;3.0.0&#34; dependencies: meta: &#34;&gt;=1.1.0 &lt;2.0.0&#34; equatable: ^0.2.0 flutter_bloc: ^0.9.0 flutter: sdk: flutter dependency_overrides: todos_app_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_app_core ref: expose-repositories todos_repository_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_core ref: expose-repositories todos_repository_simple: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_simple ref: expose-repositories flutter: uses-material-design: true flutter packages get  우리는 몇개의 의존성들을 오버라이딩 할 겁니다." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-30 09:51:41 UTC">
+                30 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="bloc-document---todos-">Bloc document - Todos 튜토리얼</h1>
+<p>원문: <a href="https://felangel.github.io/bloc">https://felangel.github.io/bloc</a></p>
+<p><img src="https://felangel.github.io/bloc/gifs/flutter_todos.gif" alt="flutter_todos.gif"></p>
+<h2 id="setup">Setup</h2>
+<pre><code class="language-cli" data-lang="cli">flutter create flutter_todos
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">name: flutter_todos
+description: A new Flutter project.
+
+environment:
+  sdk: <span style="color:#e6db74">&#34;&gt;=2.0.0 &lt;3.0.0&#34;</span>
+
+dependencies:
+  meta: <span style="color:#e6db74">&#34;&gt;=1.1.0 &lt;2.0.0&#34;</span>
+  equatable: ^<span style="color:#ae81ff">0.2</span><span style="color:#ae81ff">.0</span>
+  flutter_bloc: ^<span style="color:#ae81ff">0.9</span><span style="color:#ae81ff">.0</span>
+  flutter:
+    sdk: flutter
+
+dependency_overrides:
+  todos_app_core:
+    git:
+      url: https://github.com/felangel/flutter_architecture_samples
+      path: todos_app_core
+      ref: expose-repositories
+  todos_repository_core:
+    git:
+      url: https://github.com/felangel/flutter_architecture_samples
+      path: todos_repository_core
+      ref: expose-repositories
+  todos_repository_simple:
+    git:
+      url: https://github.com/felangel/flutter_architecture_samples
+      path: todos_repository_simple
+      ref: expose-repositories
+flutter:
+  uses-material-design: <span style="color:#66d9ef">true</span>
+</code></pre></div><pre><code class="language-cli" data-lang="cli">flutter packages get
+</code></pre><blockquote>
+<p>우리는 몇개의 의존성들을 오버라이딩 할 겁니다. <a href="https://github.com/brianegan/flutter_architecture_samples">Brian Egan's Flutter Architecture Samples</a>로부터 그 의존성들을 재사용할 것이기 때문입니다.</p>
+</blockquote>
+<h2 id="todos-repository">Todos Repository</h2>
+<p>TodosRepository의 구현에 대해 살펴보진 않을 겁니다. TodosRepository를 하이레벨에서만 보면 loadTodos 메소드와 saveTodos 메소드를 가집니다.</p>
+<h2 id="todos-bloc">Todos Bloc</h2>
+<blockquote>
+<p>Todos Bloc은 TodosEvent를 TodosState로 변환하는 책임을 집니다. 그리고 Todos 목록도 관리합니다.</p>
+</blockquote>
+<h3 id="model">Model</h3>
+<p>가장 먼저 할 것은 Todo 모델을 정의하는 겁니다. 각 Todo는 id, task, note, completed flag를 가집니다.</p>
+<p>models/todo.dart를 만들어봅시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:todos_app_core/todos_app_core.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:equatable/equatable.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:todos_repository_core/todos_repository_core.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#960050;background-color:#1e0010">@</span>immutable
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Todo</span> <span style="color:#66d9ef">extends</span> Equatable {
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> complete;
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> id;
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> note;
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> task;
+
+  Todo(<span style="color:#66d9ef">this</span>.task, {<span style="color:#66d9ef">this</span>.complete <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">String</span> note <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#39;</span>, <span style="color:#66d9ef">String</span> id})
+      <span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.note <span style="color:#f92672">=</span> note <span style="color:#f92672">?</span><span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#39;</span>,
+        <span style="color:#66d9ef">this</span>.id <span style="color:#f92672">=</span> id <span style="color:#f92672">?</span><span style="color:#f92672">?</span> Uuid().generateV4(),
+        <span style="color:#66d9ef">super</span>([complete, id, note, task]);
+
+  Todo copyWith({<span style="color:#66d9ef">bool</span> complete, <span style="color:#66d9ef">String</span> id, <span style="color:#66d9ef">String</span> note, <span style="color:#66d9ef">String</span> task}) {
+    <span style="color:#66d9ef">return</span> Todo(
+      task <span style="color:#f92672">?</span><span style="color:#f92672">?</span> <span style="color:#66d9ef">this</span>.task,
+      complete: complete <span style="color:#f92672">?</span><span style="color:#f92672">?</span> <span style="color:#66d9ef">this</span>.complete,
+      id: id <span style="color:#f92672">?</span><span style="color:#f92672">?</span> <span style="color:#66d9ef">this</span>.id,
+      note: note <span style="color:#f92672">?</span><span style="color:#f92672">?</span> <span style="color:#66d9ef">this</span>.note,
+    );
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() {
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Todo { complete: </span><span style="color:#e6db74">$</span>complete<span style="color:#e6db74">, task: </span><span style="color:#e6db74">$</span>task<span style="color:#e6db74">, note: </span><span style="color:#e6db74">$</span>note<span style="color:#e6db74">, id: </span><span style="color:#e6db74">$</span>id<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+  }
+
+  TodoEntity toEntity() {
+    <span style="color:#66d9ef">return</span> TodoEntity(task, id, note, complete);
+  }
+
+  <span style="color:#66d9ef">static</span> Todo fromEntity(TodoEntity entity) {
+    <span style="color:#66d9ef">return</span> Todo(
+      entity.task,
+      complete: entity.complete <span style="color:#f92672">?</span><span style="color:#f92672">?</span> <span style="color:#66d9ef">false</span>,
+      note: entity.note,
+      id: entity.id <span style="color:#f92672">?</span><span style="color:#f92672">?</span> Uuid().generateV4(),
+    );
+  }
+}
+</code></pre></div><blockquote>
+<p>Todo 인스턴스들을 <code>==</code>와 <code>hashCode</code> 없이 비교하기 위해 Equatable 패키지를 사용합니다.</p>
+</blockquote>
+<p>다음으로 프리젠테이션 레이어가 전달받을 TodosState를 만들 겁니다.</p>
+<h3 id="states">States</h3>
+<p>blocs/todos/todos_state.dart를 만들고 State들을 정의합시다.</p>
+<p>3개의 State는 다음과 같습니다.</p>
+<ul>
+<li>TodosLoading - 앱이 Repository로부터 todos를 fetching 하고 있는 상태</li>
+<li>TodosLoaded - todos가 성공적으로 로드된 상태</li>
+<li>TodosNotLoaded - todos 로드에 실패한 상태</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:equatable/equatable.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#960050;background-color:#1e0010">@</span>immutable
+<span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosState</span> <span style="color:#66d9ef">extends</span> Equatable {
+  TodosState([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosLoading</span> <span style="color:#66d9ef">extends</span> TodosState {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">TodosLoading</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosLoaded</span> <span style="color:#66d9ef">extends</span> TodosState {
+  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos;
+
+  TodosLoaded([<span style="color:#66d9ef">this</span>.todos <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todos]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">TodosLoaded { todos: </span><span style="color:#e6db74">$</span>todos<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosNotLoaded</span> <span style="color:#66d9ef">extends</span> TodosState {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">TodosNotLoaded</span><span style="color:#e6db74">&#39;</span>;
+}
+</code></pre></div><blockquote>
+<p>immutable 데코레이터를 TodosState에 annotating 해습니다. 이것은 모든 TodosState가 변경될 수 없음을 지시합니다.</p>
+</blockquote>
+<p>다음으로 이벤트들을 구현합시다.</p>
+<h3 id="events">Events</h3>
+<p>TodosBloc에서 다룰 이벤트들은 다음과 같습니다.</p>
+<ul>
+<li>LoadTodos - bloc에게 TodosRepository로부터 Todos를 로드해야 한다고 말합니다.</li>
+<li>AddTodo - bloc에게 새로운 Todo를 Todos 목록에 추가해야 한다고 말합니다.</li>
+<li>UpdateTodo - bloc에게 Todo를 갱신해야 한다고 말합니다.</li>
+<li>DeleteTodo - bloc에게 Todo를 삭제해야 한다고 말합니다.</li>
+<li>ClearCompleted - bloc에게 complete된 모든 Todos를 삭제해야 한다고 말합니다.</li>
+<li>ToggleAll - bloc에게 모든 Todos의 completed 상태를 토글해야 한다고 말합니다.</li>
+</ul>
+<p>blocs/todos/todos_event.dart를 만들고 위에서 설명한 이벤트들을 구현합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:equatable/equatable.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#960050;background-color:#1e0010">@</span>immutable
+<span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosEvent</span> <span style="color:#66d9ef">extends</span> Equatable {
+  TodosEvent([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LoadTodos</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">LoadTodos</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AddTodo</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+  <span style="color:#66d9ef">final</span> Todo todo;
+
+  AddTodo(<span style="color:#66d9ef">this</span>.todo) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todo]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">AddTodo { todo: </span><span style="color:#e6db74">$</span>todo<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateTodo</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+  <span style="color:#66d9ef">final</span> Todo updatedTodo;
+
+  UpdateTodo(<span style="color:#66d9ef">this</span>.updatedTodo) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([updatedTodo]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">UpdateTodo { updatedTodo: </span><span style="color:#e6db74">$</span>updatedTodo<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DeleteTodo</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+  <span style="color:#66d9ef">final</span> Todo todo;
+
+  DeleteTodo(<span style="color:#66d9ef">this</span>.todo) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todo]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">DeleteTodo { todo: </span><span style="color:#e6db74">$</span>todo<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClearCompleted</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ClearCompleted</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ToggleAll</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ToggleAll</span><span style="color:#e6db74">&#39;</span>;
+}
+</code></pre></div><p>이제 우리는 TodosState와 TodosEvent로 TodosBloc을 구현할 수 있습니다.</p>
+<h3 id="bloc">Bloc</h3>
+<p>blocs/todos/todos_bloc.dart를 만들고 initialState 메소드와 mapEventToState 메소드를 구현합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">dart:async</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:bloc/bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/blocs/todos/todos.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:todos_repository_simple/todos_repository_simple.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>TodosEvent, TodosState<span style="color:#f92672">&gt;</span> {
+ <span style="color:#66d9ef">final</span> TodosRepositoryFlutter todosRepository;
+
+ TodosBloc({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todosRepository});
+
+ <span style="color:#960050;background-color:#1e0010">@</span>override
+ TodosState <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> TodosLoading();
+
+ <span style="color:#960050;background-color:#1e0010">@</span>override
+ Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> mapEventToState(TodosEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+   <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> LoadTodos) {
+     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapLoadTodosToState();
+   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> AddTodo) {
+     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapAddTodoToState(event);
+   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateTodo) {
+     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapUpdateTodoToState(event);
+   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> DeleteTodo) {
+     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapDeleteTodoToState(event);
+   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> ToggleAll) {
+     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapToggleAllToState();
+   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> ClearCompleted) {
+     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapClearCompletedToState();
+   }
+ }
+
+ Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapLoadTodosToState() <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+   <span style="color:#66d9ef">try</span> {
+     <span style="color:#66d9ef">final</span> todos <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">this</span>.todosRepository.loadTodos();
+     <span style="color:#66d9ef">yield</span> TodosLoaded(
+       todos.map(Todo.fromEntity).toList(),
+     );
+   } <span style="color:#66d9ef">catch</span> (_) {
+     <span style="color:#66d9ef">yield</span> TodosNotLoaded();
+   }
+ }
+
+ Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapAddTodoToState(AddTodo event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+     <span style="color:#75715e">// 역주: ..add() 대신에 .add()를 쓰면 upadtedTodos엔 void가 할당되어야 하므로 문법적 오류가 됩니다.
+</span><span style="color:#75715e"></span>     <span style="color:#75715e">// ..add()로 쓰면 updatedTodos엔 List.from((currentState as TodosLoaded).todos)가 할당되고, updatedTodos.add()가 호출됩니다.
+</span><span style="color:#75715e"></span>     <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> updatedTodos <span style="color:#f92672">=</span> List.from((currentState <span style="color:#f92672">as</span> TodosLoaded).todos)..add(event.todo);
+     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+     _saveTodos(updatedTodos);
+   }
+ }
+
+ Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapUpdateTodoToState(UpdateTodo event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+     <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> updatedTodos <span style="color:#f92672">=</span>
+         (currentState <span style="color:#f92672">as</span> TodosLoaded).todos.map((todo) {
+       <span style="color:#66d9ef">return</span> todo.id <span style="color:#f92672">=</span><span style="color:#f92672">=</span> event.updatedTodo.id <span style="color:#f92672">?</span> event.updatedTodo <span style="color:#f92672">:</span> todo;
+     }).toList();
+     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+     _saveTodos(updatedTodos);
+   }
+ }
+
+ Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapDeleteTodoToState(DeleteTodo event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+     <span style="color:#66d9ef">final</span> updatedTodos <span style="color:#f92672">=</span> (currentState <span style="color:#f92672">as</span> TodosLoaded)
+         .todos
+         .where((todo) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> todo.id <span style="color:#f92672">!</span><span style="color:#f92672">=</span> event.todo.id)
+         .toList();
+     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+     _saveTodos(updatedTodos);
+   }
+ }
+
+ Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapToggleAllToState() <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+     <span style="color:#66d9ef">final</span> allComplete <span style="color:#f92672">=</span> (currentState <span style="color:#f92672">as</span> TodosLoaded).todos.every((todo) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> todo.complete);
+     <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> updatedTodos <span style="color:#f92672">=</span> (currentState <span style="color:#f92672">as</span> TodosLoaded)
+         .todos
+         <span style="color:#75715e">// 역주: complete값을 바꾸는데 copyWith()를 호출하는 이유는 Todo 모델이 immutable이기 때문입니다.
+</span><span style="color:#75715e"></span>         .map((todo) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> todo.copyWith(complete: <span style="color:#f92672">!</span>allComplete)) 
+         .toList();
+     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+     _saveTodos(updatedTodos);
+   }
+ }
+
+ Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapClearCompletedToState() <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+     <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> updatedTodos <span style="color:#f92672">=</span> (currentState <span style="color:#f92672">as</span> TodosLoaded)
+         .todos
+         .where((todo) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">!</span>todo.complete)
+         .toList();
+     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+     _saveTodos(updatedTodos);
+   }
+ }
+
+ Future _saveTodos(List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos) {
+   <span style="color:#66d9ef">return</span> todosRepository.saveTodos(
+     todos.map((todo) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> todo.toEntity()).toList(),
+   );
+ }
+}
+</code></pre></div><blockquote>
+<p>mapEventToState 메소드에서 state를 yielding 할 때 항상 currentState를 변경하는 대신에 새로운 state를 만듭니다. 그 이유는 bloc이 currentState와 nextState를 비교해서 오직 두 state가 다를 때만 transition을 트리거 하기 때문입니다.</p>
+</blockquote>
+<h3 id="barrel-file">Barrel File</h3>
+<p>이제 우리는 bloc 파일들을 export 해서 import를 편리하게 해주는 barrel file을 만들 수 있습니다.</p>
+<p>blocs/todos/todos.dart를 만들고 bloc, event, state를 export 합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./todos_bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./todos_event.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./todos_state.dart</span><span style="color:#e6db74">&#39;</span>;
+</code></pre></div><h2 id="filtered-todos-bloc">Filtered Todos Bloc</h2>
+<blockquote>
+<p>FilteredTodosBloc은 TodosBloc에서의 상태 변경에 반응하는 책임을 집니다.</p>
+</blockquote>
+<h3 id="model-1">Model</h3>
+<p>TodosState를 정의하고 구현하기 전에 VisibilityFilter 모델을 구현해야 합니다. VisibilityFilter는 FilteredTodosState가 포함할 Todos를 결정합니다. 우리는 3개의 필터를 가질 겁니다.</p>
+<ul>
+<li>all - 모든 Todos를 보여줍니다. (default)</li>
+<li>active - complete 되지 않은 Todos만 보여줍니다.</li>
+<li>completed - complete 된 Todos만 보여줍니다.</li>
+</ul>
+<p>models/visibility_filter.dart를 만들고 filter enum을 정의합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">enum VisibilityFilter { all, active, completed }
+</code></pre></div><h3 id="states-1">States</h3>
+<p>TodosBloc에서 했던 것처럼, 우리는 FilteredTodosBloc을 위한 States를 만들 겁니다.
+2개의 States를 가집니다.</p>
+<ul>
+<li>FilteredTodosLoading - Todos를 fetching 하는 동안의 상태입니다.</li>
+<li>FilteredTodosLoaded - 더 이상 fetching 할 Todos가 없는 상태입니다.</li>
+</ul>
+<p>blocs/filtered_todos/filtered_todos_state.dart를 만들고 2개의 States를 구현합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:equatable/equatable.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#960050;background-color:#1e0010">@</span>immutable
+<span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosState</span> <span style="color:#66d9ef">extends</span> Equatable {
+  FilteredTodosState([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosLoading</span> <span style="color:#66d9ef">extends</span> FilteredTodosState {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">FilteredTodosLoading</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosLoaded</span> <span style="color:#66d9ef">extends</span> FilteredTodosState {
+  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> filteredTodos;
+  <span style="color:#66d9ef">final</span> VisibilityFilter activeFilter;
+
+  FilteredTodosLoaded(<span style="color:#66d9ef">this</span>.filteredTodos, <span style="color:#66d9ef">this</span>.activeFilter)
+      <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([filteredTodos, activeFilter]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() {
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">FilteredTodosLoaded { filteredTodos: </span><span style="color:#e6db74">$</span>filteredTodos<span style="color:#e6db74">, activeFilter: </span><span style="color:#e6db74">$</span>activeFilter<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+  }
+}
+</code></pre></div><h3 id="events-1">Events</h3>
+<p>우리는 FilteredTodosBloc을 위한 2개의 이벤트를 만들 겁니다.</p>
+<ul>
+<li>UpdateFilter - bloc에게 visibility filter가 바뀌었다는 걸 알립니다.</li>
+<li>UpdateTodos - bloc에게 Todos가 바뀌었다는 걸 알립니다.</li>
+</ul>
+<p>blocs/filtered_todos/filtered_todos_event.dart를 만들고 2개의 이벤트를 구현합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:equatable/equatable.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#960050;background-color:#1e0010">@</span>immutable
+<span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosEvent</span> <span style="color:#66d9ef">extends</span> Equatable {
+  FilteredTodosEvent([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateFilter</span> <span style="color:#66d9ef">extends</span> FilteredTodosEvent {
+  <span style="color:#66d9ef">final</span> VisibilityFilter filter;
+
+  UpdateFilter(<span style="color:#66d9ef">this</span>.filter) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([filter]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">UpdateFilter { filter: </span><span style="color:#e6db74">$</span>filter<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateTodos</span> <span style="color:#66d9ef">extends</span> FilteredTodosEvent {
+  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos;
+
+  UpdateTodos(<span style="color:#66d9ef">this</span>.todos) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todos]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">UpdateTodos { todos: </span><span style="color:#e6db74">$</span>todos<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+}
+</code></pre></div><p>이제 FIlteredTodosBloc을 구현할 준비가 됐습니다!</p>
+<h3 id="bloc-1">Bloc</h3>
+<p>FilteredTodosBloc은 TodosBloc과 유사합니다. 하지만 TodosRepository 의존성을 가지는 대신에 TodosBloc 의존성을 가집니다. 이것은 TodosBloc에서 상태가 변경될 때 FilteredTodosBloc의 상태도 갱신될 수 있게 해줍니다.</p>
+<p>blocs/filtered_todos/filtered_todos_bloc.dart를 만들고 시작합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">dart:async</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:bloc/bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/blocs/filtered_todos/filtered_todos.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/blocs/todos/todos.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>FilteredTodosEvent, FilteredTodosState<span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">final</span> TodosBloc todosBloc;
+  StreamSubscription todosSubscription;
+
+  FilteredTodosBloc({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todosBloc}) {
+    <span style="color:#75715e">// 역주: todosBloc의 상태 변화를 감지하기 시작합니다.
+</span><span style="color:#75715e"></span>    todosSubscription <span style="color:#f92672">=</span> todosBloc.state.listen((state) {
+      <span style="color:#66d9ef">if</span> (state <span style="color:#66d9ef">is</span> TodosLoaded) {
+        dispatch(UpdateTodos((todosBloc.currentState <span style="color:#f92672">as</span> TodosLoaded).todos));
+      }
+    });
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  FilteredTodosState <span style="color:#66d9ef">get</span> initialState {
+    <span style="color:#66d9ef">return</span> todosBloc.currentState <span style="color:#66d9ef">is</span> TodosLoaded
+        <span style="color:#f92672">?</span> FilteredTodosLoaded(
+            (todosBloc.currentState <span style="color:#f92672">as</span> TodosLoaded).todos,
+            VisibilityFilter.all,
+          )
+        <span style="color:#f92672">:</span> FilteredTodosLoading();
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Stream<span style="color:#f92672">&lt;</span>FilteredTodosState<span style="color:#f92672">&gt;</span> mapEventToState(FilteredTodosEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+    <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateFilter) {
+      <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapUpdateFilterToState(event);
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateTodos) {
+      <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapTodosUpdatedToState(event);
+    }
+  }
+
+  Stream<span style="color:#f92672">&lt;</span>FilteredTodosState<span style="color:#f92672">&gt;</span> _mapUpdateFilterToState(
+    UpdateFilter event,
+  ) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+    <span style="color:#66d9ef">if</span> (todosBloc.currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+      <span style="color:#66d9ef">yield</span> FilteredTodosLoaded(
+        _mapTodosToFilteredTodos(
+          (todosBloc.currentState <span style="color:#f92672">as</span> TodosLoaded).todos,
+          event.filter,
+        ),
+        event.filter,
+      );
+    }
+  }
+
+  Stream<span style="color:#f92672">&lt;</span>FilteredTodosState<span style="color:#f92672">&gt;</span> _mapTodosUpdatedToState(
+    UpdateTodos event,
+  ) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+    <span style="color:#66d9ef">final</span> visibilityFilter <span style="color:#f92672">=</span> currentState <span style="color:#66d9ef">is</span> FilteredTodosLoaded
+        <span style="color:#f92672">?</span> (currentState <span style="color:#f92672">as</span> FilteredTodosLoaded).activeFilter
+        <span style="color:#f92672">:</span> VisibilityFilter.all;
+    <span style="color:#66d9ef">yield</span> FilteredTodosLoaded(
+      _mapTodosToFilteredTodos(
+        (todosBloc.currentState <span style="color:#f92672">as</span> TodosLoaded).todos,
+        visibilityFilter,
+      ),
+      visibilityFilter,
+    );
+  }
+
+  List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> _mapTodosToFilteredTodos(
+      List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos, VisibilityFilter filter) {
+    <span style="color:#66d9ef">return</span> todos.where((todo) {
+      <span style="color:#66d9ef">if</span> (filter <span style="color:#f92672">=</span><span style="color:#f92672">=</span> VisibilityFilter.all) {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+      } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (filter <span style="color:#f92672">=</span><span style="color:#f92672">=</span> VisibilityFilter.active) {
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span>todo.complete;
+      } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (filter <span style="color:#f92672">=</span><span style="color:#f92672">=</span> VisibilityFilter.completed) {
+        <span style="color:#66d9ef">return</span> todo.complete;
+      }
+    }).toList();
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">void</span> dispose() {
+    todosSubscription.cancel();
+    <span style="color:#66d9ef">super</span>.dispose();
+  }
+}
+</code></pre></div><blockquote>
+<p>TodosBloc에서 상태 변경을 감지할 수 있는 TodosState들의 스트림인 StreamSubscription을 만듭니다. bloc의 dispose 메소드를 오버라이드 해서 bloc이 dispose 될 때 subscription을  취소할 수 있습니다.</p>
+</blockquote>
+<h3 id="barrel-file-1">Barrel File</h3>
+<p>filtered todos 클래스들을 편리하게 import 하기 위해 barrel file을 만듭시다.</p>
+<p>blocs/filtered_todos/filtered_todos.dart를 만들고 3개의 파일을 export 합니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./filtered_todos_bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./filtered_todos_event.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./filtered_todos_state.dart</span><span style="color:#e6db74">&#39;</span>;
+</code></pre></div><p>다음으로 StatsBloc을 구현할 겁니다.</p>
+<h2 id="statsbloc">StatsBloc</h2>
+<blockquote>
+<p>StatsBloc은 active 상태 todos와 completed 상태 todos의 통계 데이터를 관리하는 책임을 집니다. FilteredTodosBloc과 유사하게 TodosBloc의 의존성을 갖습니다. 그래서 TodosBloc의 상태가 바뀌면 함께 반응합니다.</p>
+</blockquote>
+<h3 id="state">State</h3>
+<p>StatsBloc은 2개의 상태를 가집니다.</p>
+<ul>
+<li>StatsLoading - 아직 통계 데이터가 계산되지 않은 상태</li>
+<li>StatsLoaded - 통계 데이터가 계산된 상태</li>
+</ul>
+<p>blocs/stats/stats_state.dart를 만들고 StatsState를 구현합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:equatable/equatable.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#960050;background-color:#1e0010">@</span>immutable
+<span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsState</span> <span style="color:#66d9ef">extends</span> Equatable {
+  StatsState([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsLoading</span> <span style="color:#66d9ef">extends</span> StatsState {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">StatsLoading</span><span style="color:#e6db74">&#39;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsLoaded</span> <span style="color:#66d9ef">extends</span> StatsState {
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> numActive;
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> numCompleted;
+
+  StatsLoaded(<span style="color:#66d9ef">this</span>.numActive, <span style="color:#66d9ef">this</span>.numCompleted)
+      <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([numActive, numCompleted]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() {
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">StatsLoaded { numActive: </span><span style="color:#e6db74">$</span>numActive<span style="color:#e6db74">, numCompleted: </span><span style="color:#e6db74">$</span>numCompleted<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+  }
+}
+</code></pre></div><p>다음으로 StatsEvent들을 구현합시다.</p>
+<h3 id="events-2">Events</h3>
+<p>StatsBloc에는 UpdateStats라는 하나의 이벤트만 있습니다. 이 이벤트는 TodosBloc의 상태가 바뀔 때마다 디스패치 됩니다. 이에 따라 StatsBloc도 새로운 통계데이터를 다시 계산합니다.</p>
+<p>blocs/stats/stats_event.dart를 만들고 구현합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:equatable/equatable.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#960050;background-color:#1e0010">@</span>immutable
+<span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsEvent</span> <span style="color:#66d9ef">extends</span> Equatable {
+  StatsEvent([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateStats</span> <span style="color:#66d9ef">extends</span> StatsEvent {
+  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos;
+
+  UpdateStats(<span style="color:#66d9ef">this</span>.todos) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todos]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">UpdateStats { todos: </span><span style="color:#e6db74">$</span>todos<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+}
+</code></pre></div><p>이제 우린 FilteredTodosBloc과 매우 유사한 StatsBloc을 구현할 겁니다.</p>
+<h3 id="bloc-2">Bloc</h3>
+<p>StatsBloc은 TodosBloc의 의존성을 가집니다. TodosBloc에서 상태가 변경되면 따라서 StatsBloc의 상태도 갱신됩니다.</p>
+<p>bloc/stats/stats_bloc.dart를 만들고 시작합시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">dart:async</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:bloc/bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/blocs/blocs.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>StatsEvent, StatsState<span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">final</span> TodosBloc todosBloc;
+  StreamSubscription todosSubscription;
+
+  StatsBloc({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todosBloc}) {
+    todosSubscription <span style="color:#f92672">=</span> todosBloc.state.listen((state) {
+      <span style="color:#66d9ef">if</span> (state <span style="color:#66d9ef">is</span> TodosLoaded) {
+        dispatch(UpdateStats(state.todos));
+      }
+    });
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  StatsState <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> StatsLoading();
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Stream<span style="color:#f92672">&lt;</span>StatsState<span style="color:#f92672">&gt;</span> mapEventToState(StatsEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+    <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateStats) {
+      <span style="color:#66d9ef">int</span> numActive <span style="color:#f92672">=</span>
+          event.todos.where((todo) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">!</span>todo.complete).toList().length;
+      <span style="color:#66d9ef">int</span> numCompleted <span style="color:#f92672">=</span>
+          event.todos.where((todo) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> todo.complete).toList().length;
+      <span style="color:#66d9ef">yield</span> StatsLoaded(numActive, numCompleted);
+    }
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">void</span> dispose() {
+    todosSubscription.cancel();
+    <span style="color:#66d9ef">super</span>.dispose();
+  }
+}
+</code></pre></div><p>StatsBloc은 TodosBloc의 상태가 변경될 때마다 active todos의 수와 completed todos의 수를 다시 계산합니다.</p>
+<p>이제 StatsBloc의 구현이 끝났습니다. 남은 하나의 bloc은 TabBloc입니다.</p>
+<h2 id="tabbloc">TabBloc</h2>
+<blockquote>
+<p>TabBloc은 앱의 탭 상태를 관리하는 책임을 가집니다. TabBloc은 TabEvent를 입력받아 AppTab를 출력합니다.</p>
+</blockquote>
+<h3 id="model--state">Model / State</h3>
+<p>우리는 TabState를 대표하는 AppTab 모델을 정의할 겁니다. AppTab은 enum 타입입니다.</p>
+<p>models/app_tab.dart를 만듭시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">enum AppTab { todos, stats }
+</code></pre></div><h3 id="event">Event</h3>
+<p>TabBloc은 하나의 TabEvent를 다루는 책임을 가집니다.</p>
+<ul>
+<li>UpdateTab - bloc에게 tab이 갱신됐음을 알립니다.</li>
+</ul>
+<p>blocs/tab/tab_event.dart를 만듭시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:equatable/equatable.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:meta/meta.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#960050;background-color:#1e0010">@</span>immutable
+<span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TabEvent</span> <span style="color:#66d9ef">extends</span> Equatable {
+  TabEvent([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateTab</span> <span style="color:#66d9ef">extends</span> TabEvent {
+  <span style="color:#66d9ef">final</span> AppTab tab;
+
+  UpdateTab(<span style="color:#66d9ef">this</span>.tab) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([tab]);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">UpdateTab { tab: </span><span style="color:#e6db74">$</span>tab<span style="color:#e6db74"> }</span><span style="color:#e6db74">&#39;</span>;
+}
+</code></pre></div><h3 id="bloc-3">Bloc</h3>
+<p>TabBloc은 구현은 매우 단순합니다.</p>
+<p>blocs/tab/tab_bloc.dart를 만듭시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">dart:async</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:bloc/bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/blocs/tab/tab.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TabBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>TabEvent, AppTab<span style="color:#f92672">&gt;</span> {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  AppTab <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> AppTab.todos;
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Stream<span style="color:#f92672">&lt;</span>AppTab<span style="color:#f92672">&gt;</span> mapEventToState(TabEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+    <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateTab) {
+      <span style="color:#66d9ef">yield</span> event.tab;
+    }
+  }
+}
+</code></pre></div><p>TabBloc이 하는 일은 첫 상태를 설정하고 UpdateTab 이벤트를 AppTab으로 yielding 하는 것 뿐입니다.</p>
+<h3 id="barrel-file-2">Barrel File</h3>
+<p>blocs/tab/tab.dart를 만듭시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./tab_bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./tab_event.dart</span><span style="color:#e6db74">&#39;</span>;
+</code></pre></div><h2 id="bloc-delegate">Bloc Delegate</h2>
+<p>프리젠테이션 레이어로 이동하기 전에 모든 상태 변경과 에러를 다룰 수 이게 해주는 BlocDelegate를 구현할 겁니다. 이것은 개발 로그나 분석에 아주 유용합니다.</p>
+<p>blocs/simple_bloc_delegate.dart를 만듭시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:bloc/bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleBlocDelegate</span> <span style="color:#66d9ef">extends</span> BlocDelegate {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">void</span> onTransition(Transition transition) {
+    print(transition);
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">void</span> onError(<span style="color:#66d9ef">Object</span> error, StackTrace stacktrace) {
+    print(error);
+  }
+}
+</code></pre></div><p>모든 상태 변경(transition)과 에러들을 콘솔에 출력합니다. 구글 애널리틱스나 sentry, crashlytics 등에 BlocDelegate을 훅업할 수 있습니다.</p>
+<h2 id="bloc-barrel">Bloc Barrel</h2>
+<p>우리가 구현한 bloc들을 가지는 barrel file을 만듭시다. blocs/blocs.dart를 만들고 모든 bloc을 export 합니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./filtered_todos/filtered_todos.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./stats/stats.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./tab/tab.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./todos/todos.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./simple_bloc_delegate.dart</span><span style="color:#e6db74">&#39;</span>;
+</code></pre></div><p>다음으로 우리는 주요 화면들에 초점을 맞출 겁니다.</p>
+<h2 id="-">추가 준비물</h2>
+<p>localization.dart</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">dart:async</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/material.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FlutterBlocLocalizations</span> {
+  <span style="color:#66d9ef">static</span> FlutterBlocLocalizations of(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Localizations.of<span style="color:#f92672">&lt;</span>FlutterBlocLocalizations<span style="color:#f92672">&gt;</span>(
+      context,
+      FlutterBlocLocalizations,
+    );
+  }
+
+  <span style="color:#66d9ef">String</span> <span style="color:#66d9ef">get</span> appTitle <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Flutter Todos</span><span style="color:#e6db74">&#34;</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FlutterBlocLocalizationsDelegate</span>
+    <span style="color:#66d9ef">extends</span> LocalizationsDelegate<span style="color:#f92672">&lt;</span>FlutterBlocLocalizations<span style="color:#f92672">&gt;</span> {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Future<span style="color:#f92672">&lt;</span>FlutterBlocLocalizations<span style="color:#f92672">&gt;</span> load(Locale locale) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>
+      Future(() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> FlutterBlocLocalizations());
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">bool</span> shouldReload(FlutterBlocLocalizationsDelegate old) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">false</span>;
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">bool</span> isSupported(Locale locale) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span>
+      locale.languageCode.toLowerCase().contains(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">en</span><span style="color:#e6db74">&#34;</span>);
+}
+</code></pre></div><h2 id="screens">Screens</h2>
+<h3 id="home-screen">Home Screen</h3>
+<blockquote>
+<p>HomeScreen은 Scaffold를 만드는 책임을 가집니다. AppBar와 BottomNavigationBar, Stats / FilteredTodos 위젯들을 관리합니다.</p>
+</blockquote>
+<p>새 화면 위젯들을 넣을 screens라는 새 디렉토리를 만들고 그 안에 screens/home_screen.dart를 만들 겁니다.</p>
+<p>HomeScreen은 TabBloc, FilteredTodosBloc, StatsBloc을 만들고 dispose할 것이기 때문에 StatefulWidget로 만들 겁니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/material.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:todos_app_core/todos_app_core.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_bloc/flutter_bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/blocs/blocs.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/widgets/widgets.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/localization.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HomeScreen</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> Function() onInit;
+
+  HomeScreen({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.onInit}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: ArchSampleKeys.homeScreen);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  _HomeScreenState createState() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> _HomeScreenState();
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_HomeScreenState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>HomeScreen<span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">final</span> TabBloc _tabBloc <span style="color:#f92672">=</span> TabBloc();
+  FilteredTodosBloc _filteredTodosBloc;
+  StatsBloc _statsBloc;
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">void</span> initState() {
+    widget.onInit();
+    _filteredTodosBloc <span style="color:#f92672">=</span> FilteredTodosBloc(
+      todosBloc: BlocProvider.of<span style="color:#f92672">&lt;</span>TodosBloc<span style="color:#f92672">&gt;</span>(context),
+    );
+    _statsBloc <span style="color:#f92672">=</span> StatsBloc(
+      todosBloc: BlocProvider.of<span style="color:#f92672">&lt;</span>TodosBloc<span style="color:#f92672">&gt;</span>(context),
+    );
+    <span style="color:#66d9ef">super</span>.initState();
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> BlocBuilder(
+      bloc: _tabBloc,
+      builder: (BuildContext context, AppTab activeTab) {
+        <span style="color:#66d9ef">return</span> BlocProviderTree(
+          blocProviders: [
+            BlocProvider<span style="color:#f92672">&lt;</span>TabBloc<span style="color:#f92672">&gt;</span>(bloc: _tabBloc),
+            BlocProvider<span style="color:#f92672">&lt;</span>FilteredTodosBloc<span style="color:#f92672">&gt;</span>(bloc: _filteredTodosBloc),
+            BlocProvider<span style="color:#f92672">&lt;</span>StatsBloc<span style="color:#f92672">&gt;</span>(bloc: _statsBloc),
+          ],
+          child: Scaffold(
+            appBar: AppBar(
+              title: Text(FlutterBlocLocalizations.of(context).appTitle),
+              actions: [
+                FilterButton(visible: activeTab <span style="color:#f92672">=</span><span style="color:#f92672">=</span> AppTab.todos),
+                ExtraActions(),
+              ],
+            ),
+            body: activeTab <span style="color:#f92672">=</span><span style="color:#f92672">=</span> AppTab.todos <span style="color:#f92672">?</span> FilteredTodos() <span style="color:#f92672">:</span> Stats(),
+            floatingActionButton: FloatingActionButton(
+              key: ArchSampleKeys.addTodoFab,
+              onPressed: () {
+                Navigator.pushNamed(context, ArchSampleRoutes.addTodo);
+              },
+              child: Icon(Icons.add),
+              tooltip: ArchSampleLocalizations.of(context).addTodo,
+            ),
+            bottomNavigationBar: TabSelector(
+              activeTab: activeTab,
+              onTabSelected: (tab) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> _tabBloc.dispatch(UpdateTab(tab)),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  <span style="color:#66d9ef">void</span> dispose() {
+    _statsBloc.dispose();
+    _filteredTodosBloc.dispose();
+    _tabBloc.dispose();
+    <span style="color:#66d9ef">super</span>.dispose();
+  }
+}
+</code></pre></div><p>HomeScreen은 상태의 일부로써 TabBloc, FilteredTodosBloc, StatsBloc을 만듭니다. HomeScreen은 TodosApp의 루트에서 사용 가능하게 만들어진 TodosBloc에 접근하기 위해 BlocProvider.of<!-- raw HTML omitted -->(context)를 사용합니다.</p>
+<p>HomeScreen은 TodosBloc 상태의 변경에 대해 반응해야 하기 때문에 TodosState를 기반으로 위젯을 빌드하기 위해 BlocBuilder를 사용합니다.</p>
+<p>HomeScreen은 BlocProviderTree 위젯을 사용해서 서브트리에 있는 위젯들이 TabBloc, FilteredTodosBloc, StatsBloc에 접근할 수 있도록 합니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">BlocProviderTree(
+  blocProviders: [
+    BlocProvider<span style="color:#f92672">&lt;</span>TabBloc<span style="color:#f92672">&gt;</span>(bloc: _tabBloc),
+    BlocProvider<span style="color:#f92672">&lt;</span>FilteredTodosBloc<span style="color:#f92672">&gt;</span>(bloc: _filteredTodosBloc),
+    BlocProvider<span style="color:#f92672">&lt;</span>StatsBloc<span style="color:#f92672">&gt;</span>(bloc: _statsBloc),
+  ],
+  child: Scaffold(...),
+);
+</code></pre></div><p>위 코드와 아래 코드는 같습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">BlocProvider<span style="color:#f92672">&lt;</span>TabBloc<span style="color:#f92672">&gt;</span>(
+  bloc: _tabBloc,
+  child: BlocProvider<span style="color:#f92672">&lt;</span>FilteredTodosBloc<span style="color:#f92672">&gt;</span>(
+    bloc: _filteredTodosBloc,
+    child: BlocProvider<span style="color:#f92672">&lt;</span>StatsBloc<span style="color:#f92672">&gt;</span>(
+      bloc: _statsBloc,
+      child: Scaffold(...),
+    ),
+  ),
+);
+</code></pre></div><p>위에서 본 것처럼 BlocProviderTree는 중첩 레벨을 감소시키고 가독성을 높혀줍니다.</p>
+<p>다음으로 DetailsScreen을 구현할 겁니다.</p>
+<h3 id="details-screen">Details Screen</h3>
+<blockquote>
+<p>DetailsScreen은 선택된 투의 상세정보를 보여주고 사용자가 투두를 수정하거나 삭제할 수 있게 해줍니다.</p>
+</blockquote>
+<p>screens/details_screen.dart를 만듭시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/foundation.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/material.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_bloc/flutter_bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:todos_app_core/todos_app_core.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/blocs/todos/todos.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/screens/screens.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/flutter_todos_keys.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DetailsScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> id;
+
+  DetailsScreen({Key key, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.id})
+      <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key <span style="color:#f92672">?</span><span style="color:#f92672">?</span> ArchSampleKeys.todoDetailsScreen);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">final</span> todosBloc <span style="color:#f92672">=</span> BlocProvider.of<span style="color:#f92672">&lt;</span>TodosBloc<span style="color:#f92672">&gt;</span>(context);
+    <span style="color:#66d9ef">return</span> BlocBuilder(
+      bloc: todosBloc,
+      builder: (BuildContext context, TodosState state) {
+        <span style="color:#66d9ef">final</span> todo <span style="color:#f92672">=</span> (state <span style="color:#f92672">as</span> TodosLoaded)
+            .todos
+            .firstWhere((todo) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> todo.id <span style="color:#f92672">=</span><span style="color:#f92672">=</span> id, orElse: () <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">null</span>);
+        <span style="color:#66d9ef">final</span> localizations <span style="color:#f92672">=</span> ArchSampleLocalizations.of(context);
+        <span style="color:#66d9ef">return</span> Scaffold(
+          appBar: AppBar(
+            title: Text(localizations.todoDetails),
+            actions: [
+              IconButton(
+                tooltip: localizations.deleteTodo,
+                key: ArchSampleKeys.deleteTodoButton,
+                icon: Icon(Icons.delete),
+                onPressed: () {
+                  todosBloc.dispatch(DeleteTodo(todo));
+                  Navigator.pop(context, todo);
+                },
+              )
+            ],
+          ),
+          body: todo <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+              <span style="color:#f92672">?</span> Container(key: FlutterTodosKeys.emptyDetailsContainer)
+              <span style="color:#f92672">:</span> Padding(
+                  padding: EdgeInsets.all(<span style="color:#ae81ff">16.0</span>),
+                  child: ListView(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(right: <span style="color:#ae81ff">8.0</span>),
+                            child: Checkbox(
+                                key: FlutterTodosKeys.detailsScreenCheckBox,
+                                value: todo.complete,
+                                onChanged: (_) {
+                                  todosBloc.dispatch(
+                                    UpdateTodo(
+                                      todo.copyWith(complete: <span style="color:#f92672">!</span>todo.complete),
+                                    ),
+                                  );
+                                }),
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Hero(
+                                  tag: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">${</span>todo.id<span style="color:#e6db74">}</span><span style="color:#e6db74">__heroTag</span><span style="color:#e6db74">&#39;</span>,
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    padding: EdgeInsets.only(
+                                      top: <span style="color:#ae81ff">8.0</span>,
+                                      bottom: <span style="color:#ae81ff">16.0</span>,
+                                    ),
+                                    child: Text(
+                                      todo.task,
+                                      key: ArchSampleKeys.detailsTodoItemTask,
+                                      style:
+                                          Theme.of(context).textTheme.headline,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  todo.note,
+                                  key: ArchSampleKeys.detailsTodoItemNote,
+                                  style: Theme.of(context).textTheme.subhead,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+          floatingActionButton: FloatingActionButton(
+            key: ArchSampleKeys.editTodoFab,
+            tooltip: localizations.editTodo,
+            child: Icon(Icons.edit),
+            onPressed: todo <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+                <span style="color:#f92672">?</span> <span style="color:#66d9ef">null</span>
+                <span style="color:#f92672">:</span> () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          <span style="color:#66d9ef">return</span> AddEditScreen(
+                            key: ArchSampleKeys.editTodoScreen,
+                            onSave: (task, note) {
+                              todosBloc.dispatch(
+                                UpdateTodo(
+                                  todo.copyWith(task: task, note: note),
+                                ),
+                              );
+                            },
+                            isEditing: <span style="color:#66d9ef">true</span>,
+                            todo: todo,
+                          );
+                        },
+                      ),
+                    );
+                  },
+          ),
+        );
+      },
+    );
+  }
+}
+</code></pre></div><blockquote>
+<p>DetailsScreen은 TodosBloc으로부터 투두의 id를 전달받아 id에 해당하는 투두의 상세정보가 바뀔 때마다 갱신합니다.</p>
+</blockquote>
+<p>DetailsScreen에는 DeleteTodo 이벤트를 디스패치하는 IconButton과 UpdateTodo 이벤트를 디스패치하는 CheckBox 위젯이 있습니다. FloatingActionButton은 isEditing을 true로 설정하고 AddEditScreen으로 navigating 시킵니다. 다음으로 AddEditScreen을 봅시다.</p>
+<h3 id="addedit-screen">Add/Edit Screen</h3>
+<blockquote>
+<p>AddEditScreen 위젯은 사용자가 새 투두를 만들 수 있게 해줍니다. 그리고 생성자로 넘어온 isEditing이 true일 땐 존재하는 투두를 수정할 수 있게 해줍니다.</p>
+</blockquote>
+<p>screens/add_edit_screen.dart를 만듭시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/foundation.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/material.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:todos_app_core/todos_app_core.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">typedef</span> OnSaveCallback <span style="color:#f92672">=</span> Function(<span style="color:#66d9ef">String</span> task, <span style="color:#66d9ef">String</span> note);
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AddEditScreen</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> isEditing;
+  <span style="color:#66d9ef">final</span> OnSaveCallback onSave;
+  <span style="color:#66d9ef">final</span> Todo todo;
+
+  AddEditScreen({
+    Key key,
+    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.onSave,
+    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.isEditing,
+    <span style="color:#66d9ef">this</span>.todo,
+  }) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key <span style="color:#f92672">?</span><span style="color:#f92672">?</span> ArchSampleKeys.addTodoScreen);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  _AddEditScreenState createState() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> _AddEditScreenState();
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_AddEditScreenState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>AddEditScreen<span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> GlobalKey<span style="color:#f92672">&lt;</span>FormState<span style="color:#f92672">&gt;</span> _formKey <span style="color:#f92672">=</span> GlobalKey<span style="color:#f92672">&lt;</span>FormState<span style="color:#f92672">&gt;</span>();
+
+  <span style="color:#66d9ef">String</span> _task;
+  <span style="color:#66d9ef">String</span> _note;
+
+  <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">get</span> isEditing <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> widget.isEditing;
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">final</span> localizations <span style="color:#f92672">=</span> ArchSampleLocalizations.of(context);
+    <span style="color:#66d9ef">final</span> textTheme <span style="color:#f92672">=</span> Theme.of(context).textTheme;
+
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(
+          isEditing <span style="color:#f92672">?</span> localizations.editTodo <span style="color:#f92672">:</span> localizations.addTodo,
+        ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(<span style="color:#ae81ff">16.0</span>),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              TextFormField(
+                initialValue: isEditing <span style="color:#f92672">?</span> widget.todo.task <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#39;</span>,
+                key: ArchSampleKeys.taskField,
+                autofocus: <span style="color:#f92672">!</span>isEditing,
+                style: textTheme.headline,
+                decoration: InputDecoration(
+                  hintText: localizations.newTodoHint,
+                ),
+                validator: (val) {
+                  <span style="color:#66d9ef">return</span> val.trim().isEmpty
+                      <span style="color:#f92672">?</span> localizations.emptyTodoError
+                      <span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>;
+                },
+                onSaved: (value) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> _task <span style="color:#f92672">=</span> value,
+              ),
+              TextFormField(
+                initialValue: isEditing <span style="color:#f92672">?</span> widget.todo.note <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#39;</span>,
+                key: ArchSampleKeys.noteField,
+                maxLines: <span style="color:#ae81ff">10</span>,
+                style: textTheme.subhead,
+                decoration: InputDecoration(
+                  hintText: localizations.notesHint,
+                ),
+                onSaved: (value) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> _note <span style="color:#f92672">=</span> value,
+              )
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        key:
+            isEditing <span style="color:#f92672">?</span> ArchSampleKeys.saveTodoFab <span style="color:#f92672">:</span> ArchSampleKeys.saveNewTodo,
+        tooltip: isEditing <span style="color:#f92672">?</span> localizations.saveChanges <span style="color:#f92672">:</span> localizations.addTodo,
+        child: Icon(isEditing <span style="color:#f92672">?</span> Icons.check <span style="color:#f92672">:</span> Icons.add),
+        onPressed: () {
+          <span style="color:#66d9ef">if</span> (_formKey.currentState.validate()) {
+            _formKey.currentState.save();
+            widget.onSave(_task, _note);
+            Navigator.pop(context);
+          }
+        },
+      ),
+    );
+  }
+}
+</code></pre></div><p>AddEditScreen은 새로운 투두가 만들어졌거나 기존의 투두가 수정됐을 때 부모 위젯에게 알리기 위해 onSave 콜백을 사용합니다.</p>
+<h3 id="screens-barrel">Screens Barrel</h3>
+<p>screens/screens.dart를 만듭시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./add_edit_screen.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./details_screen.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">./home_screen.dart</span><span style="color:#e6db74">&#39;</span>;
+</code></pre></div><p>다음으로 widgets의 모든 것을 구현합시다.</p>
+<h2 id="widgets">Widgets</h2>
+<h3 id="filter-button">Filter Button</h3>
+<blockquote>
+<p>FilterButton 위젯은 필터 옵션 목록을 사용자에게 제공하는 책임을 가집니다. 필터가 선택됐을 때 FilteredTodosBloc에게 알림을 보냅니다.</p>
+</blockquote>
+<p>widgets 디렉토리를 만들고 그 안에 FilterButton을 구현할 widgets/filter_button.dart를 만듭시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/material.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_bloc/flutter_bloc.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:todos_app_core/todos_app_core.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/blocs/filtered_todos/filtered_todos.dart</span><span style="color:#e6db74">&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter_todos/models/models.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilterButton</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> visible;
+
+  FilterButton({<span style="color:#66d9ef">this</span>.visible, Key key}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">final</span> defaultStyle <span style="color:#f92672">=</span> Theme.of(context).textTheme.body1;
+    <span style="color:#66d9ef">final</span> activeStyle <span style="color:#f92672">=</span> Theme.of(context)
+        .textTheme
+        .body1
+        .copyWith(color: Theme.of(context).accentColor);
+    <span style="color:#66d9ef">final</span> FilteredTodosBloc filteredTodosBloc <span style="color:#f92672">=</span>
+        BlocProvider.of<span style="color:#f92672">&lt;</span>FilteredTodosBloc<span style="color:#f92672">&gt;</span>(context);
+    <span style="color:#66d9ef">return</span> BlocBuilder(
+        bloc: filteredTodosBloc,
+        builder: (BuildContext context, FilteredTodosState state) {
+          <span style="color:#66d9ef">final</span> button <span style="color:#f92672">=</span> _Button(
+            onSelected: (filter) {
+              filteredTodosBloc.dispatch(UpdateFilter(filter));
+            },
+            activeFilter: state <span style="color:#66d9ef">is</span> FilteredTodosLoaded
+                <span style="color:#f92672">?</span> state.activeFilter
+                <span style="color:#f92672">:</span> VisibilityFilter.all,
+            activeStyle: activeStyle,
+            defaultStyle: defaultStyle,
+          );
+          <span style="color:#66d9ef">return</span> AnimatedOpacity(
+            opacity: visible <span style="color:#f92672">?</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0.0</span>,
+            duration: Duration(milliseconds: <span style="color:#ae81ff">150</span>),
+            child: visible <span style="color:#f92672">?</span> button <span style="color:#f92672">:</span> IgnorePointer(child: button),
+          );
+        });
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_Button</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#66d9ef">const</span> _Button({
+    Key key,
+    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.onSelected,
+    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.activeFilter,
+    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.activeStyle,
+    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.defaultStyle,
+  }) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
+
+  <span style="color:#66d9ef">final</span> PopupMenuItemSelected<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span> onSelected;
+  <span style="color:#66d9ef">final</span> VisibilityFilter activeFilter;
+  <span style="color:#66d9ef">final</span> TextStyle activeStyle;
+  <span style="color:#66d9ef">final</span> TextStyle defaultStyle;
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> PopupMenuButton<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span>(
+      key: ArchSampleKeys.filterButton,
+      tooltip: ArchSampleLocalizations.of(context).filterTodos,
+      onSelected: onSelected,
+      itemBuilder: (BuildContext context) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span>PopupMenuItem<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span>[
+            PopupMenuItem<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span>(
+              key: ArchSampleKeys.allFilter,
+              value: VisibilityFilter.all,
+              child: Text(
+                ArchSampleLocalizations.of(context).showAll,
+                style: activeFilter <span style="color:#f92672">=</span><span style="color:#f92672">=</span> VisibilityFilter.all
+                    <span style="color:#f92672">?</span> activeStyle
+                    <span style="color:#f92672">:</span> defaultStyle,
+              ),
+            ),
+            PopupMenuItem<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span>(
+              key: ArchSampleKeys.activeFilter,
+              value: VisibilityFilter.active,
+              child: Text(
+                ArchSampleLocalizations.of(context).showActive,
+                style: activeFilter <span style="color:#f92672">=</span><span style="color:#f92672">=</span> VisibilityFilter.active
+                    <span style="color:#f92672">?</span> activeStyle
+                    <span style="color:#f92672">:</span> defaultStyle,
+              ),
+            ),
+            PopupMenuItem<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span>(
+              key: ArchSampleKeys.completedFilter,
+              value: VisibilityFilter.completed,
+              child: Text(
+                ArchSampleLocalizations.of(context).showCompleted,
+                style: activeFilter <span style="color:#f92672">=</span><span style="color:#f92672">=</span> VisibilityFilter.completed
+                    <span style="color:#f92672">?</span> activeStyle
+                    <span style="color:#f92672">:</span> defaultStyle,
+              ),
+            ),
+          ],
+      icon: Icon(Icons.filter_list),
+    );
+  }
+}
+</code></pre></div><blockquote>
+<p>다음 내용부터는 이전 내용들에 의해 이해가 수월해지기 때문에 생략합니다.</p>
+</blockquote>
+<h3 id="extra-actinos">Extra Actinos</h3>
+<h3 id="tab-selector">Tab Selector</h3>
+<h3 id="filtered-todos">Filtered Todos</h3>
+<h3 id="todo-item">Todo Item</h3>
+<h3 id="delete-todod-snackbar">Delete Todod SnackBar</h3>
+<h3 id="loading-indicator">Loading Indicator</h3>
+<h3 id="stats">Stats</h3>
+<h2 id="putting-it-all-together">Putting it all together</h2>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-bloc-tutorials/">Flutter로 개발하기(23) - Bloc 튜토리얼</a></li>
+    
+    <li><a href="/posts/flutter-bloc-introduction/">Flutter로 개발하기(22) - Bloc 소개</a></li>
+    
+    <li><a href="/posts/flutter-bloc-library-sample/">Flutter로 개발하기(21) - Bloc패턴 샘플</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

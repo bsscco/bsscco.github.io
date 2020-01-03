@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>천일문 입문편 on developer bsscco</title>
+    <link>/tags/%EC%B2%9C%EC%9D%BC%EB%AC%B8-%EC%9E%85%EB%AC%B8%ED%8E%B8/</link>
+    <description>Recent content in 천일문 입문편 on developer bsscco</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 08 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%EC%B2%9C%EC%9D%BC%EB%AC%B8-%EC%9E%85%EB%AC%B8%ED%8E%B8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Today I Leaned - 천일문 입문편 Ch.02 문장의 시제(by 동사)</title>
+      <link>/posts/2019-07-08-today-i-learned-1001-ch02/</link>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-07-08-today-i-learned-1001-ch02/</guid>
+      <description>Ch.02 문장의 시제(by 동사) 현재 단순형
+I am beautiful.
+I make a suit.
+진행형
+be동사는 없음.
+I am making a suit.
+완료형
+be동사는 없음.
+I have maden a suit.
+과거 단순형
+I was beautiful.
+I made a suit.
+진행형
+be동사는 없음.
+I was making a suit.
+완료형
+be동사는 없음.
+I had maden a suit.
+미래 단순형
+I will be beautiful.
+I will make a suit.
+진행형
+be동사는 없음.
+I will be making a suit.</description>
+    </item>
+    
+    <item>
+      <title>Today I Leaned - 천일문 입문편 Ch.01 문장의 구조(by 동사)</title>
+      <link>/posts/2019-07-03-today-i-learned-1001-ch01/</link>
+      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-07-03-today-i-learned-1001-ch01/</guid>
+      <description>Ch.01 문장의 구조(by 동사) 문장의 구성요소 주어 S: 명사
+동사 V: 동사
+목적어 O: 명사
+보어 C: 명사, 형용사
+수식어 M: 부사, 전명구
+문장의 구조(형식) 1: S + V(완전 자동사)
+2: S + V(불완전 자동사) + S.C
+3: S + V(완전 타동사) + O
+4: S + V(완전 타동사, 수여동사) + I.O + D.O
+5: S + V(불완전 타동사, 사역동사) + O + O.C
+1형식 S + V 2형식 S + V +S.</description>
+    </item>
+    
+    <item>
+      <title>Today I Leaned - 천일문 입문편 Ch.00 품사</title>
+      <link>/posts/2019-07-02-today-i-learned-1001-ch00/</link>
+      <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2019-07-02-today-i-learned-1001-ch00/</guid>
+      <description>Ch.00 품사 품사란? 문장에서 단어의 역할
+품사의 종류 명사 noun
+대명사 pronoun
+형용사 adjective
+동사 verb
+부사 adverb
+접속사전치사 preposition
+감탄사
+명사란? 이름
+고유명사란? 한 사람이나 하나의 장소의 고유이름. 첫글자를 대문자로 시작
+명사구란? to부정사, 동명사
+명사절이란? that절, 관계대명사 what절, whether if절, 의문사절, 복합관계대명사절
+대명사란? 앞에 나온 명사를 두 번째 언급할 때부터는 대신명사로 바꿔 말한다.
+동사란? 움직임, 상태를 의미하는 단어
+조동사란? 동사 앞에서 동사를 돕는 단어
+구동사란? (동사 + 전치사)구
+turn down, turn in, depend on, get off, get on, look forward to, put off</description>
+    </item>
+    
+  </channel>
+</rss>

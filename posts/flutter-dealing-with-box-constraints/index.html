@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-dealing-with-box-constraints/" />
+  <link rel="canonical" href="/posts/flutter-dealing-with-box-constraints/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(04) - 위젯의 크기 제약조건",
+      "headline" : "Flutter로 개발하기(04) - 위젯의 크기 제약조건",
+      "description" : "Dealing with box constraints https:\/\/flutter.dev\/docs\/development\/ui\/layout\/box-constraints\n플러터에서 위젯은 자신의 렌더박스에 그려집니다. 렌더박스의 크기는 부모 위젯으로부터 받은 제약조건에 의해 결정됩니다. 제약조건은 최소, 최대 너비와 높이로 구성됩니다.\n제약조건의 유형은 일반적으로 3가지로 분류됩니다.\n 가능한 한 큰 크기로 결정하기. Center, ListView 위젯이 그렇습니다. 자식 위젯과 같은 크기로 결정하기. Transform, Opacity 위젯이 그렇습니다. 특정한 값으로 크기를 결정하기. Image, Text 위젯이 그렇습니다.  Container 같은 위젯들은 생성자 인자에 따라 다른 제약조건 유형을 가집니다. Container는 기본적으로 가능한 한 큰 크기를 가지려고 하지만, 생성자 인자로 너비가 주어지면 그 값에 의해 크기가 결정됩니다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-13 07:49:13 \x2b0000 UTC",
+      "dateModified" : "2019-03-13 07:49:13 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-dealing-with-box-constraints\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(04) - 위젯의 크기 제약조건 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(04) - 위젯의 크기 제약조건 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Dealing with box constraints https://flutter.dev/docs/development/ui/layout/box-constraints
+플러터에서 위젯은 자신의 렌더박스에 그려집니다. 렌더박스의 크기는 부모 위젯으로부터 받은 제약조건에 의해 결정됩니다. 제약조건은 최소, 최대 너비와 높이로 구성됩니다.
+제약조건의 유형은 일반적으로 3가지로 분류됩니다.
+ 가능한 한 큰 크기로 결정하기. Center, ListView 위젯이 그렇습니다. 자식 위젯과 같은 크기로 결정하기. Transform, Opacity 위젯이 그렇습니다. 특정한 값으로 크기를 결정하기. Image, Text 위젯이 그렇습니다.  Container 같은 위젯들은 생성자 인자에 따라 다른 제약조건 유형을 가집니다. Container는 기본적으로 가능한 한 큰 크기를 가지려고 하지만, 생성자 인자로 너비가 주어지면 그 값에 의해 크기가 결정됩니다." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(04) - 위젯의 크기 제약조건</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-13 07:49:13 UTC">
+                13 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="dealing-with-box-constraints">Dealing with box constraints</h1>
+<p><a href="https://flutter.dev/docs/development/ui/layout/box-constraints">https://flutter.dev/docs/development/ui/layout/box-constraints</a></p>
+<p>플러터에서 위젯은 자신의 렌더박스에 그려집니다. 렌더박스의 크기는 부모 위젯으로부터 받은 제약조건에 의해 결정됩니다. 제약조건은 최소, 최대 너비와 높이로 구성됩니다.</p>
+<p>제약조건의 유형은 일반적으로 3가지로 분류됩니다.</p>
+<ul>
+<li>가능한 한 큰 크기로 결정하기. Center, ListView 위젯이 그렇습니다.</li>
+<li>자식 위젯과 같은 크기로 결정하기. Transform, Opacity 위젯이 그렇습니다.</li>
+<li>특정한 값으로 크기를 결정하기. Image, Text 위젯이 그렇습니다.</li>
+</ul>
+<p>Container 같은 위젯들은 생성자 인자에 따라 다른 제약조건 유형을 가집니다. Container는 기본적으로 가능한 한 큰 크기를 가지려고 하지만, 생성자 인자로 너비가 주어지면 그 값에 의해 크기가 결정됩니다.</p>
+<h2 id="--">한정되지 않은 제약조건</h2>
+<p>ListView 같은 스크롤 가능한 위젯들은 crossAxis 방향으로 크기를 확장하려는 제약조건을 가집니다.</p>
+<h2 id="flex">Flex</h2>
+<p>Flex box model을 기반으로 하는 Row, Column 같은 위젯들은 주어진 제약조건이 bounded인가, unbounded인가에 따라 다르게 동작합니다. 제약조건이 bounded일 때 자신의 mainAxis 방향으로 가능한 한 크게 확장합니다. unbounded일 때는 자식 위젯들의 크기에 맞춰집니다.</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-layout-tutorial/">Flutter로 개발하기(03) - 레이아웃 튜토리얼</a></li>
+    
+    <li><a href="/posts/flutter-layouts-in-flutter/">Flutter로 개발하기(02) - 레이아웃 위젯 소개</a></li>
+    
+    <li><a href="/posts/flutter-introduction-to-widgets/">Flutter로 개발하기(01) - 위젯 소개</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

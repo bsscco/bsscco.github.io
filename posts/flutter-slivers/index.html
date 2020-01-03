@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-slivers/" />
+  <link rel="canonical" href="/posts/flutter-slivers/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(15) - Sliver와 제스처",
+      "headline" : "Flutter로 개발하기(15) - Sliver와 제스처",
+      "description" : "Slivers 원문: https:\/\/flutter.dev\/docs\/development\/ui\/advanced\/slivers\nSliver는 스크롤 영역의 일부입니다. 맞춤 스크롤 효과를 만들기 위해 Sliver를 사용할 수 있습니다.\n플러터에서 Sliver 구현 예로 SliverList, SliverGrid, SliverAppBar가 있습니다. Slivers, Demystified, Flutter Publication도 참고하세요.\n제스처 원문: https:\/\/flutter.dev\/docs\/development\/ui\/advanced\/gestures\n플러터의 제스처 체계는 2가지 층으로 나뉩니다. 첫 번째 층은 raw 포인터 이벤트이고, 두 번째 층은 제스처입니다.\n포인터 포인터 이벤트의 4가지 유형\n PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent  포인터가 down 됐을 때 프레임워크는 화면에서 해당하는 위치에 위젯이 있는지 결정하기 위해 hit test를 합니다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-17 17:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-17 17:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-slivers\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(15) - Sliver와 제스처 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(15) - Sliver와 제스처 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Slivers 원문: https://flutter.dev/docs/development/ui/advanced/slivers
+Sliver는 스크롤 영역의 일부입니다. 맞춤 스크롤 효과를 만들기 위해 Sliver를 사용할 수 있습니다.
+플러터에서 Sliver 구현 예로 SliverList, SliverGrid, SliverAppBar가 있습니다. Slivers, Demystified, Flutter Publication도 참고하세요.
+제스처 원문: https://flutter.dev/docs/development/ui/advanced/gestures
+플러터의 제스처 체계는 2가지 층으로 나뉩니다. 첫 번째 층은 raw 포인터 이벤트이고, 두 번째 층은 제스처입니다.
+포인터 포인터 이벤트의 4가지 유형
+ PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent  포인터가 down 됐을 때 프레임워크는 화면에서 해당하는 위치에 위젯이 있는지 결정하기 위해 hit test를 합니다." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(15) - Sliver와 제스처</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-17 17:51:41 UTC">
+                17 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h2 id="slivers">Slivers</h2>
+<p>원문: <a href="https://flutter.dev/docs/development/ui/advanced/slivers">https://flutter.dev/docs/development/ui/advanced/slivers</a></p>
+<p>Sliver는 스크롤 영역의 일부입니다. 맞춤 스크롤 효과를 만들기 위해 Sliver를 사용할 수 있습니다.</p>
+<p>플러터에서 Sliver 구현 예로 <a href="https://docs.flutter.io/flutter/widgets/SliverList-class.html">SliverList</a>, <a href="https://docs.flutter.io/flutter/widgets/SliverGrid-class.html">SliverGrid</a>, <a href="https://docs.flutter.io/flutter/material/SliverAppBar-class.html">SliverAppBar</a>가 있습니다. <a href="https://medium.com/flutter-io/slivers-demystified-6ff68ab0296f">Slivers, Demystified</a>, <a href="https://medium.com/flutter-io">Flutter Publication</a>도 참고하세요.</p>
+<h2 id="heading">제스처</h2>
+<p>원문: <a href="https://flutter.dev/docs/development/ui/advanced/gestures">https://flutter.dev/docs/development/ui/advanced/gestures</a></p>
+<p>플러터의 제스처 체계는 2가지 층으로 나뉩니다. 첫 번째 층은 raw 포인터 이벤트이고, 두 번째 층은 제스처입니다.</p>
+<h3 id="heading-1">포인터</h3>
+<p>포인터 이벤트의 4가지 유형</p>
+<ul>
+<li>PointerDownEvent</li>
+<li>PointerMoveEvent</li>
+<li>PointerUpEvent</li>
+<li>PointerCancelEvent</li>
+</ul>
+<p>포인터가 down 됐을 때 프레임워크는 화면에서 해당하는 위치에 위젯이 있는지 결정하기 위해 hit test를 합니다. hit test에서 찾아진 위젯이 있다면 down 이벤트는 트리상에서 가장 앞에 있는 위젯으로 전달됩니다. 포인터 이벤트를 위젯으로부터 직접 감지하려면 Listener 위젯을 사용하면 됩니다. 하지만 일반적으로 포인터 감지보다는 제스처를 감지를 사용합니다.</p>
+<h3 id="heading-2">제스처</h3>
+<p>제스처는 의미적 행동들을 대표합니다.</p>
+<ul>
+<li>누르기
+<ul>
+<li>onTapDown</li>
+<li>onTapUp</li>
+<li>onTap</li>
+<li>onTapCancel</li>
+</ul>
+</li>
+<li>두 번 누르기
+<ul>
+<li>onDoubleTap</li>
+</ul>
+</li>
+<li>길게 누르기(long press)
+<ul>
+<li>onLongPress</li>
+</ul>
+</li>
+<li>수직으로 끌기
+<ul>
+<li>onVerticalDragStart</li>
+<li>onVerticalDragUpdate</li>
+<li>onVerticalDragEnd</li>
+</ul>
+</li>
+<li>수평으로 끌기
+<ul>
+<li>onHorizontalDragStart</li>
+<li>onHorizontalDragUpdate</li>
+<li>onHorizontalDragEnd</li>
+</ul>
+</li>
+<li>휘두르기
+<ul>
+<li>onPanStart: 만약 dragXXXXStart가 설정돼있다면 이 콜백과 충돌이 일어납니다.</li>
+<li>onPanUpdate: 만약 dragXXXXUpdate가 설정돼있다면 이 콜백과 충돌이 일어납니다.</li>
+<li>onPanEnd: 만약 dragXXXXEnd가 설정돼있다면 이 콜백과 충돌이 일어납니다.</li>
+</ul>
+</li>
+</ul>
+<p>제스터를 위젯으로부터 감지하려면 GestureDetector 위젯을 사용하면 됩니다.</p>
+<h4 id="----">중첩된 제스처들 사이에서 처리 순서</h4>
+<p>만약 수평드래그제스처와 수직드래그제스처가 같은 위치에 있다면, 어느 방향으로 일정한 픽셀만큼 이동했는지에 따라 어떤 방향의 드래그인지 결정됩니다. 하나의 제스처만 있다면 어떤 제스처인지 바로 결정되기 때문에 이벤트를 인식하는 데 더 효과적입니다.</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-introduction-to-animations/">Flutter로 개발하기(10) - 애니메이션 소개</a></li>
+    
+    <li><a href="/posts/flutter-animating-a-widget-across-screens/">Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기</a></li>
+    
+    <li><a href="/posts/flutter-navigate-with-named-routes/">Flutter로 개발하기(08) - named route를 통해 화면 관리하기</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

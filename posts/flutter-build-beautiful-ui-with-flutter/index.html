@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-build-beautiful-ui-with-flutter/" />
+  <link rel="canonical" href="/posts/flutter-build-beautiful-ui-with-flutter/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기",
+      "headline" : "Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기",
+      "description" : "Flutter로 아름다운 UI 만들기 https:\/\/codelabs.developers.google.com\/codelabs\/flutter\/index.html\n프로젝트 소스 : https:\/\/github.com\/bsscco\/friendly_chat\n Flutter의 장점  한 번 작성하면 iOS, Android에 배포 가능하다. Material Design과 Cupertino 위젯과 동작들을 지원한다. 스크롤링, 네비게이션 패턴, 폰트, 그 이상을 지원한다. 반응형 functional 프로그래밍을 지원한다. 겁나 빠른 핫리로드를 지원한다. Dart로 쓰여진 코드는 Android, iOS의 환경에 맞게 컴파일된다.   눈에 띄는 내용  마진에 들어가는 숫자는 디바이스에 따라 적절한 픽셀로 변환된다. (Android는 dip로 변환) CrossAxisAlignment.start 는 부모의 메인 Axis의 교차 Axis를 기준으로 앞쪽에 위치하도록 하겠다는 뜻이다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-02-14 23:11:44 \x2b0000 UTC",
+      "dateModified" : "2019-02-14 23:11:44 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-build-beautiful-ui-with-flutter\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기 - developer bsscco</title>
+  <meta property="og:title" content="Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Flutter로 아름다운 UI 만들기 https://codelabs.developers.google.com/codelabs/flutter/index.html
+프로젝트 소스 : https://github.com/bsscco/friendly_chat
+ Flutter의 장점  한 번 작성하면 iOS, Android에 배포 가능하다. Material Design과 Cupertino 위젯과 동작들을 지원한다. 스크롤링, 네비게이션 패턴, 폰트, 그 이상을 지원한다. 반응형 functional 프로그래밍을 지원한다. 겁나 빠른 핫리로드를 지원한다. Dart로 쓰여진 코드는 Android, iOS의 환경에 맞게 컴파일된다.   눈에 띄는 내용  마진에 들어가는 숫자는 디바이스에 따라 적절한 픽셀로 변환된다. (Android는 dip로 변환) CrossAxisAlignment.start 는 부모의 메인 Axis의 교차 Axis를 기준으로 앞쪽에 위치하도록 하겠다는 뜻이다." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-02-14 23:11:44 UTC">
+                14 Feb 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <p>Flutter로 아름다운 UI 만들기
+<a href="https://codelabs.developers.google.com/codelabs/flutter/index.html">https://codelabs.developers.google.com/codelabs/flutter/index.html</a></p>
+<p>프로젝트 소스 : <a href="https://github.com/bsscco/friendly_chat">https://github.com/bsscco/friendly_chat</a></p>
+<ul>
+<li>Flutter의 장점
+<ul>
+<li>한 번 작성하면 iOS, Android에 배포 가능하다.</li>
+<li>Material Design과 Cupertino 위젯과 동작들을 지원한다.</li>
+<li>스크롤링, 네비게이션 패턴, 폰트, 그 이상을 지원한다.</li>
+<li>반응형 functional 프로그래밍을 지원한다.</li>
+<li>겁나 빠른 핫리로드를 지원한다.</li>
+<li>Dart로 쓰여진 코드는 Android, iOS의 환경에 맞게 컴파일된다.</li>
+</ul>
+</li>
+<li>눈에 띄는 내용
+<ul>
+<li>마진에 들어가는 숫자는 디바이스에 따라 적절한 픽셀로 변환된다. (Android는 dip로 변환)</li>
+<li>CrossAxisAlignment.start 는 부모의 메인 Axis의 교차 Axis를 기준으로 앞쪽에 위치하도록 하겠다는 뜻이다.</li>
+<li>setState(() =&gt; {&hellip;})에 들어가는 람다는 동기적으로 작업을 완료해야 한다. 프레임워크가 작업을 완료하기 전에 위젯을 rebuild 할 수 있기 때문이다.</li>
+<li>사용하지 않는 파라메터는 _로 이름지어놓는 게 관례다.</li>
+<li>AnimationController의 생성자에 넘기는 vsync 인자는 offscreen에서도 그려지는 낭비를 없애기 위해 사용된다.</li>
+<li>위젯의 dispose() 메소드는 멀티 스크린 같은 복잡한 구조에서 호출된다.</li>
+<li>IconButton의 onPressed값이 null이면 IconButton은 자동으로 disable된다. (색상도 설정된 테마에 맞게 disable색상으로 바뀐다.)</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

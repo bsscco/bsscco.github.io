@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.62.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="/posts/flutter-animating-a-widget-across-screens/" />
+  <link rel="canonical" href="/posts/flutter-animating-a-widget-across-screens/" /><script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기",
+      "headline" : "Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기",
+      "description" : "Animating a Widget across screens https:\/\/flutter.dev\/docs\/cookbook\/navigation\/hero-animations\n현재 화면에서 다른 화면을 열 때 사용자에게 연속성을 주어야 하는 경우가 종종 있습니다. 연속성을 구현하기 위한 일반적인 기술은 현재 화면의 위젯이 다음 화면으로 이동하는 애니메이션을 적용하는 것입니다. 두 화면 간에 시각적 요소를 연결하려면 Hero 위젯을 사용하면 됩니다.\n같은 이미지를 보여주는 2개의 화면 만들기 class MainScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(\x26#39;Main Screen\x26#39;), ), body: GestureDetector( onTap: () { Navigator.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-16 22:51:41 \x2b0000 UTC",
+      "dateModified" : "2019-03-16 22:51:41 \x2b0000 UTC",
+      "url" : "\/posts\/flutter-animating-a-widget-across-screens\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기 - developer bsscco</title>
+  <meta property="og:title" content="Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기 - developer bsscco" />
+  <meta property="og:type" content="article" />
+  <meta name="description" content="Animating a Widget across screens https://flutter.dev/docs/cookbook/navigation/hero-animations
+현재 화면에서 다른 화면을 열 때 사용자에게 연속성을 주어야 하는 경우가 종종 있습니다. 연속성을 구현하기 위한 일반적인 기술은 현재 화면의 위젯이 다음 화면으로 이동하는 애니메이션을 적용하는 것입니다. 두 화면 간에 시각적 요소를 연결하려면 Hero 위젯을 사용하면 됩니다.
+같은 이미지를 보여주는 2개의 화면 만들기 class MainScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;Main Screen&#39;), ), body: GestureDetector( onTap: () { Navigator." />
+
+  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.min.css" />
+  <link rel="stylesheet"
+    href="/css/github-markdown.min.css" />
+  <link rel="stylesheet" href="/css/highlight/tomorrow.min.css" />
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="developer bsscco">
+  
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Permanent+Marker" rel="stylesheet">
+  
+  
+
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="site-header">
+          
+<header>
+  <div class="signatures site-title">
+    <a href="/">developer bsscco</a>
+  </div>
+</header>
+<div class="row end-xs">
+  
+  
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-16 22:51:41 UTC">
+                16 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          <h1 id="animating-a-widget-across-screens">Animating a Widget across screens</h1>
+<p><a href="https://flutter.dev/docs/cookbook/navigation/hero-animations">https://flutter.dev/docs/cookbook/navigation/hero-animations</a></p>
+<p>현재 화면에서 다른 화면을 열 때 사용자에게 연속성을 주어야 하는 경우가 종종 있습니다. 연속성을 구현하기 위한 일반적인 기술은 현재 화면의 위젯이 다음 화면으로 이동하는 애니메이션을 적용하는 것입니다. 두 화면 간에 시각적 요소를 연결하려면 Hero 위젯을 사용하면 됩니다.</p>
+<h2 id="---2--">같은 이미지를 보여주는 2개의 화면 만들기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Main Screen</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      body: GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            <span style="color:#66d9ef">return</span> DetailScreen();
+          }));
+        },
+        child: Image.network(
+          <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://picsum.photos/250?image=9</span><span style="color:#e6db74">&#39;</span>,
+        ),
+      ),
+    );
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DetailScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      body: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Center(
+          child: Image.network(
+            <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://picsum.photos/250?image=9</span><span style="color:#e6db74">&#39;</span>,
+          ),
+        ),
+      ),
+    );
+  }
+}
+</code></pre></div><h2 id="---hero--">첫 번째 화면에 Hero 위젯 추가하기</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Hero(
+  tag: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">imageHero</span><span style="color:#e6db74">&#39;</span>,
+  child: Image.network(
+    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://picsum.photos/250?image=9</span><span style="color:#e6db74">&#39;</span>,
+  ),
+);
+</code></pre></div><h2 id="---hero---1">두 번째 화면에 Hero 위젯 추가하기</h2>
+<p>두 화면 사이의 tag 속성값은 동일해야 합니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Hero(
+  tag: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">imageHero</span><span style="color:#e6db74">&#39;</span>,
+  child: Image.network(
+    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://picsum.photos/250?image=9</span><span style="color:#e6db74">&#39;</span>,
+  ),
+);
+</code></pre></div><h2 id="--">완전한 예제 코드</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">package:flutter/material.dart</span><span style="color:#e6db74">&#39;</span>;
+
+<span style="color:#66d9ef">void</span> main() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> runApp(HeroApp());
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HeroApp</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> MaterialApp(
+      title: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Transition Demo</span><span style="color:#e6db74">&#39;</span>,
+      home: MainScreen(),
+    );
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Main Screen</span><span style="color:#e6db74">&#39;</span>),
+      ),
+      body: GestureDetector(
+        child: Hero(
+          tag: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">imageHero</span><span style="color:#e6db74">&#39;</span>,
+          child: Image.network(
+            <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://picsum.photos/250?image=9</span><span style="color:#e6db74">&#39;</span>,
+          ),
+        ),
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            <span style="color:#66d9ef">return</span> DetailScreen();
+          }));
+        },
+      ),
+    );
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DetailScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      body: GestureDetector(
+        child: Center(
+          child: Hero(
+            tag: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">imageHero</span><span style="color:#e6db74">&#39;</span>,
+            child: Image.network(
+              <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://picsum.photos/250?image=9</span><span style="color:#e6db74">&#39;</span>,
+            ),
+          ),
+        ),
+        onTap: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
+}
+</code></pre></div><p><img src="https://flutter.dev/images/cookbook/hero.gif" alt="hero.gif"></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+
+        
+        
+
+<div class="releated-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/flutter-navigate-with-named-routes/">Flutter로 개발하기(08) - named route를 통해 화면 관리하기</a></li>
+    
+    <li><a href="/posts/flutter-return-data-from-a-screen/">Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기</a></li>
+    
+    <li><a href="/posts/flutter-send-data-to-a-new-screen/">Flutter로 개발하기(06) - 새 화면에 데이터 넘기기</a></li>
+    
+  </ul>
+</div>
+
+        
+        
+        <div style="height: 50px;"></div>
+        
+        
+
+        <div class="site-footer">
+  
+  <div class="site-footer-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  <script src="/js/highlight.pack.js"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+  
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>
