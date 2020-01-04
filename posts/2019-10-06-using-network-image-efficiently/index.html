@@ -10,7 +10,7 @@
 	<meta name="description" content="">
 		<meta property="og:title" content="네트워크 이미지를 효율적으로 사용하기" />
 <meta property="og:description" content="네트워크 이미지를 효율적으로 사용하기 리사이징 방법 1. 서버로부터 리사이징된 이미지를 다운로드 받는다.
-예) https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}
+예) https://image.com/image/xxxxxxx.jpg/{가로px}/{세로px}
 장점 : 네트워크 통신리소스 감소
 2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.
 예) Glide.override()
@@ -27,7 +27,7 @@ ImageView의 가로세로 사이즈가 모두 WrapContent인 경우엔 자동으
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="네트워크 이미지를 효율적으로 사용하기"/>
 <meta name="twitter:description" content="네트워크 이미지를 효율적으로 사용하기 리사이징 방법 1. 서버로부터 리사이징된 이미지를 다운로드 받는다.
-예) https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}
+예) https://image.com/image/xxxxxxx.jpg/{가로px}/{세로px}
 장점 : 네트워크 통신리소스 감소
 2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.
 예) Glide.override()
@@ -89,7 +89,7 @@ ImageView의 가로세로 사이즈가 모두 WrapContent인 경우엔 자동으
 				<div class="post__content"><h2 id="---">네트워크 이미지를 효율적으로 사용하기</h2>
 <h3 id="-">리사이징 방법</h3>
 <p><strong>1. 서버로부터 리사이징된 이미지를 다운로드 받는다.</strong></p>
-<p><strong>예)</strong> <a href="https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/%7B%EA%B0%80%EB%A1%9Cpx%7D/%7B%EC%84%B8%EB%A1%9Cpx%7D">https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}</a></p>
+<p><strong>예)</strong> <a href="https://image.com/image/xxxxxxx.jpg/%7B">https://image.com/image/xxxxxxx.jpg/{</a>가로px}/{세로px}</p>
 <p><strong>장점 :</strong> 네트워크 통신리소스 감소</p>
 <p><strong>2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.</strong></p>
 <p><strong>예)</strong> Glide.override()</p>
