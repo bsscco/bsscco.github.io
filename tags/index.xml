@@ -5,10 +5,19 @@
     <link>/tags/</link>
     <description>Recent content in Tags on developer bsscco</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 06 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dart</title>
+      <link>/tags/dart/</link>
+      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dart/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>android</title>
@@ -43,15 +52,6 @@
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/%EC%B2%9C%EC%9D%BC%EB%AC%B8-%EC%9E%85%EB%AC%B8%ED%8E%B8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dart</title>
-      <link>/tags/dart/</link>
-      <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/dart/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>Dart 코드랩 Intro to Dart for Java(Kotlin) Developers | developer bsscco</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Dart 코드랩 Intro to Dart for Java(Kotlin) Developers" />
+<meta property="og:description" content="링크 : https://codelabs.developers.google.com/codelabs/from-java-to-dart/#0
+ 소개 이 코드랩에서 배울 것들
+ 생성자를 어떻게 만드나 파라메터를 기술하는 다른 방법들 getter와 setter를 언제 어떻게 만드나 Dart는 프라이버시를 어떻게 다루나 팩토리를 어떻게 만드나 Dart에서 함수형 프로그래밍을 어떻게 하나 기타 코어 Dart 특징들  준비물
+모든 예제들을 브라우저 기반 툴인 DartPad에서 작성하고 실행할 수 있습니다. IDE를 사용하려면 IntelliJ의 Dart 플로그인이나 VS Code의 Dart Code 익스텐션을 사용할 수 있습니다.
+ 간단한 Dart 클래스 만들기 자바 튜토리얼인 Bicycle class와 같은 기능을 가진 간단한 Dart 클래스를 만들 겁니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/dart-codelab-intro-to-dart-for-java-kotlin-developers/" />
+<meta property="article:published_time" content="2020-01-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-05T00:00:00+00:00" />
+
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dart 코드랩 Intro to Dart for Java(Kotlin) Developers"/>
+<meta name="twitter:description" content="링크 : https://codelabs.developers.google.com/codelabs/from-java-to-dart/#0
+ 소개 이 코드랩에서 배울 것들
+ 생성자를 어떻게 만드나 파라메터를 기술하는 다른 방법들 getter와 setter를 언제 어떻게 만드나 Dart는 프라이버시를 어떻게 다루나 팩토리를 어떻게 만드나 Dart에서 함수형 프로그래밍을 어떻게 하나 기타 코어 Dart 특징들  준비물
+모든 예제들을 브라우저 기반 툴인 DartPad에서 작성하고 실행할 수 있습니다. IDE를 사용하려면 IntelliJ의 Dart 플로그인이나 VS Code의 Dart Code 익스텐션을 사용할 수 있습니다.
+ 간단한 Dart 클래스 만들기 자바 튜토리얼인 Bicycle class와 같은 기능을 가진 간단한 Dart 클래스를 만들 겁니다."/>
+
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/themes/dark-green.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="manifest" href="/manifest.json">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-96391480-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+	<header class="header">
+	<a class="logo" href="/">developer bsscco</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/">Home</a>
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/posts/">Posts</a>
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">Dart 코드랩 Intro to Dart for Java(Kotlin) Developers</li>
+	</ol>
+</nav>
+		<div class="single block">
+			<article class="post">
+	<div class="post__meta meta mb">
+	<time class="post__meta-published meta-published" datetime="2020-01-05T00:00:00Z">January 05, 2020</time>
+	</div>
+
+				<h1 class="post__title">Dart 코드랩 Intro to Dart for Java(Kotlin) Developers</h1>
+<details class="post__toc toc" >
+	<summary class="toc__title">Table of Contents</summary>
+	<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#heading">소개</a></li>
+        <li><a href="#-dart--">간단한 Dart 클래스 만들기</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+				<div class="post__content"><p>링크 : <a href="https://codelabs.developers.google.com/codelabs/from-java-to-dart/#0">https://codelabs.developers.google.com/codelabs/from-java-to-dart/#0</a></p>
+<hr>
+<h3 id="heading">소개</h3>
+<p><strong>이 코드랩에서 배울 것들</strong></p>
+<ul>
+<li>생성자를 어떻게 만드나</li>
+<li>파라메터를 기술하는 다른 방법들</li>
+<li>getter와 setter를 언제 어떻게 만드나</li>
+<li>Dart는 프라이버시를 어떻게 다루나</li>
+<li>팩토리를 어떻게 만드나</li>
+<li>Dart에서 함수형 프로그래밍을 어떻게 하나</li>
+<li>기타 코어 Dart 특징들</li>
+</ul>
+<p><strong>준비물</strong></p>
+<p>모든 예제들을 브라우저 기반 툴인 <a href="https://www.dartlang.org/tools/dartpad">DartPad</a>에서 작성하고 실행할 수 있습니다. IDE를 사용하려면 IntelliJ의 <a href="">Dart 플로그인</a>이나 VS Code의 <a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code">Dart Code 익스텐션</a>을 사용할 수 있습니다.</p>
+<hr>
+<h3 id="-dart--">간단한 Dart 클래스 만들기</h3>
+<p>자바 튜토리얼인 <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/variables.html">Bicycle class</a>와 같은 기능을 가진 간단한 Dart 클래스를 만들 겁니다. Bicycle 클래스는 몇 개의 private 인스턴스 변수와 getter, setter들을 가집니다. <code>main()</code> 메소드는 Bicycle을 인스턴스화 하고 콘솔에 출력합니다.</p>
+<h4 id="dartpad-httpsdartpaddartlangorg0ca5b334ec413c084575f575e0240501"><a href="https://dartpad.dartlang.org/0ca5b334ec413c084575f575e0240501">DartPad 열기</a></h4>
+<h4 id="bicycle--">Bicycle 클래스 정의하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// dart
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bicycle</span> {
+  <span style="color:#66d9ef">int</span> cadence;
+  <span style="color:#66d9ef">int</span> speed;
+  <span style="color:#66d9ef">int</span> gear;
+}
+
+<span style="color:#66d9ef">void</span> main() {
+  
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#75715e">// kotlin
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bicycle</span>(<span style="color:#66d9ef">var</span> cadence: Int, <span style="color:#66d9ef">var</span> speed: Int, <span style="color:#66d9ef">var</span> gear: Int)
+
+<span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span> {
+
+}
+</code></pre></div><p><strong>들여다보기</strong></p>
+<ul>
+<li>Dart의 main 메소드는 <code>main()</code> 또는 <code>main(&lt;String&gt; args)</code>으로 이름짓습니다.</li>
+<li><code>main()</code> 메소드는 최상위 레벨에서 살아갑니다. Dart에서는 클래스 밖 범위에 코드를 정의할 수 있습니다.</li>
+<li>Dart에서는 private 키워드를 사용하지 않습니다. 프라이버시에 대한 더 자세한 내용은 <strong>&ldquo;Step 3: 읽기전용 변수 추가하기&rdquo;</strong> 에서 배울 겁니다.</li>
+<li><code>main()</code> 뿐만 아니라 Bicycle도 public으로 선언하지 않습니다. 모든 식별자는 기본적으로 public이기 때문입니다. Dart에는 public, private, protected 키워드가 없습니다.</li>
+<li>Dart는 4문자 들여쓰기 대신에 2문자 들여쓰기 컨벤션을 사용합니다. dartfmt 도구를 사용하면 공백 컨벤션에 대해 걱정할 필요가 없습니다.</li>
+</ul>
+<h4 id="bicycle---1">Bicycle 생성자 정의하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// dart
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bicycle</span> {
+  <span style="color:#66d9ef">int</span> cadence;
+  <span style="color:#66d9ef">int</span> speed;
+  <span style="color:#66d9ef">int</span> gear;
+
+  Bicycle(<span style="color:#66d9ef">this</span>.cadence, <span style="color:#66d9ef">this</span>.speed, <span style="color:#66d9ef">this</span>.gear);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#75715e">// kotlin
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bicycle</span>(<span style="color:#66d9ef">var</span> cadence: Int, <span style="color:#66d9ef">var</span> speed: Int, <span style="color:#66d9ef">var</span> gear: Int)
+</code></pre></div><p><strong>들여다보기</strong></p>
+<ul>
+<li>이 생성자는 몸체가 없지만 Dart에서는 유효합니다.</li>
+<li>no-body 생성자의 끝에는 세미콜론(;)이 붙어야 합니다.</li>
+<li>생성자 파라메터 목록에서 <code>this</code>를 사용하는 것은 파라메터 값들을 인스턴스 변수들에 할당하는 간결한 방법입니다.</li>
+<li>다음 코드는 위와 동일합니다.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// dart
+</span><span style="color:#75715e"></span>Bicycle(<span style="color:#66d9ef">int</span> cadence, <span style="color:#66d9ef">int</span> speed, <span style="color:#66d9ef">int</span> gear) {
+  <span style="color:#66d9ef">this</span>.cadence <span style="color:#f92672">=</span> cadence;
+  <span style="color:#66d9ef">this</span>.speed <span style="color:#f92672">=</span> speed;
+  <span style="color:#66d9ef">this</span>.gear <span style="color:#f92672">=</span> gear;
+}
+</code></pre></div><h4 id="bicycle---">Bicycle 인스턴스를 만들고 출력하기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// dart
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> main() {
+  <span style="color:#66d9ef">final</span> bike <span style="color:#f92672">=</span> Bicycle(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>);
+  print(bike);
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#75715e">// kotlin
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#66d9ef">val</span> bike = Bicycle(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+  print(bike)
+}
+</code></pre></div><h4 id="-">출력 향상시키기</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// dart
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">@</span>override 
+<span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Bicycle: </span><span style="color:#e6db74">$</span>speed<span style="color:#e6db74"> mph</span><span style="color:#e6db74">&#39;</span>;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#75715e">// kotlin
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">toString</span>() = <span style="color:#e6db74">&#34;Bicycle: $speed mph&#34;</span>
+</code></pre></div><p><strong>들여다보기</strong></p>
+<ul>
+<li>@override 어노테이션은 분석기에게 오버라이딩 의도를 말해줍니다.</li>
+<li>Dart는 문자열 리터럴을 기술할 때 '&rsquo; 또는 &quot;&rdquo; 를 지원합니다.</li>
+<li>문자열 리터럴 안에 표현식 값을 넣을 때는 문자열 interpolation을 사용하세요: <code>${표현식}</code>. 만약 표현식이 식별자라면 중괄호{}를 없애도 됩니다: <code>$vaiableName</code>.</li>
+<li>한줄 함수 또는 메소드로 축약시킬 때는 arrow(=&gt;) 표기법을 사용하세요.</li>
+</ul>
+<h4 id="--">일기전용 변수 추가하기</h4>
+<p>Dart 식별자를 private으로 만들려면 이름의 시작을 언더스코어(_)로 하면 됩니다.</p>
+<p><strong>speed를 private, 읽기전용으로 만들기</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// dart
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bicycle</span> {
+  <span style="color:#66d9ef">int</span> cadence;
+  <span style="color:#66d9ef">int</span> _speed <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">int</span> gear;
+  
+  Bicycle(<span style="color:#66d9ef">this</span>.cadence, <span style="color:#66d9ef">this</span>.gear);
+  
+  <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">get</span> speed <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> _speed;
+
+  ...
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#75715e">// kotlin
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bicycle</span>(<span style="color:#66d9ef">var</span> cadence: Int, <span style="color:#66d9ef">var</span> gear: Int) {
+  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> speed = <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">get</span>() = speed
+
+  ...
+}
+</code></pre></div><p><strong>들여다보기</strong></p>
+<ul>
+<li>초기화되지 않은 변수는 null 값을 가집니다.</li>
+<li>Dart 컴파일러는 언더스코어 prefix가 붙은 식별자에게 프라이버시를 적용합니다.</li>
+<li>기본적으로 Dart는 모든 public 인스턴스 변수에 암시적으로 getter, setter를 제공합니다.</li>
+<li>getter, setter가 제공되기 때문에 bike.cadence, bike.gear로 접근할 수 있습니다.</li>
+</ul>
+</div>
+				
+				<footer class="post__footer">
+					
+<div class="post__tags">
+			<a class="post__tag btn" href="/tags/dart/">dart</a>
+</div>
+					
+<div class="post__share share">
+	<a class="share__link btn" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fposts%2fdart-codelab-intro-to-dart-for-java-kotlin-developers%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on Twitter" href="https://twitter.com/intent/tweet/?url=%2fposts%2fdart-codelab-intro-to-dart-for-java-kotlin-developers%2f&amp;text=Dart%20%ec%bd%94%eb%93%9c%eb%9e%a9%20Intro%20to%20Dart%20for%20Java%28Kotlin%29%20Developers" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Twitter" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on Reddit" href="https://www.reddit.com/submit?url=%2fposts%2fdart-codelab-intro-to-dart-for-java-kotlin-developers%2f&amp;title=Dart%20%ec%bd%94%eb%93%9c%eb%9e%a9%20Intro%20to%20Dart%20for%20Java%28Kotlin%29%20Developers" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on Telegram" href="https://t.me/share/url?url=%2fposts%2fdart-codelab-intro-to-dart-for-java-kotlin-developers%2f&amp;title=Dart%20%ec%bd%94%eb%93%9c%eb%9e%a9%20Intro%20to%20Dart%20for%20Java%28Kotlin%29%20Developers" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Telegram" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M199 404c-11 0-10-4-13-14l-32-105 245-144"/><path d="M199 404c7 0 11-4 16-8l45-43-56-34"/><path d="M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=%2fposts%2fdart-codelab-intro-to-dart-for-java-kotlin-developers%2f&title=Dart%20%ec%bd%94%eb%93%9c%eb%9e%a9%20Intro%20to%20Dart%20for%20Java%28Kotlin%29%20Developers" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="LinkedIn" role="img" width="32" height="32" viewBox="0 0 512 512"><circle cx="142" cy="138" r="37"/><path stroke-width="66" d="M244 194v198M142 194v198"/><path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32"/></svg>
+	</a>
+	<a class="share__link btn" title="Share on VK" href="https://vk.com/share.php?url=%2fposts%2fdart-codelab-intro-to-dart-for-java-kotlin-developers%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Share on VK', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="VK" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M274 363c5-1 14-3 14-15 0 0-1-30 13-34s32 29 51 42c14 9 25 8 25 8l51-1s26-2 14-23c-1-2-9-15-39-42-31-30-26-25 11-76 23-31 33-50 30-57-4-7-20-6-20-6h-57c-6 0-9 1-12 6 0 0-9 25-21 45-25 43-35 45-40 42-9-5-7-24-7-37 0-45 7-61-13-65-13-2-59-4-73 3-7 4-11 11-8 12 3 0 12 1 17 7 8 13 9 75-2 81-15 11-53-62-62-86-2-6-5-7-12-9H79c-6 0-15 1-11 13 27 56 83 193 184 192z"/></svg>
+	</a>
+	<a class="share__link btn" title="Save to Pocket" href="https://getpocket.com/edit?url=%2fposts%2fdart-codelab-intro-to-dart-for-java-kotlin-developers%2f&amp;title=Dart%20%ec%bd%94%eb%93%9c%eb%9e%a9%20Intro%20to%20Dart%20for%20Java%28Kotlin%29%20Developers" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Save to Pocket', 'width=480,height=320,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Pocket" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M388.8 88.9H123.2A47.4 47.4 0 0 0 76 136.5v131.9c0 2.4.2 4.8.5 7.2a101.8 101.8 0 0 0-.5 10.6c0 75.6 80.6 137 180 137s180-61.4 180-137c0-3.6-.2-7.1-.5-10.6.3-2.4.5-4.8.5-7.2v-132A47.4 47.4 0 0 0 388.8 89zm-22.4 132.6l-93 93c-4.7 4.6-11 7-17.1 7a23.8 23.8 0 0 1-17.7-7l-93-93a24 24 0 0 1 33.8-33.8l76.6 76.5 76.6-76.5a24 24 0 0 1 33.8 33.8z"/></svg>
+	</a>
+	<a class="share__link btn" title="Save to Pinterest" href="https://pinterest.com/pin/create/button/?url=%2fposts%2fdart-codelab-intro-to-dart-for-java-kotlin-developers%2f&description=Dart%20%ec%bd%94%eb%93%9c%eb%9e%a9%20Intro%20to%20Dart%20for%20Java%28Kotlin%29%20Developers" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, 'Save to Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
+	</a>
+</div>
+				</footer>
+				
+			</article>
+		</div>
+	</main>
+	
+<div class="authorbox block">
+	<div class="author">
+		<figure class="author__avatar">
+			<img class="author__img" alt="bsscco avatar" src="https://avatars3.githubusercontent.com/u/11385606?s=460&amp;v=4" height="90" width="90">
+		</figure>
+		<div class="author__body">
+			<div class="author__name">
+				bsscco
+			</div>
+			<div class="author__bio">게임서버 개발을 1년, 이후 현재(2020)까지 7년 간 안드로이드앱 개발을 해왔습니다. 더 나은 개발을 위해 Kotlin과 앱 아키텍쳐, Dart와 Flutter를 공부 중입니다. 웹개발에도 관심이 있어 사내에서 Rails 스터디에 참여했고, Node로 사내 작은 툴들을 제작하기도 합니다. 😐</div>
+		</div>
+	</div>
+</div>
+	
+
+
+
+<div class="related block">
+	<h3 class="related__title">Related</h3>
+	<ul class="related__list">
+		
+		<li class="related__item"><a class="related__link" href="/posts/2019-05-26-effective-dart-summary-/">이펙티브 Dart 한 장으로 요약!</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-2.3/">Dart 2.3 - UI를 빌딩에 최적화 됐어요.</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-get-started-with-server-side-dart/">서버사이드 Dart(5) - 서버사이드 시작하기</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-a-tour-of-the-dart-io-library/">서버사이드 Dart(4) - dart:io 라이브러리 여행하기</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-api-overview/">서버사이드 Dart(3) - 다트의 주요 라이브러리들</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-what-is-in-dart-sdk/">서버사이드 Dart(2) - 다트 SDK에 있는 도구들</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-server-side-dart/">서버사이드 Dart(1) - 학습 참고 목록</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-sample-code/">Dart 샘플코드 번역</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-effective-dart-4/">이펙티브 Dart(4) - 사용성 가이드</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-effective-dart-3/">이펙티브 Dart(3) - 문서화 가이드</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-effective-dart-2/">이펙티브 Dart(2) - 스타일 가이드</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-effective-dart-1/">이펙티브 Dart(1) - 개요</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-a-tour-of-the-dart-language-4/">Dart 언어 여행하기 요약(4)</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-a-tour-of-the-dart-language-3/">Dart 언어 여행하기 요약(3)</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-a-tour-of-the-dart-language-2/">Dart 언어 여행하기 요약(2)</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-a-tour-of-the-dart-language-1/">Dart 언어 여행하기 요약(1)</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-asynchronous-programming-streams/">Dart 비동기 프로그래밍 Streams 요약</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-asynchronous-programming-futures/">Dart 비동기 프로그래밍 Futures 요약</a></li>
+		
+		<li class="related__item"><a class="related__link" href="/posts/dart-from-java-to-dart/">Flutter 코드랩 리뷰 - 자바에서 다트로 넘어가기</a></li>
+		
+	</ul>
+</div>
+
+	
+
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:bsscco@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/bsscco">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2020 bsscco. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+<script src="/js/custom.js"></script>
+</body>
+</html>

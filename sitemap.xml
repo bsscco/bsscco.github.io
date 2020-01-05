@@ -3,22 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/tags/android/</loc>
-    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
+    <loc>/tags/dart/</loc>
+    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/dart-codelab-intro-to-dart-for-java-kotlin-developers/</loc>
+    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/posts/</loc>
-    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/android/</loc>
     <lastmod>2019-10-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -125,11 +135,6 @@
   <url>
     <loc>/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/</loc>
     <lastmod>2019-05-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/dart/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>

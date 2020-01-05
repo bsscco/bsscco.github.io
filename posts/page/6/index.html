@@ -12,7 +12,7 @@
 <meta property="og:description" content="Responsive card-based &amp; code-light Hugo theme" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/posts/" />
-<meta property="og:updated_time" content="2019-10-06T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-01-05T00:00:00+00:00" />
 
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -26,6 +26,17 @@
 	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="developer bsscco">
 	<link rel="manifest" href="/manifest.json">
 		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-96391480-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
 	<header class="header">
@@ -50,6 +61,20 @@
 			
 		</div>
 		<div class="cards">
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-what-is-in-dart-sdk/">서버사이드 Dart(2) - 다트 SDK에 있는 도구들</a></h1>
+	<div class="post__content">What’s in the SDK https://www.dartlang.org/tools/sdk#whats-in-the-sdk
+dart standalone VM.
+dartdoc API 문서 생성기
+# 패키지의 루트 디렉토리에서 사용해야 한다. $ dartdoc Generating documentation for 'server_code_lab' into &lt;path-to-server-code-lab&gt;/server_code_lab/doc/api/ parsing lib/client/piratesapi.dart... parsing lib/common/messages.dart... parsing lib/common/utils.dart... parsing lib/server/piratesapi.dart... Parsed 4 files in 8.1 seconds. generating docs for library pirate.messages from messages.dart... generating docs for library pirate.server from piratesapi.dart... generating docs for library pirate.utils from utils.dart... generating docs for library server_code_lab.piratesApi.client from piratesapi.dart... Documented 4 libraries in 9.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-03T09:48:14Z">March 03, 2019</time>
+	</div>
+
+</article>
+				</div>
 			
 				<div class="card card--2col">
 					<article class="post card__box block">
@@ -168,18 +193,6 @@ The guides  Style Guide - 코드 배치와 조직화, dartfmt가 다루지 않�
  Functions  개요  일급함수로 사용할 수 있다. Effective Dart는 리턴형에 type 어노테이션을 사용하길 권장한다.  bool isNoble(int atomicNumber) { return _nobleGases[atomicNumber] != null; }  one-line은 shorthand로 쓸 수 있다. bool isNoble(int atomicNumber) =&gt; _nobleGases[atomicNumber] != null; required와 optional 두 종류의 파라메터를 사용할 수 있다.   Optional parameters  optional named 파라메터   void enableFlags({bool bold, bool hidden}) {.</div>
 	<div class="post__meta meta mt tar">
 	<time class="post__meta-published meta-published" datetime="2019-02-21T23:30:49Z">February 21, 2019</time>
-	</div>
-
-</article>
-				</div>
-			
-				<div class="card card--2col">
-					<article class="post card__box block">
-	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-a-tour-of-the-dart-language-1/">Dart 언어 여행하기 요약(1)</a></h1>
-	<div class="post__content">Dart A Tour of the Dart Language https://www.dartlang.org/guides/language/language-tour
- Inportant concepts  모든 게 객체(1, null, function, true, &hellip;) var/final형 선언 : 타입 추론 , 어느 타입이든 담게 하려면 dynamic형 선언 제네릭 타입 List 일급함수, 정적메소드, nested 함수, 지역함수 일급변수, 정적변수 private 변수/메소드화 : _(underscore)로 시작해서 이름짓기. 라이브러리 내에서만 접근 가능 is-else같은 statements는 expression이 될 수 없다.   Keywords  생소한 키워드  as  형변환 연산자, import문에서 alias 연산자   covariant  상위타입을 지정해야 하는 곳에 하위 타입을 지정할 수 있게 해준다.</div>
-	<div class="post__meta meta mt tar">
-	<time class="post__meta-published meta-published" datetime="2019-02-21T22:57:49Z">February 21, 2019</time>
 	</div>
 
 </article>

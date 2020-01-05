@@ -12,7 +12,7 @@
 <meta property="og:description" content="Responsive card-based &amp; code-light Hugo theme" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/posts/" />
-<meta property="og:updated_time" content="2019-10-06T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-01-05T00:00:00+00:00" />
 
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -26,6 +26,17 @@
 	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="developer bsscco">
 	<link rel="manifest" href="/manifest.json">
 		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-96391480-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
 	<header class="header">
@@ -50,6 +61,19 @@
 			
 		</div>
 		<div class="cards">
+			
+				<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/">Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</a></h1>
+	<div class="post__content">Lesson 9: Behind the scenes 1. Offline Movie Night 2. Exercise: Introduction offline caching에 대해 배울 거야!
+3. What’s in a Cache 캐시란, 다음에 곧 쓸 데이터를 로컬에 저장해뒀다가 필요할 때 다시 쓰는 것
+우리앱에서 레포지토리 패턴을 써야 하는 이유  앱 실행 시에 다운로드받아 캐시해 사용할 만한 데이터들이 있다. 필터 목록 같은 데이터. 이 데이터를 따로 관리하는 클래스를 두는 것보다, 레포지토리 패턴을 써서 레포지토리 안에서 필요한 데이터만 캐시 시키면 레포지토리를 쓰는 곳에서는 캐시되는 데이터인지 실시간 데이터인지 알 필요 없어서 관심사의 분리가 된다.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-06-26T00:00:00Z">June 26, 2019</time>
+	</div>
+
+</article>
+				</div>
 			
 				<div class="card card--2col">
 					<article class="post card__box block">
@@ -180,20 +204,6 @@ val binding = DataBindingUtil.inflate&lt;FragmentTitleBinding&gt;(inflater, R.la
 가이드 종류  Style Guide - 코딩 스타일 가이드 Documentation Guide - 문서화 가이드 Usage Guide - language features 사용 가이드 Design Guide - 일관성 있는 설계를 위한 가이드  가이드를 어떻게 읽어야 할까?  DO - 꼭 이렇게 하세요! DON’T - 절대 이렇게 하지 마세요! PREFER - 특별한 상황이 아니라면 이렇게 하세요.</div>
 	<div class="post__meta meta mt tar">
 	<time class="post__meta-published meta-published" datetime="2019-05-26T00:00:00Z">May 26, 2019</time>
-	</div>
-
-</article>
-				</div>
-			
-				<div class="card card--2col">
-					<article class="post card__box block">
-	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/dart-2.3/">Dart 2.3 - UI를 빌딩에 최적화 됐어요.</a></h1>
-	<div class="post__content">원문 : https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff
-새로운 language features spread 연산자 리스트의 요소들을 다른 리스트 안으로 풀어서 넣어주는 &hellip; 연산자 (spread operator)
-Widget build(BuildContext context) { return Column(children: [ Header(), ...buildMainElements(), // spread 연산자  Footer(), ]); } List&lt;Widget&gt; buildMainElements() { ... } collection if 조건에 맞지 않으면 요소가 들어가지 않게 해주는 문법. 단, list 리터럴에서만 사용할 수 있어요!
-Widget build(BuildContext context) { return Column(children: [ Text(mainText), if (page != pages.last) // collection if  FlatButton(child: Text(&#39;Next&#39;)), ]); } collection for 리스트의 요소들을 다른 리스트 안으로 풀어서 넣되, 들어가는 요소들에 가공을 더해주는 문법.</div>
-	<div class="post__meta meta mt tar">
-	<time class="post__meta-published meta-published" datetime="2019-05-25T00:00:00Z">May 25, 2019</time>
 	</div>
 
 </article>

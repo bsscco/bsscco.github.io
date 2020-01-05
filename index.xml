@@ -5,10 +5,23 @@
     <link>/</link>
     <description>Recent content on developer bsscco</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 06 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dart 코드랩 Intro to Dart for Java(Kotlin) Developers</title>
+      <link>/posts/dart-codelab-intro-to-dart-for-java-kotlin-developers/</link>
+      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/dart-codelab-intro-to-dart-for-java-kotlin-developers/</guid>
+      <description>링크 : https://codelabs.developers.google.com/codelabs/from-java-to-dart/#0
+ 소개 이 코드랩에서 배울 것들
+ 생성자를 어떻게 만드나 파라메터를 기술하는 다른 방법들 getter와 setter를 언제 어떻게 만드나 Dart는 프라이버시를 어떻게 다루나 팩토리를 어떻게 만드나 Dart에서 함수형 프로그래밍을 어떻게 하나 기타 코어 Dart 특징들  준비물
+모든 예제들을 브라우저 기반 툴인 DartPad에서 작성하고 실행할 수 있습니다. IDE를 사용하려면 IntelliJ의 Dart 플로그인이나 VS Code의 Dart Code 익스텐션을 사용할 수 있습니다.
+ 간단한 Dart 클래스 만들기 자바 튜토리얼인 Bicycle class와 같은 기능을 가진 간단한 Dart 클래스를 만들 겁니다.</description>
+    </item>
     
     <item>
       <title>네트워크 이미지를 효율적으로 사용하기</title>

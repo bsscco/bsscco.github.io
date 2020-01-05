@@ -13,7 +13,7 @@
 <meta property="og:description" content="Responsive card-based &amp; code-light Hugo theme" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
-<meta property="og:updated_time" content="2019-10-06T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-01-05T00:00:00+00:00" />
 
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="developer bsscco"/>
@@ -27,6 +27,17 @@
 	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="developer bsscco">
 	<link rel="manifest" href="/manifest.json">
 		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-96391480-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
 	<header class="header">
@@ -37,6 +48,20 @@
 	
 	<main class="main">
 			<div class="cards">
+					<div class="card card--2col">
+					<article class="post card__box block">
+	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-bloc-tutorials/">Flutter로 개발하기(23) - Bloc 튜토리얼</a></h1>
+	<div class="post__content">Bloc document - 튜토리얼 원문: https://felangel.github.io/bloc
+플러터 Counter Setup 터미널에서
+flutter create flutter_counter pubspec.yaml에서
+name: flutter_counter description: A new Flutter project. version: 1.0.0+1 environment: sdk: &#34;&gt;=2.0.0-dev.68.0 &lt;3.0.0&#34; dependencies: flutter: sdk: flutter bloc: ^0.10.0 flutter_bloc: ^0.8.0 meta: ^1.1.6 dev_dependencies: flutter_test: sdk: flutter flutter: uses-material-design: true 다시 터미널에서
+flutter packages get Counter Events enum CounterEvent { increment, decrement } Counter Bloc(Counter States 포함) class CounterBloc extends Bloc&lt;CounterEvent, int&gt; { @override int get initialState =&gt; 0; // 초기 상태 생성  @override Stream&lt;int&gt; mapEventToState(int currentState, CounterEvent event) async* { // 이벤트 처리  switch (event) { case CounterEvent.</div>
+	<div class="post__meta meta mt tar">
+	<time class="post__meta-published meta-published" datetime="2019-03-25T09:51:41Z">March 25, 2019</time>
+	</div>
+
+</article>
+					</div>
 					<div class="card card--2col">
 					<article class="post card__box block">
 	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-bloc-introduction/">Flutter로 개발하기(22) - Bloc 소개</a></h1>
@@ -156,17 +181,6 @@ Sliver는 스크롤 영역의 일부입니다. 맞춤 스크롤 효과를 만들
 1. 두 화면 만들기 class FirstScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;첫 번째 화면&#39;), ), body: Center( child: RaisedButton( child: Text(&#39;새 화면 실행하기&#39;), onPressed: () { }, ), ), ); } } class SecondScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#34;두 번째 화면&#34;), ), body: Center( child: RaisedButton( onPressed: () { }, child: Text(&#39;돌아가기&#39;), ), ), ); } } 2.</div>
 	<div class="post__meta meta mt tar">
 	<time class="post__meta-published meta-published" datetime="2019-03-16T18:51:41Z">March 16, 2019</time>
-	</div>
-
-</article>
-					</div>
-					<div class="card card--2col">
-					<article class="post card__box block">
-	<h1 class="post__title title-excerpt"><a class="post__title-link" href="/posts/flutter-return-data-from-a-screen/">Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기</a></h1>
-	<div class="post__content">Return data from a screen https://flutter.dev/docs/cookbook/navigation/returning-data
-1. 홈 화면 정의하기 class HomeScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&#39;Returning Data Demo&#39;), ), // 다음 단계에서 SelectionButton 위젯을 만들 겁니다.  body: Center(child: SelectionButton()), ); } } 2. 선택 화면을 실행하는 버튼 추가하기 class SelectionButton extends StatelessWidget { @override Widget build(BuildContext context) { return RaisedButton( onPressed: () { _navigateAndDisplaySelection(context); }, child: Text(&#39;옵션을 선택하세요!&#39;), ); } _navigateAndDisplaySelection(BuildContext context) async { // Navigator.</div>
-	<div class="post__meta meta mt tar">
-	<time class="post__meta-published meta-published" datetime="2019-03-16T17:51:41Z">March 16, 2019</time>
 	</div>
 
 </article>
