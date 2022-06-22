@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Android Developer BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 15 Jun 2022 20:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Jun 2022 21:10:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compose 기초 - Compose의 이해</title>
+      <link>https://bsscco.github.io/posts/2022-06-22-compose-mental-model/</link>
+      <pubDate>Wed, 22 Jun 2022 21:10:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2022-06-22-compose-mental-model/</guid>
+      <description>Compose 이해 선언형 프로그래밍 패러다임이란? findViewById(R.id.text).setText(aText)와 같은 명령형 코드의 단점 aText가 여러 View에서 사용된다고 가정했을 때 aText의 값이 바뀌면 모든 View를 수동조작해야 한다. View 하나라도 빠뜨리기 쉽다. 반면에 선언형 코드는 UI빌드와 UI갱신을 자동화 한다. 선언형 프로그래밍 기법은 처음부터 화면 전체를 생성한 뒤에 필요한 변경사항만 적용하는 방식으로 동작한다. 선언형 패러다임, 좀 더 자세히 Compose의 선언형 접근 방식에서는 Composable들의 트리인 Composition을 빌드함으로써 UI를 초기화 한다. Composable은 setter 또는 getter 함수를 노출하지 않는다. 따라서 사실상 Composable은 객체로 노출되지 않으며 수동조작 할 수 없다.</description>
+    </item>
+    
     <item>
       <title>Baseline Profiles 정리</title>
       <link>https://bsscco.github.io/posts/2022-06-15-baseline-profiles/</link>
