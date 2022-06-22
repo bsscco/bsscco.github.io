@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.100.2" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="https://bsscco.github.io/posts/2019-03-24-flutter-bloc-introduction/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2019-03-24-flutter-bloc-introduction/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/bsscco.github.io\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(22) - Bloc 소개",
+      "headline" : "Flutter로 개발하기(22) - Bloc 소개",
+      "description" : "Bloc document - 소개 원문: https:\/\/felangel.github.io\/bloc\n시작하기 개요 Bloc은 세 가지 패키지로 구성됩니다.\nbloc - 코어 라이브러리 flutter_bloc - bloc을 사용하기 위한 플러터 위젯 angular_bloc - bloc을 사용하기 위한 앵귤러 컴포넌트 설치 플터터의 경우 pubspec.yaml에서\ndependencies: bloc: ^0.10.0 flutter_bloc: ^0.8.0 그리고 flutter packages get\nImport 플러터의 경우\nimport \u0026#39;package:bloc\/bloc.dart\u0026#39;; import \u0026#39;package:flutter_bloc\/flutter_bloc.dart\u0026#39;; 왜 Bloc인가요? Bloc은 비지니스 로직으로부터 프리젠테이션 로직을 쉽게 분리시켜줍니다. 빠르게 작성할 수 있는 코드, 쉽게 테스트 할 수 있는 코드, 재사용 가능한 코드를 만들 수 있게 해줍니다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-24 09:51:41 \u002b0000 UTC",
+      "dateModified" : "2019-03-24 09:51:41 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2019-03-24-flutter-bloc-introduction\/",
+      "keywords" : [ "flutter","bloc", ]
+  }
+</script>
+<title>Flutter로 개발하기(22) - Bloc 소개</title>
+  <meta property="og:title" content="Flutter로 개발하기(22) - Bloc 소개" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Bloc document - 소개 원문: https://felangel.github.io/bloc
+시작하기 개요 Bloc은 세 가지 패키지로 구성됩니다.
+bloc - 코어 라이브러리 flutter_bloc - bloc을 사용하기 위한 플러터 위젯 angular_bloc - bloc을 사용하기 위한 앵귤러 컴포넌트 설치 플터터의 경우 pubspec.yaml에서
+dependencies: bloc: ^0.10.0 flutter_bloc: ^0.8.0 그리고 flutter packages get
+Import 플러터의 경우
+import &amp;#39;package:bloc/bloc.dart&amp;#39;; import &amp;#39;package:flutter_bloc/flutter_bloc.dart&amp;#39;; 왜 Bloc인가요? Bloc은 비지니스 로직으로부터 프리젠테이션 로직을 쉽게 분리시켜줍니다. 빠르게 작성할 수 있는 코드, 쉽게 테스트 할 수 있는 코드, 재사용 가능한 코드를 만들 수 있게 해줍니다." />
+  <meta name="description" content="Bloc document - 소개 원문: https://felangel.github.io/bloc
+시작하기 개요 Bloc은 세 가지 패키지로 구성됩니다.
+bloc - 코어 라이브러리 flutter_bloc - bloc을 사용하기 위한 플러터 위젯 angular_bloc - bloc을 사용하기 위한 앵귤러 컴포넌트 설치 플터터의 경우 pubspec.yaml에서
+dependencies: bloc: ^0.10.0 flutter_bloc: ^0.8.0 그리고 flutter packages get
+Import 플러터의 경우
+import &amp;#39;package:bloc/bloc.dart&amp;#39;; import &amp;#39;package:flutter_bloc/flutter_bloc.dart&amp;#39;; 왜 Bloc인가요? Bloc은 비지니스 로직으로부터 프리젠테이션 로직을 쉽게 분리시켜줍니다. 빠르게 작성할 수 있는 코드, 쉽게 테스트 할 수 있는 코드, 재사용 가능한 코드를 만들 수 있게 해줍니다." />
+  <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Android Developer BSSCCO">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Android Developer BSSCCO</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(22) - Bloc 소개</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-24 09:51:41 UTC">
+                24 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="bloc-document---소개">Bloc document - 소개</h1>
+<p>원문: <a href="https://felangel.github.io/bloc">https://felangel.github.io/bloc</a></p>
+<h2 id="시작하기">시작하기</h2>
+<h3 id="개요">개요</h3>
+<p>Bloc은 세 가지 패키지로 구성됩니다.</p>
+<ul>
+<li>bloc - 코어 라이브러리</li>
+<li>flutter_bloc - bloc을 사용하기 위한 플러터 위젯</li>
+<li>angular_bloc - bloc을 사용하기 위한 앵귤러 컴포넌트</li>
+</ul>
+<h3 id="설치">설치</h3>
+<p>플터터의 경우 pubspec.yaml에서</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">dependencies</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">bloc</span>: <span style="color:#ae81ff">^0.10.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">flutter_bloc</span>: <span style="color:#ae81ff">^0.8.0</span>
+</span></span></code></pre></div><p>그리고 <code>flutter packages get</code></p>
+<h3 id="import">Import</h3>
+<p>플러터의 경우</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">import &#39;package:bloc/bloc.dart&#39;;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">import &#39;package:flutter_bloc/flutter_bloc.dart&#39;;</span>
+</span></span></code></pre></div><h2 id="왜-bloc인가요">왜 Bloc인가요?</h2>
+<blockquote>
+<p>Bloc은 비지니스 로직으로부터 프리젠테이션 로직을 쉽게 분리시켜줍니다. 빠르게 작성할 수 있는 코드, 쉽게 테스트 할 수 있는 코드, 재사용 가능한 코드를 만들 수 있게 해줍니다.</p>
+</blockquote>
+<p>프로덕션 퀄리티의 앱을 제작할 때 상태관리는 매우 중요합니다.</p>
+<p>우리는 개발자로써 이런 것들을 원합니다:</p>
+<ul>
+<li>우리 앱의 상태가 어느 시점에 어떤 상태에 있는지 알기 원합니다.</li>
+<li>우리 앱이 적절하게 반응하고 있는지 확인할 모든 케이스를 쉽게 테스트할 수 있길 원합니다.</li>
+<li>모든 단일 사용자 상호작용을 기록하기 원합니다. 그렇게 되면 데이터 기반이 의사결정이 가능해집니다.</li>
+<li>컴포넌트 재사용을 통해 가능한 한 효과적으로 일하기 원합니다.</li>
+<li>많은 개발자들이 같은 패턴, 같은 컨벤션을 따라서 끊김없이 일하기 원합니다.</li>
+<li>빠른 반응형 앱을 만들기 원합니다.</li>
+</ul>
+<p>Bloc은 이러한 니즈 이상의 것들을 고려해서 설계됐습니다.</p>
+<p>Bloc은 세 가지 핵심 가치와 함께 설계됐습니다.</p>
+<ul>
+<li>단순함
+<ul>
+<li>다양한 스킬의 개발자들에 의해 사용될 수 있고 이해하기 쉽습니다.</li>
+</ul>
+</li>
+<li>강력함
+<ul>
+<li>작은 컴포넌트들을 구성해서 훨씬 복잡한 앱을 만들 수 있습니다.</li>
+</ul>
+</li>
+<li>테스트 가능
+<ul>
+<li>앱의 모든 측면에서 테스트하기 쉽습니다.</li>
+</ul>
+</li>
+</ul>
+<p>Bloc은 상태변경이 일어날 수 있는 시기를 규제하고 상태변경의 방법을 하나로 강제함으로써 상태변경을 예측할 수 있게 해줍니다.</p>
+<h2 id="핵심-개념">핵심 개념</h2>
+<h3 id="events">Events</h3>
+<blockquote>
+<p>Events는 Bloc으로 향하는 입력입니다. 그들은 일반적으로 버튼눌림 같은 사용자 상호작용, 페이지로드 같은 라이프사이클 이벤트에 의해 디스패치됩니다.</p>
+</blockquote>
+<p>카운터앱에서 두 버튼 중 하나를 눌렀을 때 발생하는 이벤트</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>enum CounterEvent { increment, decrement }
+</span></span></code></pre></div><p>여기서는 enum을 사용해 이벤트를 정의했지만, 더 복잡한 경우엔 class로 정의해야 할 수도 있습니다.</p>
+<h3 id="states">States</h3>
+<blockquote>
+<p>States는 Bloc의 출력입니다. 그리고 앱의 상태를 대표합니다. UI 컴포넌트들은 상태를 공지받을 수 있고, 그 상태를 기반으로 다시 그릴 수 있습니다.</p>
+</blockquote>
+<p>카운터앱에서 상태는 아주 단순합니다. 이 상태는 integer이고, 현재 카운트를 대표합니다.</p>
+<h3 id="transitions">Transitions</h3>
+<blockquote>
+<p>한 상태에서 또 다른 상태로의 변경을 Transition이라고 부릅니다. Transition은 현재 상태, 이벤트, 다음 상태로 구성됩니다.</p>
+</blockquote>
+<p>사용자가 카운터과 상호작용 함으로써 Increment 또는 Decrement 이벤트가 트리거되고,  그 이벤트는 현재 상태를 갱신시킬 것입니다. 이런 상태변경을 Transition으로 설명할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;currentState&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;event&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;CounterEvent.increment&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;nextState&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>모든 상태변경은 기록되기 때문에 우리는 쉽게 사용자의 모든 상호작용을 추적할 수 있습니다. 추가적으로 디버깅에서 시간여행 기능을 만들 수도 있습니다.</p>
+<h3 id="streams">Streams</h3>
+<blockquote>
+<p>Stream은 비동기 데이터의 나열입니다.</p>
+</blockquote>
+<p>Bloc은 RxDart 위에 빌드되었습니다.</p>
+<h3 id="blocs">Blocs</h3>
+<blockquote>
+<p>Bloc은 Events의 입력 Stream을 States의 출력 Stream으로 변시켜주는 컴포넌트입니다.</p>
+</blockquote>
+<p>모든 Bloc은 <code>Bloc</code> 클래스를 상속해야 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:bloc/bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CounterBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>CounterEvent, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>모든 Bloc은 처음 상태를 정의해야 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">0</span>;
+</span></span></code></pre></div><p>모든 Bloc은 mapEventToState() 함수를 구현해야 합니다. 이 함수는 currentState, event 두 인자를 취해서 프리젠테이션 레이어에서 소비될 새로운 상태의 Stream을 반환합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> mapEventToState(<span style="color:#66d9ef">int</span> currentState, CounterEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (event) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> CounterEvent.decrement:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> currentState <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> CounterEvent.increment:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> currentState <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>CounterBloc</code>의 완전한 코드</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:bloc/bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>enum CounterEvent { increment, decrement }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CounterBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>CounterEvent, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Stream<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> mapEventToState(<span style="color:#66d9ef">int</span> currentState, CounterEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (event) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> CounterEvent.decrement:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> currentState <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> CounterEvent.increment:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> currentState <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Bloc이 반환한 새 상태가 현재 상태와 같다면 Transition은 발생하지 않습니다.</p>
+<p>모든 Bloc은 dispatch 메소드를 가집니다. Dispatch는 event를 취해서 mapEventToState를 트리거 합니다. Dispatch는 프리젠테이션 레이어에서 호출되거나 Bloc 안에서 새로운 이벤트로 그 Bloc에게 알리기 위해 호출될 것입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>    CounterBloc bloc <span style="color:#f92672">=</span> CounterBloc();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        bloc.dispatch(CounterEvent.increment);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>위 코드에서 Transition들은 다음과 같습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;currentState&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;event&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;CounterEvent.increment&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;nextState&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;currentState&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;event&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;CounterEvent.increment&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;nextState&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;currentState&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;event&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;CounterEvent.increment&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;nextState&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>onTransition은 모든 지역 Bloc transition을 다루기 위해 오버라이드 할 수 있는 메소드입니다. onTransition은 Bloc의 상태가 변경되기 전에 호출됩니다.</p>
+<p>Tip: onTransition은 Bloc의 로깅과 분석 코드를 추가하기 좋은 위치입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> onTransition(Transition<span style="color:#f92672">&lt;</span>CounterEvent, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> transition) {
+</span></span><span style="display:flex;"><span>    print(transition);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>onError는 모든 지역 Bloc 예외를 다루기 위해 오버라이드 할 수 있는 메소드입니다. 기본적으로 모든 예외는 무시되고, Bloc의 기능은 영향을 받지 않을 것입니다.</p>
+<p>Tip: onError는 에러 핸들링 코드를 추가하기 좋은 위치입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> onError(<span style="color:#66d9ef">Object</span> error, StackTrace stackTrace) {
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">$</span>error<span style="color:#e6db74">, </span><span style="color:#e6db74">$</span>stackTrace<span style="color:#e6db74">&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="blocdelegate">BlocDelegate</h3>
+<p>모든 Trasition, Exception들에 접근할 수 있는 보너스가 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleBlocDelegate</span> <span style="color:#66d9ef">extends</span> BlocDelegate {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> onTransition(Transition transition) {
+</span></span><span style="display:flex;"><span>    print(transition);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> onError(<span style="color:#66d9ef">Object</span> error, StackTrace stacktrace) {
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">$</span>error<span style="color:#e6db74">, </span><span style="color:#e6db74">$</span>stacktrace<span style="color:#e6db74">&#39;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">----------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>  BlocSupervisor().delegate <span style="color:#f92672">=</span> SimpleBlocDelegate();
+</span></span><span style="display:flex;"><span>  CounterBloc bloc <span style="color:#f92672">=</span> CounterBloc();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    bloc.dispatch(CounterEvent.increment);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>BlocSupervisor는 모든 Bloc을 감독하는 싱글톤 객체입니다.</p>
+<h2 id="아키텍쳐">아키텍쳐</h2>
+<p><img src="https://miro.medium.com/max/1400/1*_EgLk67LpREOEMCSIhc_4Q.png" alt="bloc-architecture.png">
+Bloc을 사용함으로써 우리 앱을 세 가지 레이어로 분리시킬 수 있습니다.</p>
+<ul>
+<li>데이터
+<ul>
+<li>Data Provider</li>
+<li>Repository</li>
+</ul>
+</li>
+<li>비지니스 로직</li>
+<li>프리젠테이션</li>
+</ul>
+<p>더 lowest level(UI에서 가장 먼)에서 시작해서 프리젠테이션 레이어를 향해 위 방향으로 작업할 것입니다.</p>
+<h3 id="데이터-레이어">데이터 레이어</h3>
+<blockquote>
+<p>데이터 레이어는 하나 또는 여러 source들로부터 데이터를 찾고 조작하는 책임을 집니다.</p>
+</blockquote>
+<h4 id="data-provider">Data Provider</h4>
+<p>Data Provider의 책임은 raw 데이터를 제공하는 것입니다. Data Provider는 범용적이어야 합니다.</p>
+<p>Data Provider는 일반적으로 CRUD 명령을 수행합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DataProvider</span> {
+</span></span><span style="display:flex;"><span>    Future<span style="color:#f92672">&lt;</span>RawData<span style="color:#f92672">&gt;</span> readData() <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Read from DB or make network request etc...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="repository">Repository</h4>
+<p>Repository는 하나 또는 그 이상의 Data Provider들을 감싸서 Bloc 레이어와 통신합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Repository</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> DataProviderA dataProviderA;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> DataProviderB dataProviderB;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Future<span style="color:#f92672">&lt;</span>Data<span style="color:#f92672">&gt;</span> getAllDataThatMeetsRequirements() <span style="color:#66d9ef">async</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> RawDataA dataSetA <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> dataProviderA.readData();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> RawDataB dataSetB <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> dataProviderB.readData();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> Data filteredData <span style="color:#f92672">=</span> _filterData(dataSetA, dataSetB);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> filteredData;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="blocbusiness-logic-레이어">Bloc(Business Logic) 레이어</h3>
+<blockquote>
+<p>Bloc 레이어의 책임은 프리젠테이션으로부터 온 이벤트를 새 상태로 응답하는 것입니다. Bloc 레이어는 빌드에 필요한 데이터를 찾기 위해 하나 이상의 Repository를 의존합니다.</p>
+</blockquote>
+<p>Bloc 레이어가 UI(프리젠테이션 레이어)와 데이터 레이어를 잇는 가교 역할을 한다고 생각하세요.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BusinessLogicComponent</span> <span style="color:#66d9ef">extends</span> Bloc {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> Repository repository;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Stream mapEventToState(currentState, event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> AppStarted) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">await</span> repository.getAllDataThatMeetsRequirements();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="bloc-간의-통신">Bloc 간의 통신</h4>
+<p>모든 Bloc은 다른 Bloc들이 구독할 수 있는 상태 Stream을 가집니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyBloc</span> <span style="color:#66d9ef">extends</span> Bloc {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> OtherBloc otherBloc;
+</span></span><span style="display:flex;"><span>  StreamSubscription otherBlocSubscription;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  MyBloc(<span style="color:#66d9ef">this</span>.otherBloc) {
+</span></span><span style="display:flex;"><span>    otherBlocSubscription <span style="color:#f92672">=</span> otherBloc.state.listen((state) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 여기서 상태 변경에 반응합니다. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 여기서 MyBloc의 변경을 트리거하기 위해 이벤트를 디스패치 합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> dispose() {
+</span></span><span style="display:flex;"><span>    otherBlocSubscription.cancel();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>.dispose();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="프리젠테이션-레이어">프리젠테이션 레이어</h3>
+<blockquote>
+<p>프리젠테이션 레이어의 책임은 하나 이상의 bloc 상태를 기반으로 렌더링 하는 것입니다. 이것은 사용자 입력이나 앱 라이프사이클 이벤트에 의해 다뤄져야 합니다.</p>
+</blockquote>
+<p>아래 시나리오에서는 프리젠테이션 레이어가 <code>AppStart</code> 이벤트를 디스패치합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PresentationComponent</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> Bloc bloc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    PresentationComponent() {
+</span></span><span style="display:flex;"><span>        bloc.dispatch(AppStarted());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    build() {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// bloc 상태를 기반으로 UI를 렌더링 합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="테스팅">테스팅</h2>
+<blockquote>
+<p>Bloc은 극도로 테스트하기 쉽게 설계됐습니다.</p>
+</blockquote>
+<p>CounterBloc을 위한 테스트코드를 작성해봅시다.</p>
+<p>CounterBloc의 구현은 다음과 같습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>enum CounterEvent { increment, decrement }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CounterBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>CounterEvent, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Stream<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> mapEventToState(<span style="color:#66d9ef">int</span> currentState, CounterEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (event) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> CounterEvent.decrement:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> currentState <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> CounterEvent.increment:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> currentState <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>pubspec.yaml에서 test 패키지를 추가합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">dev_dependencies</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">test</span>: <span style="color:#e6db74">&#34;&gt;=1.3.0 &lt;2.0.0&#34;</span>
+</span></span></code></pre></div><p>import</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:test/test.dart&#39;</span>;
+</span></span></code></pre></div><p>먼저 테스트 그룹을 만들어야 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> main() {
+</span></span><span style="display:flex;"><span>    group(<span style="color:#e6db74">&#39;CounterBloc&#39;</span>, () {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>group은 같은 컨텍스트 안에 여러 테스트를 묶어놓기 위해 사용합니다. 테스트들은 공통의 setUp과 tearDown을 공유합니다.</p>
+<p>CounterBloc의 인스턴스를 만드는 것부터 시작합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>group(<span style="color:#e6db74">&#39;CounterBloc&#39;</span>, () {
+</span></span><span style="display:flex;"><span>    CounterBloc counterBloc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    setUp(() {
+</span></span><span style="display:flex;"><span>        counterBloc <span style="color:#f92672">=</span> CounterBloc();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>이제 각 테스트를 작성할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>group(<span style="color:#e6db74">&#39;CounterBloc&#39;</span>, () {
+</span></span><span style="display:flex;"><span>    CounterBloc counterBloc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    setUp(() {
+</span></span><span style="display:flex;"><span>        counterBloc <span style="color:#f92672">=</span> CounterBloc();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    test(<span style="color:#e6db74">&#39;initial state is 0&#39;</span>, () {
+</span></span><span style="display:flex;"><span>        expect(counterBloc.initialState, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>우리는 모든 테스트를 <code>pub run test</code> 명령으로 실행할 수 있습니다.</p>
+<p>아래 코드는 더 복잡한 테스트를 작성한 예입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>test(<span style="color:#e6db74">&#39;single Increment event updates state to 1&#39;</span>, () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> expected <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    expectLater(
+</span></span><span style="display:flex;"><span>        counterBloc.state,
+</span></span><span style="display:flex;"><span>        emitsInOrder(expected),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    counterBloc.dispatch(CounterEvent.increment);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>test(<span style="color:#e6db74">&#39;single Decrement event updates state to -1&#39;</span>, () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> expected <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    expectLater(
+</span></span><span style="display:flex;"><span>        counterBloc.state,
+</span></span><span style="display:flex;"><span>        emitsInOrder(expected),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    counterBloc.dispatch(CounterEvent.decrement);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/flutter/">
+                flutter
+              </a>
+            </div>
+            
+            <div class="post-tags">
+              <a href="/tags/bloc/">
+                bloc
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-03-23-flutter-bloc-library-sample/">Flutter로 개발하기(21) - Bloc패턴 샘플</a></li>
+    
+    <li><a href="/posts/2019-03-18-flutter-list-of-state-management-approaches/">Flutter로 개발하기(18) - 상태관리 접근법들</a></li>
+    
+    <li><a href="/posts/2019-03-17-flutter-simple-app-state-management/">Flutter로 개발하기(17) - 간단한 상태관리 앱</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

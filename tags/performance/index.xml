@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>performance on Android Developer BSSCCO</title>
+    <link>https://bsscco.github.io/tags/performance/</link>
+    <description>Recent content in performance on Android Developer BSSCCO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 15 Jun 2022 20:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Baseline Profiles 정리</title>
+      <link>https://bsscco.github.io/posts/2022-06-15-baseline-profiles/</link>
+      <pubDate>Wed, 15 Jun 2022 20:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2022-06-15-baseline-profiles/</guid>
+      <description>Baseline Profiles 한글문서 구글블로그 Baseline Profiles란? APK에 담기는 클래스와 메소드의 목록이다. 앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다. 결과물 덕분에 앱 실행 시간과 jank가 감소된다. *jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간 기타 장점 AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다. 하지만 최신 AndroidX와 Compose 1.</description>
+    </item>
+    
+    <item>
+      <title>네트워크 이미지를 효율적으로 사용하기</title>
+      <link>https://bsscco.github.io/posts/2019-10-06-using-network-image-efficiently/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-10-06-using-network-image-efficiently/</guid>
+      <description>네트워크 이미지를 효율적으로 사용하기 리사이징 방법 1. 서버로부터 리사이징된 이미지를 다운로드 받는다.
+예) https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}
+장점 : 네트워크 통신리소스 감소
+2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.
+예) Glide.override()
+장점 : 비트맵용 앱메모리 감소
+override()를 호출하지 않아도 되는 경우
+내려받은 이미지가 ImageView로 들어갈 때 Gide가 Bitmap 사이즈를 ImageView의 사이즈 만큼 자동으로 맞춰줌!
+override()를 호출해야 하는 경우
+ImageView의 가로세로 사이즈가 모두 WrapContent인 경우엔 자동으로 맞춰주지 않음!</description>
+    </item>
+    
+  </channel>
+</rss>

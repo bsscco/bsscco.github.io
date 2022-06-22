@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Android Developer BSSCCO</title>
+    <link>https://bsscco.github.io/categories/git/</link>
+    <description>Recent content in Git on Android Developer BSSCCO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 18 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git 개념 요약</title>
+      <link>https://bsscco.github.io/posts/2018-11-18-about-git/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2018-11-18-about-git/</guid>
+      <description>변경된 내용 저장하기 add : 추가/수정/삭제 등 변경된 내용들을 스테이지에 담는다. commit : 스테이지에 담긴 내용들을 로컬 브랜치에 반영시킨다. push : 로컬 브랜치에 반영된 내용들을 원격 브랜치에 반영시킨다. 여러 버전으로 작업하고 필요한 버전만 합치기 (여럿이 작업하기1) branch : 선택한 커밋시점으로부터 새로운 로컬 브랜치를 만든다. checkout : 선택한 로컬 브랜치로 헤드를 옮긴다. merge : 헤드 로컬 브랜치에 선택한 로컬(또는 원격) 브랜치와 차이나는 변경 내용들을 반영시킨다. 충돌이 발생했을 땐 충돌된 파일들을 적절하게 수정하고 add한 다음에 commit하면 병합이 완료된다.</description>
+    </item>
+    
+  </channel>
+</rss>

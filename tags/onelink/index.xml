@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>onelink on Android Developer BSSCCO</title>
+    <link>https://bsscco.github.io/tags/onelink/</link>
+    <description>Recent content in onelink on Android Developer BSSCCO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 21 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/onelink/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Appsflyer 원링크 파라메터 정리</title>
+      <link>https://bsscco.github.io/posts/2018-11-21-appsflyer-onelink/</link>
+      <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2018-11-21-appsflyer-onelink/</guid>
+      <description>ex)
+https://ohouse.onelink.me/1234567?pid=Social%20Facebook&amp;amp;c=bssccocampaign&amp;amp;af_channel=bssccochannel&amp;amp;is_retargeting=true&amp;amp;af_click_lookback=15d&amp;amp;af_dp=ohouseapp%3A%2F%2Fohou.se%2Fcards%2F1234&amp;amp;af_web_dp=https%3A%2F%2Fohou.se%2Fcards%2F1234 pid media_source
+c campagin
+af_channel channel
+is_retargeting Re-attribution, Re-engagement 트래킹을 허용할 것인가?
+true일 경우에 New-installs라도 New-Attribution으로 인식 안 됨.
+af_click_lookback Click-through lookback window값
+af_view_lookback View-through lookback window값
+af_dp 네이티브 앱용 딥링크
+af_web_dp 웹용 딥링크
+af_reengagement_window Re-engagement window값</description>
+    </item>
+    
+  </channel>
+</rss>

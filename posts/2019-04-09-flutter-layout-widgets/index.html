@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.100.2" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="https://bsscco.github.io/posts/2019-04-09-flutter-layout-widgets/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2019-04-09-flutter-layout-widgets/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/bsscco.github.io\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(27) - 레이아웃 위젯 목록",
+      "headline" : "Flutter로 개발하기(27) - 레이아웃 위젯 목록",
+      "description" : "참고\nhttps:\/\/flutter.dev\/docs\/development\/ui\/widgets\/layout https:\/\/api.flutter.dev\/flutter\/widgets\/widgets-library.html https:\/\/medium.com\/flutter-community\/flutter-layout-cheat-sheet-5363348d037e multi-child 레이아웃 위젯 Row 수평으로 자식들을 배치합니다. Row의 height는 자식들의 height들 중에서 가장 긴 height에 맞춰집니다.\n기본값\nmainAxisSize: max mainAxisAlignment: start crossAxisAlignment: center Scaffold( body: Row( children: \u0026lt;Widget\u0026gt;[ Icon(Icons.star, size: 50), Icon(Icons.star, size: 100), Icon(Icons.star, size: 50), ], ), ) Column 수직으로 자식들을 배치합니다. Column의 width는 자식들의 width들 중에서 가장 긴 width에 맞춰집니다.\n기본값\nmainAxisSize: max mainAxisAlignment: start crossAxisAlignment: center Scaffold( body: Column( children: \u0026lt;Widget\u0026gt;[ Icon(Icons.star, size: 50), Icon(Icons.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-04-09 21:51:41 \u002b0000 UTC",
+      "dateModified" : "2019-04-09 21:51:41 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2019-04-09-flutter-layout-widgets\/",
+      "keywords" : [ "flutter", ]
+  }
+</script>
+<title>Flutter로 개발하기(27) - 레이아웃 위젯 목록</title>
+  <meta property="og:title" content="Flutter로 개발하기(27) - 레이아웃 위젯 목록" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="참고
+https://flutter.dev/docs/development/ui/widgets/layout https://api.flutter.dev/flutter/widgets/widgets-library.html https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e multi-child 레이아웃 위젯 Row 수평으로 자식들을 배치합니다. Row의 height는 자식들의 height들 중에서 가장 긴 height에 맞춰집니다.
+기본값
+mainAxisSize: max mainAxisAlignment: start crossAxisAlignment: center Scaffold( body: Row( children: &amp;lt;Widget&amp;gt;[ Icon(Icons.star, size: 50), Icon(Icons.star, size: 100), Icon(Icons.star, size: 50), ], ), ) Column 수직으로 자식들을 배치합니다. Column의 width는 자식들의 width들 중에서 가장 긴 width에 맞춰집니다.
+기본값
+mainAxisSize: max mainAxisAlignment: start crossAxisAlignment: center Scaffold( body: Column( children: &amp;lt;Widget&amp;gt;[ Icon(Icons.star, size: 50), Icon(Icons." />
+  <meta name="description" content="참고
+https://flutter.dev/docs/development/ui/widgets/layout https://api.flutter.dev/flutter/widgets/widgets-library.html https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e multi-child 레이아웃 위젯 Row 수평으로 자식들을 배치합니다. Row의 height는 자식들의 height들 중에서 가장 긴 height에 맞춰집니다.
+기본값
+mainAxisSize: max mainAxisAlignment: start crossAxisAlignment: center Scaffold( body: Row( children: &amp;lt;Widget&amp;gt;[ Icon(Icons.star, size: 50), Icon(Icons.star, size: 100), Icon(Icons.star, size: 50), ], ), ) Column 수직으로 자식들을 배치합니다. Column의 width는 자식들의 width들 중에서 가장 긴 width에 맞춰집니다.
+기본값
+mainAxisSize: max mainAxisAlignment: start crossAxisAlignment: center Scaffold( body: Column( children: &amp;lt;Widget&amp;gt;[ Icon(Icons.star, size: 50), Icon(Icons." />
+  <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Android Developer BSSCCO">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Android Developer BSSCCO</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(27) - 레이아웃 위젯 목록</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-04-09 21:51:41 UTC">
+                09 Apr 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <p>참고</p>
+<ul>
+<li><a href="https://flutter.dev/docs/development/ui/widgets/layout">https://flutter.dev/docs/development/ui/widgets/layout</a></li>
+<li><a href="https://api.flutter.dev/flutter/widgets/widgets-library.html">https://api.flutter.dev/flutter/widgets/widgets-library.html</a></li>
+<li><a href="https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e">https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e</a></li>
+</ul>
+<h2 id="multi-child-레이아웃-위젯">multi-child 레이아웃 위젯</h2>
+<h3 id="rowhttpsdocsflutterioflutterwidgetsrow-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Row-class.html">Row</a></h3>
+<p>수평으로 자식들을 배치합니다. Row의 height는 자식들의 height들 중에서 가장 긴 height에 맞춰집니다.</p>
+<p><strong>기본값</strong></p>
+<ul>
+<li>mainAxisSize: max</li>
+<li>mainAxisAlignment: start</li>
+<li>crossAxisAlignment: center</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Row(
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      Icon(Icons.star, size: <span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>      Icon(Icons.star, size: <span style="color:#ae81ff">100</span>),
+</span></span><span style="display:flex;"><span>      Icon(Icons.star, size: <span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/row.png" alt="row.png"></p>
+<h3 id="columnhttpsdocsflutterioflutterwidgetscolumn-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Column-class.html">Column</a></h3>
+<p>수직으로 자식들을 배치합니다. Column의 width는 자식들의 width들 중에서 가장 긴 width에 맞춰집니다.</p>
+<p><strong>기본값</strong></p>
+<ul>
+<li>mainAxisSize: max</li>
+<li>mainAxisAlignment: start</li>
+<li>crossAxisAlignment: center</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Column(
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      Icon(Icons.star, size: <span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>      Icon(Icons.star, size: <span style="color:#ae81ff">100</span>),
+</span></span><span style="display:flex;"><span>      Icon(Icons.star, size: <span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/column.png" alt="column.png"></p>
+<h3 id="flexhttpsdocsflutterioflutterwidgetsflex-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Flex-class.html">Flex</a></h3>
+<p>Row, Column의 조상 클래스. direction 속성값에 따라 Row 또는 Column의 특성을 가집니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Flex(
+</span></span><span style="display:flex;"><span>    direction: Axis.horizontal,
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      Icon(Icons.star, size: <span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>      Icon(Icons.star, size: <span style="color:#ae81ff">100</span>),
+</span></span><span style="display:flex;"><span>      Icon(Icons.star, size: <span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/flex.png" alt="flex.png"></p>
+<h3 id="stackhttpsdocsflutterioflutterwidgetsstack-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Stack-class.html">Stack</a></h3>
+<p>자식들을 쌓아서 배치합니다. Stack의 크기는 자식들의 크기 중 가장 큰 크기에 맞춰집니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: DecoratedBox(
+</span></span><span style="display:flex;"><span>    decoration: BoxDecoration(color: Colors.grey),
+</span></span><span style="display:flex;"><span>    child: Stack(
+</span></span><span style="display:flex;"><span>      alignment: Alignment.centerRight,
+</span></span><span style="display:flex;"><span>      children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>        Icon(Icons.star, size: <span style="color:#ae81ff">300</span>), <span style="color:#75715e">// largest child
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Icon(Icons.star, size: <span style="color:#ae81ff">50</span>, color: Colors.red), <span style="color:#75715e">// align center right
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Positioned(left: <span style="color:#ae81ff">0</span>, top: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// positioned left, top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Positioned(right: <span style="color:#ae81ff">0</span>, top: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// positioned right, top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Positioned(left: <span style="color:#ae81ff">0</span>, bottom: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// positioned left, bottom
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Positioned(right: <span style="color:#ae81ff">0</span>, bottom: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// positioned right, bottom
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      ],
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/stack.png" alt="stack.png"></p>
+<h3 id="indexedstackhttpsdocsflutterioflutterwidgetsindexedstack-classhtml"><a href="https://docs.flutter.io/flutter/widgets/IndexedStack-class.html">IndexedStack</a></h3>
+<p>Stack과 같은 특성을 가지지만 설정된 index에 해당하는 자식만 보여줍니다. IndexedStack의 크기는 자식들의 크기 중 가장 큰 크기에 맞춰집니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: DecoratedBox(
+</span></span><span style="display:flex;"><span>    decoration: BoxDecoration(color: Colors.grey),
+</span></span><span style="display:flex;"><span>    child: IndexedStack(
+</span></span><span style="display:flex;"><span>      index: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>      alignment: FractionalOffset(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.5</span>),
+</span></span><span style="display:flex;"><span>      children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>        Icon(Icons.star, size: <span style="color:#ae81ff">300</span>), <span style="color:#75715e">// largest child
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Icon(Icons.star, size: <span style="color:#ae81ff">50</span>, color: Colors.red), <span style="color:#75715e">// align center right
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Positioned(left: <span style="color:#ae81ff">0</span>, top: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// positioned left, top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Positioned(right: <span style="color:#ae81ff">0</span>, top: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// positioned right, top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Positioned(left: <span style="color:#ae81ff">0</span>, bottom: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// positioned left, bottom
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Positioned(right: <span style="color:#ae81ff">0</span>, bottom: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// positioned right, bottom
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      ],
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/indexed_stack.png" alt="indexed_stack.png"></p>
+<h3 id="gridviewhttpsapiflutterdevflutterwidgetsgridview-classhtml"><a href="https://api.flutter.dev/flutter/widgets/GridView-class.html">GridView</a></h3>
+<p>자식들을 2차원 배열로 배치할 수 있고 스크롤 할 수 있습니다. mainAxis에 따라 스크롤 배치, 스크롤 방향이 결정됩니다. GridView.count 생성자는 crossAxis 방향의 타일수를 고정한 채로 GridView를 생성합니다. GridView.extend 생성자는 설정된 maxCrossAxisExtent값으로 타일당 크기를 제한해서 crossAxis 방향으로 가능한 한 많은 타일수를 가지게 합니다. SliverGridDelegate를 사용하면 자식들과 함께 정렬되지 않거나 겹치는 위젯을 포함시킬 수 있습니다. GridView.builder 생성자는 인피니티 GridView를 만들 수 있게 해줍니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: GridView.count(
+</span></span><span style="display:flex;"><span>    primary: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    padding: <span style="color:#66d9ef">const</span> EdgeInsets.all(<span style="color:#ae81ff">20.0</span>),
+</span></span><span style="display:flex;"><span>    crossAxisSpacing: <span style="color:#ae81ff">10.0</span>,
+</span></span><span style="display:flex;"><span>    mainAxisSpacing: <span style="color:#ae81ff">10.0</span>,
+</span></span><span style="display:flex;"><span>    crossAxisCount: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      Container(color: Colors.red),
+</span></span><span style="display:flex;"><span>      Container(color: Colors.red),
+</span></span><span style="display:flex;"><span>      Container(color: Colors.red),
+</span></span><span style="display:flex;"><span>      Container(color: Colors.red),
+</span></span><span style="display:flex;"><span>      Container(color: Colors.red),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/grid_view_count.png" alt="grid_view_count.png"></p>
+<p>Gridview.extend 사용:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: GridView.extent(
+</span></span><span style="display:flex;"><span>    primary: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    padding: <span style="color:#66d9ef">const</span> EdgeInsets.all(<span style="color:#ae81ff">20.0</span>),
+</span></span><span style="display:flex;"><span>    maxCrossAxisExtent: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>    crossAxisSpacing: <span style="color:#ae81ff">10.0</span>,
+</span></span><span style="display:flex;"><span>    mainAxisSpacing: <span style="color:#ae81ff">10.0</span>,
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      Container(color: Colors.green),
+</span></span><span style="display:flex;"><span>      Container(color: Colors.green),
+</span></span><span style="display:flex;"><span>      Container(color: Colors.green),
+</span></span><span style="display:flex;"><span>      Container(color: Colors.green),
+</span></span><span style="display:flex;"><span>      Container(color: Colors.green),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/grid_view_extend.png" alt="grid_view_extend.png"></p>
+<h3 id="listviewhttpsapiflutterdevflutterwidgetslistview-classhtml"><a href="https://api.flutter.dev/flutter/widgets/ListView-class.html">ListView</a></h3>
+<p>자식들을 수직 또는 수평 방향으로 배치할 수 있고 스크롤 할 수 있습니다.</p>
+<p><strong>자식의 라이프사이클</strong>
+자식이 리스트 밖으로 나갈 때 자식의 상태와 렌더객체는 lazy하게 삭제됩니다. 자식이 리스트 안으로 들어올 때도 자식의 상태와 렌더객체는 lazy하게 생성됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: ListView.builder(
+</span></span><span style="display:flex;"><span>    scrollDirection: Axis.vertical,
+</span></span><span style="display:flex;"><span>    padding: EdgeInsets.all(<span style="color:#ae81ff">20</span>),
+</span></span><span style="display:flex;"><span>    itemBuilder: (BuildContext context, <span style="color:#66d9ef">int</span> index) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> Container(width: <span style="color:#ae81ff">200</span>, height: <span style="color:#ae81ff">200</span>, margin: EdgeInsets.only(bottom: <span style="color:#ae81ff">10</span>), color: Colors.red);
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/list_view.png" alt="list_view.png"></p>
+<h3 id="tablehttpsapiflutterdevflutterwidgetstable-classhtml"><a href="https://api.flutter.dev/flutter/widgets/Table-class.html">Table</a></h3>
+<p>테이블 레이아웃 알고리즘을 사용하는 위젯</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Table(
+</span></span><span style="display:flex;"><span>    border: TableBorder.all(),
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>TableRow<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      TableRow(children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>        TableCell(child: Container(width: <span style="color:#66d9ef">double</span>.infinity, height: <span style="color:#ae81ff">200</span>, color: Colors.red)),
+</span></span><span style="display:flex;"><span>        TableCell(child: Container(width: <span style="color:#66d9ef">double</span>.infinity, height: <span style="color:#ae81ff">100</span>, color: Colors.green)),
+</span></span><span style="display:flex;"><span>      ]),
+</span></span><span style="display:flex;"><span>      TableRow(children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>        TableCell(child: Container(width: <span style="color:#66d9ef">double</span>.infinity, height: <span style="color:#ae81ff">100</span>, color: Colors.blue)),
+</span></span><span style="display:flex;"><span>        TableCell(child: Container(width: <span style="color:#66d9ef">double</span>.infinity, height: <span style="color:#ae81ff">150</span>, color: Colors.yellow)),
+</span></span><span style="display:flex;"><span>      ])
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/table.png" alt="table.png"></p>
+<h3 id="pageviewhttpsapiflutterdevflutterwidgetspageview-classhtml"><a href="https://api.flutter.dev/flutter/widgets/PageView-class.html">PageView</a></h3>
+<p>스크롤해서 페이지를 넘길 수 있는 위젯. 각 자식은 viewport로써 같은 사이즈로 강제됩니다. PageController와 함께 사용합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: PageView(
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      Container(
+</span></span><span style="display:flex;"><span>        color: Colors.red,
+</span></span><span style="display:flex;"><span>        child: Center(child: Text(<span style="color:#e6db74">&#39;Page1&#39;</span>)),
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>      Container(
+</span></span><span style="display:flex;"><span>        color: Colors.blue,
+</span></span><span style="display:flex;"><span>        child: Center(child: Text(<span style="color:#e6db74">&#39;Page2&#39;</span>)),
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>      Container(
+</span></span><span style="display:flex;"><span>        color: Colors.green,
+</span></span><span style="display:flex;"><span>        child: Center(child: Text(<span style="color:#e6db74">&#39;Page3&#39;</span>)),
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/page_view.png" alt="page_view.png"></p>
+<h3 id="wraphttpsdocsflutterioflutterwidgetswrap-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Wrap-class.html">Wrap</a></h3>
+<p>자식들을 수평 또는 수직으로 배치합니다. 자식을 배치할 공간이 부족하면 자식을 다음 줄에 배치합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: DecoratedBox(
+</span></span><span style="display:flex;"><span>    decoration: BoxDecoration(color: Colors.grey),
+</span></span><span style="display:flex;"><span>    child: Wrap(
+</span></span><span style="display:flex;"><span>      direction: Axis.horizontal,
+</span></span><span style="display:flex;"><span>      spacing: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>      runSpacing: <span style="color:#ae81ff">40</span>,
+</span></span><span style="display:flex;"><span>      children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>        Container(width: <span style="color:#ae81ff">100</span>, height: <span style="color:#ae81ff">100</span>,color: Colors.black),
+</span></span><span style="display:flex;"><span>        Container(width: <span style="color:#ae81ff">100</span>, height: <span style="color:#ae81ff">100</span>,color: Colors.black),
+</span></span><span style="display:flex;"><span>        Container(width: <span style="color:#ae81ff">100</span>, height: <span style="color:#ae81ff">100</span>,color: Colors.black),
+</span></span><span style="display:flex;"><span>        Container(width: <span style="color:#ae81ff">100</span>, height: <span style="color:#ae81ff">100</span>,color: Colors.black),
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/wrap.png" alt="wrap.png"></p>
+<h3 id="flowhttpsdocsflutterioflutterwidgetsflow-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Flow-class.html">Flow</a></h3>
+<p>참고: <a href="https://medium.com/flutter-community/advanced-flutter-layout-flow-32300bf3b7b3">https://medium.com/flutter-community/advanced-flutter-layout-flow-32300bf3b7b3</a></p>
+<p>Wrap의 조상 클래스. 자식들의 크기와 위치를 FlowDelegate를 통해 효과적으로 설정할 수 있습니다. transformation을 사용한 repositioning에 최적화돼있습니다. 자식들을 transformation하는 애니메이션이 실행되는 동안 Flow는 자신을 repaint해서 자식들의 위치나 크기가 바뀌는 것처럼 그릴 뿐 자식들의 실제 위치를 변경시키는 것이 않으므로 성능을 끌어올립니다.</p>
+<h3 id="layoutbuilderhttpsapiflutterdevflutterwidgetslayoutbuilder-classhtml"><a href="https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html">LayoutBuilder</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Container(
+</span></span><span style="display:flex;"><span>    color: Colors.green,
+</span></span><span style="display:flex;"><span>    child: LayoutBuilder( <span style="color:#75715e">// LayoutBuilder
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      builder: (context, constraints) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Stack(
+</span></span><span style="display:flex;"><span>          children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>            Positioned(left: <span style="color:#ae81ff">0</span>, top: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// left, top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            Positioned(left: constraints.maxWidth <span style="color:#f92672">-</span> <span style="color:#ae81ff">50</span>, top: <span style="color:#ae81ff">0</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// left, top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            Positioned(left: <span style="color:#ae81ff">0</span>, top: constraints.maxHeight <span style="color:#f92672">-</span> <span style="color:#ae81ff">50</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// left, top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            Positioned(left: constraints.maxWidth <span style="color:#f92672">-</span> <span style="color:#ae81ff">50</span>, top: constraints.maxHeight <span style="color:#f92672">-</span> <span style="color:#ae81ff">50</span>, child: Icon(Icons.star, size: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// left, top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          ],
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  )
+</span></span></code></pre></div><p><img src="/2019-04-09/layout_builder.png" alt="layout_builder.png"></p>
+<h2 id="single-child-레이아웃-위젯">single-child 레이아웃 위젯</h2>
+<h3 id="expandedhttpsdocsflutterioflutterwidgetsexpanded-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Expanded-class.html">Expanded</a></h3>
+<p>Row, Column, Flex에서 mainAxis 방향으로 남은 공간 만큼 자식의 크기를 확장시킵니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Row(
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      Expanded(flex: <span style="color:#ae81ff">1</span>, child: Container(color: Colors.red, height: <span style="color:#ae81ff">50</span>)),
+</span></span><span style="display:flex;"><span>      Expanded(flex: <span style="color:#ae81ff">2</span>, child: Container(color: Colors.blue, height: <span style="color:#ae81ff">50</span>)),
+</span></span><span style="display:flex;"><span>      Container(color: Colors.yellow, width: <span style="color:#ae81ff">50</span>, height: <span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/expanded.png" alt="expanded.png"></p>
+<h3 id="flexiblehttpsdocsflutterioflutterwidgetsflexible-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Flexible-class.html">Flexible</a></h3>
+<p>Expanded의 조상 클래스. fit 속성을 설정할 수 있으며 속성값이 FlexFit.loose일 경우엔 설정된 크기보다 더 커질 수 없도록 크기에 제한이 걸립니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Row(
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      Expanded(
+</span></span><span style="display:flex;"><span>          flex: <span style="color:#ae81ff">1</span>, child: Container(color: Colors.red, height: <span style="color:#ae81ff">50</span>)),
+</span></span><span style="display:flex;"><span>      Flexible(
+</span></span><span style="display:flex;"><span>          fit: FlexFit.loose,
+</span></span><span style="display:flex;"><span>          flex: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>          child: Container(color: Colors.blue, width: <span style="color:#ae81ff">70</span>, height: <span style="color:#ae81ff">50</span>)), <span style="color:#75715e">// width가 최대 70으로 제한됨.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      Container(color: Colors.yellow, width: <span style="color:#ae81ff">50</span>, height: <span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/flexible.png" alt="flexible.png"></p>
+<h3 id="intrinsicheighthttpsdocsflutterioflutterwidgetsintrinsicheight-classhtml"><a href="https://docs.flutter.io/flutter/widgets/IntrinsicHeight-class.html">IntrinsicHeight</a></h3>
+<p>자식의 크기를 자식의 본질적인 크기로 만들어줍니다. 예를 들면 아래와 같습니다.</p>
+<p>IntrinsicHeight 사용 전:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: DecoratedBox(
+</span></span><span style="display:flex;"><span>    decoration: BoxDecoration(color: Colors.grey),
+</span></span><span style="display:flex;"><span>    child: Row(
+</span></span><span style="display:flex;"><span>      children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>        DecoratedBox(
+</span></span><span style="display:flex;"><span>          decoration: BoxDecoration(color: Colors.red),
+</span></span><span style="display:flex;"><span>          child: Text(<span style="color:#e6db74">&#39;aaa</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">aaa&#39;</span>),
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        DecoratedBox(
+</span></span><span style="display:flex;"><span>          decoration: BoxDecoration(color: Colors.green),
+</span></span><span style="display:flex;"><span>          child: Text(<span style="color:#e6db74">&#39;bbb</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">bbb</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">bbb&#39;</span>),
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        DecoratedBox(
+</span></span><span style="display:flex;"><span>          decoration: BoxDecoration(color: Colors.blue),
+</span></span><span style="display:flex;"><span>          child: Text(<span style="color:#e6db74">&#39;ccc&#39;</span>),
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/intrinsic_height_before.png" alt="intrinsic_height_before.png"></p>
+<p>IntrinsicHeight 사용 후:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: IntrinsicHeight(
+</span></span><span style="display:flex;"><span>    child: DecoratedBox(
+</span></span><span style="display:flex;"><span>      decoration: BoxDecoration(color: Colors.grey),
+</span></span><span style="display:flex;"><span>      child: Row(
+</span></span><span style="display:flex;"><span>        crossAxisAlignment: CrossAxisAlignment.stretch,
+</span></span><span style="display:flex;"><span>        children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>          DecoratedBox(
+</span></span><span style="display:flex;"><span>            decoration: BoxDecoration(color: Colors.red),
+</span></span><span style="display:flex;"><span>            child: Text(<span style="color:#e6db74">&#39;aaa</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">aaa&#39;</span>),
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          DecoratedBox(
+</span></span><span style="display:flex;"><span>            decoration: BoxDecoration(color: Colors.green),
+</span></span><span style="display:flex;"><span>            child: Text(<span style="color:#e6db74">&#39;bbb</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">bbb</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">bbb&#39;</span>),
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          DecoratedBox(
+</span></span><span style="display:flex;"><span>            decoration: BoxDecoration(color: Colors.blue),
+</span></span><span style="display:flex;"><span>            child: Text(<span style="color:#e6db74">&#39;ccc&#39;</span>),
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/intrinsic_height_after.png" alt="intrinsic_height_after.png"></p>
+<blockquote>
+<p>이 위젯은 처리비용이 매우 비싸므로 지양해야 합니다.</p>
+</blockquote>
+<h3 id="intrinsicwidth">IntrinsicWidth</h3>
+<p>IntrinsicHeight에서 방향만 다른 특성을 가집니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: IntrinsicWidth(
+</span></span><span style="display:flex;"><span>    child: DecoratedBox(
+</span></span><span style="display:flex;"><span>      decoration: BoxDecoration(color: Colors.grey),
+</span></span><span style="display:flex;"><span>      child: Column(
+</span></span><span style="display:flex;"><span>        crossAxisAlignment: CrossAxisAlignment.stretch,
+</span></span><span style="display:flex;"><span>        children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>          DecoratedBox(
+</span></span><span style="display:flex;"><span>            decoration: BoxDecoration(color: Colors.red),
+</span></span><span style="display:flex;"><span>            child: Text(<span style="color:#e6db74">&#39;aaaaaa&#39;</span>),
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          DecoratedBox(
+</span></span><span style="display:flex;"><span>            decoration: BoxDecoration(color: Colors.green),
+</span></span><span style="display:flex;"><span>            child: Text(<span style="color:#e6db74">&#39;bbbbbbbbb&#39;</span>),
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          DecoratedBox(
+</span></span><span style="display:flex;"><span>            decoration: BoxDecoration(color: Colors.blue),
+</span></span><span style="display:flex;"><span>            child: Text(<span style="color:#e6db74">&#39;ccc&#39;</span>),
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/intrinsic_width.png" alt="intrinsic_width.png"></p>
+<blockquote>
+<p>이 위젯은 처리비용이 매우 비싸므로 지양해야 합니다.</p>
+</blockquote>
+<h3 id="alignhttpsdocsflutterioflutterwidgetsalign-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Align-class.html">Align</a></h3>
+<p>Align의 부모의 영역 안에서 Align의 자식을 정렬시킵니다.</p>
+<p>alignment 속성을 가지는 위젯 어느 곳에서든 alignment 속성에 FractionalOffset을 설정하면 자식을 원하는 퍼센테이지 위치로 정렬시킬 수 있습니다. 예를 들면 아래와 같습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Align(
+</span></span><span style="display:flex;"><span>    alignment: FractionalOffset(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1.0</span>), <span style="color:#75715e">// 수평 중간, 수직 하단에 위치하도록 설정
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    child: Container(
+</span></span><span style="display:flex;"><span>      height: <span style="color:#ae81ff">40.0</span>,
+</span></span><span style="display:flex;"><span>      width: <span style="color:#ae81ff">40.0</span>,
+</span></span><span style="display:flex;"><span>      color: Colors.red,
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/align.png" alt="align.png"></p>
+<h3 id="positionedhttpsdocsflutterioflutterwidgetspositioned-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Positioned-class.html">Positioned</a></h3>
+<p>Stack에서 자식의 위치를 설정합니다.</p>
+<h3 id="containerhttpsdocsflutterioflutterwidgetscontainer-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Container-class.html">Container</a></h3>
+<p>일반적인 페인팅과 사이징, 포지셔닝을 조합하기에 편리한 위젯입니다. margin, padding, width, height, constraints, alignment, color, foregroundColor 등의 속성을 가집니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: DecoratedBox(
+</span></span><span style="display:flex;"><span>    decoration: BoxDecoration(color: Colors.grey),
+</span></span><span style="display:flex;"><span>    child: Column(
+</span></span><span style="display:flex;"><span>      crossAxisAlignment: CrossAxisAlignment.start,
+</span></span><span style="display:flex;"><span>      children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>        Container(
+</span></span><span style="display:flex;"><span>          margin: EdgeInsets.all(<span style="color:#ae81ff">10</span>),
+</span></span><span style="display:flex;"><span>          padding: EdgeInsets.all(<span style="color:#ae81ff">20</span>),
+</span></span><span style="display:flex;"><span>          width: <span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>          height: <span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>          color: Colors.red,
+</span></span><span style="display:flex;"><span>          child: Container(color: Colors.white),
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        Container(width: <span style="color:#ae81ff">100</span>, height: <span style="color:#ae81ff">100</span>, color: Colors.blue),
+</span></span><span style="display:flex;"><span>        Container(width: <span style="color:#ae81ff">100</span>, height: <span style="color:#ae81ff">100</span>, color: Colors.green),
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/container.png" alt="container.png"></p>
+<h3 id="paddinghttpsdocsflutterioflutterwidgetspadding-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Padding-class.html">Padding</a></h3>
+<p>자식을 감싸서 패딩을 줍니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: DecoratedBox(
+</span></span><span style="display:flex;"><span>    decoration: BoxDecoration(color: Colors.grey),
+</span></span><span style="display:flex;"><span>    child: Padding(
+</span></span><span style="display:flex;"><span>      padding: EdgeInsets.all(<span style="color:#ae81ff">20</span>),
+</span></span><span style="display:flex;"><span>      child: Container(width: <span style="color:#ae81ff">50</span>, height: <span style="color:#ae81ff">50</span>, color: Colors.red),
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/padding.png" alt="padding.png"></p>
+<blockquote>
+<p>왜 Container 대신에 Padding을 사용하나요?
+Padding과 Container.padding의 차이는 없지만 Container는 Padding 및 여러 다른 위젯들의 조합이므로 build 될 때 비용이 더 많이 듭니다. 따라서 Padding 속성만 필요할 때 Padding을 사용하면 build 비용을 줄일 수 있습니다.</p>
+</blockquote>
+<h3 id="centerhttpsdocsflutterioflutterwidgetscenter-classhtml"><a href="https://docs.flutter.io/flutter/widgets/Center-class.html">Center</a></h3>
+<p>자식을 감싸서 중앙 정렬 시킵니다. widthFactor, heightFactor값이 있으면 거기에 맞춰서 Center의 크기가 정해지고 (예를 들어, widthFactor가 2이고 자식 width가 10이면 Center의 width는 20이 됨), 그렇지 않으면 가능한한 최대의 크기를 가집니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: DecoratedBox(
+</span></span><span style="display:flex;"><span>    decoration: BoxDecoration(color: Colors.grey),
+</span></span><span style="display:flex;"><span>    child: Center(
+</span></span><span style="display:flex;"><span>      widthFactor: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>      heightFactor: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>      child: Container(width: <span style="color:#ae81ff">50</span>, height: <span style="color:#ae81ff">50</span>, color: Colors.red),
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/center.png" alt="center.png"></p>
+<h3 id="fittedboxhttpsapiflutterdevflutterwidgetsfittedbox-classhtml"><a href="https://api.flutter.dev/flutter/widgets/FittedBox-class.html">FittedBox</a></h3>
+<p>fit 속성값에 따라 자식의 크기비율과 위치를 부모에게 맞춥니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Container(
+</span></span><span style="display:flex;"><span>    color: Colors.grey,
+</span></span><span style="display:flex;"><span>    height: <span style="color:#66d9ef">double</span>.infinity,
+</span></span><span style="display:flex;"><span>    child: FittedBox(
+</span></span><span style="display:flex;"><span>      fit: BoxFit.contain,
+</span></span><span style="display:flex;"><span>      child: <span style="color:#66d9ef">const</span> Icon(Icons.star, size: <span style="color:#ae81ff">100000</span>),
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/fitted_box_contain.png" alt="fitted_box_contain.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Container(
+</span></span><span style="display:flex;"><span>    color: Colors.grey,
+</span></span><span style="display:flex;"><span>    height: <span style="color:#66d9ef">double</span>.infinity,
+</span></span><span style="display:flex;"><span>    child: FittedBox(
+</span></span><span style="display:flex;"><span>      fit: BoxFit.fitHeight,
+</span></span><span style="display:flex;"><span>      child: <span style="color:#66d9ef">const</span> Icon(Icons.star, size: <span style="color:#ae81ff">100000</span>),
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/fitted_box_fit_height.png" alt="fitted_box_fit_height.png"></p>
+<h3 id="transformhttpsapiflutterdevflutterwidgetstransform-classhtml"><a href="https://api.flutter.dev/flutter/widgets/Transform-class.html">Transform</a></h3>
+<p>페인팅 시점에 자식을 변형시킵니다. (실제로 위치나 모양이 바뀌는 것은 아닙니다)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Stack(
+</span></span><span style="display:flex;"><span>    alignment: Alignment.center,
+</span></span><span style="display:flex;"><span>    children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+</span></span><span style="display:flex;"><span>      Transform(
+</span></span><span style="display:flex;"><span>        alignment: Alignment.center,
+</span></span><span style="display:flex;"><span>        transform: Matrix4.rotationZ(<span style="color:#ae81ff">1.0</span>),
+</span></span><span style="display:flex;"><span>        child: Container(width: <span style="color:#ae81ff">50</span>, height: <span style="color:#ae81ff">50</span>, color: Colors.red),
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>      Transform(
+</span></span><span style="display:flex;"><span>        alignment: Alignment.center,
+</span></span><span style="display:flex;"><span>        transform: Matrix4.skewX(<span style="color:#ae81ff">1.0</span>)..translate(<span style="color:#ae81ff">50.0</span>),
+</span></span><span style="display:flex;"><span>        child: Container(width: <span style="color:#ae81ff">50</span>, height: <span style="color:#ae81ff">50</span>, color: Colors.green),
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>      Container(height: <span style="color:#66d9ef">double</span>.infinity, width: <span style="color:#ae81ff">1</span>, color: Colors.black),
+</span></span><span style="display:flex;"><span>      Container(height: <span style="color:#ae81ff">1</span>, width: <span style="color:#66d9ef">double</span>.infinity, color: Colors.black),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/transform.png" alt="transform.png"></p>
+<h3 id="ratatedboxhttpsapiflutterdevflutterwidgetsrotatedbox-classhtml"><a href="https://api.flutter.dev/flutter/widgets/RotatedBox-class.html">RatatedBox</a></h3>
+<p>페인팅 시점에 자식을 네 방향 중 하나로 회전시킵니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span> body: RotatedBox(
+</span></span><span style="display:flex;"><span>   quarterTurns: <span style="color:#ae81ff">1</span>, <span style="color:#75715e">// 0, 1, 2, 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   child: <span style="color:#66d9ef">const</span> Text(<span style="color:#e6db74">&#39;Hello World!&#39;</span>),
+</span></span><span style="display:flex;"><span> ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/rotated_box.png" alt="rotated_box.png"></p>
+<h3 id="fractionaltranslationhttpsapiflutterdevflutterwidgetsfractionaltranslation-classhtml"><a href="https://api.flutter.dev/flutter/widgets/FractionalTranslation-class.html">FractionalTranslation</a></h3>
+<p>페인팅 시점에 자식의 크기의 설정된 비율만큼의 거리를 이동시킵니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: FractionalTranslation(
+</span></span><span style="display:flex;"><span>    translation: Offset(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>    child: <span style="color:#66d9ef">const</span> Text(<span style="color:#e6db74">&#39;Hello World!&#39;</span>),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/fractional_translation.png" alt="fractional_translation.png"></p>
+<h3 id="aspectratiohttpsapiflutterdevflutterwidgetsaspectratio-classhtml"><a href="https://api.flutter.dev/flutter/widgets/AspectRatio-class.html">AspectRatio</a></h3>
+<p>부모 영역 안에서 자식의 크기를 설정된 가로세로 비율로 맞춥니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>Scaffold(
+</span></span><span style="display:flex;"><span>  body: Container(
+</span></span><span style="display:flex;"><span>    alignment: Alignment.center,
+</span></span><span style="display:flex;"><span>    color: Colors.grey,
+</span></span><span style="display:flex;"><span>    height: <span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>    width: <span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>    child: AspectRatio(
+</span></span><span style="display:flex;"><span>      aspectRatio: <span style="color:#ae81ff">2</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>      child: Container(color: Colors.red)
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><img src="/2019-04-09/aspect_ratio.png" alt="aspect_ratio.png"></p>
+<h3 id="baseline">[Baseline]</h3>
+<h3 id="constrainedboxhttpsapiflutterdevflutterwidgetsconstrainedbox-classhtml"><a href="https://api.flutter.dev/flutter/widgets/ConstrainedBox-class.html">ConstrainedBox</a></h3>
+<p>자식의 크기에 제약조건을 줄 때 사용합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>ConstrainedBox(
+</span></span><span style="display:flex;"><span>    constraints: BoxConstraints(
+</span></span><span style="display:flex;"><span>      minWidth: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>      maxWidth: <span style="color:#66d9ef">double</span>.infinity,
+</span></span><span style="display:flex;"><span>      minHeight: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>      maxHeight: <span style="color:#66d9ef">double</span>.infinity,
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>    child: Card(color: Colors.blue, child: Text(<span style="color:#e6db74">&#39;AAA&#39;</span>)),
+</span></span><span style="display:flex;"><span>  )
+</span></span></code></pre></div><p><img src="/2019-04-09/constrained_box.png" alt="constrained_box.png"></p>
+<h3 id="unconstrainedboxhttpsapiflutterdevflutterwidgetsunconstrainedbox-classhtml"><a href="https://api.flutter.dev/flutter/widgets/UnconstrainedBox-class.html">UnconstrainedBox</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"></code></pre></div><p><img src="/2019-04-09/unconstrained_box.png" alt="unconstrained_box.png"></p>
+<h3 id="limitedbox">[LimitedBox]</h3>
+<h3 id="offstage">[Offstage]</h3>
+<h3 id="overflowbox">[OverflowBox]</h3>
+<h3 id="sizedboxhttpsapiflutterdevflutterwidgetssizedbox-classhtml"><a href="https://api.flutter.dev/flutter/widgets/SizedBox-class.html">SizedBox</a></h3>
+<ul>
+<li>as ConstrainedBox</li>
+<li>ListView에서 item spacing 역할</li>
+<li>as invisible(gone) - 위젯을 감출 때도 무조건 위젯을 반환해야 하는데 이럴 때 사용, 예를 들면 <code>isVisible ? Icon(Icons.star, size: 150) : const SizedBox(),</code> const SizedBox는 매우 저렴합니다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>SizedBox(
+</span></span><span style="display:flex;"><span>    width: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>    height: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>    child: Card(color: Colors.blue, child: Text(<span style="color:#e6db74">&#39;AAA&#39;</span>)),
+</span></span><span style="display:flex;"><span>  )
+</span></span></code></pre></div><p><img src="/2019-04-09/sized_box.png" alt="sized_box.png"></p>
+<h3 id="sizedoverflowbox">[SizedOverflowBox]</h3>
+<h3 id="fractionallysizedbox">[FractionallySizedBox]</h3>
+<h3 id="customsinglechildlayout">[CustomSingleChildLayout]</h3>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/flutter/">
+                flutter
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-04-01-flutter-prepare-development-well/">Flutter로 개발하기(26) - 개발 제대로 준비하기</a></li>
+    
+    <li><a href="/posts/2019-03-31-flutter-bloc-tools/">Flutter로 개발하기(25) - Bloc 도구</a></li>
+    
+    <li><a href="/posts/2019-03-30-flutter-bloc-todos-tutorial/">Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

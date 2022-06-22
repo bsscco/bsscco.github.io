@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.100.2" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-03/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-03/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/bsscco.github.io\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Do it! 코틀린 프로그래밍 03 함수와 함수형 프로그래밍",
+      "headline" : "Do it! 코틀린 프로그래밍 03 함수와 함수형 프로그래밍",
+      "description" : "03 함수와 함수형 프로그래밍 01 함수 선언하고 호출하기 반환하지 않는다 = Unit\n함수 매개변수는 val로 선언되기 때문에 바꿀 수 없다!\ndefault 매개변수 지원!\n함수 오버로딩이 필요가 없어짐!\nfun sum(a: Int, b = 0) { ... } named 인자 지원!\nsum(a = 1, b = 2) 가변 인자\nfun foo(vararg numbers: Int) { ... } 02 함수형 프로그래밍 함수형 프로그래밍이란?\n순수함수를 작성해서 프로그램의 사이드이펙트를 줄이는 기법 람다식과 고차함수를 사용한다. 순수 함수의 조건",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-07-10 09:27:28 \u002b0000 UTC",
+      "dateModified" : "2019-07-10 09:27:28 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2019-07-10-do-it-kotlin-programming-ch-03\/",
+      "keywords" : [ "kotlin", ]
+  }
+</script>
+<title>Do it! 코틀린 프로그래밍 03 함수와 함수형 프로그래밍</title>
+  <meta property="og:title" content="Do it! 코틀린 프로그래밍 03 함수와 함수형 프로그래밍" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="03 함수와 함수형 프로그래밍 01 함수 선언하고 호출하기 반환하지 않는다 = Unit
+함수 매개변수는 val로 선언되기 때문에 바꿀 수 없다!
+default 매개변수 지원!
+함수 오버로딩이 필요가 없어짐!
+fun sum(a: Int, b = 0) { ... } named 인자 지원!
+sum(a = 1, b = 2) 가변 인자
+fun foo(vararg numbers: Int) { ... } 02 함수형 프로그래밍 함수형 프로그래밍이란?
+순수함수를 작성해서 프로그램의 사이드이펙트를 줄이는 기법 람다식과 고차함수를 사용한다. 순수 함수의 조건" />
+  <meta name="description" content="03 함수와 함수형 프로그래밍 01 함수 선언하고 호출하기 반환하지 않는다 = Unit
+함수 매개변수는 val로 선언되기 때문에 바꿀 수 없다!
+default 매개변수 지원!
+함수 오버로딩이 필요가 없어짐!
+fun sum(a: Int, b = 0) { ... } named 인자 지원!
+sum(a = 1, b = 2) 가변 인자
+fun foo(vararg numbers: Int) { ... } 02 함수형 프로그래밍 함수형 프로그래밍이란?
+순수함수를 작성해서 프로그램의 사이드이펙트를 줄이는 기법 람다식과 고차함수를 사용한다. 순수 함수의 조건" />
+  <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Android Developer BSSCCO">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Android Developer BSSCCO</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Do it! 코틀린 프로그래밍 03 함수와 함수형 프로그래밍</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-07-10 09:27:28 UTC">
+                10 Jul 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="03-함수와-함수형-프로그래밍">03 함수와 함수형 프로그래밍</h1>
+<h3 id="01-함수-선언하고-호출하기">01 함수 선언하고 호출하기</h3>
+<hr>
+<p><strong>반환하지 않는다 = Unit</strong></p>
+<p><strong>함수 매개변수는 val로 선언되기 때문에 바꿀 수 없다!</strong></p>
+<p><strong>default 매개변수 지원!</strong></p>
+<p>함수 오버로딩이 필요가 없어짐!</p>
+<pre><code>fun sum(a: Int, b = 0) { ... }
+</code></pre>
+<p><strong>named 인자 지원!</strong></p>
+<pre><code>sum(a = 1, b = 2)
+</code></pre>
+<p><strong>가변 인자</strong></p>
+<pre><code>fun foo(vararg numbers: Int) { ... }
+</code></pre>
+<h3 id="02-함수형-프로그래밍">02 함수형 프로그래밍</h3>
+<hr>
+<p><strong>함수형 프로그래밍이란?</strong></p>
+<ul>
+<li>순수함수를 작성해서 프로그램의 사이드이펙트를 줄이는 기법</li>
+<li>람다식과 고차함수를 사용한다.</li>
+</ul>
+<p><strong>순수 함수의 조건</strong></p>
+<ul>
+<li>같은 인자에 대해 항상 같은 값을 반환한다.</li>
+<li>함수 외부의 어떤 상태도 바꾸지 않는다.</li>
+</ul>
+<p><strong>함수형 프로그래밍에서 함수는 일급함수다.</strong></p>
+<ul>
+<li>일급 객체는 함수의 <strong>인자로 전달</strong>할 수 있다.</li>
+<li>일급 객체는 함수의 <strong>반환값에 사용</strong>할 수 있다.</li>
+<li>일급 객체는 <strong>변수에 담을 수</strong> 있다.</li>
+</ul>
+<p><strong>고차함수란?</strong></p>
+<ul>
+<li>다른 <strong>함수를 인자로 사용</strong>할 수 있다.</li>
+<li><strong>함수를 결과값으로 반환</strong>할 수 있다.</li>
+</ul>
+<p><strong>여기까지 정리해보기</strong></p>
+<p><strong>함수형 프로그래밍</strong>은 <strong>순수함수</strong>를 사용해 사이드이펙트를 최소화 하는 기법이고, 순수함수를 사용하려면 <strong>일급함수</strong>와 <strong>고차함수</strong> 개념을 지원해야 한다. 이 개념을 사용하기 쉽게 해주는 요소 중 하나가 <strong>람다식</strong>이다.</p>
+<h3 id="03-고차-함수와-람다식">03 고차 함수와 람다식</h3>
+<hr>
+<p><strong>람다식의 선언과 정의</strong></p>
+<pre><code>val multi: (Int, Int) -&gt; Int = {x: Int, y: Int -&gt; x * y}
+</code></pre>
+<p><strong>함수를 람다식처럼 인자로 넘기려면 ::을 붙인다.</strong></p>
+<pre><code>fun sum(a: Int, b: Int) = a + b
+
+...
+
+foo(2, 3, ::sum)
+// 또는 람다로 감싸도 됨. foo(2, 3) {a, b -&gt; sum(a, b)}
+</code></pre>
+<p><strong>람다식에서 사용하지 않는 매겨변수는 _로 이름짓기</strong></p>
+<p><strong>람다식에서는 return을 명시하지 않아도 함수바디의 마지막 표현식의 결과가 반환된다.</strong></p>
+<p><strong>람다인자가 끝에 있을 때 소괄호 뒤에 따로 빼면 생기는 장점</strong></p>
+<ul>
+<li>마지막 인자가 람다식이면 소괄호 밖으로 뺄 수 있는데, 그 장점은 람다식이 길 때 닫는 소괄호를 신경쓰지 않아도 되는 것!</li>
+<li>실제로는 람다를 인자로 넘기는 것이지만 하위코드를 블록으로 감싸는 표현으로 바뀜!</li>
+</ul>
+<p><img src="/2019-07-10/Untitled-e0d5e8e3-6b44-4fa1-9d1e-bb7aec09da2a.png" alt=""></p>
+<h3 id="04-고차-함수와-람다식의-사례-알아보기">04 고차 함수와 람다식의 사례 알아보기</h3>
+<hr>
+<p><strong>콜백 함수로 사용</strong></p>
+<h3 id="05-코틀린의-다양한-함수-알아보기">05 코틀린의 다양한 함수 알아보기</h3>
+<hr>
+<p><strong>익명함수 vs 람다식</strong></p>
+<pre><code>val multiAnony = func(x Int, y: Int) = x * y
+val multiLambda = {x: Int, y: Int -&gt; x * y}
+</code></pre>
+<ul>
+<li>람다식은 return이나 break, continue 같은 제어문을 사용하기가 어렵기 때문이다.</li>
+<li>람다식에서 return을 사용하려면 라벨 표기법을 사용해야 함.</li>
+</ul>
+<p><strong>인라인 함수!</strong></p>
+<ul>
+<li>코드 자체가 복사되어 들어가기 때문에 스택메모리가 사용되지 않아 메모리 관리에 효율적이다.</li>
+<li>람다식을 매개변수로 가지고 있는 함수에서만 동작한다</li>
+</ul>
+<p><strong>주의</strong></p>
+<p>매개변수인 람다식도 같이 복사되기 때문에 람다식이 긴 경우엔 성능을 위해 람다식 매개변수 앞에 <strong>noinline</strong> 키워드를 붙여준다.</p>
+<p><strong>인라인 함수에서의 비지역 반환</strong></p>
+<p>인라인 함수의 매개변수로 쓰인 람다식에서 return을 사용하면, 인라인 함수와 매개변수 람다까지 복사해서 코드로 들어가기 때문에 인라인 함수를 호출한 caller 함수까지 종료되고 반환된다. 이걸 <strong>비지역 반환</strong>이라고 부른다.</p>
+<p><strong>확장함수 지원!</strong></p>
+<pre><code>fun 확장대상.함수이름(매개변수, ...): 반환형 {
+	... 
+	return 값
+}
+</code></pre>
+<p><strong>주의:</strong> 확장함수보다 <strong>멤버메소드가 호출우선순위</strong>에 있다.</p>
+<p><strong>중위 함수 지원!</strong></p>
+<ul>
+<li>
+<p>멤버 메소드 또는 확장 함수여야 한다.</p>
+</li>
+<li>
+<p>하나의 매개변수만 가져야 한다.</p>
+</li>
+<li>
+<p>infix 키워드를 사용해서 정의한다.</p>
+<p>infix fun Int.multiply(x: Int): Int = this * x</p>
+<p>&hellip;</p>
+<p>print(3 multiply 4) // 12</p>
+</li>
+</ul>
+<p><strong>꼬리재귀함수로 구현해서 스택오버플로우를 예방하자!</strong></p>
+<ul>
+<li>인자로 들어갈 때 이미 계산되도록 구현하기</li>
+<li>함수 선언부에 tailrec 키워드를 달아주기</li>
+</ul>
+<h3 id="06-함수와-변수의-범위">06 함수와 변수의 범위</h3>
+<hr>
+<p><strong>지역 함수 지원!</strong></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/kotlin/">
+                kotlin
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-07-10-do-it-kotlin-programming-ch-02/">Do it! 코틀린 프로그래밍 02 변수와 자료형, 연산자 요약</a></li>
+    
+    <li><a href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/">Udacity Developing Android Apps with Kotlin 레슨10 Designing for Everyone 요약</a></li>
+    
+    <li><a href="/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/">Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

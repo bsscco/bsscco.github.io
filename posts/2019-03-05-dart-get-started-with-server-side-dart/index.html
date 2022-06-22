@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.100.2" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="https://bsscco.github.io/posts/2019-03-05-dart-get-started-with-server-side-dart/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2019-03-05-dart-get-started-with-server-side-dart/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/bsscco.github.io\/"
+      },
+      "articleSection" : "posts",
+      "name" : "서버사이드 Dart(5) - 서버사이드 시작하기",
+      "headline" : "서버사이드 Dart(5) - 서버사이드 시작하기",
+      "description" : "Get Started with Server-Side Dart https:\/\/www.dartlang.org\/tutorials\/server\/get-started\nWhat\u0026rsquo;s the point? Dart SDK에는 개발도구들과 라이브러리들이 담겨있다. 앱을 만들기 위해 WebStorm과 같은 IDE를 써라. 모든 Dart 앱들은 main() 함수에서 시작한다. Dart는 top-level 함수를 지원한다. Download Dart and an IDE Get the Dart SDK\nWhat did you get? 다운로드한 Dart SDK 보면 그 안에서 bin 디렉토리의 도구들과 lib 디렉토리의 라이브러리들을 볼 수 있다.\nlib 디렉토리엔 dart:core, dart:html, dart:io와 같은 라이브러리가 들어있다. bin 디렉토리엔 pub 패키지 관리자, Dart VM의 커맨드라인 버전 같은 유용한 커맨드라인 도구들이 들어있다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-05 08:49:14 \u002b0000 UTC",
+      "dateModified" : "2019-03-05 08:49:14 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2019-03-05-dart-get-started-with-server-side-dart\/",
+      "keywords" : [ "dart", ]
+  }
+</script>
+<title>서버사이드 Dart(5) - 서버사이드 시작하기</title>
+  <meta property="og:title" content="서버사이드 Dart(5) - 서버사이드 시작하기" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Get Started with Server-Side Dart https://www.dartlang.org/tutorials/server/get-started
+What&amp;rsquo;s the point? Dart SDK에는 개발도구들과 라이브러리들이 담겨있다. 앱을 만들기 위해 WebStorm과 같은 IDE를 써라. 모든 Dart 앱들은 main() 함수에서 시작한다. Dart는 top-level 함수를 지원한다. Download Dart and an IDE Get the Dart SDK
+What did you get? 다운로드한 Dart SDK 보면 그 안에서 bin 디렉토리의 도구들과 lib 디렉토리의 라이브러리들을 볼 수 있다.
+lib 디렉토리엔 dart:core, dart:html, dart:io와 같은 라이브러리가 들어있다. bin 디렉토리엔 pub 패키지 관리자, Dart VM의 커맨드라인 버전 같은 유용한 커맨드라인 도구들이 들어있다." />
+  <meta name="description" content="Get Started with Server-Side Dart https://www.dartlang.org/tutorials/server/get-started
+What&amp;rsquo;s the point? Dart SDK에는 개발도구들과 라이브러리들이 담겨있다. 앱을 만들기 위해 WebStorm과 같은 IDE를 써라. 모든 Dart 앱들은 main() 함수에서 시작한다. Dart는 top-level 함수를 지원한다. Download Dart and an IDE Get the Dart SDK
+What did you get? 다운로드한 Dart SDK 보면 그 안에서 bin 디렉토리의 도구들과 lib 디렉토리의 라이브러리들을 볼 수 있다.
+lib 디렉토리엔 dart:core, dart:html, dart:io와 같은 라이브러리가 들어있다. bin 디렉토리엔 pub 패키지 관리자, Dart VM의 커맨드라인 버전 같은 유용한 커맨드라인 도구들이 들어있다." />
+  <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Android Developer BSSCCO">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Android Developer BSSCCO</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">서버사이드 Dart(5) - 서버사이드 시작하기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-05 08:49:14 UTC">
+                05 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="get-started-with-server-side-dart">Get Started with Server-Side Dart</h1>
+<p><a href="https://www.dartlang.org/tutorials/server/get-started">https://www.dartlang.org/tutorials/server/get-started</a></p>
+<h3 id="whats-the-point">What&rsquo;s the point?</h3>
+<ul>
+<li>Dart SDK에는 개발도구들과 라이브러리들이 담겨있다.</li>
+<li>앱을 만들기 위해 WebStorm과 같은 IDE를 써라.</li>
+<li>모든 Dart 앱들은 <code>main()</code> 함수에서 시작한다.</li>
+<li>Dart는 top-level 함수를 지원한다.</li>
+</ul>
+<h2 id="download-dart-and-an-ide">Download Dart and an IDE</h2>
+<p><a href="https://www.dartlang.org/tools/sdk#install">Get the Dart SDK</a></p>
+<h2 id="what-did-you-get">What did you get?</h2>
+<p>다운로드한 <strong>Dart SDK</strong> 보면 그 안에서 bin 디렉토리의 도구들과 lib 디렉토리의 라이브러리들을 볼 수 있다.</p>
+<p>lib 디렉토리엔 dart:core, dart:html, dart:io와 같은 라이브러리가 들어있다. bin 디렉토리엔 <strong>pub</strong> 패키지 관리자, Dart VM의 커맨드라인 버전 같은 유용한 커맨드라인 도구들이 들어있다.</p>
+<p><strong>WebStorm</strong>에는 Dart 플러그인이 이미 설치돼있다. 이 플러그인을 사용하려면 약간의 설정만 해주면 된다.</p>
+<h2 id="about-dart-apps">About Dart apps</h2>
+<p>대부분의 미니멀한 Dart 앱은 다음을 따른다.:</p>
+<ul>
+<li>.dart 확장자를 가지는 하나의 Dart 소스파일</li>
+<li>하나의 top-level main() 함수. 이 함수는 앱의 엔트리 포인트다.</li>
+</ul>
+<p>단순한 Dart 앱은 커맨드라인에서 Dart VM인 <code>dart</code>를 사용해서 실행시킬 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>dart main.dart
+</span></span></code></pre></div><p><strong>이보다 복잡한 앱은 pubspec 파일을 함께 가져야 한다. pubspec.yaml 파일은 앱의 이름과 설명을 포함한다.</strong> 예를 들면:</p>
+<pre tabindex="0"><code>name: examples
+descriptions: dartlang.org example code.
+</code></pre><h3 id="pub-package-manager">Pub package manager</h3>
+<p>pub 도구는 Dart 패키지를 관리할 수 있게 해준다. Pub은 그밖에도 Dart앱을 생성, 개발, 실행, 배포하는 명령도 포함한다.</p>
+<p>Pub은 앱의 의존성들과 특별히 설정되어야 하는 정보를 알기 위해 pubspec.yaml 파일을 사용한다. Pub은 Dart 앱의 파일과 디렉토리들이 일정한 규칙으로 분류돼있다고 간주한다. 다음 다이어그램은 pub에 의해 사용되는 컨벤션을 보여준다. 이 디렉토리들이 꼭 필요한 것은 아니다.</p>
+<p><img src="https://www.dartlang.org/tutorials/server/images/pub-directory-structure.png" alt="pub-directory-structure.png"></p>
+<p><strong>bin</strong>
+커맨드라인 앱의 주요 파일들이 들어있다. 이 파일들 중 하나는 반드시 top-level의 main() 함수를 포함해야 한다.</p>
+<p><strong>lib</strong>
+앱에서 사용하는 추가적인 코드</p>
+<p><strong>pubspec.yaml</strong>
+앱의 의존성, 버전, 정보 등을 포함하는 메타데이터</p>
+<h3 id="command-line-apps">Command-line apps</h3>
+<p>Dart 커맨드라인 앱들은 커맨드라인에서 독자적으로 실행될 수 있다. 커맨드라인 앱들은 주로 웹앱에 서버사이드를 지원하기 위해 실행되지만 스크립트가 될 수도 있다.</p>
+<p>Dart VM은 Dart 코드를 중간 컴파일 단계 없이 직접 실행할 수 있다.</p>
+<p><img src="https://www.dartlang.org/tutorials/server/images/dartvm-cmd-line.png" alt="dartvm-cmd-line.png"></p>
+<h2 id="create-a-command-line-app">Create a command-line app</h2>
+<ol>
+<li>WebStorm을 켠다.</li>
+<li>만약 처음 WebStorm을 실행했다면, SDK 경로를 설정해줘야 한다. <a href="https://webdev.dartlang.org/tools/webstorm#configuring-dart-support">Configuring Dart support</a>를 참고하자.</li>
+<li>Create New Project를 선택하자.</li>
+<li>Dart를 선택하자.</li>
+<li>untitled 를 hello_world로 바꾸자. 이 이름은 앱의 디렉토리 이름과 패키지 이름으로 사용된다. 일반적으로 lowercase_with_underscore를 따른다.</li>
+<li>Generate sample content를 체크하자.</li>
+<li>Console app을 선택하자.</li>
+<li>Create를 누른다.</li>
+</ol>
+<p>이제 WebStorm은 boilerplate 파일들이 담긴 hello_world 디렉토리를 생성할 것이다. 그 디렉토리에서 pub get을 실행시켜서 앱이 의존하는 패키지들을 다운로드 받는다.</p>
+<p>hello_world 디렉토리가 포함하는 파일과 디렉토리들은 다음과 같다. :</p>
+<p><strong>.dart_tool</strong>
+pub과 다른 Dart 도구들이 사용하는 지원파일들이 들어있다.</p>
+<p><strong>bin</strong>
+앱 소스파일들이 들어있다. main.dart 파일도 여기 있다.</p>
+<p><strong>pubspec.yaml</strong>
+앱에 필요한 패키지들이 선언돼있다.</p>
+<p><strong>pubspec.lock</strong>
+앱에 필요한 패키지들의 버전이 적혀있다.</p>
+<p><strong>lib</strong>
+hello_world.dart 같은 라이브러리 파일들이 들어있다.</p>
+<p><strong>.packages</strong>
+앱에서 사용되는 패키지들이 들어있다. 이 파일들은 pub get에 의해 다운로드 받은 파일들이다.</p>
+<h2 id="run-a-command-line-app">Run a command-line app</h2>
+<p>WebStorm에서 Run 버튼을 눌러 실행시킬 수 있다.</p>
+<p>커맨드라인에서도 실행시킬 수 있다.</p>
+<pre tabindex="0"><code>pub run bin/main.dart
+</code></pre><h2 id="about-main-and-other-top-level-functions">About main() and other top-level functions</h2>
+<p>Dart의 모든 앱들은 최소 하나 이상의 main() 함수를 포함해야 한다. 위 예제에서 봤던 <code>print()</code>는 <code>dart:core</code>에 들어있는 top-level 함수다.</p>
+<h2 id="about-file-naming-conventions">About file naming conventions</h2>
+<p>앱 이름은 일반적으로 lowercase_with_underscore를 따른다.</p>
+<h2 id="other-resources">Other resources</h2>
+<p><a href="https://webdev.dartlang.org/tools/webstorm">WebStorm</a>, <a href="https://www.dartlang.org/tools/pub">pub</a></p>
+<h2 id="what-next">What next?</h2>
+<p><a href="/2019/03/05/dart-write-command-lin-apps">Write Command-Line apps</a></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/dart/">
+                dart
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-03-03-dart-a-tour-of-the-dart-io-library/">서버사이드 Dart(4) - dart:io 라이브러리 여행하기</a></li>
+    
+    <li><a href="/posts/2019-03-03-dart-api-overview/">서버사이드 Dart(3) - 다트의 주요 라이브러리들</a></li>
+    
+    <li><a href="/posts/2019-03-03-dart-what-is-in-dart-sdk/">서버사이드 Dart(2) - 다트 SDK에 있는 도구들</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

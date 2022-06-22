@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.100.2" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="https://bsscco.github.io/posts/2019-03-30-flutter-bloc-todos-tutorial/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2019-03-30-flutter-bloc-todos-tutorial/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/bsscco.github.io\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Flutter로 개발하기(24) - Bloc 튜토리얼 Todos",
+      "headline" : "Flutter로 개발하기(24) - Bloc 튜토리얼 Todos",
+      "description" : "Bloc document - Todos 튜토리얼 원문: https:\/\/felangel.github.io\/bloc\nSetup flutter create flutter_todos name: flutter_todos description: A new Flutter project. environment: sdk: \u0026#34;\u0026gt;=2.0.0 \u0026lt;3.0.0\u0026#34; dependencies: meta: \u0026#34;\u0026gt;=1.1.0 \u0026lt;2.0.0\u0026#34; equatable: ^0.2.0 flutter_bloc: ^0.9.0 flutter: sdk: flutter dependency_overrides: todos_app_core: git: url: https:\/\/github.com\/felangel\/flutter_architecture_samples path: todos_app_core ref: expose-repositories todos_repository_core: git: url: https:\/\/github.com\/felangel\/flutter_architecture_samples path: todos_repository_core ref: expose-repositories todos_repository_simple: git: url: https:\/\/github.com\/felangel\/flutter_architecture_samples path: todos_repository_simple ref: expose-repositories flutter: uses-material-design: true flutter packages get 우리는 몇개의 의존성들을 오버라이딩 할 겁니다. Brian Egan\u0026rsquo;s Flutter Architecture Samples로부터 그 의존성들을 재사용할 것이기 때문입니다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-03-30 09:51:41 \u002b0000 UTC",
+      "dateModified" : "2019-03-30 09:51:41 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2019-03-30-flutter-bloc-todos-tutorial\/",
+      "keywords" : [ "flutter","bloc", ]
+  }
+</script>
+<title>Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</title>
+  <meta property="og:title" content="Flutter로 개발하기(24) - Bloc 튜토리얼 Todos" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Bloc document - Todos 튜토리얼 원문: https://felangel.github.io/bloc
+Setup flutter create flutter_todos name: flutter_todos description: A new Flutter project. environment: sdk: &amp;#34;&amp;gt;=2.0.0 &amp;lt;3.0.0&amp;#34; dependencies: meta: &amp;#34;&amp;gt;=1.1.0 &amp;lt;2.0.0&amp;#34; equatable: ^0.2.0 flutter_bloc: ^0.9.0 flutter: sdk: flutter dependency_overrides: todos_app_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_app_core ref: expose-repositories todos_repository_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_core ref: expose-repositories todos_repository_simple: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_simple ref: expose-repositories flutter: uses-material-design: true flutter packages get 우리는 몇개의 의존성들을 오버라이딩 할 겁니다. Brian Egan&amp;rsquo;s Flutter Architecture Samples로부터 그 의존성들을 재사용할 것이기 때문입니다." />
+  <meta name="description" content="Bloc document - Todos 튜토리얼 원문: https://felangel.github.io/bloc
+Setup flutter create flutter_todos name: flutter_todos description: A new Flutter project. environment: sdk: &amp;#34;&amp;gt;=2.0.0 &amp;lt;3.0.0&amp;#34; dependencies: meta: &amp;#34;&amp;gt;=1.1.0 &amp;lt;2.0.0&amp;#34; equatable: ^0.2.0 flutter_bloc: ^0.9.0 flutter: sdk: flutter dependency_overrides: todos_app_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_app_core ref: expose-repositories todos_repository_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_core ref: expose-repositories todos_repository_simple: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_simple ref: expose-repositories flutter: uses-material-design: true flutter packages get 우리는 몇개의 의존성들을 오버라이딩 할 겁니다. Brian Egan&amp;rsquo;s Flutter Architecture Samples로부터 그 의존성들을 재사용할 것이기 때문입니다." />
+  <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Android Developer BSSCCO">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Android Developer BSSCCO</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-03-30 09:51:41 UTC">
+                30 Mar 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="bloc-document---todos-튜토리얼">Bloc document - Todos 튜토리얼</h1>
+<p>원문: <a href="https://felangel.github.io/bloc">https://felangel.github.io/bloc</a></p>
+<p><img src="https://bloclibrary.dev/assets/gifs/flutter_todos.gif" alt="flutter_todos.gif"></p>
+<h2 id="setup">Setup</h2>
+<pre tabindex="0"><code class="language-cli" data-lang="cli">flutter create flutter_todos
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">flutter_todos</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description</span>: <span style="color:#ae81ff">A new Flutter project.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">sdk</span>: <span style="color:#e6db74">&#34;&gt;=2.0.0 &lt;3.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dependencies</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">meta</span>: <span style="color:#e6db74">&#34;&gt;=1.1.0 &lt;2.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">equatable</span>: <span style="color:#ae81ff">^0.2.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">flutter_bloc</span>: <span style="color:#ae81ff">^0.9.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">flutter</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sdk</span>: <span style="color:#ae81ff">flutter</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dependency_overrides</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">todos_app_core</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">git</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://github.com/felangel/flutter_architecture_samples</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">todos_app_core</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">expose-repositories</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">todos_repository_core</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">git</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://github.com/felangel/flutter_architecture_samples</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">todos_repository_core</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">expose-repositories</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">todos_repository_simple</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">git</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://github.com/felangel/flutter_architecture_samples</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">path</span>: <span style="color:#ae81ff">todos_repository_simple</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">expose-repositories</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">flutter</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">uses-material-design</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><pre tabindex="0"><code class="language-cli" data-lang="cli">flutter packages get
+</code></pre><blockquote>
+<p>우리는 몇개의 의존성들을 오버라이딩 할 겁니다. <a href="https://github.com/brianegan/flutter_architecture_samples">Brian Egan&rsquo;s Flutter Architecture Samples</a>로부터 그 의존성들을 재사용할 것이기 때문입니다.</p>
+</blockquote>
+<h2 id="todos-repository">Todos Repository</h2>
+<p>TodosRepository의 구현에 대해 살펴보진 않을 겁니다. TodosRepository를 하이레벨에서만 보면 loadTodos 메소드와 saveTodos 메소드를 가집니다.</p>
+<h2 id="todos-bloc">Todos Bloc</h2>
+<blockquote>
+<p>Todos Bloc은 TodosEvent를 TodosState로 변환하는 책임을 집니다. 그리고 Todos 목록도 관리합니다.</p>
+</blockquote>
+<h3 id="model">Model</h3>
+<p>가장 먼저 할 것은 Todo 모델을 정의하는 겁니다. 각 Todo는 id, task, note, completed flag를 가집니다.</p>
+<p>models/todo.dart를 만들어봅시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:todos_app_core/todos_app_core.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:equatable/equatable.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:todos_repository_core/todos_repository_core.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>immutable
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Todo</span> <span style="color:#66d9ef">extends</span> Equatable {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> complete;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> id;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> note;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> task;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Todo(<span style="color:#66d9ef">this</span>.task, {<span style="color:#66d9ef">this</span>.complete <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">String</span> note <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#66d9ef">String</span> id})
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.note <span style="color:#f92672">=</span> note <span style="color:#f92672">??</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.id <span style="color:#f92672">=</span> id <span style="color:#f92672">??</span> Uuid().generateV4(),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>([complete, id, note, task]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Todo copyWith({<span style="color:#66d9ef">bool</span> complete, <span style="color:#66d9ef">String</span> id, <span style="color:#66d9ef">String</span> note, <span style="color:#66d9ef">String</span> task}) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Todo(
+</span></span><span style="display:flex;"><span>      task <span style="color:#f92672">??</span> <span style="color:#66d9ef">this</span>.task,
+</span></span><span style="display:flex;"><span>      complete: complete <span style="color:#f92672">??</span> <span style="color:#66d9ef">this</span>.complete,
+</span></span><span style="display:flex;"><span>      id: id <span style="color:#f92672">??</span> <span style="color:#66d9ef">this</span>.id,
+</span></span><span style="display:flex;"><span>      note: note <span style="color:#f92672">??</span> <span style="color:#66d9ef">this</span>.note,
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Todo { complete: </span><span style="color:#e6db74">$</span>complete<span style="color:#e6db74">, task: </span><span style="color:#e6db74">$</span>task<span style="color:#e6db74">, note: </span><span style="color:#e6db74">$</span>note<span style="color:#e6db74">, id: </span><span style="color:#e6db74">$</span>id<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  TodoEntity toEntity() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> TodoEntity(task, id, note, complete);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> Todo fromEntity(TodoEntity entity) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Todo(
+</span></span><span style="display:flex;"><span>      entity.task,
+</span></span><span style="display:flex;"><span>      complete: entity.complete <span style="color:#f92672">??</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      note: entity.note,
+</span></span><span style="display:flex;"><span>      id: entity.id <span style="color:#f92672">??</span> Uuid().generateV4(),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>Todo 인스턴스들을 <code>==</code>와 <code>hashCode</code> 없이 비교하기 위해 Equatable 패키지를 사용합니다.</p>
+</blockquote>
+<p>다음으로 프리젠테이션 레이어가 전달받을 TodosState를 만들 겁니다.</p>
+<h3 id="states">States</h3>
+<p>blocs/todos/todos_state.dart를 만들고 State들을 정의합시다.</p>
+<p>3개의 State는 다음과 같습니다.</p>
+<ul>
+<li>TodosLoading - 앱이 Repository로부터 todos를 fetching 하고 있는 상태</li>
+<li>TodosLoaded - todos가 성공적으로 로드된 상태</li>
+<li>TodosNotLoaded - todos 로드에 실패한 상태</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:equatable/equatable.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>immutable
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosState</span> <span style="color:#66d9ef">extends</span> Equatable {
+</span></span><span style="display:flex;"><span>  TodosState([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosLoading</span> <span style="color:#66d9ef">extends</span> TodosState {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;TodosLoading&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosLoaded</span> <span style="color:#66d9ef">extends</span> TodosState {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  TodosLoaded([<span style="color:#66d9ef">this</span>.todos <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todos]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;TodosLoaded { todos: </span><span style="color:#e6db74">$</span>todos<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosNotLoaded</span> <span style="color:#66d9ef">extends</span> TodosState {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;TodosNotLoaded&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>immutable 데코레이터를 TodosState에 annotating 해습니다. 이것은 모든 TodosState가 변경될 수 없음을 지시합니다.</p>
+</blockquote>
+<p>다음으로 이벤트들을 구현합시다.</p>
+<h3 id="events">Events</h3>
+<p>TodosBloc에서 다룰 이벤트들은 다음과 같습니다.</p>
+<ul>
+<li>LoadTodos - bloc에게 TodosRepository로부터 Todos를 로드해야 한다고 말합니다.</li>
+<li>AddTodo - bloc에게 새로운 Todo를 Todos 목록에 추가해야 한다고 말합니다.</li>
+<li>UpdateTodo - bloc에게 Todo를 갱신해야 한다고 말합니다.</li>
+<li>DeleteTodo - bloc에게 Todo를 삭제해야 한다고 말합니다.</li>
+<li>ClearCompleted - bloc에게 complete된 모든 Todos를 삭제해야 한다고 말합니다.</li>
+<li>ToggleAll - bloc에게 모든 Todos의 completed 상태를 토글해야 한다고 말합니다.</li>
+</ul>
+<p>blocs/todos/todos_event.dart를 만들고 위에서 설명한 이벤트들을 구현합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:equatable/equatable.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>immutable
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosEvent</span> <span style="color:#66d9ef">extends</span> Equatable {
+</span></span><span style="display:flex;"><span>  TodosEvent([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LoadTodos</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;LoadTodos&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AddTodo</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> Todo todo;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AddTodo(<span style="color:#66d9ef">this</span>.todo) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todo]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AddTodo { todo: </span><span style="color:#e6db74">$</span>todo<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateTodo</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> Todo updatedTodo;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  UpdateTodo(<span style="color:#66d9ef">this</span>.updatedTodo) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([updatedTodo]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;UpdateTodo { updatedTodo: </span><span style="color:#e6db74">$</span>updatedTodo<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DeleteTodo</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> Todo todo;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  DeleteTodo(<span style="color:#66d9ef">this</span>.todo) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todo]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;DeleteTodo { todo: </span><span style="color:#e6db74">$</span>todo<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClearCompleted</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;ClearCompleted&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ToggleAll</span> <span style="color:#66d9ef">extends</span> TodosEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;ToggleAll&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>이제 우리는 TodosState와 TodosEvent로 TodosBloc을 구현할 수 있습니다.</p>
+<h3 id="bloc">Bloc</h3>
+<p>blocs/todos/todos_bloc.dart를 만들고 initialState 메소드와 mapEventToState 메소드를 구현합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:async&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:bloc/bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/blocs/todos/todos.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:todos_repository_simple/todos_repository_simple.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>TodosEvent, TodosState<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">final</span> TodosRepositoryFlutter todosRepository;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> TodosBloc({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todosRepository});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span> TodosState <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=&gt;</span> TodosLoading();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span> Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> mapEventToState(TodosEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> LoadTodos) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapLoadTodosToState();
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> AddTodo) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapAddTodoToState(event);
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateTodo) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapUpdateTodoToState(event);
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> DeleteTodo) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapDeleteTodoToState(event);
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> ToggleAll) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapToggleAllToState();
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> ClearCompleted) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapClearCompletedToState();
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapLoadTodosToState() <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">final</span> todos <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">this</span>.todosRepository.loadTodos();
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span> TodosLoaded(
+</span></span><span style="display:flex;"><span>       todos.map(Todo.fromEntity).toList(),
+</span></span><span style="display:flex;"><span>     );
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">catch</span> (_) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span> TodosNotLoaded();
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapAddTodoToState(AddTodo event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// 역주: ..add() 대신에 .add()를 쓰면 upadtedTodos엔 void가 할당되어야 하므로 문법적 오류가 됩니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#75715e">// ..add()로 쓰면 updatedTodos엔 List.from((currentState as TodosLoaded).todos)가 할당되고, updatedTodos.add()가 호출됩니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> updatedTodos <span style="color:#f92672">=</span> List.from((currentState <span style="color:#f92672">as</span> TodosLoaded).todos)..add(event.todo);
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+</span></span><span style="display:flex;"><span>     _saveTodos(updatedTodos);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapUpdateTodoToState(UpdateTodo event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> updatedTodos <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>         (currentState <span style="color:#f92672">as</span> TodosLoaded).todos.map((todo) {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> todo.id <span style="color:#f92672">==</span> event.updatedTodo.id <span style="color:#f92672">?</span> event.updatedTodo <span style="color:#f92672">:</span> todo;
+</span></span><span style="display:flex;"><span>     }).toList();
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+</span></span><span style="display:flex;"><span>     _saveTodos(updatedTodos);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapDeleteTodoToState(DeleteTodo event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">final</span> updatedTodos <span style="color:#f92672">=</span> (currentState <span style="color:#f92672">as</span> TodosLoaded)
+</span></span><span style="display:flex;"><span>         .todos
+</span></span><span style="display:flex;"><span>         .where((todo) <span style="color:#f92672">=&gt;</span> todo.id <span style="color:#f92672">!=</span> event.todo.id)
+</span></span><span style="display:flex;"><span>         .toList();
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+</span></span><span style="display:flex;"><span>     _saveTodos(updatedTodos);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapToggleAllToState() <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">final</span> allComplete <span style="color:#f92672">=</span> (currentState <span style="color:#f92672">as</span> TodosLoaded).todos.every((todo) <span style="color:#f92672">=&gt;</span> todo.complete);
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> updatedTodos <span style="color:#f92672">=</span> (currentState <span style="color:#f92672">as</span> TodosLoaded)
+</span></span><span style="display:flex;"><span>         .todos
+</span></span><span style="display:flex;"><span>         <span style="color:#75715e">// 역주: complete값을 바꾸는데 copyWith()를 호출하는 이유는 Todo 모델이 immutable이기 때문입니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>         .map((todo) <span style="color:#f92672">=&gt;</span> todo.copyWith(complete: <span style="color:#f92672">!</span>allComplete)) 
+</span></span><span style="display:flex;"><span>         .toList();
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+</span></span><span style="display:flex;"><span>     _saveTodos(updatedTodos);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Stream<span style="color:#f92672">&lt;</span>TodosState<span style="color:#f92672">&gt;</span> _mapClearCompletedToState() <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> updatedTodos <span style="color:#f92672">=</span> (currentState <span style="color:#f92672">as</span> TodosLoaded)
+</span></span><span style="display:flex;"><span>         .todos
+</span></span><span style="display:flex;"><span>         .where((todo) <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">!</span>todo.complete)
+</span></span><span style="display:flex;"><span>         .toList();
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">yield</span> TodosLoaded(updatedTodos);
+</span></span><span style="display:flex;"><span>     _saveTodos(updatedTodos);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Future _saveTodos(List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos) {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> todosRepository.saveTodos(
+</span></span><span style="display:flex;"><span>     todos.map((todo) <span style="color:#f92672">=&gt;</span> todo.toEntity()).toList(),
+</span></span><span style="display:flex;"><span>   );
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>mapEventToState 메소드에서 state를 yielding 할 때 항상 currentState를 변경하는 대신에 새로운 state를 만듭니다. 그 이유는 bloc이 currentState와 nextState를 비교해서 오직 두 state가 다를 때만 transition을 트리거 하기 때문입니다.</p>
+</blockquote>
+<h3 id="barrel-file">Barrel File</h3>
+<p>이제 우리는 bloc 파일들을 export 해서 import를 편리하게 해주는 barrel file을 만들 수 있습니다.</p>
+<p>blocs/todos/todos.dart를 만들고 bloc, event, state를 export 합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./todos_bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./todos_event.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./todos_state.dart&#39;</span>;
+</span></span></code></pre></div><h2 id="filtered-todos-bloc">Filtered Todos Bloc</h2>
+<blockquote>
+<p>FilteredTodosBloc은 TodosBloc에서의 상태 변경에 반응하는 책임을 집니다.</p>
+</blockquote>
+<h3 id="model-1">Model</h3>
+<p>TodosState를 정의하고 구현하기 전에 VisibilityFilter 모델을 구현해야 합니다. VisibilityFilter는 FilteredTodosState가 포함할 Todos를 결정합니다. 우리는 3개의 필터를 가질 겁니다.</p>
+<ul>
+<li>all - 모든 Todos를 보여줍니다. (default)</li>
+<li>active - complete 되지 않은 Todos만 보여줍니다.</li>
+<li>completed - complete 된 Todos만 보여줍니다.</li>
+</ul>
+<p>models/visibility_filter.dart를 만들고 filter enum을 정의합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>enum VisibilityFilter { all, active, completed }
+</span></span></code></pre></div><h3 id="states-1">States</h3>
+<p>TodosBloc에서 했던 것처럼, 우리는 FilteredTodosBloc을 위한 States를 만들 겁니다.
+2개의 States를 가집니다.</p>
+<ul>
+<li>FilteredTodosLoading - Todos를 fetching 하는 동안의 상태입니다.</li>
+<li>FilteredTodosLoaded - 더 이상 fetching 할 Todos가 없는 상태입니다.</li>
+</ul>
+<p>blocs/filtered_todos/filtered_todos_state.dart를 만들고 2개의 States를 구현합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:equatable/equatable.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>immutable
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosState</span> <span style="color:#66d9ef">extends</span> Equatable {
+</span></span><span style="display:flex;"><span>  FilteredTodosState([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosLoading</span> <span style="color:#66d9ef">extends</span> FilteredTodosState {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;FilteredTodosLoading&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosLoaded</span> <span style="color:#66d9ef">extends</span> FilteredTodosState {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> filteredTodos;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> VisibilityFilter activeFilter;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  FilteredTodosLoaded(<span style="color:#66d9ef">this</span>.filteredTodos, <span style="color:#66d9ef">this</span>.activeFilter)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([filteredTodos, activeFilter]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;FilteredTodosLoaded { filteredTodos: </span><span style="color:#e6db74">$</span>filteredTodos<span style="color:#e6db74">, activeFilter: </span><span style="color:#e6db74">$</span>activeFilter<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="events-1">Events</h3>
+<p>우리는 FilteredTodosBloc을 위한 2개의 이벤트를 만들 겁니다.</p>
+<ul>
+<li>UpdateFilter - bloc에게 visibility filter가 바뀌었다는 걸 알립니다.</li>
+<li>UpdateTodos - bloc에게 Todos가 바뀌었다는 걸 알립니다.</li>
+</ul>
+<p>blocs/filtered_todos/filtered_todos_event.dart를 만들고 2개의 이벤트를 구현합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:equatable/equatable.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>immutable
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosEvent</span> <span style="color:#66d9ef">extends</span> Equatable {
+</span></span><span style="display:flex;"><span>  FilteredTodosEvent([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateFilter</span> <span style="color:#66d9ef">extends</span> FilteredTodosEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> VisibilityFilter filter;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  UpdateFilter(<span style="color:#66d9ef">this</span>.filter) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([filter]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;UpdateFilter { filter: </span><span style="color:#e6db74">$</span>filter<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateTodos</span> <span style="color:#66d9ef">extends</span> FilteredTodosEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  UpdateTodos(<span style="color:#66d9ef">this</span>.todos) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todos]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;UpdateTodos { todos: </span><span style="color:#e6db74">$</span>todos<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>이제 FIlteredTodosBloc을 구현할 준비가 됐습니다!</p>
+<h3 id="bloc-1">Bloc</h3>
+<p>FilteredTodosBloc은 TodosBloc과 유사합니다. 하지만 TodosRepository 의존성을 가지는 대신에 TodosBloc 의존성을 가집니다. 이것은 TodosBloc에서 상태가 변경될 때 FilteredTodosBloc의 상태도 갱신될 수 있게 해줍니다.</p>
+<p>blocs/filtered_todos/filtered_todos_bloc.dart를 만들고 시작합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:async&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:bloc/bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/blocs/filtered_todos/filtered_todos.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/blocs/todos/todos.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredTodosBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>FilteredTodosEvent, FilteredTodosState<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> TodosBloc todosBloc;
+</span></span><span style="display:flex;"><span>  StreamSubscription todosSubscription;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  FilteredTodosBloc({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todosBloc}) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 역주: todosBloc의 상태 변화를 감지하기 시작합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    todosSubscription <span style="color:#f92672">=</span> todosBloc.state.listen((state) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (state <span style="color:#66d9ef">is</span> TodosLoaded) {
+</span></span><span style="display:flex;"><span>        dispatch(UpdateTodos((todosBloc.currentState <span style="color:#f92672">as</span> TodosLoaded).todos));
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  FilteredTodosState <span style="color:#66d9ef">get</span> initialState {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> todosBloc.currentState <span style="color:#66d9ef">is</span> TodosLoaded
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">?</span> FilteredTodosLoaded(
+</span></span><span style="display:flex;"><span>            (todosBloc.currentState <span style="color:#f92672">as</span> TodosLoaded).todos,
+</span></span><span style="display:flex;"><span>            VisibilityFilter.all,
+</span></span><span style="display:flex;"><span>          )
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">:</span> FilteredTodosLoading();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Stream<span style="color:#f92672">&lt;</span>FilteredTodosState<span style="color:#f92672">&gt;</span> mapEventToState(FilteredTodosEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateFilter) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapUpdateFilterToState(event);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateTodos) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">yield</span><span style="color:#f92672">*</span> _mapTodosUpdatedToState(event);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Stream<span style="color:#f92672">&lt;</span>FilteredTodosState<span style="color:#f92672">&gt;</span> _mapUpdateFilterToState(
+</span></span><span style="display:flex;"><span>    UpdateFilter event,
+</span></span><span style="display:flex;"><span>  ) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (todosBloc.currentState <span style="color:#66d9ef">is</span> TodosLoaded) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">yield</span> FilteredTodosLoaded(
+</span></span><span style="display:flex;"><span>        _mapTodosToFilteredTodos(
+</span></span><span style="display:flex;"><span>          (todosBloc.currentState <span style="color:#f92672">as</span> TodosLoaded).todos,
+</span></span><span style="display:flex;"><span>          event.filter,
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        event.filter,
+</span></span><span style="display:flex;"><span>      );
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Stream<span style="color:#f92672">&lt;</span>FilteredTodosState<span style="color:#f92672">&gt;</span> _mapTodosUpdatedToState(
+</span></span><span style="display:flex;"><span>    UpdateTodos event,
+</span></span><span style="display:flex;"><span>  ) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> visibilityFilter <span style="color:#f92672">=</span> currentState <span style="color:#66d9ef">is</span> FilteredTodosLoaded
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">?</span> (currentState <span style="color:#f92672">as</span> FilteredTodosLoaded).activeFilter
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">:</span> VisibilityFilter.all;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> FilteredTodosLoaded(
+</span></span><span style="display:flex;"><span>      _mapTodosToFilteredTodos(
+</span></span><span style="display:flex;"><span>        (todosBloc.currentState <span style="color:#f92672">as</span> TodosLoaded).todos,
+</span></span><span style="display:flex;"><span>        visibilityFilter,
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>      visibilityFilter,
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> _mapTodosToFilteredTodos(
+</span></span><span style="display:flex;"><span>      List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos, VisibilityFilter filter) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> todos.where((todo) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (filter <span style="color:#f92672">==</span> VisibilityFilter.all) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (filter <span style="color:#f92672">==</span> VisibilityFilter.active) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span>todo.complete;
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (filter <span style="color:#f92672">==</span> VisibilityFilter.completed) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> todo.complete;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }).toList();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> dispose() {
+</span></span><span style="display:flex;"><span>    todosSubscription.cancel();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>.dispose();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>TodosBloc에서 상태 변경을 감지할 수 있는 TodosState들의 스트림인 StreamSubscription을 만듭니다. bloc의 dispose 메소드를 오버라이드 해서 bloc이 dispose 될 때 subscription을  취소할 수 있습니다.</p>
+</blockquote>
+<h3 id="barrel-file-1">Barrel File</h3>
+<p>filtered todos 클래스들을 편리하게 import 하기 위해 barrel file을 만듭시다.</p>
+<p>blocs/filtered_todos/filtered_todos.dart를 만들고 3개의 파일을 export 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./filtered_todos_bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./filtered_todos_event.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./filtered_todos_state.dart&#39;</span>;
+</span></span></code></pre></div><p>다음으로 StatsBloc을 구현할 겁니다.</p>
+<h2 id="statsbloc">StatsBloc</h2>
+<blockquote>
+<p>StatsBloc은 active 상태 todos와 completed 상태 todos의 통계 데이터를 관리하는 책임을 집니다. FilteredTodosBloc과 유사하게 TodosBloc의 의존성을 갖습니다. 그래서 TodosBloc의 상태가 바뀌면 함께 반응합니다.</p>
+</blockquote>
+<h3 id="state">State</h3>
+<p>StatsBloc은 2개의 상태를 가집니다.</p>
+<ul>
+<li>StatsLoading - 아직 통계 데이터가 계산되지 않은 상태</li>
+<li>StatsLoaded - 통계 데이터가 계산된 상태</li>
+</ul>
+<p>blocs/stats/stats_state.dart를 만들고 StatsState를 구현합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:equatable/equatable.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>immutable
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsState</span> <span style="color:#66d9ef">extends</span> Equatable {
+</span></span><span style="display:flex;"><span>  StatsState([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsLoading</span> <span style="color:#66d9ef">extends</span> StatsState {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;StatsLoading&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsLoaded</span> <span style="color:#66d9ef">extends</span> StatsState {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> numActive;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> numCompleted;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  StatsLoaded(<span style="color:#66d9ef">this</span>.numActive, <span style="color:#66d9ef">this</span>.numCompleted)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([numActive, numCompleted]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;StatsLoaded { numActive: </span><span style="color:#e6db74">$</span>numActive<span style="color:#e6db74">, numCompleted: </span><span style="color:#e6db74">$</span>numCompleted<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>다음으로 StatsEvent들을 구현합시다.</p>
+<h3 id="events-2">Events</h3>
+<p>StatsBloc에는 UpdateStats라는 하나의 이벤트만 있습니다. 이 이벤트는 TodosBloc의 상태가 바뀔 때마다 디스패치 됩니다. 이에 따라 StatsBloc도 새로운 통계데이터를 다시 계산합니다.</p>
+<p>blocs/stats/stats_event.dart를 만들고 구현합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:equatable/equatable.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>immutable
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsEvent</span> <span style="color:#66d9ef">extends</span> Equatable {
+</span></span><span style="display:flex;"><span>  StatsEvent([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateStats</span> <span style="color:#66d9ef">extends</span> StatsEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>Todo<span style="color:#f92672">&gt;</span> todos;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  UpdateStats(<span style="color:#66d9ef">this</span>.todos) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([todos]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;UpdateStats { todos: </span><span style="color:#e6db74">$</span>todos<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>이제 우린 FilteredTodosBloc과 매우 유사한 StatsBloc을 구현할 겁니다.</p>
+<h3 id="bloc-2">Bloc</h3>
+<p>StatsBloc은 TodosBloc의 의존성을 가집니다. TodosBloc에서 상태가 변경되면 따라서 StatsBloc의 상태도 갱신됩니다.</p>
+<p>bloc/stats/stats_bloc.dart를 만들고 시작합시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:async&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:bloc/bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/blocs/blocs.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StatsBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>StatsEvent, StatsState<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> TodosBloc todosBloc;
+</span></span><span style="display:flex;"><span>  StreamSubscription todosSubscription;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  StatsBloc({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todosBloc}) {
+</span></span><span style="display:flex;"><span>    todosSubscription <span style="color:#f92672">=</span> todosBloc.state.listen((state) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (state <span style="color:#66d9ef">is</span> TodosLoaded) {
+</span></span><span style="display:flex;"><span>        dispatch(UpdateStats(state.todos));
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  StatsState <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=&gt;</span> StatsLoading();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Stream<span style="color:#f92672">&lt;</span>StatsState<span style="color:#f92672">&gt;</span> mapEventToState(StatsEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateStats) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> numActive <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>          event.todos.where((todo) <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">!</span>todo.complete).toList().length;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> numCompleted <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>          event.todos.where((todo) <span style="color:#f92672">=&gt;</span> todo.complete).toList().length;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">yield</span> StatsLoaded(numActive, numCompleted);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> dispose() {
+</span></span><span style="display:flex;"><span>    todosSubscription.cancel();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>.dispose();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>StatsBloc은 TodosBloc의 상태가 변경될 때마다 active todos의 수와 completed todos의 수를 다시 계산합니다.</p>
+<p>이제 StatsBloc의 구현이 끝났습니다. 남은 하나의 bloc은 TabBloc입니다.</p>
+<h2 id="tabbloc">TabBloc</h2>
+<blockquote>
+<p>TabBloc은 앱의 탭 상태를 관리하는 책임을 가집니다. TabBloc은 TabEvent를 입력받아 AppTab를 출력합니다.</p>
+</blockquote>
+<h3 id="model--state">Model / State</h3>
+<p>우리는 TabState를 대표하는 AppTab 모델을 정의할 겁니다. AppTab은 enum 타입입니다.</p>
+<p>models/app_tab.dart를 만듭시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>enum AppTab { todos, stats }
+</span></span></code></pre></div><h3 id="event">Event</h3>
+<p>TabBloc은 하나의 TabEvent를 다루는 책임을 가집니다.</p>
+<ul>
+<li>UpdateTab - bloc에게 tab이 갱신됐음을 알립니다.</li>
+</ul>
+<p>blocs/tab/tab_event.dart를 만듭시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:equatable/equatable.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:meta/meta.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span>immutable
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TabEvent</span> <span style="color:#66d9ef">extends</span> Equatable {
+</span></span><span style="display:flex;"><span>  TabEvent([List props <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> []]) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(props);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateTab</span> <span style="color:#66d9ef">extends</span> TabEvent {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> AppTab tab;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  UpdateTab(<span style="color:#66d9ef">this</span>.tab) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>([tab]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> toString() <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;UpdateTab { tab: </span><span style="color:#e6db74">$</span>tab<span style="color:#e6db74"> }&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="bloc-3">Bloc</h3>
+<p>TabBloc은 구현은 매우 단순합니다.</p>
+<p>blocs/tab/tab_bloc.dart를 만듭시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:async&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:bloc/bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/blocs/tab/tab.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TabBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>TabEvent, AppTab<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  AppTab <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=&gt;</span> AppTab.todos;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Stream<span style="color:#f92672">&lt;</span>AppTab<span style="color:#f92672">&gt;</span> mapEventToState(TabEvent event) <span style="color:#66d9ef">async</span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (event <span style="color:#66d9ef">is</span> UpdateTab) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">yield</span> event.tab;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>TabBloc이 하는 일은 첫 상태를 설정하고 UpdateTab 이벤트를 AppTab으로 yielding 하는 것 뿐입니다.</p>
+<h3 id="barrel-file-2">Barrel File</h3>
+<p>blocs/tab/tab.dart를 만듭시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./tab_bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./tab_event.dart&#39;</span>;
+</span></span></code></pre></div><h2 id="bloc-delegate">Bloc Delegate</h2>
+<p>프리젠테이션 레이어로 이동하기 전에 모든 상태 변경과 에러를 다룰 수 이게 해주는 BlocDelegate를 구현할 겁니다. 이것은 개발 로그나 분석에 아주 유용합니다.</p>
+<p>blocs/simple_bloc_delegate.dart를 만듭시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:bloc/bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleBlocDelegate</span> <span style="color:#66d9ef">extends</span> BlocDelegate {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> onTransition(Transition transition) {
+</span></span><span style="display:flex;"><span>    print(transition);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> onError(<span style="color:#66d9ef">Object</span> error, StackTrace stacktrace) {
+</span></span><span style="display:flex;"><span>    print(error);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>모든 상태 변경(transition)과 에러들을 콘솔에 출력합니다. 구글 애널리틱스나 sentry, crashlytics 등에 BlocDelegate을 훅업할 수 있습니다.</p>
+<h2 id="bloc-barrel">Bloc Barrel</h2>
+<p>우리가 구현한 bloc들을 가지는 barrel file을 만듭시다. blocs/blocs.dart를 만들고 모든 bloc을 export 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./filtered_todos/filtered_todos.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./stats/stats.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./tab/tab.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./todos/todos.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./simple_bloc_delegate.dart&#39;</span>;
+</span></span></code></pre></div><p>다음으로 우리는 주요 화면들에 초점을 맞출 겁니다.</p>
+<h2 id="추가-준비물">추가 준비물</h2>
+<p>localization.dart</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:async&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FlutterBlocLocalizations</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> FlutterBlocLocalizations of(BuildContext context) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Localizations.of<span style="color:#f92672">&lt;</span>FlutterBlocLocalizations<span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>      context,
+</span></span><span style="display:flex;"><span>      FlutterBlocLocalizations,
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> <span style="color:#66d9ef">get</span> appTitle <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;Flutter Todos&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FlutterBlocLocalizationsDelegate</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">extends</span> LocalizationsDelegate<span style="color:#f92672">&lt;</span>FlutterBlocLocalizations<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Future<span style="color:#f92672">&lt;</span>FlutterBlocLocalizations<span style="color:#f92672">&gt;</span> load(Locale locale) <span style="color:#f92672">=&gt;</span>
+</span></span><span style="display:flex;"><span>      Future(() <span style="color:#f92672">=&gt;</span> FlutterBlocLocalizations());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">bool</span> shouldReload(FlutterBlocLocalizationsDelegate old) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">bool</span> isSupported(Locale locale) <span style="color:#f92672">=&gt;</span>
+</span></span><span style="display:flex;"><span>      locale.languageCode.toLowerCase().contains(<span style="color:#e6db74">&#34;en&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="screens">Screens</h2>
+<h3 id="home-screen">Home Screen</h3>
+<blockquote>
+<p>HomeScreen은 Scaffold를 만드는 책임을 가집니다. AppBar와 BottomNavigationBar, Stats / FilteredTodos 위젯들을 관리합니다.</p>
+</blockquote>
+<p>새 화면 위젯들을 넣을 screens라는 새 디렉토리를 만들고 그 안에 screens/home_screen.dart를 만들 겁니다.</p>
+<p>HomeScreen은 TabBloc, FilteredTodosBloc, StatsBloc을 만들고 dispose할 것이기 때문에 StatefulWidget로 만들 겁니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:todos_app_core/todos_app_core.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_bloc/flutter_bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/blocs/blocs.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/widgets/widgets.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/localization.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HomeScreen</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> Function() onInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  HomeScreen({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.onInit}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: ArchSampleKeys.homeScreen);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  _HomeScreenState createState() <span style="color:#f92672">=&gt;</span> _HomeScreenState();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_HomeScreenState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>HomeScreen<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> TabBloc _tabBloc <span style="color:#f92672">=</span> TabBloc();
+</span></span><span style="display:flex;"><span>  FilteredTodosBloc _filteredTodosBloc;
+</span></span><span style="display:flex;"><span>  StatsBloc _statsBloc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> initState() {
+</span></span><span style="display:flex;"><span>    widget.onInit();
+</span></span><span style="display:flex;"><span>    _filteredTodosBloc <span style="color:#f92672">=</span> FilteredTodosBloc(
+</span></span><span style="display:flex;"><span>      todosBloc: BlocProvider.of<span style="color:#f92672">&lt;</span>TodosBloc<span style="color:#f92672">&gt;</span>(context),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    _statsBloc <span style="color:#f92672">=</span> StatsBloc(
+</span></span><span style="display:flex;"><span>      todosBloc: BlocProvider.of<span style="color:#f92672">&lt;</span>TodosBloc<span style="color:#f92672">&gt;</span>(context),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>.initState();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Widget build(BuildContext context) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> BlocBuilder(
+</span></span><span style="display:flex;"><span>      bloc: _tabBloc,
+</span></span><span style="display:flex;"><span>      builder: (BuildContext context, AppTab activeTab) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> BlocProviderTree(
+</span></span><span style="display:flex;"><span>          blocProviders: [
+</span></span><span style="display:flex;"><span>            BlocProvider<span style="color:#f92672">&lt;</span>TabBloc<span style="color:#f92672">&gt;</span>(bloc: _tabBloc),
+</span></span><span style="display:flex;"><span>            BlocProvider<span style="color:#f92672">&lt;</span>FilteredTodosBloc<span style="color:#f92672">&gt;</span>(bloc: _filteredTodosBloc),
+</span></span><span style="display:flex;"><span>            BlocProvider<span style="color:#f92672">&lt;</span>StatsBloc<span style="color:#f92672">&gt;</span>(bloc: _statsBloc),
+</span></span><span style="display:flex;"><span>          ],
+</span></span><span style="display:flex;"><span>          child: Scaffold(
+</span></span><span style="display:flex;"><span>            appBar: AppBar(
+</span></span><span style="display:flex;"><span>              title: Text(FlutterBlocLocalizations.of(context).appTitle),
+</span></span><span style="display:flex;"><span>              actions: [
+</span></span><span style="display:flex;"><span>                FilterButton(visible: activeTab <span style="color:#f92672">==</span> AppTab.todos),
+</span></span><span style="display:flex;"><span>                ExtraActions(),
+</span></span><span style="display:flex;"><span>              ],
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>            body: activeTab <span style="color:#f92672">==</span> AppTab.todos <span style="color:#f92672">?</span> FilteredTodos() <span style="color:#f92672">:</span> Stats(),
+</span></span><span style="display:flex;"><span>            floatingActionButton: FloatingActionButton(
+</span></span><span style="display:flex;"><span>              key: ArchSampleKeys.addTodoFab,
+</span></span><span style="display:flex;"><span>              onPressed: () {
+</span></span><span style="display:flex;"><span>                Navigator.pushNamed(context, ArchSampleRoutes.addTodo);
+</span></span><span style="display:flex;"><span>              },
+</span></span><span style="display:flex;"><span>              child: Icon(Icons.add),
+</span></span><span style="display:flex;"><span>              tooltip: ArchSampleLocalizations.of(context).addTodo,
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>            bottomNavigationBar: TabSelector(
+</span></span><span style="display:flex;"><span>              activeTab: activeTab,
+</span></span><span style="display:flex;"><span>              onTabSelected: (tab) <span style="color:#f92672">=&gt;</span> _tabBloc.dispatch(UpdateTab(tab)),
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> dispose() {
+</span></span><span style="display:flex;"><span>    _statsBloc.dispose();
+</span></span><span style="display:flex;"><span>    _filteredTodosBloc.dispose();
+</span></span><span style="display:flex;"><span>    _tabBloc.dispose();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>.dispose();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>HomeScreen은 상태의 일부로써 TabBloc, FilteredTodosBloc, StatsBloc을 만듭니다. HomeScreen은 TodosApp의 루트에서 사용 가능하게 만들어진 TodosBloc에 접근하기 위해 BlocProvider.of<!-- raw HTML omitted -->(context)를 사용합니다.</p>
+<p>HomeScreen은 TodosBloc 상태의 변경에 대해 반응해야 하기 때문에 TodosState를 기반으로 위젯을 빌드하기 위해 BlocBuilder를 사용합니다.</p>
+<p>HomeScreen은 BlocProviderTree 위젯을 사용해서 서브트리에 있는 위젯들이 TabBloc, FilteredTodosBloc, StatsBloc에 접근할 수 있도록 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>BlocProviderTree(
+</span></span><span style="display:flex;"><span>  blocProviders: [
+</span></span><span style="display:flex;"><span>    BlocProvider<span style="color:#f92672">&lt;</span>TabBloc<span style="color:#f92672">&gt;</span>(bloc: _tabBloc),
+</span></span><span style="display:flex;"><span>    BlocProvider<span style="color:#f92672">&lt;</span>FilteredTodosBloc<span style="color:#f92672">&gt;</span>(bloc: _filteredTodosBloc),
+</span></span><span style="display:flex;"><span>    BlocProvider<span style="color:#f92672">&lt;</span>StatsBloc<span style="color:#f92672">&gt;</span>(bloc: _statsBloc),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  child: Scaffold(...),
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>위 코드와 아래 코드는 같습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>BlocProvider<span style="color:#f92672">&lt;</span>TabBloc<span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>  bloc: _tabBloc,
+</span></span><span style="display:flex;"><span>  child: BlocProvider<span style="color:#f92672">&lt;</span>FilteredTodosBloc<span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>    bloc: _filteredTodosBloc,
+</span></span><span style="display:flex;"><span>    child: BlocProvider<span style="color:#f92672">&lt;</span>StatsBloc<span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>      bloc: _statsBloc,
+</span></span><span style="display:flex;"><span>      child: Scaffold(...),
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>  ),
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>위에서 본 것처럼 BlocProviderTree는 중첩 레벨을 감소시키고 가독성을 높혀줍니다.</p>
+<p>다음으로 DetailsScreen을 구현할 겁니다.</p>
+<h3 id="details-screen">Details Screen</h3>
+<blockquote>
+<p>DetailsScreen은 선택된 투의 상세정보를 보여주고 사용자가 투두를 수정하거나 삭제할 수 있게 해줍니다.</p>
+</blockquote>
+<p>screens/details_screen.dart를 만듭시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/foundation.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_bloc/flutter_bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:todos_app_core/todos_app_core.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/blocs/todos/todos.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/screens/screens.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/flutter_todos_keys.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DetailsScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  DetailsScreen({Key key, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.id})
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key <span style="color:#f92672">??</span> ArchSampleKeys.todoDetailsScreen);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Widget build(BuildContext context) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> todosBloc <span style="color:#f92672">=</span> BlocProvider.of<span style="color:#f92672">&lt;</span>TodosBloc<span style="color:#f92672">&gt;</span>(context);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> BlocBuilder(
+</span></span><span style="display:flex;"><span>      bloc: todosBloc,
+</span></span><span style="display:flex;"><span>      builder: (BuildContext context, TodosState state) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> todo <span style="color:#f92672">=</span> (state <span style="color:#f92672">as</span> TodosLoaded)
+</span></span><span style="display:flex;"><span>            .todos
+</span></span><span style="display:flex;"><span>            .firstWhere((todo) <span style="color:#f92672">=&gt;</span> todo.id <span style="color:#f92672">==</span> id, orElse: () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> localizations <span style="color:#f92672">=</span> ArchSampleLocalizations.of(context);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Scaffold(
+</span></span><span style="display:flex;"><span>          appBar: AppBar(
+</span></span><span style="display:flex;"><span>            title: Text(localizations.todoDetails),
+</span></span><span style="display:flex;"><span>            actions: [
+</span></span><span style="display:flex;"><span>              IconButton(
+</span></span><span style="display:flex;"><span>                tooltip: localizations.deleteTodo,
+</span></span><span style="display:flex;"><span>                key: ArchSampleKeys.deleteTodoButton,
+</span></span><span style="display:flex;"><span>                icon: Icon(Icons.delete),
+</span></span><span style="display:flex;"><span>                onPressed: () {
+</span></span><span style="display:flex;"><span>                  todosBloc.dispatch(DeleteTodo(todo));
+</span></span><span style="display:flex;"><span>                  Navigator.pop(context, todo);
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>              )
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>          body: todo <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">?</span> Container(key: FlutterTodosKeys.emptyDetailsContainer)
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">:</span> Padding(
+</span></span><span style="display:flex;"><span>                  padding: EdgeInsets.all(<span style="color:#ae81ff">16.0</span>),
+</span></span><span style="display:flex;"><span>                  child: ListView(
+</span></span><span style="display:flex;"><span>                    children: [
+</span></span><span style="display:flex;"><span>                      Row(
+</span></span><span style="display:flex;"><span>                        crossAxisAlignment: CrossAxisAlignment.start,
+</span></span><span style="display:flex;"><span>                        children: [
+</span></span><span style="display:flex;"><span>                          Padding(
+</span></span><span style="display:flex;"><span>                            padding: EdgeInsets.only(right: <span style="color:#ae81ff">8.0</span>),
+</span></span><span style="display:flex;"><span>                            child: Checkbox(
+</span></span><span style="display:flex;"><span>                                key: FlutterTodosKeys.detailsScreenCheckBox,
+</span></span><span style="display:flex;"><span>                                value: todo.complete,
+</span></span><span style="display:flex;"><span>                                onChanged: (_) {
+</span></span><span style="display:flex;"><span>                                  todosBloc.dispatch(
+</span></span><span style="display:flex;"><span>                                    UpdateTodo(
+</span></span><span style="display:flex;"><span>                                      todo.copyWith(complete: <span style="color:#f92672">!</span>todo.complete),
+</span></span><span style="display:flex;"><span>                                    ),
+</span></span><span style="display:flex;"><span>                                  );
+</span></span><span style="display:flex;"><span>                                }),
+</span></span><span style="display:flex;"><span>                          ),
+</span></span><span style="display:flex;"><span>                          Expanded(
+</span></span><span style="display:flex;"><span>                            child: Column(
+</span></span><span style="display:flex;"><span>                              crossAxisAlignment: CrossAxisAlignment.start,
+</span></span><span style="display:flex;"><span>                              children: [
+</span></span><span style="display:flex;"><span>                                Hero(
+</span></span><span style="display:flex;"><span>                                  tag: <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">${</span>todo.id<span style="color:#e6db74">}</span><span style="color:#e6db74">__heroTag&#39;</span>,
+</span></span><span style="display:flex;"><span>                                  child: Container(
+</span></span><span style="display:flex;"><span>                                    width: MediaQuery.of(context).size.width,
+</span></span><span style="display:flex;"><span>                                    padding: EdgeInsets.only(
+</span></span><span style="display:flex;"><span>                                      top: <span style="color:#ae81ff">8.0</span>,
+</span></span><span style="display:flex;"><span>                                      bottom: <span style="color:#ae81ff">16.0</span>,
+</span></span><span style="display:flex;"><span>                                    ),
+</span></span><span style="display:flex;"><span>                                    child: Text(
+</span></span><span style="display:flex;"><span>                                      todo.task,
+</span></span><span style="display:flex;"><span>                                      key: ArchSampleKeys.detailsTodoItemTask,
+</span></span><span style="display:flex;"><span>                                      style:
+</span></span><span style="display:flex;"><span>                                          Theme.of(context).textTheme.headline,
+</span></span><span style="display:flex;"><span>                                    ),
+</span></span><span style="display:flex;"><span>                                  ),
+</span></span><span style="display:flex;"><span>                                ),
+</span></span><span style="display:flex;"><span>                                Text(
+</span></span><span style="display:flex;"><span>                                  todo.note,
+</span></span><span style="display:flex;"><span>                                  key: ArchSampleKeys.detailsTodoItemNote,
+</span></span><span style="display:flex;"><span>                                  style: Theme.of(context).textTheme.subhead,
+</span></span><span style="display:flex;"><span>                                ),
+</span></span><span style="display:flex;"><span>                              ],
+</span></span><span style="display:flex;"><span>                            ),
+</span></span><span style="display:flex;"><span>                          ),
+</span></span><span style="display:flex;"><span>                        ],
+</span></span><span style="display:flex;"><span>                      ),
+</span></span><span style="display:flex;"><span>                    ],
+</span></span><span style="display:flex;"><span>                  ),
+</span></span><span style="display:flex;"><span>                ),
+</span></span><span style="display:flex;"><span>          floatingActionButton: FloatingActionButton(
+</span></span><span style="display:flex;"><span>            key: ArchSampleKeys.editTodoFab,
+</span></span><span style="display:flex;"><span>            tooltip: localizations.editTodo,
+</span></span><span style="display:flex;"><span>            child: Icon(Icons.edit),
+</span></span><span style="display:flex;"><span>            onPressed: todo <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">?</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> () {
+</span></span><span style="display:flex;"><span>                    Navigator.of(context).push(
+</span></span><span style="display:flex;"><span>                      MaterialPageRoute(
+</span></span><span style="display:flex;"><span>                        builder: (context) {
+</span></span><span style="display:flex;"><span>                          <span style="color:#66d9ef">return</span> AddEditScreen(
+</span></span><span style="display:flex;"><span>                            key: ArchSampleKeys.editTodoScreen,
+</span></span><span style="display:flex;"><span>                            onSave: (task, note) {
+</span></span><span style="display:flex;"><span>                              todosBloc.dispatch(
+</span></span><span style="display:flex;"><span>                                UpdateTodo(
+</span></span><span style="display:flex;"><span>                                  todo.copyWith(task: task, note: note),
+</span></span><span style="display:flex;"><span>                                ),
+</span></span><span style="display:flex;"><span>                              );
+</span></span><span style="display:flex;"><span>                            },
+</span></span><span style="display:flex;"><span>                            isEditing: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                            todo: todo,
+</span></span><span style="display:flex;"><span>                          );
+</span></span><span style="display:flex;"><span>                        },
+</span></span><span style="display:flex;"><span>                      ),
+</span></span><span style="display:flex;"><span>                    );
+</span></span><span style="display:flex;"><span>                  },
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>DetailsScreen은 TodosBloc으로부터 투두의 id를 전달받아 id에 해당하는 투두의 상세정보가 바뀔 때마다 갱신합니다.</p>
+</blockquote>
+<p>DetailsScreen에는 DeleteTodo 이벤트를 디스패치하는 IconButton과 UpdateTodo 이벤트를 디스패치하는 CheckBox 위젯이 있습니다. FloatingActionButton은 isEditing을 true로 설정하고 AddEditScreen으로 navigating 시킵니다. 다음으로 AddEditScreen을 봅시다.</p>
+<h3 id="addedit-screen">Add/Edit Screen</h3>
+<blockquote>
+<p>AddEditScreen 위젯은 사용자가 새 투두를 만들 수 있게 해줍니다. 그리고 생성자로 넘어온 isEditing이 true일 땐 존재하는 투두를 수정할 수 있게 해줍니다.</p>
+</blockquote>
+<p>screens/add_edit_screen.dart를 만듭시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/foundation.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:todos_app_core/todos_app_core.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> OnSaveCallback <span style="color:#f92672">=</span> Function(<span style="color:#66d9ef">String</span> task, <span style="color:#66d9ef">String</span> note);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AddEditScreen</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> isEditing;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> OnSaveCallback onSave;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> Todo todo;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AddEditScreen({
+</span></span><span style="display:flex;"><span>    Key key,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.onSave,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.isEditing,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.todo,
+</span></span><span style="display:flex;"><span>  }) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key <span style="color:#f92672">??</span> ArchSampleKeys.addTodoScreen);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  _AddEditScreenState createState() <span style="color:#f92672">=&gt;</span> _AddEditScreenState();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_AddEditScreenState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>AddEditScreen<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> GlobalKey<span style="color:#f92672">&lt;</span>FormState<span style="color:#f92672">&gt;</span> _formKey <span style="color:#f92672">=</span> GlobalKey<span style="color:#f92672">&lt;</span>FormState<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> _task;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">String</span> _note;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">get</span> isEditing <span style="color:#f92672">=&gt;</span> widget.isEditing;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Widget build(BuildContext context) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> localizations <span style="color:#f92672">=</span> ArchSampleLocalizations.of(context);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> textTheme <span style="color:#f92672">=</span> Theme.of(context).textTheme;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Scaffold(
+</span></span><span style="display:flex;"><span>      appBar: AppBar(
+</span></span><span style="display:flex;"><span>        title: Text(
+</span></span><span style="display:flex;"><span>          isEditing <span style="color:#f92672">?</span> localizations.editTodo <span style="color:#f92672">:</span> localizations.addTodo,
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>      body: Padding(
+</span></span><span style="display:flex;"><span>        padding: EdgeInsets.all(<span style="color:#ae81ff">16.0</span>),
+</span></span><span style="display:flex;"><span>        child: Form(
+</span></span><span style="display:flex;"><span>          key: _formKey,
+</span></span><span style="display:flex;"><span>          child: ListView(
+</span></span><span style="display:flex;"><span>            children: [
+</span></span><span style="display:flex;"><span>              TextFormField(
+</span></span><span style="display:flex;"><span>                initialValue: isEditing <span style="color:#f92672">?</span> widget.todo.task <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>                key: ArchSampleKeys.taskField,
+</span></span><span style="display:flex;"><span>                autofocus: <span style="color:#f92672">!</span>isEditing,
+</span></span><span style="display:flex;"><span>                style: textTheme.headline,
+</span></span><span style="display:flex;"><span>                decoration: InputDecoration(
+</span></span><span style="display:flex;"><span>                  hintText: localizations.newTodoHint,
+</span></span><span style="display:flex;"><span>                ),
+</span></span><span style="display:flex;"><span>                validator: (val) {
+</span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">return</span> val.trim().isEmpty
+</span></span><span style="display:flex;"><span>                      <span style="color:#f92672">?</span> localizations.emptyTodoError
+</span></span><span style="display:flex;"><span>                      <span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                onSaved: (value) <span style="color:#f92672">=&gt;</span> _task <span style="color:#f92672">=</span> value,
+</span></span><span style="display:flex;"><span>              ),
+</span></span><span style="display:flex;"><span>              TextFormField(
+</span></span><span style="display:flex;"><span>                initialValue: isEditing <span style="color:#f92672">?</span> widget.todo.note <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>                key: ArchSampleKeys.noteField,
+</span></span><span style="display:flex;"><span>                maxLines: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                style: textTheme.subhead,
+</span></span><span style="display:flex;"><span>                decoration: InputDecoration(
+</span></span><span style="display:flex;"><span>                  hintText: localizations.notesHint,
+</span></span><span style="display:flex;"><span>                ),
+</span></span><span style="display:flex;"><span>                onSaved: (value) <span style="color:#f92672">=&gt;</span> _note <span style="color:#f92672">=</span> value,
+</span></span><span style="display:flex;"><span>              )
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>      floatingActionButton: FloatingActionButton(
+</span></span><span style="display:flex;"><span>        key:
+</span></span><span style="display:flex;"><span>            isEditing <span style="color:#f92672">?</span> ArchSampleKeys.saveTodoFab <span style="color:#f92672">:</span> ArchSampleKeys.saveNewTodo,
+</span></span><span style="display:flex;"><span>        tooltip: isEditing <span style="color:#f92672">?</span> localizations.saveChanges <span style="color:#f92672">:</span> localizations.addTodo,
+</span></span><span style="display:flex;"><span>        child: Icon(isEditing <span style="color:#f92672">?</span> Icons.check <span style="color:#f92672">:</span> Icons.add),
+</span></span><span style="display:flex;"><span>        onPressed: () {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> (_formKey.currentState.validate()) {
+</span></span><span style="display:flex;"><span>            _formKey.currentState.save();
+</span></span><span style="display:flex;"><span>            widget.onSave(_task, _note);
+</span></span><span style="display:flex;"><span>            Navigator.pop(context);
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      ),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>AddEditScreen은 새로운 투두가 만들어졌거나 기존의 투두가 수정됐을 때 부모 위젯에게 알리기 위해 onSave 콜백을 사용합니다.</p>
+<h3 id="screens-barrel">Screens Barrel</h3>
+<p>screens/screens.dart를 만듭시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./add_edit_screen.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./details_screen.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;./home_screen.dart&#39;</span>;
+</span></span></code></pre></div><p>다음으로 widgets의 모든 것을 구현합시다.</p>
+<h2 id="widgets">Widgets</h2>
+<h3 id="filter-button">Filter Button</h3>
+<blockquote>
+<p>FilterButton 위젯은 필터 옵션 목록을 사용자에게 제공하는 책임을 가집니다. 필터가 선택됐을 때 FilteredTodosBloc에게 알림을 보냅니다.</p>
+</blockquote>
+<p>widgets 디렉토리를 만들고 그 안에 FilterButton을 구현할 widgets/filter_button.dart를 만듭시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_bloc/flutter_bloc.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:todos_app_core/todos_app_core.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/blocs/filtered_todos/filtered_todos.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_todos/models/models.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilterButton</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> visible;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  FilterButton({<span style="color:#66d9ef">this</span>.visible, Key key}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Widget build(BuildContext context) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> defaultStyle <span style="color:#f92672">=</span> Theme.of(context).textTheme.body1;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> activeStyle <span style="color:#f92672">=</span> Theme.of(context)
+</span></span><span style="display:flex;"><span>        .textTheme
+</span></span><span style="display:flex;"><span>        .body1
+</span></span><span style="display:flex;"><span>        .copyWith(color: Theme.of(context).accentColor);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">final</span> FilteredTodosBloc filteredTodosBloc <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>        BlocProvider.of<span style="color:#f92672">&lt;</span>FilteredTodosBloc<span style="color:#f92672">&gt;</span>(context);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> BlocBuilder(
+</span></span><span style="display:flex;"><span>        bloc: filteredTodosBloc,
+</span></span><span style="display:flex;"><span>        builder: (BuildContext context, FilteredTodosState state) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">final</span> button <span style="color:#f92672">=</span> _Button(
+</span></span><span style="display:flex;"><span>            onSelected: (filter) {
+</span></span><span style="display:flex;"><span>              filteredTodosBloc.dispatch(UpdateFilter(filter));
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            activeFilter: state <span style="color:#66d9ef">is</span> FilteredTodosLoaded
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">?</span> state.activeFilter
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> VisibilityFilter.all,
+</span></span><span style="display:flex;"><span>            activeStyle: activeStyle,
+</span></span><span style="display:flex;"><span>            defaultStyle: defaultStyle,
+</span></span><span style="display:flex;"><span>          );
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> AnimatedOpacity(
+</span></span><span style="display:flex;"><span>            opacity: visible <span style="color:#f92672">?</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0.0</span>,
+</span></span><span style="display:flex;"><span>            duration: Duration(milliseconds: <span style="color:#ae81ff">150</span>),
+</span></span><span style="display:flex;"><span>            child: visible <span style="color:#f92672">?</span> button <span style="color:#f92672">:</span> IgnorePointer(child: button),
+</span></span><span style="display:flex;"><span>          );
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_Button</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> _Button({
+</span></span><span style="display:flex;"><span>    Key key,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.onSelected,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.activeFilter,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.activeStyle,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.defaultStyle,
+</span></span><span style="display:flex;"><span>  }) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> PopupMenuItemSelected<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span> onSelected;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> VisibilityFilter activeFilter;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> TextStyle activeStyle;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> TextStyle defaultStyle;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
+</span></span><span style="display:flex;"><span>  Widget build(BuildContext context) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> PopupMenuButton<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>      key: ArchSampleKeys.filterButton,
+</span></span><span style="display:flex;"><span>      tooltip: ArchSampleLocalizations.of(context).filterTodos,
+</span></span><span style="display:flex;"><span>      onSelected: onSelected,
+</span></span><span style="display:flex;"><span>      itemBuilder: (BuildContext context) <span style="color:#f92672">=&gt;</span> <span style="color:#f92672">&lt;</span>PopupMenuItem<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;&gt;</span>[
+</span></span><span style="display:flex;"><span>            PopupMenuItem<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>              key: ArchSampleKeys.allFilter,
+</span></span><span style="display:flex;"><span>              value: VisibilityFilter.all,
+</span></span><span style="display:flex;"><span>              child: Text(
+</span></span><span style="display:flex;"><span>                ArchSampleLocalizations.of(context).showAll,
+</span></span><span style="display:flex;"><span>                style: activeFilter <span style="color:#f92672">==</span> VisibilityFilter.all
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">?</span> activeStyle
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">:</span> defaultStyle,
+</span></span><span style="display:flex;"><span>              ),
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>            PopupMenuItem<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>              key: ArchSampleKeys.activeFilter,
+</span></span><span style="display:flex;"><span>              value: VisibilityFilter.active,
+</span></span><span style="display:flex;"><span>              child: Text(
+</span></span><span style="display:flex;"><span>                ArchSampleLocalizations.of(context).showActive,
+</span></span><span style="display:flex;"><span>                style: activeFilter <span style="color:#f92672">==</span> VisibilityFilter.active
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">?</span> activeStyle
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">:</span> defaultStyle,
+</span></span><span style="display:flex;"><span>              ),
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>            PopupMenuItem<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>              key: ArchSampleKeys.completedFilter,
+</span></span><span style="display:flex;"><span>              value: VisibilityFilter.completed,
+</span></span><span style="display:flex;"><span>              child: Text(
+</span></span><span style="display:flex;"><span>                ArchSampleLocalizations.of(context).showCompleted,
+</span></span><span style="display:flex;"><span>                style: activeFilter <span style="color:#f92672">==</span> VisibilityFilter.completed
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">?</span> activeStyle
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">:</span> defaultStyle,
+</span></span><span style="display:flex;"><span>              ),
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>          ],
+</span></span><span style="display:flex;"><span>      icon: Icon(Icons.filter_list),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>다음 내용부터는 이전 내용들에 의해 이해가 수월해지기 때문에 생략합니다.</p>
+</blockquote>
+<h3 id="extra-actinos">Extra Actinos</h3>
+<h3 id="tab-selector">Tab Selector</h3>
+<h3 id="filtered-todos">Filtered Todos</h3>
+<h3 id="todo-item">Todo Item</h3>
+<h3 id="delete-todod-snackbar">Delete Todod SnackBar</h3>
+<h3 id="loading-indicator">Loading Indicator</h3>
+<h3 id="stats">Stats</h3>
+<h2 id="putting-it-all-together">Putting it all together</h2>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/flutter/">
+                flutter
+              </a>
+            </div>
+            
+            <div class="post-tags">
+              <a href="/tags/bloc/">
+                bloc
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-03-25-flutter-bloc-tutorials/">Flutter로 개발하기(23) - Bloc 튜토리얼</a></li>
+    
+    <li><a href="/posts/2019-03-24-flutter-bloc-introduction/">Flutter로 개발하기(22) - Bloc 소개</a></li>
+    
+    <li><a href="/posts/2019-03-23-flutter-bloc-library-sample/">Flutter로 개발하기(21) - Bloc패턴 샘플</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

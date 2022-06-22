@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bloc on Android Developer BSSCCO</title>
+    <link>https://bsscco.github.io/tags/bloc/</link>
+    <description>Recent content in bloc on Android Developer BSSCCO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 31 Mar 2019 09:51:41 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/bloc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flutter로 개발하기(25) - Bloc 도구</title>
+      <link>https://bsscco.github.io/posts/2019-03-31-flutter-bloc-tools/</link>
+      <pubDate>Sun, 31 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-31-flutter-bloc-tools/</guid>
+      <description>Bloc document - 도구 https://felangel.github.io/bloc
+intelliJ Bloc Plugin for IntelliJ and Android Studio 소개 IntelliJ와 안드로이드 스튜디오를 위한 Bloc 플러그인은 Bloc 라이브러리를 지원하고 Bloc 생성을 효과적으로 돕습니다.
+설치 IntelliJ와 안드로이드 스튜디오 마켓플레이스에서 플러그인을 찾을 수 있습니다. Bloc Code Generator
+어떻게 사용하나요? 파일 프로젝트 뷰에서 오른쪽 클릭을 합니다. -&amp;gt; New -&amp;gt; New Bloc -&amp;gt; Generate New Bloc
+배포 Plugin Repository를 사용하세요.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</title>
+      <link>https://bsscco.github.io/posts/2019-03-30-flutter-bloc-todos-tutorial/</link>
+      <pubDate>Sat, 30 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-30-flutter-bloc-todos-tutorial/</guid>
+      <description>Bloc document - Todos 튜토리얼 원문: https://felangel.github.io/bloc
+Setup flutter create flutter_todos name: flutter_todos description: A new Flutter project. environment: sdk: &amp;#34;&amp;gt;=2.0.0 &amp;lt;3.0.0&amp;#34; dependencies: meta: &amp;#34;&amp;gt;=1.1.0 &amp;lt;2.0.0&amp;#34; equatable: ^0.2.0 flutter_bloc: ^0.9.0 flutter: sdk: flutter dependency_overrides: todos_app_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_app_core ref: expose-repositories todos_repository_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_core ref: expose-repositories todos_repository_simple: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_simple ref: expose-repositories flutter: uses-material-design: true flutter packages get 우리는 몇개의 의존성들을 오버라이딩 할 겁니다. Brian Egan&amp;rsquo;s Flutter Architecture Samples로부터 그 의존성들을 재사용할 것이기 때문입니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(23) - Bloc 튜토리얼</title>
+      <link>https://bsscco.github.io/posts/2019-03-25-flutter-bloc-tutorials/</link>
+      <pubDate>Mon, 25 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-25-flutter-bloc-tutorials/</guid>
+      <description>Bloc document - 튜토리얼 원문: https://felangel.github.io/bloc
+플러터 Counter Setup 터미널에서
+flutter create flutter_counter pubspec.yaml에서
+name: flutter_counter description: A new Flutter project. version: 1.0.0+1 environment: sdk: &amp;#34;&amp;gt;=2.0.0-dev.68.0 &amp;lt;3.0.0&amp;#34; dependencies: flutter: sdk: flutter bloc: ^0.10.0 flutter_bloc: ^0.8.0 meta: ^1.1.6 dev_dependencies: flutter_test: sdk: flutter flutter: uses-material-design: true 다시 터미널에서
+flutter packages get Counter Events enum CounterEvent { increment, decrement } Counter Bloc(Counter States 포함) class CounterBloc extends Bloc&amp;lt;CounterEvent, int&amp;gt; { @override int get initialState =&amp;gt; 0; // 초기 상태 생성 @override Stream&amp;lt;int&amp;gt; mapEventToState(int currentState, CounterEvent event) async* { // 이벤트 처리 switch (event) { case CounterEvent.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(22) - Bloc 소개</title>
+      <link>https://bsscco.github.io/posts/2019-03-24-flutter-bloc-introduction/</link>
+      <pubDate>Sun, 24 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-24-flutter-bloc-introduction/</guid>
+      <description>Bloc document - 소개 원문: https://felangel.github.io/bloc
+시작하기 개요 Bloc은 세 가지 패키지로 구성됩니다.
+bloc - 코어 라이브러리 flutter_bloc - bloc을 사용하기 위한 플러터 위젯 angular_bloc - bloc을 사용하기 위한 앵귤러 컴포넌트 설치 플터터의 경우 pubspec.yaml에서
+dependencies: bloc: ^0.10.0 flutter_bloc: ^0.8.0 그리고 flutter packages get
+Import 플러터의 경우
+import &amp;#39;package:bloc/bloc.dart&amp;#39;; import &amp;#39;package:flutter_bloc/flutter_bloc.dart&amp;#39;; 왜 Bloc인가요? Bloc은 비지니스 로직으로부터 프리젠테이션 로직을 쉽게 분리시켜줍니다. 빠르게 작성할 수 있는 코드, 쉽게 테스트 할 수 있는 코드, 재사용 가능한 코드를 만들 수 있게 해줍니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(21) - Bloc패턴 샘플</title>
+      <link>https://bsscco.github.io/posts/2019-03-23-flutter-bloc-library-sample/</link>
+      <pubDate>Sat, 23 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-23-flutter-bloc-library-sample/</guid>
+      <description>bloc_library sample 참고 예제: https://github.com/brianegan/flutter_architecture_samples/tree/master/bloc_library
+이 샘플은 상태관리를 위해 bloc 과 flutter_bloc 라이브러리를 사용했습니다. 더 자세한 내용과 튜토리얼은 bloc library document 를 확인하세요.
+핵심 개념 상태를 위로 올리기 여러 위젯에서 같은 bloc이 필요할 땐 공통의 조상 위젯에 BlocProvider를 사용합니다. Events는 bloc의 입력입니다. 이들은 일반적으로 버튼 누르기와 같은 유저 인터렉션 또는 페이지 로드 같은 라이프사이클 이벤트로 디스패치됩니다. States는 bloc의 출력이며 앱 상태의 한 부분을 대표합니다. 컴포넌트들은 상태를 공지 받을 수 있고 그 상태에 의해 다시 그려질 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

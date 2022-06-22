@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.100.2" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="https://bsscco.github.io/posts/2019-02-28-dart-effective-dart-2/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2019-02-28-dart-effective-dart-2/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/bsscco.github.io\/"
+      },
+      "articleSection" : "posts",
+      "name" : "이펙티브 Dart(2) - 스타일 가이드",
+      "headline" : "이펙티브 Dart(2) - 스타일 가이드",
+      "description" : "Effective Dart: Style https:\/\/www.dartlang.org\/guides\/language\/effective-dart\/style\nnaming, ordering, formatting의 일관성은 다른 사람들이 코드를 배우고, 공유하기 쉽게 해준다.\nIdentifiers DO 타입 이름은 UpperCamelCase로 지어라. DO 라이브러리, 패키지, 디렉토리, 소스파일 이름은 lowercase_with_underscores로 지어라. DO import prefix(alias)는 lowercase_with_underscores로 지어라. DO 나머지 다른 identifier는 lowerCamelCase로 지어라. PREFER 상수 이름은 lowerCamelCase로 지어라. DO 2글자보다 더 긴 축약어는 첫글자만 대문자화 해라. \/\/ ex) IOStream (X) DON’T prefix 문자를 사용하지 마라. ex) kDefaultTimeout (X) Ordering DO dart: import를 다른 라이브러리 import 이전에 써라.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-02-28 08:05:06 \u002b0000 UTC",
+      "dateModified" : "2019-02-28 08:05:06 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2019-02-28-dart-effective-dart-2\/",
+      "keywords" : [ "dart", ]
+  }
+</script>
+<title>이펙티브 Dart(2) - 스타일 가이드</title>
+  <meta property="og:title" content="이펙티브 Dart(2) - 스타일 가이드" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Effective Dart: Style https://www.dartlang.org/guides/language/effective-dart/style
+naming, ordering, formatting의 일관성은 다른 사람들이 코드를 배우고, 공유하기 쉽게 해준다.
+Identifiers DO 타입 이름은 UpperCamelCase로 지어라. DO 라이브러리, 패키지, 디렉토리, 소스파일 이름은 lowercase_with_underscores로 지어라. DO import prefix(alias)는 lowercase_with_underscores로 지어라. DO 나머지 다른 identifier는 lowerCamelCase로 지어라. PREFER 상수 이름은 lowerCamelCase로 지어라. DO 2글자보다 더 긴 축약어는 첫글자만 대문자화 해라. // ex) IOStream (X) DON’T prefix 문자를 사용하지 마라. ex) kDefaultTimeout (X) Ordering DO dart: import를 다른 라이브러리 import 이전에 써라." />
+  <meta name="description" content="Effective Dart: Style https://www.dartlang.org/guides/language/effective-dart/style
+naming, ordering, formatting의 일관성은 다른 사람들이 코드를 배우고, 공유하기 쉽게 해준다.
+Identifiers DO 타입 이름은 UpperCamelCase로 지어라. DO 라이브러리, 패키지, 디렉토리, 소스파일 이름은 lowercase_with_underscores로 지어라. DO import prefix(alias)는 lowercase_with_underscores로 지어라. DO 나머지 다른 identifier는 lowerCamelCase로 지어라. PREFER 상수 이름은 lowerCamelCase로 지어라. DO 2글자보다 더 긴 축약어는 첫글자만 대문자화 해라. // ex) IOStream (X) DON’T prefix 문자를 사용하지 마라. ex) kDefaultTimeout (X) Ordering DO dart: import를 다른 라이브러리 import 이전에 써라." />
+  <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Android Developer BSSCCO">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Android Developer BSSCCO</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">이펙티브 Dart(2) - 스타일 가이드</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-02-28 08:05:06 UTC">
+                28 Feb 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <p>Effective Dart: Style
+<a href="https://www.dartlang.org/guides/language/effective-dart/style">https://www.dartlang.org/guides/language/effective-dart/style</a></p>
+<p>naming, ordering, formatting의 일관성은 다른 사람들이 코드를 배우고, 공유하기 쉽게 해준다.</p>
+<ul>
+<li><a href="/2019/02/27/effective-dart-2/#Identifiers">Identifiers</a>
+<ul>
+<li><strong>DO</strong> 타입 이름은 UpperCamelCase로 지어라.</li>
+<li><strong>DO</strong> 라이브러리, 패키지, 디렉토리, 소스파일 이름은 lowercase_with_underscores로 지어라.</li>
+<li><strong>DO</strong> import prefix(alias)는 lowercase_with_underscores로 지어라.</li>
+<li><strong>DO</strong> 나머지 다른 identifier는 lowerCamelCase로 지어라.</li>
+<li><strong>PREFER</strong> 상수 이름은 lowerCamelCase로 지어라.</li>
+<li><strong>DO</strong> 2글자보다 더 긴 축약어는 첫글자만 대문자화 해라. // ex) IOStream (X)</li>
+<li><strong>DON’T</strong> prefix 문자를 사용하지 마라. ex) kDefaultTimeout (X)</li>
+</ul>
+</li>
+<li><a href="/2019/02/27/effective-dart-2/#Ordering">Ordering</a>
+<ul>
+<li><strong>DO</strong> <code>dart:</code> import를 다른 라이브러리 import 이전에 써라.</li>
+<li><strong>DO</strong> <code>package:</code> import를 상대경로에 있는 라이브러리 import보다 이전에 써라.</li>
+<li><strong>PREFER</strong> 외부의 <code>package:</code> import를 내 라이브러리의 import 이전에 써라.</li>
+<li><strong>DO</strong> export는 모든 import 뒤에 구분된 섹션에 써라.</li>
+<li><strong>DO</strong> 모든 import문 섹션들을 알파벳 순서로 정렬해라.</li>
+</ul>
+</li>
+<li><a href="/2019/02/27/effective-dart-2/#Formatting">Formatting</a>
+<ul>
+<li><strong>DO</strong> <code>dartfmt</code>를 사용해서 포맷팅 해라.</li>
+<li><strong>CONSIDER</strong> 당신의 코드를 더 formatter-friendly하게 만들 수 있는지 고려해라.</li>
+<li><strong>AVOID</strong> 80글자보다 더 긴 줄은 피해라.</li>
+<li><strong>DO</strong> 모든 조건문에 curly braces {}를 사용해라.</li>
+</ul>
+</li>
+</ul>
+<h2 id="identifiers">Identifiers</h2>
+<h5 id="do-name-types-using-uppercamelcase"><strong>DO</strong> name types using UpperCamelCase.</h5>
+<p>타입 이름은 UpperCamelCase로 지어라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SliderMenu</span> { ... }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> Predicate<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">bool</span> Function(T value);
+</span></span></code></pre></div><h5 id="do-name-libraries-packages-directories-and-source-files-using-lowercase_with_underscores"><strong>DO</strong> name libraries, packages, directories, and source files using lowercase_with_underscores.</h5>
+<p>라이브러리, 패키지, 디렉토리, 소스파일 이름은 lowercase_with_underscores로 지어라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">library</span> peg_parser.source_scanner;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;file_system.dart&#39;</span>;
+</span></span></code></pre></div><h5 id="do-name-import-prefixes-using-lowercase_with_underscores"><strong>DO</strong> name import prefixes using lowercase_with_underscores.</h5>
+<p>import prefix(alias)는 lowercase_with_underscores로 지어라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:math&#39;</span> <span style="color:#66d9ef">as</span> math;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:angular_components/angular_components&#39;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">as</span> angular_components;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:js/js.dart&#39;</span> <span style="color:#66d9ef">as</span> js;
+</span></span></code></pre></div><h5 id="do-name-other-identifiers-using-lowercamelcase"><strong>DO</strong> name other identifiers using lowerCamelCase.</h5>
+<p>나머지 다른 identifier는 lowerCamelCase로 지어라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> item;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>HttpRequest httpRequest;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> align(<span style="color:#66d9ef">bool</span> clearItems) { ... }
+</span></span></code></pre></div><h5 id="prefer-using-lowercamelcase-for-constant-names"><strong>PREFER</strong> using lowerCamelCase for constant names.</h5>
+<p>상수 이름은 lowerCamelCase로 지어라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> pi <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> defaultTimeout <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+</span></span></code></pre></div><p>자바의 SCREAMING_CAPS 스타일을 사용하지 않는 이유</p>
+<ul>
+<li>예를 들면, CSS 컬러값들 에서처럼 많은 경우에 SCREAMING_CAPS는 읽기에 나쁘다.</li>
+<li>상수는 자주 변수로 바뀌는데, 그럴 때마다 이름을 lowerCamelCase 스타일로 바꾸어야 한다.</li>
+</ul>
+<h5 id="do-capitalize-acronyms-and-abbreviations-longer-than-two-letters-like-words"><strong>DO</strong> capitalize acronyms and abbreviations longer than two letters like words.</h5>
+<p><strong>2글자</strong>보다 더 긴 축약어는 첫글자만 대문자화 해라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>HttpConnectionInfo <span style="color:#75715e">// HTTPConnectionInfo (X)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IoStream <span style="color:#75715e">// IOStream (X)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>DB <span style="color:#75715e">// Bb (X)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Id <span style="color:#75715e">// ID (X) Id, Mr. 같은 2글자 축약어는 여전히 단어처럼 대문자로 표기된다.
+</span></span></span></code></pre></div><h5 id="dont-use-prefix-letters"><strong>DON’T</strong> use prefix letters.</h5>
+<p>prefix 문자를 사용하지 마라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>defaultTimeout <span style="color:#75715e">// kDefaultTimeout (X)
+</span></span></span></code></pre></div><h2 id="ordering">Ordering</h2>
+<h5 id="do-place-dart-imports-before-other-imports"><strong>DO</strong> place “dart:” imports before other imports.</h5>
+<p>“dart:” import를 다른 라이브러리 import 이전에 써라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:html&#39;</span>; 
+</span></span><span style="display:flex;"><span>                                       <span style="color:#75715e">// 섹션 구분은 빈 한줄로 한다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:bar/bar.dart&#39;</span>;
+</span></span></code></pre></div><h5 id="do-place-package-imports-before-relative-imports"><strong>DO</strong> place “package:” imports before relative imports.</h5>
+<p>“package:” import를 상대경로에 있는 라이브러리 import보다 이전에 써라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:foo/foo.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;util.dart&#39;</span>; <span style="color:#75715e">// 상대경로에 있는 라이브러리
+</span></span></span></code></pre></div><h5 id="prefer-placing-external-package-imports-before-other-imports"><strong>PREFER</strong> placing external “package:” imports before other imports.</h5>
+<p>외부의 “package:” import를 내 라이브러리의 import 이전에 써라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:foo/foo.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:my_package/util.dart&#39;</span>;
+</span></span></code></pre></div><h5 id="do-specify-exports-in-a-separate-section-after-all-imports"><strong>DO</strong> specify exports in a separate section after all imports.</h5>
+<p>export는 모든 import 뒤에 구분된 섹션에 써라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;src/foo_bar.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#e6db74">&#39;src/error.dart&#39;</span>;
+</span></span></code></pre></div><h5 id="do-sort-sections-alphabetically"><strong>DO</strong> sort sections alphabetically.</h5>
+<p>모든 import문 섹션들을 알파벳 순서로 정렬해라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:bar/bar.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:foo/foo.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;foo.dart&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;foo/foo.dart&#39;</span>;
+</span></span></code></pre></div><h2 id="formatting">Formatting</h2>
+<h5 id="do-format-your-code-using-dartfmt"><strong>DO</strong> format your code using dartfmt.</h5>
+<p><code>dartfmt</code>를 사용해서 포맷팅 해라. <a href="https://github.com/dart-lang/dart_style/wiki/Formatting-Rules">some documentation</a></p>
+<h5 id="consider-changing-your-code-to-make-it-more-formatter-friendly"><strong>CONSIDER</strong> changing your code to make it more formatter-friendly.</h5>
+<p>당신의 코드를 더 formatter-friendly하게 만들 수 있는지 고려해라.</p>
+<h5 id="avoid-lines-longer-than-80-characters"><strong>AVOID</strong> lines longer than 80 characters.</h5>
+<p>80글자보다 더 긴 줄은 피해라.</p>
+<p>보통 VeryLongCamelCaseClassNames과 같이 긴 이름을 지을 때 이런 상황이 발생하며, 이런 경우엔 dartfmt가 긴 문자열을 자르지 않는다. 당신이 판단해서 처리하길 바란다.</p>
+<h5 id="do-use-curly-braces-for-all-flow-control-structures"><strong>DO</strong> use curly braces for all flow control structures.</h5>
+<p>모든 조건문에 curly braces {}를 사용해라.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (isWeekDay) {
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#39;Bike to work!&#39;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#39;Go dancing or read a book!&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (arg <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) <span style="color:#66d9ef">return</span> defaultValue; <span style="color:#75715e">// else절이 따라오지 않고 문장이 짧을 땐 한 줄로 써도 된다.
+</span></span></span></code></pre></div>
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/dart/">
+                dart
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-02-27-dart-effective-dart-1/">이펙티브 Dart(1) - 개요</a></li>
+    
+    <li><a href="/posts/2019-02-25-dart-a-tour-of-the-dart-language-4/">Dart 언어 여행하기 요약(4)</a></li>
+    
+    <li><a href="/posts/2019-02-24-dart-a-tour-of-the-dart-language-3/">Dart 언어 여행하기 요약(3)</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

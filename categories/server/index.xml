@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Server on Android Developer BSSCCO</title>
+    <link>https://bsscco.github.io/categories/server/</link>
+    <description>Recent content in Server on Android Developer BSSCCO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 05 Mar 2019 08:49:14 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/categories/server/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>서버사이드 Dart(5) - 서버사이드 시작하기</title>
+      <link>https://bsscco.github.io/posts/2019-03-05-dart-get-started-with-server-side-dart/</link>
+      <pubDate>Tue, 05 Mar 2019 08:49:14 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-05-dart-get-started-with-server-side-dart/</guid>
+      <description>Get Started with Server-Side Dart https://www.dartlang.org/tutorials/server/get-started
+What&amp;rsquo;s the point? Dart SDK에는 개발도구들과 라이브러리들이 담겨있다. 앱을 만들기 위해 WebStorm과 같은 IDE를 써라. 모든 Dart 앱들은 main() 함수에서 시작한다. Dart는 top-level 함수를 지원한다. Download Dart and an IDE Get the Dart SDK
+What did you get? 다운로드한 Dart SDK 보면 그 안에서 bin 디렉토리의 도구들과 lib 디렉토리의 라이브러리들을 볼 수 있다.
+lib 디렉토리엔 dart:core, dart:html, dart:io와 같은 라이브러리가 들어있다. bin 디렉토리엔 pub 패키지 관리자, Dart VM의 커맨드라인 버전 같은 유용한 커맨드라인 도구들이 들어있다.</description>
+    </item>
+    
+    <item>
+      <title>서버사이드 Dart(4) - dart:io 라이브러리 여행하기</title>
+      <link>https://bsscco.github.io/posts/2019-03-03-dart-a-tour-of-the-dart-io-library/</link>
+      <pubDate>Sun, 03 Mar 2019 22:16:46 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-03-dart-a-tour-of-the-dart-io-library/</guid>
+      <description>A Tour of the dart:io Library https://www.dartlang.org/server/io-library-tour
+dart:io는 files, directories, processes, sockets, WebSockets, and HTTP clients and servers를 다루는 API를 제공한다.
+note: 웹서버를 위해 쓸 수 있지만 웹앱을 위한 라이브러리는 아니다.
+dart:io 라이브러리는 비동기 지향적으로 API를 구현했다. 동기 메소드는 앱을 쉽게 블로킹 시키기 때문이다. 대부분의 연산들은 Future 또는 Stream을 리턴한다. 이런 패턴은 모던 서버 플랫폼인 Node와 같다.
+import &#39;dart:io&#39;; dart:io를 사용하려면 먼저 import 해야 한다.
+Files and directories dart:io는 커맨드라인 앱에서 파일을 읽고 쓰거나 디렉토리들을 탐색하는 데 사용할 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>서버사이드 Dart(3) - 다트의 주요 라이브러리들</title>
+      <link>https://bsscco.github.io/posts/2019-03-03-dart-api-overview/</link>
+      <pubDate>Sun, 03 Mar 2019 21:16:19 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-03-dart-api-overview/</guid>
+      <description>Dart API https://api.dartlang.org/stable/2.2.0/index.html
+기초가 되는 Dart 라이브러리:
+dart:core: strings, numbers, collections, errors, URIs 같은 코어 기능들이 있다. dart:html: 웹앱을 위한 DOM 조작 기능들이 있다. dart:io: 웹앱이 아닌 앱을 위한 I/O 기능들이 있다. dart:core를 제외하고 필요한 라이브러리는 import 해야 한다.
+import &amp;#39;dart:async&amp;#39;; import &amp;#39;dart:math&amp;#39;; [pub 패키지 매니저](pub package manager)에서 더 많은 라이브러리들을 설치할 수 있다.
+Libraries Core dart:async
+Future, Stream 같은 클래스와 함께 비동기 프로그래밍을 지원하는 기능들이 들어있다.
+dart:collection
+dart:core의 collection 클래스를 보충하는 클래스와 유틸이 들어있다.</description>
+    </item>
+    
+    <item>
+      <title>서버사이드 Dart(2) - 다트 SDK에 있는 도구들</title>
+      <link>https://bsscco.github.io/posts/2019-03-03-dart-what-is-in-dart-sdk/</link>
+      <pubDate>Sun, 03 Mar 2019 09:48:14 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-03-dart-what-is-in-dart-sdk/</guid>
+      <description>What’s in the SDK https://www.dartlang.org/tools/sdk#whats-in-the-sdk
+dart standalone VM.
+dartdoc API 문서 생성기
+# 패키지의 루트 디렉토리에서 사용해야 한다. $ dartdoc Generating documentation for &amp;#39;server_code_lab&amp;#39; into &amp;lt;path-to-server-code-lab&amp;gt;/server_code_lab/doc/api/ parsing lib/client/piratesapi.dart... parsing lib/common/messages.dart... parsing lib/common/utils.dart... parsing lib/server/piratesapi.dart... Parsed 4 files in 8.1 seconds. generating docs for library pirate.messages from messages.dart... generating docs for library pirate.server from piratesapi.dart... generating docs for library pirate.utils from utils.dart... generating docs for library server_code_lab.piratesApi.client from piratesapi.dart... Documented 4 libraries in 9.</description>
+    </item>
+    
+    <item>
+      <title>서버사이드 Dart(1) - 학습 참고 목록</title>
+      <link>https://bsscco.github.io/posts/2019-03-03-dart-server-side-dart/</link>
+      <pubDate>Sun, 03 Mar 2019 01:17:20 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-03-dart-server-side-dart/</guid>
+      <description>Server-Side Dart https://www.dartlang.org/server
+Tools DartPad DartPad는 dart:* API들을 바로 사용해볼 수 있는 웹패드다.
+note: dart:io와 라이브러리 import를 지원하지 않는다.
+Dart SDK Install the Dart SDK를 통해 Dart 코어 라이브러리와 도구들을 설치할 수 있다.
+More Tools Dart Tools에선 IDE 플러그인과 같은 유용한 도구들을 소개한다.
+Tutorials Get Started 기본 Dart 스크립트를 어떻게 짜는지 보여준다.
+gRPC Quickstart gRPC 프레임워크를 사용하는 client-server 예제를 실행하고 수정하면서 단련한다.
+Write Command-Line Apps dart:io와 args 패키지를 소개한다.
+Write HTTP Clients &amp;amp; Servers dart:io와 http_server 패키지의 특징들을 소개한다.</description>
+    </item>
+    
+  </channel>
+</rss>

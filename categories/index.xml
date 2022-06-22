@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Android Developer BSSCCO</title>
+    <link>https://bsscco.github.io/categories/</link>
+    <description>Recent content in Categories on Android Developer BSSCCO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 15 Jun 2022 20:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android</title>
+      <link>https://bsscco.github.io/categories/android/</link>
+      <pubDate>Wed, 15 Jun 2022 20:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/categories/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Server</title>
+      <link>https://bsscco.github.io/categories/server/</link>
+      <pubDate>Tue, 05 Mar 2019 08:49:14 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/categories/server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jira</title>
+      <link>https://bsscco.github.io/categories/jira/</link>
+      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/categories/jira/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Attribution</title>
+      <link>https://bsscco.github.io/categories/attribution/</link>
+      <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/categories/attribution/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Slack</title>
+      <link>https://bsscco.github.io/categories/slack/</link>
+      <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/categories/slack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://bsscco.github.io/categories/git/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/categories/git/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

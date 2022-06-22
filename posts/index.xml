@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Android Developer BSSCCO</title>
+    <link>https://bsscco.github.io/posts/</link>
+    <description>Recent content in Posts on Android Developer BSSCCO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 15 Jun 2022 20:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Baseline Profiles 정리</title>
+      <link>https://bsscco.github.io/posts/2022-06-15-baseline-profiles/</link>
+      <pubDate>Wed, 15 Jun 2022 20:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2022-06-15-baseline-profiles/</guid>
+      <description>Baseline Profiles 한글문서 구글블로그 Baseline Profiles란? APK에 담기는 클래스와 메소드의 목록이다. 앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다. 결과물 덕분에 앱 실행 시간과 jank가 감소된다. *jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간 기타 장점 AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다. 하지만 최신 AndroidX와 Compose 1.</description>
+    </item>
+    
+    <item>
+      <title>네트워크 이미지를 효율적으로 사용하기</title>
+      <link>https://bsscco.github.io/posts/2019-10-06-using-network-image-efficiently/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-10-06-using-network-image-efficiently/</guid>
+      <description>네트워크 이미지를 효율적으로 사용하기 리사이징 방법 1. 서버로부터 리사이징된 이미지를 다운로드 받는다.
+예) https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}
+장점 : 네트워크 통신리소스 감소
+2. 내려받은 이미지를 ImageView에 넣을 때 Bitmap 사이즈를 리사이징 한다.
+예) Glide.override()
+장점 : 비트맵용 앱메모리 감소
+override()를 호출하지 않아도 되는 경우
+내려받은 이미지가 ImageView로 들어갈 때 Gide가 Bitmap 사이즈를 ImageView의 사이즈 만큼 자동으로 맞춰줌!
+override()를 호출해야 하는 경우
+ImageView의 가로세로 사이즈가 모두 WrapContent인 경우엔 자동으로 맞춰주지 않음!</description>
+    </item>
+    
+    <item>
+      <title>Do it! 코틀린 프로그래밍 04 프로그램의 흐름 제어</title>
+      <link>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-04/</link>
+      <pubDate>Wed, 10 Jul 2019 10:27:28 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-04/</guid>
+      <description>04 프로그램의 흐름 제어 01 조건문 조건문도 표현식
+val max = if (a &amp;gt; b) a else 0 조건문에서 in연산자와 범위연산자 사용하기
+if(num in 1..100) // 범위에는 100도 포함 when문
+자바의 switch문과 다르게 표현식도 허용!
+when (num) { in 1..100 -&amp;gt; print(&amp;quot;1..100&amp;quot;) 200, 300 -&amp;gt; print(&amp;quot;200, 300&amp;quot;) is Float -&amp;gt; print(&amp;quot;Float&amp;quot;) else -&amp;gt; print(&amp;quot;else&amp;quot;) } 02 반복문 범위 반복문
+for(n in 1..10 step 2) { // 상행 println(n) } for(n in 10 downTo 1 step 2){ // 하행 println(n) } 03 흐름의 중단과 반환 익명함수와 람다식에서 return사용하기</description>
+    </item>
+    
+    <item>
+      <title>Do it! 코틀린 프로그래밍 03 함수와 함수형 프로그래밍</title>
+      <link>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-03/</link>
+      <pubDate>Wed, 10 Jul 2019 09:27:28 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-03/</guid>
+      <description>03 함수와 함수형 프로그래밍 01 함수 선언하고 호출하기 반환하지 않는다 = Unit
+함수 매개변수는 val로 선언되기 때문에 바꿀 수 없다!
+default 매개변수 지원!
+함수 오버로딩이 필요가 없어짐!
+fun sum(a: Int, b = 0) { ... } named 인자 지원!
+sum(a = 1, b = 2) 가변 인자
+fun foo(vararg numbers: Int) { ... } 02 함수형 프로그래밍 함수형 프로그래밍이란?
+순수함수를 작성해서 프로그램의 사이드이펙트를 줄이는 기법 람다식과 고차함수를 사용한다. 순수 함수의 조건</description>
+    </item>
+    
+    <item>
+      <title>Do it! 코틀린 프로그래밍 02 변수와 자료형, 연산자 요약</title>
+      <link>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-02/</link>
+      <pubDate>Wed, 10 Jul 2019 08:26:28 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-02/</guid>
+      <description>02 변수와 자료형, 연산자 01 코틀린 패키지 import~ as 연산자: 클래스에 이름 짓기
+파일 안에 여러 클래스가 있으면 파일명에 .kt가 붙어서 보여진다. 1:1 매치되는 경우에는 .kt가 안 보인다.
+여러 클래스가 같은 이름을 가질 때 conflict를 예방하기 위해 파일 안에 패키지를 명시하는 게 좋다.
+02 변수와 자료형 코틀린 자료형은 모두 참조형(클래스)이다.
+Int, Float 같은 기본 자료형은 코틀린 컴파일러에서 원시 자료형으로 변환된다.
+코드에서 부동소수점 표기법
+// val exp0 = 가수E지수 val exp1 = 3.</description>
+    </item>
+    
+    <item>
+      <title>드로이드나이츠 2019 RxBinding 발표영상 리뷰</title>
+      <link>https://bsscco.github.io/posts/2019-07-09-droid-knights-2019-rx-binding/</link>
+      <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-07-09-droid-knights-2019-rx-binding/</guid>
+      <description>RxBinding 소개 참고 [DroidKnights 2019 - Track 1] 하동현 - 지금까지 이런 간단한 Logic 처리는 없었다
+RxBinding 정의 뷰 이벤트를 Observable로 받아서 사용할 수 있는 라이브러리 by 제이크와튼
+언제 쓰나요? 뷰 이벤트 스트림을 조합해서 한 번에 처리하고 싶을 때 뷰 이벤트 스트림에 다양한 조건을 깔끔하게 추가하고 싶을 때 코드 비교 RxBinding 사용 전 https://gist.github.com/bsscco/65e70856ab1ab725efaee8aec22294bc
+class MainActivity : AppCompatActivity() { private var isButtonClickProcessing = false @SuppressLint(&amp;#34;CheckResult&amp;#34;) override fun onCreate(savedInstanceState: Bundle?) { super.</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨10 Designing for Everyone 요약</title>
+      <link>https://bsscco.github.io/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:01 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/</guid>
+      <description>Lesson 10: Designing for Everyone 1. Party Planning 2. Styling on Android 안드로이드 스타일링 계층도
+테마 정의: 앱의 전체적인 색감
+스타일 정의: 재활용 가능한 뷰의 스타일
+재활용 불가능한 각 뷰의 디자인속성
+3. Design Through the Looking Glass 4. Exercise: Add TextView Attributes 5. Themes and Fonts downloadable fonts의 특징
+6. Exercise: Apply a Theme 테마 적용하기
+7. Exercise: Add Styles to Headers 스타일 적용하기
+8. How Styling Information is Communicated to a View 9.</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</title>
+      <link>https://bsscco.github.io/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/</guid>
+      <description>Lesson 9: Behind the scenes 1. Offline Movie Night 2. Exercise: Introduction offline caching에 대해 배울 거야!
+3. What’s in a Cache 캐시란, 다음에 곧 쓸 데이터를 로컬에 저장해뒀다가 필요할 때 다시 쓰는 것
+우리앱에서 레포지토리 패턴을 써야 하는 이유 앱 실행 시에 다운로드받아 캐시해 사용할 만한 데이터들이 있다. 필터 목록 같은 데이터. 이 데이터를 따로 관리하는 클래스를 두는 것보다, 레포지토리 패턴을 써서 레포지토리 안에서 필요한 데이터만 캐시 시키면 레포지토리를 쓰는 곳에서는 캐시되는 데이터인지 실시간 데이터인지 알 필요 없어서 관심사의 분리가 된다.</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약</title>
+      <link>https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:01 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/</guid>
+      <description>Lesson 8: Connect to the Internet 1. Greetings Earth Friends! 2. Introduction 3. RESTful Services URI가 URL을 포함하는 개념
+4. Libraries 5. App Walkthrough and Starter Code 6. Exercise: Connecting to the Internet 7. Permissions 8. Exercise: Parsing the JSON Response moshi가 gson이나 jackson보다 더 좋은 이유가 있을까? https://medium.com/@IlyaEremin/android-json-parsers-comparison-2017-8b5221721e31
+jackson이 성능에서 가장 좋은데 친숙하지 않은 API가 단점이라고 함.
+moshi는 제이크 와튼이 만든 거라 함께 사용한 듯
+9. Exercise: Coroutines and Deferred Deferred&amp;lt;List&amp;lt;MarsProperty&amp;gt;&amp;gt; .</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약</title>
+      <link>https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/</guid>
+      <description>Lesson 7: RecyclerView RecyclerView 1. Recycle Woman 2. Introduction 3. Your first RecyclerView Room+ViewModel과 Adapter의 연결 구조
+ViewHolder의 역할
+4. Exercise: Add a RecyclerView 5. Exercise: Display SleepQuality Data 프래그먼트에서 db 데이터를 observe 하다가 데이터가 갱신되면 adapter.data에 대입해주는 부분이 있음.
+6. Exercise: Recycling ViewHolders 7. Displaying Sleep Quality ViewHolder에는 많은 기능이 있다. 활용하자.
+getAdapterPosition() getLayoutPosition() getItemId() 8. Exercise: Display the SleepQuality List 9. Exercise: Refactor onBindViewHolder onBindViewHolder 로직을 ViewHolder의 bind 메소드로 이동</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약</title>
+      <link>https://bsscco.github.io/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:01 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/</guid>
+      <description>Lesson 6: App Architecture (Persistence) 1. Wake Up, Aleks! 2. Introduction Room Database DAO Application Architecture with Room Coroutines Room 3. SQLite Primer SQLite 문법에 대한 간단 설명
+4. Designing Entities Room DB layer 구조
+5. Exercise: Creating the SleepNight Entity data class를 사용해 Entity 클래스 만들기
+6. Data Access Object (DAO) DAO 어노테이션의 종류
+7. Exercise: DAO - SleepDatabaseDao DAO 클래스 만들기
+8. Creating a Room Database Room DB를 만드는 순서</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨5 App Architecture (UI Layer) 요약</title>
+      <link>https://bsscco.github.io/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/</guid>
+      <description>Lesson 5: App Architecture (UI Layer) 1. Architecting on the fly 2. Lesson Introduction Application Architecture ViewModel LiveData Data Binding 3. Exercise: Tour of the App ktx를 쓰고 싶은 곳에서만 ktx가 구현된 파일을 import 할 수 있구나
+4. Where the App Falls Short 5. What is Architecture 안드로이드 MVVM 패턴
+M : Repository + Data provider V : UI Controller VM : ViewModel(ViewModel 클래스의 기능은 Presenter의 기능과 다르지 않다) UI Controller는 데이터를 표현하고, 사용자입력을 잡아내는 역할을 한다.</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨4 Activity &amp; Fragment Lifecycle 요약</title>
+      <link>https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:01 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/</guid>
+      <description>Lesson 4: Activity &amp;amp; Fragment Lifecycle Activity lifecycle 네모:state, 네모없는 텍스트: callback
+액티비티가 생성(객체 생성)됐으면 initialized
+액티비티가 보이면 started 상태 또는 resumed 상태
+액티비티에 포커스가 있으면 resumed 상태
+액티비티가 안 보이면 created
+액티비티가 파괴됐으면 destroyed
+Fragment lifecycle onCreate에서 레이아웃을 inflate 하지 말고 onCreateView에서 inflate 하기
+프래그먼트가 처음 그려질 때 activity를 참조하지 말고 onActivityCreated에서 참조하기
+onAttach : 프래그먼트가 액티비티에 붙었을 때 딱 한 번만 호출됨
+onActivityCreated : 액티비티의 onCreate가 반환된 직후에 호출됨.</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약</title>
+      <link>https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/</guid>
+      <description>Lesson 3: App Navigation Fragment 다양한 크기의 기기들에 대응할 수 있는 컴포넌트
+Activity Back stack vs Fragment Back stack
+Activity Back stack
+백버튼을 누르면 현재 액티비티는 닫힌다.
+Fragment Back stack
+Activity 안에서 네비게이션 되고, Fragment Manager로 추가/삭제 할 수 있다.
+Navigation graph는 activity 안에서 multi fragment를 다루는 기술이다.
+TitleFragment.kt
+val binding = DataBindingUtil.inflate&amp;lt;FragmentTitleBinding&amp;gt;(inflater, R.layout.fragment_title, container, false) return binding.root Navigation Navigation 원칙 Starting Place가 있어야 한다.
+언제나 Go Back 할 수 있어야 한다.</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약</title>
+      <link>https://bsscco.github.io/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/</link>
+      <pubDate>Thu, 30 May 2019 00:00:01 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/</guid>
+      <description>Lesson 2: Layouts TextView.fontFamily donloadable font apk에 폰트 사이즈 적재 없이 사용 가능 fonts source가 google fonts로 제한되는 게 단점 데이터 바인딩 라이브러리 사용 app/build.gradle android { dataBinding { enabled = true } } activity_main.xml &amp;hellip; findViewById 대체 MainActivity.kt private lateinit var binding: ActivityMainBinding &amp;hellip; binding = DataBindingUtils.setContentView(this, R.layout.activity_main) binding.name.text = &amp;ldquo;BSSCCO&amp;rdquo; 데이터 바인딩 개념 데이터와 뷰를 한 번 연결시켜두면 이후엔 데이터만 수정해도 뷰는 알아서 바뀐다. 데이터가 바뀔 때 뷰의 속성들을 일일히 수정할 필요 없이 레이아웃을 구성하는 단계에서 레이아웃 파일 안에다 데이터값을 명시해두면 된다.</description>
+    </item>
+    
+    <item>
+      <title>Udacity Developing Android Apps with Kotlin 레슨1 Build your First App 요약</title>
+      <link>https://bsscco.github.io/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/</link>
+      <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/</guid>
+      <description>Lesson 1: Build your First App lateinit 키워드 findViewById()를 반복적으로 사용할 때 view hierarchy를 찾는 불필요 연산을 없애기 위해 View를 멤버변수에 홀딩시켜놓는데, 멤버변수를 val로 선언해서 null check가 필요 없도록 하려면 멤버변수 선언 앞에 lateinit 키워드를 붙여서 나중에 꼭 초기화될 것임을 알린다. vector drawable min sdk 21 namespace:tools 미리보기용 빌드할 땐 없어져서 개발하기 편함 </description>
+    </item>
+    
+    <item>
+      <title>이펙티브 Dart 한 장으로 요약!</title>
+      <link>https://bsscco.github.io/posts/2019-05-26-effective-dart-summary-/</link>
+      <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-05-26-effective-dart-summary-/</guid>
+      <description>원문 : https://dart.dev/guides/language/effective-dart
+들어가면서 general한 지향점 코드를 일관성 있게 만들자. 코드를 간결하게 만들자. linter를 애용하자! : enabling linter rules
+가이드 종류 Style Guide - 코딩 스타일 가이드 Documentation Guide - 문서화 가이드 Usage Guide - language features 사용 가이드 Design Guide - 일관성 있는 설계를 위한 가이드 가이드를 어떻게 읽어야 할까? DO - 꼭 이렇게 하세요! DON’T - 절대 이렇게 하지 마세요! PREFER - 특별한 상황이 아니라면 이렇게 하세요. AVOID - 특별한 이유가 없다면 이렇게 하지 마세요.</description>
+    </item>
+    
+    <item>
+      <title>Dart 2.3 - UI를 빌딩에 최적화 됐어요.</title>
+      <link>https://bsscco.github.io/posts/2019-05-25-dart-2.3/</link>
+      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-05-25-dart-2.3/</guid>
+      <description>원문 : https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff
+새로운 language features spread 연산자 리스트의 요소들을 다른 리스트 안으로 풀어서 넣어주는 &amp;hellip; 연산자 (spread operator)
+Widget build(BuildContext context) { return Column(children: [ Header(), ...buildMainElements(), // spread 연산자 Footer(), ]); } List&amp;lt;Widget&amp;gt; buildMainElements() { ... } collection if 조건에 맞지 않으면 요소가 들어가지 않게 해주는 문법. 단, list 리터럴에서만 사용할 수 있어요!
+Widget build(BuildContext context) { return Column(children: [ Text(mainText), if (page != pages.last) // collection if FlatButton(child: Text(&amp;#39;Next&amp;#39;)), ]); } collection for 리스트의 요소들을 다른 리스트 안으로 풀어서 넣되, 들어가는 요소들에 가공을 더해주는 문법.</description>
+    </item>
+    
+    <item>
+      <title>Flutter Today I Learned - 2019-04-24</title>
+      <link>https://bsscco.github.io/posts/2019-04-24-flutter-til/</link>
+      <pubDate>Wed, 24 Apr 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-04-24-flutter-til/</guid>
+      <description>배울 문서 : https://drive.google.com/file/d/1d19SQry7jXwGd-wy3MeXJ35uCoy4veib/view 예제 소스코드 : https://github.com/markclow/flutter_book_examples
+Flutter 소개 Dart 언어 사용 One source, multi flatform hot reload 높은 퀄리티의 기본 UI 위젯들, material, cupertino 구글 차세대 OS Fuchsia용 앱 개발 Android Studio Flutter 플러그인 VS Code Flutter Extension Flutter Hot Restarting &amp;amp; Reloading hot restarting - 바뀐 코드를 Dar VM으로 로드시키고 앱을 재실행 hot reloading - 바뀐 코드를 Dart VM으로 로드시키고 앱 상태 변경 없이 갱신 Flutter Dependencies &amp;amp; Packages https://pub.</description>
+    </item>
+    
+    <item>
+      <title>Flutter Today I Learned - 2019-04-23</title>
+      <link>https://bsscco.github.io/posts/2019-04-23-flutter-til/</link>
+      <pubDate>Tue, 23 Apr 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-04-23-flutter-til/</guid>
+      <description>배울 문서 : https://drive.google.com/file/d/1d19SQry7jXwGd-wy3MeXJ35uCoy4veib/view 예제 소스코드 : https://github.com/markclow/flutter_book_examples
+Dart 클래스 이어서 연산자 오버라이딩 - operator ==(orther) =&amp;gt; (other is Car) &amp;amp;&amp;amp; (_make == other._make) &amp;amp;&amp;amp; (_model == other._model);. == 연산자를 오버라이딩 할 땐 hashCode 메소드도 적절하게 오버라이딩 해줘야 함. collections 프레임워크에서 hashCode 메소드를 사용하기 때문 리플렉션 - dart:mirrors mixin - 다른 클래스에 의해 사용되는 메소드를 포함하는 클래스 Dart Collections 라이브러리 - dart:collection List - 순서가 있는 컬렉션 Map - key, value 쌍을 담는 컬렉션 Dart Assertions 방어적 프로그래밍을 가능케 함.</description>
+    </item>
+    
+    <item>
+      <title>Flutter Today I Learned - 2019-04-22</title>
+      <link>https://bsscco.github.io/posts/2019-04-22-flutter-til/</link>
+      <pubDate>Mon, 22 Apr 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-04-22-flutter-til/</guid>
+      <description>배울 문서 : https://drive.google.com/file/d/1d19SQry7jXwGd-wy3MeXJ35uCoy4veib/view 예제 소스코드 : https://github.com/markclow/flutter_book_examples
+Flutter 빅픽쳐 구글과 애플이 제공한 United API는 서로를 100% 커버하지 못함. Xamarin, Appcelerator, Nativescript WebView를 사용한 방법은 앱 속도가 느림. Cordova, PhoneGap ReactNative는 bridge를 사용해 WebView보다 빠르지만 여전히 네이티브 코드보다 느림. Flutter는 자체 렌더링 엔진을 사용하기 때문에 네이티브 만큼 빠르고 플랫폼에 독립적. 여기에 더해서 핫리로딩 &amp;amp; 가상돔을 제공. Dart 소개 Java, C# like 언어 SDK dart - 코어 라이브러리 dart2js - 소스코드 dart to js dartdevc - dart to js.</description>
+    </item>
+    
+    <item>
+      <title>Flutter 위젯의 계층구조</title>
+      <link>https://bsscco.github.io/posts/2019-04-16-flutter-widget-hierarchy/</link>
+      <pubDate>Tue, 16 Apr 2019 21:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-04-16-flutter-widget-hierarchy/</guid>
+      <description>참고
+https://api.flutter.dev/flutter/widgets/Widget-class.html Widget Widget - immutable한 UI 정보입니다. mutable 상태를 가지게 하려면 StatefulWidget을 사용해야 합니다. PreferredSizeWidget - unconstrained일 때 미리 설정한 기본크기를 가지게 하는 위젯
+AppBar - 머터리얼 디자인 앱바 CupertinoTabBar - iOS 스타일의 bottom 네비게이션 탭바 ObstructingPerferredSizeWidget - 기본크기를 가지고, 뒤에 있는 위젯들을 완전히 막는 위젯 CupertinoNavigationBar - iOS 스타일의 네비게이션바 PreferredSize - 자식의 레이아웃에 어떤 영향도 끼치지 않으면서 단지 부모에 의해 사용될 기본크기를 가지는 위젯 TabBar - 머터리얼 디자인 탭바.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(27) - 레이아웃 위젯 목록</title>
+      <link>https://bsscco.github.io/posts/2019-04-09-flutter-layout-widgets/</link>
+      <pubDate>Tue, 09 Apr 2019 21:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-04-09-flutter-layout-widgets/</guid>
+      <description>참고
+https://flutter.dev/docs/development/ui/widgets/layout https://api.flutter.dev/flutter/widgets/widgets-library.html https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e multi-child 레이아웃 위젯 Row 수평으로 자식들을 배치합니다. Row의 height는 자식들의 height들 중에서 가장 긴 height에 맞춰집니다.
+기본값
+mainAxisSize: max mainAxisAlignment: start crossAxisAlignment: center Scaffold( body: Row( children: &amp;lt;Widget&amp;gt;[ Icon(Icons.star, size: 50), Icon(Icons.star, size: 100), Icon(Icons.star, size: 50), ], ), ) Column 수직으로 자식들을 배치합니다. Column의 width는 자식들의 width들 중에서 가장 긴 width에 맞춰집니다.
+기본값
+mainAxisSize: max mainAxisAlignment: start crossAxisAlignment: center Scaffold( body: Column( children: &amp;lt;Widget&amp;gt;[ Icon(Icons.star, size: 50), Icon(Icons.</description>
+    </item>
+    
+    <item>
+      <title>RxJava SubscribeOn과 ObserveOn의 동작 차이</title>
+      <link>https://bsscco.github.io/posts/2019-04-07-rx-subscribe-on-and-observe-on/</link>
+      <pubDate>Sun, 07 Apr 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-04-07-rx-subscribe-on-and-observe-on/</guid>
+      <description>참고 : https://github.com/ReactiveX/RxAndroid/blob/2.x/README.md
+SubscribeOn Observable의 create()부터 onNext(), onComplete(), onError()까지 모든 과정을 subscribeOn()으로 지정한 스레드에서 실행시킨다.
+ObserveOn Observable의 메소드체인 호출 사이에서 observeOn()이 호출된 지점부터 onNext(), onComplete(), onError()까지의 과정을 observeOn()으로 지정한 스레드에서 실행시킨다.
+public class MainActivity extends Activity { private static final String TAG = &amp;#34;RxAndroidSamples&amp;#34;; private final CompositeDisposable disposables = new CompositeDisposable(); @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.main_activity); findViewById(R.id.button_run_scheduler).setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { onRunSchedulerExampleButtonClicked(); } }); } @Override protected void onDestroy() { super.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(26) - 개발 제대로 준비하기</title>
+      <link>https://bsscco.github.io/posts/2019-04-01-flutter-prepare-development-well/</link>
+      <pubDate>Mon, 01 Apr 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-04-01-flutter-prepare-development-well/</guid>
+      <description>도구 및 학습 Flutter 60 FPS UI of the Future - 베를린 2017 드로이드콘 플러터 소개 발표 Flutter for Android developers - 안드로이드 개발자를 위한 플러터 공식 문서[한글] Flutter Development - 플러터 개발 기본 개념 학습할 수 있는 공식 문서 Flutter Studio - WYGIWYG 방식으로 플러터 UI를 구성할 수 있고, 구성한 UI를 코드로 뽑아낼 수도 있는 웹사이트 Flutter Layout Cheat Sheet - 플러터 레이아웃 시스템을 익힐 수 있는 미디엄 글 Flutter widget index - 플러터 위젯들을 학습할 수 있는 공식 문서 Learn Google Flutter Fast - 플러터에 대한 오픈BOOK pdf Tensor Programming - 플러터 기초부터 중급까지 유튜브 강의[영어] Bloc Library - 플러터에서 가장 많이 쓰이는 상태 관리 라이브러리 Json Placeholder - REST API 형태의 가짜 데이터를 제공하는 서비스 </description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(25) - Bloc 도구</title>
+      <link>https://bsscco.github.io/posts/2019-03-31-flutter-bloc-tools/</link>
+      <pubDate>Sun, 31 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-31-flutter-bloc-tools/</guid>
+      <description>Bloc document - 도구 https://felangel.github.io/bloc
+intelliJ Bloc Plugin for IntelliJ and Android Studio 소개 IntelliJ와 안드로이드 스튜디오를 위한 Bloc 플러그인은 Bloc 라이브러리를 지원하고 Bloc 생성을 효과적으로 돕습니다.
+설치 IntelliJ와 안드로이드 스튜디오 마켓플레이스에서 플러그인을 찾을 수 있습니다. Bloc Code Generator
+어떻게 사용하나요? 파일 프로젝트 뷰에서 오른쪽 클릭을 합니다. -&amp;gt; New -&amp;gt; New Bloc -&amp;gt; Generate New Bloc
+배포 Plugin Repository를 사용하세요.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</title>
+      <link>https://bsscco.github.io/posts/2019-03-30-flutter-bloc-todos-tutorial/</link>
+      <pubDate>Sat, 30 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-30-flutter-bloc-todos-tutorial/</guid>
+      <description>Bloc document - Todos 튜토리얼 원문: https://felangel.github.io/bloc
+Setup flutter create flutter_todos name: flutter_todos description: A new Flutter project. environment: sdk: &amp;#34;&amp;gt;=2.0.0 &amp;lt;3.0.0&amp;#34; dependencies: meta: &amp;#34;&amp;gt;=1.1.0 &amp;lt;2.0.0&amp;#34; equatable: ^0.2.0 flutter_bloc: ^0.9.0 flutter: sdk: flutter dependency_overrides: todos_app_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_app_core ref: expose-repositories todos_repository_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_core ref: expose-repositories todos_repository_simple: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_simple ref: expose-repositories flutter: uses-material-design: true flutter packages get 우리는 몇개의 의존성들을 오버라이딩 할 겁니다. Brian Egan&amp;rsquo;s Flutter Architecture Samples로부터 그 의존성들을 재사용할 것이기 때문입니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(23) - Bloc 튜토리얼</title>
+      <link>https://bsscco.github.io/posts/2019-03-25-flutter-bloc-tutorials/</link>
+      <pubDate>Mon, 25 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-25-flutter-bloc-tutorials/</guid>
+      <description>Bloc document - 튜토리얼 원문: https://felangel.github.io/bloc
+플러터 Counter Setup 터미널에서
+flutter create flutter_counter pubspec.yaml에서
+name: flutter_counter description: A new Flutter project. version: 1.0.0+1 environment: sdk: &amp;#34;&amp;gt;=2.0.0-dev.68.0 &amp;lt;3.0.0&amp;#34; dependencies: flutter: sdk: flutter bloc: ^0.10.0 flutter_bloc: ^0.8.0 meta: ^1.1.6 dev_dependencies: flutter_test: sdk: flutter flutter: uses-material-design: true 다시 터미널에서
+flutter packages get Counter Events enum CounterEvent { increment, decrement } Counter Bloc(Counter States 포함) class CounterBloc extends Bloc&amp;lt;CounterEvent, int&amp;gt; { @override int get initialState =&amp;gt; 0; // 초기 상태 생성 @override Stream&amp;lt;int&amp;gt; mapEventToState(int currentState, CounterEvent event) async* { // 이벤트 처리 switch (event) { case CounterEvent.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(22) - Bloc 소개</title>
+      <link>https://bsscco.github.io/posts/2019-03-24-flutter-bloc-introduction/</link>
+      <pubDate>Sun, 24 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-24-flutter-bloc-introduction/</guid>
+      <description>Bloc document - 소개 원문: https://felangel.github.io/bloc
+시작하기 개요 Bloc은 세 가지 패키지로 구성됩니다.
+bloc - 코어 라이브러리 flutter_bloc - bloc을 사용하기 위한 플러터 위젯 angular_bloc - bloc을 사용하기 위한 앵귤러 컴포넌트 설치 플터터의 경우 pubspec.yaml에서
+dependencies: bloc: ^0.10.0 flutter_bloc: ^0.8.0 그리고 flutter packages get
+Import 플러터의 경우
+import &amp;#39;package:bloc/bloc.dart&amp;#39;; import &amp;#39;package:flutter_bloc/flutter_bloc.dart&amp;#39;; 왜 Bloc인가요? Bloc은 비지니스 로직으로부터 프리젠테이션 로직을 쉽게 분리시켜줍니다. 빠르게 작성할 수 있는 코드, 쉽게 테스트 할 수 있는 코드, 재사용 가능한 코드를 만들 수 있게 해줍니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(21) - Bloc패턴 샘플</title>
+      <link>https://bsscco.github.io/posts/2019-03-23-flutter-bloc-library-sample/</link>
+      <pubDate>Sat, 23 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-23-flutter-bloc-library-sample/</guid>
+      <description>bloc_library sample 참고 예제: https://github.com/brianegan/flutter_architecture_samples/tree/master/bloc_library
+이 샘플은 상태관리를 위해 bloc 과 flutter_bloc 라이브러리를 사용했습니다. 더 자세한 내용과 튜토리얼은 bloc library document 를 확인하세요.
+핵심 개념 상태를 위로 올리기 여러 위젯에서 같은 bloc이 필요할 땐 공통의 조상 위젯에 BlocProvider를 사용합니다. Events는 bloc의 입력입니다. 이들은 일반적으로 버튼 누르기와 같은 유저 인터렉션 또는 페이지 로드 같은 라이프사이클 이벤트로 디스패치됩니다. States는 bloc의 출력이며 앱 상태의 한 부분을 대표합니다. 컴포넌트들은 상태를 공지 받을 수 있고 그 상태에 의해 다시 그려질 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(18) - 상태관리 접근법들</title>
+      <link>https://bsscco.github.io/posts/2019-03-18-flutter-list-of-state-management-approaches/</link>
+      <pubDate>Mon, 18 Mar 2019 09:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-18-flutter-list-of-state-management-approaches/</guid>
+      <description>List of state management approaches 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/options
+개요 구글 IO 2018에서 발표했던 영상 플러터로 반응형 모바일앱 만들기와, 관련 글 Brian Egan의 플러터 설계 샘플 setState 플러터 튜토리얼 플러터앱에 상호작용 추가하기 Agung Surya의 플러터에서 기본 상태 관리 InheritedWidget &amp;amp; Scoped model Eric Windmill의 효과적으로 플러터 InheritedWidget 사용하기 Ryan Edge의 당신은 Redux가 필요 없을지도 모른다. Tensor Programming 영상 scoped model 패턴으로 상태 관리하기 MTechViral의 Inherited Widget과 Scoped Model 설명 영상 scoped model scoped model 패키지 Didier Bolelens의 Widget-State-Context-InheritedWidget Redux DartConf 2018에서 발표했던 영상 Redux로 애니메이션 관리하기와 관련 글 플러터 Redux 패키지 Xavi Rigau의 플러터 Redux 소개 Paulina Szklarska의 플러터+Redux로 쇼핑앱을 만드는 방법 Tensor Programming 영상 플러터 Redux로 Todo앱 만들기 Jack Wong의 플러터 Redux 예제 Hillel Coren의 Redux로 규모가 큰 플러터앱 만들기 Alibaba의 리더스 기반으로 플러터 앱 다루기 BLoC / Rx Sagar Suri의 BLoC 패턴을 사용한 플러터 프로젝트 설계 Felix Angelov의 Bloc 라이브러리 Didier Boelens의 반응형 프로그래밍, 스트림, BLoC Usecase MobX MobX.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(17) - 간단한 상태관리 앱</title>
+      <link>https://bsscco.github.io/posts/2019-03-17-flutter-simple-app-state-management/</link>
+      <pubDate>Sun, 17 Mar 2019 22:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-17-flutter-simple-app-state-management/</guid>
+      <description>Simple app state management 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple
+이번 예제 로그인화면, 카탈로그화면, 장바구니화면으로 구성된 앱입니다.
+우리는 최소한 6개의 위젯을 만들 겁니다.
+상태를 위로 올리기 플러터에서는 상태를 사용하는 위젯 위(부모 위젯)에 그 상태를 유지하는 게 좋습니다.
+// BAD: 이렇게 하지 마세요. void myTapHandler() { var cartWidget = somehowGetMyCartWidget(); // 부모 위젯 cartWidget.updateWith(item); } // BAD: 이렇게 하지 마세요. Widget build(BuildContext context) { // 부모 위젯의 build() 메소드 return SomeWidget(); } void updateWith(Item item) { // UI를 직접 바꿉니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(16) - 상태 관리</title>
+      <link>https://bsscco.github.io/posts/2019-03-17-flutter-state-management/</link>
+      <pubDate>Sun, 17 Mar 2019 21:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-17-flutter-state-management/</guid>
+      <description>상태 관리 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro
+선언적으로 생각하기 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative
+플러터는 안드로이드 SDK, iOS UIKit과 달리 선언적입니다. 선언적이라는 뜻은 플러터가 알아서 현재 상태에 맞는 UI를 빌드한다는 뜻입니다.
+사용자가 액션을 취했을 때 우리가 상태를 바꾸고 UI를 갱신시키는 것(like widget.setText())은 선언적이지 않습니다. 플러터에서는 우리가 상태를 바꾸기만 하면 UI는 알아서 리빌드 됩니다.
+임시상태와 앱상태 구분하기 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app
+임시 상태 임시 상태는 위젯 안에 담을 수 있는 상태를 말합니다. 따라서 UI 상태, 지역 상태라도 불립니다.
+임시 상태의 몇 가지 예시</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(15) - Sliver와 제스처</title>
+      <link>https://bsscco.github.io/posts/2019-03-17-flutter-slivers/</link>
+      <pubDate>Sun, 17 Mar 2019 17:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-17-flutter-slivers/</guid>
+      <description>Slivers 원문: https://flutter.dev/docs/development/ui/advanced/slivers
+Sliver는 스크롤 영역의 일부입니다. 맞춤 스크롤 효과를 만들기 위해 Sliver를 사용할 수 있습니다.
+플러터에서 Sliver 구현 예로 SliverList, SliverGrid, SliverAppBar가 있습니다. Slivers, Demystified, Flutter Publication도 참고하세요.
+제스처 원문: https://flutter.dev/docs/development/ui/advanced/gestures
+플러터의 제스처 체계는 2가지 층으로 나뉩니다. 첫 번째 층은 raw 포인터 이벤트이고, 두 번째 층은 제스처입니다.
+포인터 포인터 이벤트의 4가지 유형
+PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent 포인터가 down 됐을 때 프레임워크는 화면에서 해당하는 위치에 위젯이 있는지 결정하기 위해 hit test를 합니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(10) - 애니메이션 소개</title>
+      <link>https://bsscco.github.io/posts/2019-03-17-flutter-introduction-to-animations/</link>
+      <pubDate>Sun, 17 Mar 2019 00:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-17-flutter-introduction-to-animations/</guid>
+      <description>Introduction to animations https://flutter.dev/docs/development/ui/animations
+플러터 애니메이션 프레임워크를 배울 수 있는 리소스는 다음과 같습니다.
+애니메이션 튜토리얼 플러터 애니메이션 패키지에 있는 기본 클래스들(controllers, Animatable, curves, listeners, builders)을 설명합니다.
+플러터로 0에서 1까지 part1, part2 어떻게 움직이는 표를 만드는지 보여주는 미디엄 아티클입니다.
+플러터로 아름다운 UI 만들기 간단한 채팅앱을 만드는 코드랩입니다. 스탭7에서 메시지를 추가할 때 애니메이션을 사용합니다.
+애니메이션 유형 트윈 애니메이션 트윈 애니메이션에는 시작점과 끝점이 있고, 그 사이에 속도가 변화되는 커브를 지정할 수 있습니다.
+물리기반 애니메이션 물리기반 애니메이션에서 이동궤적은 현실세계와 같게 적용됩니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기</title>
+      <link>https://bsscco.github.io/posts/2019-03-16-flutter-animating-a-widget-across-screens/</link>
+      <pubDate>Sat, 16 Mar 2019 22:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-16-flutter-animating-a-widget-across-screens/</guid>
+      <description>Animating a Widget across screens https://flutter.dev/docs/cookbook/navigation/hero-animations
+현재 화면에서 다른 화면을 열 때 사용자에게 연속성을 주어야 하는 경우가 종종 있습니다. 연속성을 구현하기 위한 일반적인 기술은 현재 화면의 위젯이 다음 화면으로 이동하는 애니메이션을 적용하는 것입니다. 두 화면 간에 시각적 요소를 연결하려면 Hero 위젯을 사용하면 됩니다.
+같은 이미지를 보여주는 2개의 화면 만들기 class MainScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#39;Main Screen&amp;#39;), ), body: GestureDetector( onTap: () { Navigator.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(08) - named route를 통해 화면 관리하기</title>
+      <link>https://bsscco.github.io/posts/2019-03-16-flutter-navigate-with-named-routes/</link>
+      <pubDate>Sat, 16 Mar 2019 18:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-16-flutter-navigate-with-named-routes/</guid>
+      <description>Navigate with named routes https://flutter.dev/docs/cookbook/navigation/named-routes
+만약 여러 곳에서 같은 화면으로 navigate 해야 할 때 매번 Route 코드를 추가해야 하는 중복이 발생할 수 있습니다. 이 문제를 해결해주는 게 &amp;ldquo;named route&amp;quot;입니다. named route로 navigate를 하려면 Navigator.pushNamed()를 이용해야 합니다.
+1. 두 화면 만들기 class FirstScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#39;첫 번째 화면&amp;#39;), ), body: Center( child: RaisedButton( child: Text(&amp;#39;새 화면 실행하기&amp;#39;), onPressed: () { }, ), ), ); } } class SecondScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#34;두 번째 화면&amp;#34;), ), body: Center( child: RaisedButton( onPressed: () { }, child: Text(&amp;#39;돌아가기&amp;#39;), ), ), ); } } 2.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기</title>
+      <link>https://bsscco.github.io/posts/2019-03-16-flutter-return-data-from-a-screen/</link>
+      <pubDate>Sat, 16 Mar 2019 17:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-16-flutter-return-data-from-a-screen/</guid>
+      <description>Return data from a screen https://flutter.dev/docs/cookbook/navigation/returning-data
+1. 홈 화면 정의하기 class HomeScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#39;Returning Data Demo&amp;#39;), ), // 다음 단계에서 SelectionButton 위젯을 만들 겁니다. body: Center(child: SelectionButton()), ); } } 2. 선택 화면을 실행하는 버튼 추가하기 class SelectionButton extends StatelessWidget { @override Widget build(BuildContext context) { return RaisedButton( onPressed: () { _navigateAndDisplaySelection(context); }, child: Text(&amp;#39;옵션을 선택하세요!&amp;#39;), ); } _navigateAndDisplaySelection(BuildContext context) async { // Navigator.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(06) - 새 화면에 데이터 넘기기</title>
+      <link>https://bsscco.github.io/posts/2019-03-16-flutter-send-data-to-a-new-screen/</link>
+      <pubDate>Sat, 16 Mar 2019 07:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-16-flutter-send-data-to-a-new-screen/</guid>
+      <description>Send data to a new screen https://flutter.dev/docs/cookbook/navigation/passing-data
+기억하세요. 플러터에서 화면은 단지 위젯일 뿐입니다. 이 예제에서 우리는 Todo 목록을 만들고 Todo를 tap 했을 때 Todo를 보여줄 새 화면(위젯)으로 이동할 겁니다.
+1. Todo 클래스 정의하기 class Todo { final String title; final String description; Todo(this.title, this.description); } 2. Todo 목록 만들기 final todos = List&amp;lt;Todo&amp;gt;.generate( 20, (i) =&amp;gt; Todo( &amp;#39;Todo $i&amp;#39;, &amp;#39;A description of what needs to be done for Todo $i&amp;#39;, ), ); ------------------------------------------------------------ ListView.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(05) - 새로운 화면 열기</title>
+      <link>https://bsscco.github.io/posts/2019-03-14-flutter-navigate-to-a-new-screen-and-back/</link>
+      <pubDate>Thu, 14 Mar 2019 07:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-14-flutter-navigate-to-a-new-screen-and-back/</guid>
+      <description>Navigate to a new screen and back https://flutter.dev/docs/cookbook/navigation/navigation-basics
+플러터에서는 화면이나 페이지를 Route라고 부릅니다. 안드로이드에서는 액티비티와 대응되고, iOS에서는 뷰컨트롤러와 대응됩니다. Route 또한 위젯입니다.
+1. 두 Route 만들기 class FirstRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#39;First Route&amp;#39;), ), body: Center( child: RaisedButton( child: Text(&amp;#39;Open route&amp;#39;), onPressed: () { // Navigate to second route when tapped. }, ), ), ); } } class SecondRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#34;Second Route&amp;#34;), ), body: Center( child: RaisedButton( onPressed: () { // Navigate back to first route when tapped.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(04) - 위젯의 크기 제약조건</title>
+      <link>https://bsscco.github.io/posts/2019-03-13-flutter-dealing-with-box-constraints/</link>
+      <pubDate>Wed, 13 Mar 2019 07:49:13 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-13-flutter-dealing-with-box-constraints/</guid>
+      <description>Dealing with box constraints https://flutter.dev/docs/development/ui/layout/box-constraints
+플러터에서 위젯은 자신의 렌더박스에 그려집니다. 렌더박스의 크기는 부모 위젯으로부터 받은 제약조건에 의해 결정됩니다. 제약조건은 최소, 최대 너비와 높이로 구성됩니다.
+제약조건의 유형은 일반적으로 3가지로 분류됩니다.
+가능한 한 큰 크기로 결정하기. Center, ListView 위젯이 그렇습니다. 자식 위젯과 같은 크기로 결정하기. Transform, Opacity 위젯이 그렇습니다. 특정한 값으로 크기를 결정하기. Image, Text 위젯이 그렇습니다. Container 같은 위젯들은 생성자 인자에 따라 다른 제약조건 유형을 가집니다. Container는 기본적으로 가능한 한 큰 크기를 가지려고 하지만, 생성자 인자로 너비가 주어지면 그 값에 의해 크기가 결정됩니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(03) - 레이아웃 튜토리얼</title>
+      <link>https://bsscco.github.io/posts/2019-03-12-flutter-layout-tutorial/</link>
+      <pubDate>Tue, 12 Mar 2019 07:51:41 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-12-flutter-layout-tutorial/</guid>
+      <description>Layout tutorial https://flutter.dev/docs/development/ui/layout/tutorial
+이 가이드에서는 아래 보이는 앱을 만들면서 레이아웃을 짜는 법을 배워봅니다.
+Step 0: 앱 베이스코드 만들기 플러터 어플리케이션 프로젝트를 만들고 다음과 같이 코드를 수정합니다.
+import &amp;#39;package:flutter/material.dart&amp;#39;; void main() =&amp;gt; runApp(MyApp()); class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &amp;#39;Flutter layout demo&amp;#39;, home: Scaffold( appBar: AppBar( title: Text(&amp;#39;Flutter layout demo&amp;#39;), ), body: Center( child: Text(&amp;#39;Hello World&amp;#39;), ), ), ); } } Step 1: 레이아웃 그려보기 타이틀 섹션 버튼 섹션 작은 부분부터 bottom-up 방식으로 레이아웃을 그려보면 레아아웃 중첩을 어떻게 코딩해야 할지 감을 잡을 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(02) - 레이아웃 위젯 소개</title>
+      <link>https://bsscco.github.io/posts/2019-03-11-flutter-layouts-in-flutter/</link>
+      <pubDate>Mon, 11 Mar 2019 07:49:13 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-11-flutter-layouts-in-flutter/</guid>
+      <description>Layouts in Flutter https://flutter.dev/docs/development/ui/layout
+위젯 배치하기 1. 레이아웃 위젯을 선택합니다. Column, Row, Center 등
+2. visible 위젯을 생성합니다. Text(&amp;#39;Hello World&amp;#39;), Image.asset( &amp;#39;images/lake.jpg&amp;#39;, fit: BoxFit.cover, ), Icon( Icons.star, color: Colors.red[500], ), 3. visible 위젯을 레이아웃 위젯에 추가합니다. Center( child: Text(&amp;#39;Hello World&amp;#39;), ), 4. 레이아웃 위젯을 페이지에 추가합니다. class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &amp;#39;Flutter layout demo&amp;#39;, home: Scaffold( appBar: AppBar( title: Text(&amp;#39;Flutter layout demo&amp;#39;), ), body: Center( child: Text(&amp;#39;Hello World&amp;#39;), ), ), ); } } 여러 위젯을 수직, 수평으로 배치하기 위젯 Aligning Row Row( mainAxisAlignment: MainAxisAlignment.</description>
+    </item>
+    
+    <item>
+      <title>Flutter로 개발하기(01) - 위젯 소개</title>
+      <link>https://bsscco.github.io/posts/2019-03-09-flutter-introduction-to-widgets/</link>
+      <pubDate>Sat, 09 Mar 2019 06:49:58 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-09-flutter-introduction-to-widgets/</guid>
+      <description>Introduction to widgets https://flutter.dev/docs/development/ui/widgets-intro
+플러터 위젯은 React로부터 영감을 받아 반응형 스타일로 제작됐습니다.
+플러터 위젯의 중심 아이디어는 위젯으로만 UI를 제작하는 것입니다. 위젯은 자신에게 주어진 상태에 따라 어떻게 그릴 것인가를 기술하는 객체입니다. 위젯의 상태가 바뀌면 위젯은 다시 빌드되는데, 이때 프레임워크는 이전 상태와 다음 상태를 비교해서 render tree가 최소한만 변경되도록 합니다.
+Hello World 플러터 앱은 runApp() 함수를 호출하는 것에서부터 시작됩니다.
+import &amp;#39;package:flutter/meterial.dart&amp;#39;; void main() { runApp( Center( child: Text( &amp;#39;Hello, world!&amp;#39;, textDirection: TextDirection.ltr, ), ), ); } runApp() 함수는 주어진 위젯으로 위젯트리의 루트를 만듭니다.</description>
+    </item>
+    
+    <item>
+      <title>서버사이드 Dart(5) - 서버사이드 시작하기</title>
+      <link>https://bsscco.github.io/posts/2019-03-05-dart-get-started-with-server-side-dart/</link>
+      <pubDate>Tue, 05 Mar 2019 08:49:14 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-05-dart-get-started-with-server-side-dart/</guid>
+      <description>Get Started with Server-Side Dart https://www.dartlang.org/tutorials/server/get-started
+What&amp;rsquo;s the point? Dart SDK에는 개발도구들과 라이브러리들이 담겨있다. 앱을 만들기 위해 WebStorm과 같은 IDE를 써라. 모든 Dart 앱들은 main() 함수에서 시작한다. Dart는 top-level 함수를 지원한다. Download Dart and an IDE Get the Dart SDK
+What did you get? 다운로드한 Dart SDK 보면 그 안에서 bin 디렉토리의 도구들과 lib 디렉토리의 라이브러리들을 볼 수 있다.
+lib 디렉토리엔 dart:core, dart:html, dart:io와 같은 라이브러리가 들어있다. bin 디렉토리엔 pub 패키지 관리자, Dart VM의 커맨드라인 버전 같은 유용한 커맨드라인 도구들이 들어있다.</description>
+    </item>
+    
+    <item>
+      <title>서버사이드 Dart(4) - dart:io 라이브러리 여행하기</title>
+      <link>https://bsscco.github.io/posts/2019-03-03-dart-a-tour-of-the-dart-io-library/</link>
+      <pubDate>Sun, 03 Mar 2019 22:16:46 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-03-dart-a-tour-of-the-dart-io-library/</guid>
+      <description>A Tour of the dart:io Library https://www.dartlang.org/server/io-library-tour
+dart:io는 files, directories, processes, sockets, WebSockets, and HTTP clients and servers를 다루는 API를 제공한다.
+note: 웹서버를 위해 쓸 수 있지만 웹앱을 위한 라이브러리는 아니다.
+dart:io 라이브러리는 비동기 지향적으로 API를 구현했다. 동기 메소드는 앱을 쉽게 블로킹 시키기 때문이다. 대부분의 연산들은 Future 또는 Stream을 리턴한다. 이런 패턴은 모던 서버 플랫폼인 Node와 같다.
+import &#39;dart:io&#39;; dart:io를 사용하려면 먼저 import 해야 한다.
+Files and directories dart:io는 커맨드라인 앱에서 파일을 읽고 쓰거나 디렉토리들을 탐색하는 데 사용할 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>서버사이드 Dart(3) - 다트의 주요 라이브러리들</title>
+      <link>https://bsscco.github.io/posts/2019-03-03-dart-api-overview/</link>
+      <pubDate>Sun, 03 Mar 2019 21:16:19 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-03-dart-api-overview/</guid>
+      <description>Dart API https://api.dartlang.org/stable/2.2.0/index.html
+기초가 되는 Dart 라이브러리:
+dart:core: strings, numbers, collections, errors, URIs 같은 코어 기능들이 있다. dart:html: 웹앱을 위한 DOM 조작 기능들이 있다. dart:io: 웹앱이 아닌 앱을 위한 I/O 기능들이 있다. dart:core를 제외하고 필요한 라이브러리는 import 해야 한다.
+import &amp;#39;dart:async&amp;#39;; import &amp;#39;dart:math&amp;#39;; [pub 패키지 매니저](pub package manager)에서 더 많은 라이브러리들을 설치할 수 있다.
+Libraries Core dart:async
+Future, Stream 같은 클래스와 함께 비동기 프로그래밍을 지원하는 기능들이 들어있다.
+dart:collection
+dart:core의 collection 클래스를 보충하는 클래스와 유틸이 들어있다.</description>
+    </item>
+    
+    <item>
+      <title>서버사이드 Dart(2) - 다트 SDK에 있는 도구들</title>
+      <link>https://bsscco.github.io/posts/2019-03-03-dart-what-is-in-dart-sdk/</link>
+      <pubDate>Sun, 03 Mar 2019 09:48:14 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-03-dart-what-is-in-dart-sdk/</guid>
+      <description>What’s in the SDK https://www.dartlang.org/tools/sdk#whats-in-the-sdk
+dart standalone VM.
+dartdoc API 문서 생성기
+# 패키지의 루트 디렉토리에서 사용해야 한다. $ dartdoc Generating documentation for &amp;#39;server_code_lab&amp;#39; into &amp;lt;path-to-server-code-lab&amp;gt;/server_code_lab/doc/api/ parsing lib/client/piratesapi.dart... parsing lib/common/messages.dart... parsing lib/common/utils.dart... parsing lib/server/piratesapi.dart... Parsed 4 files in 8.1 seconds. generating docs for library pirate.messages from messages.dart... generating docs for library pirate.server from piratesapi.dart... generating docs for library pirate.utils from utils.dart... generating docs for library server_code_lab.piratesApi.client from piratesapi.dart... Documented 4 libraries in 9.</description>
+    </item>
+    
+    <item>
+      <title>서버사이드 Dart(1) - 학습 참고 목록</title>
+      <link>https://bsscco.github.io/posts/2019-03-03-dart-server-side-dart/</link>
+      <pubDate>Sun, 03 Mar 2019 01:17:20 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-03-dart-server-side-dart/</guid>
+      <description>Server-Side Dart https://www.dartlang.org/server
+Tools DartPad DartPad는 dart:* API들을 바로 사용해볼 수 있는 웹패드다.
+note: dart:io와 라이브러리 import를 지원하지 않는다.
+Dart SDK Install the Dart SDK를 통해 Dart 코어 라이브러리와 도구들을 설치할 수 있다.
+More Tools Dart Tools에선 IDE 플러그인과 같은 유용한 도구들을 소개한다.
+Tutorials Get Started 기본 Dart 스크립트를 어떻게 짜는지 보여준다.
+gRPC Quickstart gRPC 프레임워크를 사용하는 client-server 예제를 실행하고 수정하면서 단련한다.
+Write Command-Line Apps dart:io와 args 패키지를 소개한다.
+Write HTTP Clients &amp;amp; Servers dart:io와 http_server 패키지의 특징들을 소개한다.</description>
+    </item>
+    
+    <item>
+      <title>Dart 샘플코드 번역</title>
+      <link>https://bsscco.github.io/posts/2019-03-02-dart-sample-code/</link>
+      <pubDate>Sat, 02 Mar 2019 22:35:49 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-02-dart-sample-code/</guid>
+      <description>Sample Code https://www.dartlang.org/samples
+Hello world 모든 앱은 main() 함수에서 시작한다.
+void main() { print(&amp;#39;Hello, World!&amp;#39;); } Variables type-safe인 Dart에서 대부분의 변수들은 타입 명시가 필요하지 않다. 타입 추론 덕분이다.
+var name = &amp;#39;Voyager I&amp;#39;; var year = 1977; var antennaDiameter = 3.7; var flybyObjects = [&amp;#39;Jupiter&amp;#39;, &amp;#39;Saturn&amp;#39;, &amp;#39;Uranus&amp;#39;, &amp;#39;Neptune&amp;#39;]; var image = { &amp;#39;tags&amp;#39;: [&amp;#39;saturn&amp;#39;], &amp;#39;url&amp;#39;: &amp;#39;//path/to/saturn.jpg&amp;#39; }; Control flow statements if (year &amp;gt;= 2001) { print(&amp;#39;21st century&amp;#39;); } else if (year &amp;gt;= 1901) { print(&amp;#39;20th century&amp;#39;); } for (var object in flybyObjects) { print(object); } for (int month = 1; month &amp;lt;= 12; month++) { print(month); } while (year &amp;lt; 2016) { year += 1; } Functions 함수의 파라메터 타입과 리턴타입을 명시할 것을 추천한다.</description>
+    </item>
+    
+    <item>
+      <title>이펙티브 Dart(4) - 사용성 가이드</title>
+      <link>https://bsscco.github.io/posts/2019-03-02-dart-effective-dart-4/</link>
+      <pubDate>Sat, 02 Mar 2019 22:05:06 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-02-dart-effective-dart-4/</guid>
+      <description>Effective Dart: Usage https://www.dartlang.org/guides/language/effective-dart/usage
+Libraries
+DO part of 지시어에서 URI를 사용해라. DON’T 다른 패키지의 src 디렉토리를 가지고 있는 라이브러리는 import 하지 마라. PREFER relative paths when importing libraries within your own package’s lib directory. Strings Collections Functions Parameters Variables Merbers Constructors Error handling Asynchrony Libraries DO use strings in part of directives. part of 지시어에서 URI를 사용해라. part of에 URI 대신에 라이브러리 이름을 지정하면 툴이 메인 라이브러리 파일을 찾기 어려워지기 때문이다.</description>
+    </item>
+    
+    <item>
+      <title>이펙티브 Dart(3) - 문서화 가이드</title>
+      <link>https://bsscco.github.io/posts/2019-03-02-dart-effective-dart-3/</link>
+      <pubDate>Sat, 02 Mar 2019 08:05:06 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-03-02-dart-effective-dart-3/</guid>
+      <description>Effective Dart: Documentation https://www.dartlang.org/guides/language/effective-dart/documentation
+간결하고 정확한 주석은 몇초면 쓸 수 있고, 여러 사람의 코드파악 시간을 아껴준다.
+Comments
+DO 주석은 문장으로 써라. DON&amp;rsquo;T 문서화를 위해 block 주석(/**/)을 쓰지 마라. Doc comments
+DO 멤버와 타입의 문서화를 위해 doc 주석(///)을 사용해라. PREFER public API를 위한 doc 주석을 써라. CONSIDER library를 위한 doc 주석 쓰기를 고려해라. CONSIDER private API를 위한 doc 주석 쓰기를 고려해라. DO doc 주석을 쓸 때 한줄의 문장으로 된 요약으로 시작해라. DO doc 주석의 첫 문장과 나머지 문장들 사이를 구분해라.</description>
+    </item>
+    
+    <item>
+      <title>이펙티브 Dart(2) - 스타일 가이드</title>
+      <link>https://bsscco.github.io/posts/2019-02-28-dart-effective-dart-2/</link>
+      <pubDate>Thu, 28 Feb 2019 08:05:06 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-28-dart-effective-dart-2/</guid>
+      <description>Effective Dart: Style https://www.dartlang.org/guides/language/effective-dart/style
+naming, ordering, formatting의 일관성은 다른 사람들이 코드를 배우고, 공유하기 쉽게 해준다.
+Identifiers DO 타입 이름은 UpperCamelCase로 지어라. DO 라이브러리, 패키지, 디렉토리, 소스파일 이름은 lowercase_with_underscores로 지어라. DO import prefix(alias)는 lowercase_with_underscores로 지어라. DO 나머지 다른 identifier는 lowerCamelCase로 지어라. PREFER 상수 이름은 lowerCamelCase로 지어라. DO 2글자보다 더 긴 축약어는 첫글자만 대문자화 해라. // ex) IOStream (X) DON’T prefix 문자를 사용하지 마라. ex) kDefaultTimeout (X) Ordering DO dart: import를 다른 라이브러리 import 이전에 써라.</description>
+    </item>
+    
+    <item>
+      <title>이펙티브 Dart(1) - 개요</title>
+      <link>https://bsscco.github.io/posts/2019-02-27-dart-effective-dart-1/</link>
+      <pubDate>Wed, 27 Feb 2019 08:05:06 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-27-dart-effective-dart-1/</guid>
+      <description>Effective Dart https://www.dartlang.org/guides/language/effective-dart
+모든 걸 아우르는 테마 2가지 코드를 일관성 있게 만들자. 코드를 간결하게 만들자. Dart 분석기엔 좋은 코드를 돕는 linter가 있다. prefer_collection_literals, enabling linter rules
+The guides Style Guide - 코드 배치와 조직화, dartfmt가 다루지 않는 부분을 위한 규칙을 정의한다. camelCase, using_underscores와 같이 identifier의 이름을 어떻게 짓는지도 정의한다. Documentation Guide - 문서화에 필요한 모든 걸 알려준다. Usage Guide - Dart 언어의 특징을 잘 사용할 수 있는 방법을 가르쳐준다. Design Guide - 가장 넓은 영역을 담는다.</description>
+    </item>
+    
+    <item>
+      <title>Dart 언어 여행하기 요약(4)</title>
+      <link>https://bsscco.github.io/posts/2019-02-25-dart-a-tour-of-the-dart-language-4/</link>
+      <pubDate>Mon, 25 Feb 2019 08:55:16 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-25-dart-a-tour-of-the-dart-language-4/</guid>
+      <description>Dart A Tour of the Dart Language https://www.dartlang.org/guides/language/language-tour
+Generics Why use generics? 타입을 명시해서 컴파일타임에 에러를 잡아낼 수 있다. 여러 타입에 사용해야 해서 코드를 중복작성해야 할 때 중복 코드를 없앤다. Using collection literls &amp;lt;String&amp;gt;[&#39;Seth&#39;, &#39;Kathy&#39;, &#39;Lars&#39;]; Using parameterized types with constructors var names = List&amp;lt;String&amp;gt;(); Generic collections and the types they contain print(names is List&amp;lt;String&amp;gt;); // Java는 List까지만 체크되지만 Dart에선 제네릭 타입까지 체크가 된다. Restricting the parameterized type // T는 SomeBaseClass 또는 sub class 들만 대상으로 강제한다.</description>
+    </item>
+    
+    <item>
+      <title>Dart 언어 여행하기 요약(3)</title>
+      <link>https://bsscco.github.io/posts/2019-02-24-dart-a-tour-of-the-dart-language-3/</link>
+      <pubDate>Sun, 24 Feb 2019 22:44:28 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-24-dart-a-tour-of-the-dart-language-3/</guid>
+      <description>Dart A Tour of the Dart Language https://www.dartlang.org/guides/language/language-tour
+Classes 개요 Dart 클래스는 단일상속과 mixin을 지원한다. 모든 클래스는 Object의 후손이다. Using class members Using constructors var p1 = Point(2, 2); // 일반 생성자 var p2 = Point.fromJson({&amp;#39;x&amp;#39;: 1, &amp;#39;y&amp;#39;: 2}); // named 생성자 var p = const ImmutablePoint(2, 2); // 생성자 앞에 const를 붙이면 컴파일타임에 상수로 만들어버린다. 상수화가 가능한 클래스가 되려면 조건을 만족해야 한다. var a = const ImmutablePoint(1, 1); var b = const ImmutablePoint(1, 1); assert(identical(a, b)); // 상수화된 두 객체는 정확히 일치한다.</description>
+    </item>
+    
+    <item>
+      <title>Dart 언어 여행하기 요약(2)</title>
+      <link>https://bsscco.github.io/posts/2019-02-21-dart-a-tour-of-the-dart-language-2/</link>
+      <pubDate>Thu, 21 Feb 2019 23:30:49 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-21-dart-a-tour-of-the-dart-language-2/</guid>
+      <description>Dart A Tour of the Dart Language https://www.dartlang.org/guides/language/language-tour
+Functions 개요 일급함수로 사용할 수 있다. Effective Dart는 리턴형에 type 어노테이션을 사용하길 권장한다. bool isNoble(int atomicNumber) { return _nobleGases[atomicNumber] != null; } one-line은 shorthand로 쓸 수 있다. bool isNoble(int atomicNumber) =&amp;gt; _nobleGases[atomicNumber] != null; required와 optional 두 종류의 파라메터를 사용할 수 있다. Optional parameters optional named 파라메터 void enableFlags({bool bold, bool hidden}) {...} // 파라메터들을 named 파라메터로 선언 enableFlags(bold: true, hidden: false); // named 인자로 사용 required 파라메터 const Scrollbar({Key key, @required Widget child}) // optional named 파라메터들 중 child파라메터는 꼭 넣어야 한다.</description>
+    </item>
+    
+    <item>
+      <title>Dart 언어 여행하기 요약(1)</title>
+      <link>https://bsscco.github.io/posts/2019-02-21-dart-a-tour-of-the-dart-language-1/</link>
+      <pubDate>Thu, 21 Feb 2019 22:57:49 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-21-dart-a-tour-of-the-dart-language-1/</guid>
+      <description>Dart A Tour of the Dart Language https://www.dartlang.org/guides/language/language-tour
+Inportant concepts 모든 게 객체(1, null, function, true, &amp;hellip;) var/final형 선언 : 타입 추론 , 어느 타입이든 담게 하려면 dynamic형 선언 제네릭 타입 List 일급함수, 정적메소드, nested 함수, 지역함수 일급변수, 정적변수 private 변수/메소드화 : _(underscore)로 시작해서 이름짓기. 라이브러리 내에서만 접근 가능 is-else같은 statements는 expression이 될 수 없다. Keywords 생소한 키워드 as 형변환 연산자, import문에서 alias 연산자 covariant 상위타입을 지정해야 하는 곳에 하위 타입을 지정할 수 있게 해준다.</description>
+    </item>
+    
+    <item>
+      <title>(), {}, [], &lt;&gt; 어떻게 읽어야 할까?</title>
+      <link>https://bsscco.github.io/posts/2019-02-21-how-read-the-brackets/</link>
+      <pubDate>Thu, 21 Feb 2019 22:40:12 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-21-how-read-the-brackets/</guid>
+      <description>(), {}, [], &amp;lt;&amp;gt;를 왜 읽으려고 하나? 나는 영어로 쓰인 개발문서 읽을 때 소리내듯이 머릿속에서 읽어야 이해가 잘 된다. 그런데 문서 안에 (), {}가 들어있으면 어떻게 읽어야 할지 몰라 읽는 흐름이 끊길 때가 있다. 그래서 찾아봤다.
+여기 링크에 따르면 아래와 같이 부르기도 하고, (1)
+angle brackets for &amp;lt;&amp;gt; round brackets for () curly brackets for {} square brackets for [] 아래와 같이 부르기도 하나보다. (2)
+braces: {} parentheses: () brackets: [] angle brackets: &amp;lt;&amp;gt; 나는 (2)처럼 읽는 게 더 익숙하다.</description>
+    </item>
+    
+    <item>
+      <title>Dart 비동기 프로그래밍 Streams 요약</title>
+      <link>https://bsscco.github.io/posts/2019-02-21-dart-asynchronous-programming-streams/</link>
+      <pubDate>Thu, 21 Feb 2019 00:19:30 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-21-dart-asynchronous-programming-streams/</guid>
+      <description>https://www.dartlang.org/tutorials/language/streams
+Future는 결과가 준비됐을 때 우리에게 알려준다. Stream은 이벤트가 발생할 때마다 우리에게 알려준다.
+import &amp;#39;dart:async&amp;#39;; Stream&amp;lt;Future&amp;lt;int&amp;gt;&amp;gt; countStream(int to) async* { for (int i = 1; i &amp;lt;= to; i++) { yield Future.delayed(Duration(seconds: 1), () =&amp;gt; i); // 1초 후에 i를 반환하는 Future를 발생시킨다. } } Future&amp;lt;void&amp;gt; printSumStream(Stream&amp;lt;Future&amp;lt;int&amp;gt;&amp;gt; stream) async { var sum = &amp;#39;&amp;#39;; await for (var value in stream) { // 스트림의 이벤트 발생이 끝날 때가지 기다린다. sum += (await value).</description>
+    </item>
+    
+    <item>
+      <title>Dart 비동기 프로그래밍 Futures 요약</title>
+      <link>https://bsscco.github.io/posts/2019-02-20-dart-asynchronous-programming-futures/</link>
+      <pubDate>Wed, 20 Feb 2019 23:59:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-20-dart-asynchronous-programming-futures/</guid>
+      <description>https://www.dartlang.org/tutorials/language/futures
+import &amp;#39;dart:async&amp;#39;; Future&amp;lt;void&amp;gt; printAsyncMsg() async { String result = await execLongTask(); // 반환값 Future&amp;lt;String&amp;gt;가 작업을 끝낼 때까지 기다린다. print(result); // Future의 작업이 끝나면 result에 String값이 담기고, 그 다음 print()가 호출된다. } Future&amp;lt;String&amp;gt; execLongTask() { // Future를 반환한다. return Future.delayed(Duration(seconds: 1), () =&amp;gt; &amp;#39;This is async msg.&amp;#39;); } printSyncMsg() { print(&amp;#39;This is sync msg.&amp;#39;); // 호출받자마자 바로 출력한다. } main() { printAsyncMsg(); // 비동기 함수를 먼저 호출한다. printSyncMsg(); // 동기 함수를 뒤에 호출한다.</description>
+    </item>
+    
+    <item>
+      <title>Jira 보드 단축키 꿀팁</title>
+      <link>https://bsscco.github.io/posts/2019-02-18-jira-shortcut/</link>
+      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-18-jira-shortcut/</guid>
+      <description> 보드로 이동(G → A) : 보드에 포커스가 안 들어가서 단축키가 안 먹힐 때 써준다. 이전/다음 컬럼의 카드 선택(P/N) 위/아래 카드 선택(K/J) 명령(.) : 카드에서 특정 컬럼을 수정할 때 유용하다. 카드 정보패널 열기/닫기(T) 카드 열기(O) 카드를 열었다가 보드로 돌아가기(at Chrome)(Cmd + ←) 검색(/) 검색 종료(Esc) 단축키 도움말(?) 단축기 도움말 닫기(Esc) </description>
+    </item>
+    
+    <item>
+      <title>Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스</title>
+      <link>https://bsscco.github.io/posts/2019-02-16-flutter-firebase-for-flutter/</link>
+      <pubDate>Sat, 16 Feb 2019 15:41:07 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-16-flutter-firebase-for-flutter/</guid>
+      <description>Flutter를 위한 Firebase
+https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html
+프로젝트 소스 : https://github.com/bsscco/baby_name_votes 눈에 띄는 내용 named 생성자를 지원한다. class Record { final String name; final int votes; Record.fromMap(Map&amp;lt;String, dynamic&amp;gt; map) : assert(map[&amp;#39;name&amp;#39;] != null), assert(map[&amp;#39;votes&amp;#39;] != null), name = map[&amp;#39;name&amp;#39;], votes = map[&amp;#39;votes&amp;#39;]; } StreamBuilder는 인자를 통해 받은 스트림이 변경되면 다시 빌드하는 기능을 한다. Widget _buildBody(BuildContext context) { return StreamBuilder&amp;lt;QuerySnapshot&amp;gt;( stream: Firestore.instance.collection(&amp;#39;baby&amp;#39;).snapshots(), builder: (context, snapshot) { if (!snapshot.hasData) { return LinearProgressIndicator(); } return _buildList(context, snapshot.</description>
+    </item>
+    
+    <item>
+      <title>Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기</title>
+      <link>https://bsscco.github.io/posts/2019-02-14-flutter-build-beautiful-ui-with-flutter/</link>
+      <pubDate>Thu, 14 Feb 2019 23:11:44 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-14-flutter-build-beautiful-ui-with-flutter/</guid>
+      <description>Flutter로 아름다운 UI 만들기 https://codelabs.developers.google.com/codelabs/flutter/index.html
+프로젝트 소스 : https://github.com/bsscco/friendly_chat
+Flutter의 장점 한 번 작성하면 iOS, Android에 배포 가능하다. Material Design과 Cupertino 위젯과 동작들을 지원한다. 스크롤링, 네비게이션 패턴, 폰트, 그 이상을 지원한다. 반응형 functional 프로그래밍을 지원한다. 겁나 빠른 핫리로드를 지원한다. Dart로 쓰여진 코드는 Android, iOS의 환경에 맞게 컴파일된다. 눈에 띄는 내용 마진에 들어가는 숫자는 디바이스에 따라 적절한 픽셀로 변환된다. (Android는 dip로 변환) CrossAxisAlignment.start 는 부모의 메인 Axis의 교차 Axis를 기준으로 앞쪽에 위치하도록 하겠다는 뜻이다.</description>
+    </item>
+    
+    <item>
+      <title>Flutter 코드랩 리뷰 - 자바에서 다트로 넘어가기</title>
+      <link>https://bsscco.github.io/posts/2019-02-14-dart-from-java-to-dart/</link>
+      <pubDate>Thu, 14 Feb 2019 23:02:51 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2019-02-14-dart-from-java-to-dart/</guid>
+      <description>Java에서 Dart로 넘어가기 https://codelabs.developers.google.com/codelabs/from-java-to-dart/index.html
+생성자 // 다음 두 생성자는 완전히 같은 동작을 한다. Bicycle(this.cadence); // 이거 추천 Bicycle(int cadence) { this.cadence = cadence; } 변수 선언 var bike = bicycle(1, 2, 0); // 변수 생성 final bike = bicycle(1, 2, 0); // 상수 생성 toString() @override String toString() =&amp;gt; &amp;#39;Bicycle: $speed mph&amp;#39;; String single qoutes, double qoutes 둘 다 사용 가능하다. string interpolation을 지원한다. &#39;speed: $speed&#39; // $var, ${exp} 함수&amp;amp;메소드 one-line 함수/메소드를 지원한다.</description>
+    </item>
+    
+    <item>
+      <title>Appsflyer 어트리뷰션 모델에서 헷갈리는 것들 정리</title>
+      <link>https://bsscco.github.io/posts/2018-11-21-appsflyer-attribution-model/</link>
+      <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2018-11-21-appsflyer-attribution-model/</guid>
+      <description>참고 : https://support.appsflyer.com/hc/en-us/articles/207447053-What-is-AppsFlyer-s-Attribution-Model-
+New-Attribution 구분 이미 특정 media_source로 New-attribution된 사용자는 다른 어떤 media_source에도 New-attribution으로 인식되지 않습니다. Attribution Lookback window View-through lookback window(1-7days) 사용자가 앱스플라이어를 통한 광고를 보고, 정해진 View-through lookback window 이내에 클릭 없이 앱을 설치한 경우 New-attribution으로 인정합니다. window 기본값은 1day onelink에서 설정할 수 있는 값은 아니고, 외부 partners setting에서 파트너마다 설정할 수 있습니다. Click-through lookback window(1-30days) 사용자가 앱스플라이어 링크 또는 광고를 클릭하고, 정해진 Click-through lookback window 이내에 앱을 설치한 경우 New-attribution으로 인정합니다.</description>
+    </item>
+    
+    <item>
+      <title>Appsflyer 원링크 파라메터 정리</title>
+      <link>https://bsscco.github.io/posts/2018-11-21-appsflyer-onelink/</link>
+      <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2018-11-21-appsflyer-onelink/</guid>
+      <description>ex)
+https://ohouse.onelink.me/1234567?pid=Social%20Facebook&amp;amp;c=bssccocampaign&amp;amp;af_channel=bssccochannel&amp;amp;is_retargeting=true&amp;amp;af_click_lookback=15d&amp;amp;af_dp=ohouseapp%3A%2F%2Fohou.se%2Fcards%2F1234&amp;amp;af_web_dp=https%3A%2F%2Fohou.se%2Fcards%2F1234 pid media_source
+c campagin
+af_channel channel
+is_retargeting Re-attribution, Re-engagement 트래킹을 허용할 것인가?
+true일 경우에 New-installs라도 New-Attribution으로 인식 안 됨.
+af_click_lookback Click-through lookback window값
+af_view_lookback View-through lookback window값
+af_dp 네이티브 앱용 딥링크
+af_web_dp 웹용 딥링크
+af_reengagement_window Re-engagement window값</description>
+    </item>
+    
+    <item>
+      <title>Slack 단축키 꿀팁</title>
+      <link>https://bsscco.github.io/posts/2018-11-21-slack-shortcut/</link>
+      <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2018-11-21-slack-shortcut/</guid>
+      <description> 검색(Cmd+F) : 예전 메시지를 찾는 데에 유용하다. Quick Switcher(Cmd+K) : 채널 또는 DM방으로 빠르게 찾아갈 수 있다. 활동(Cmd+Shift+M) 내가 멘션 돼있는 메시지를 최신순으로 빠르게 확인할 수 있다. 다른 사람의 이모지가 달린 내 메시지를 최신순으로 빠르게 확인할 수 있다. All threads(Cmd+Shift+T) : 내가 관여된 채널의 메시지를 최신순으로 빠르게 확인할 수 있다. Starred items(Cmd+Shift+S) : 까먹지 않으려고 star해놓은 메시지들을 확인할 수 있다. 텍스트 볼드(Cmd+B) 텍스트 삭선(Cmd+Shift+X) 텍스트 코드양식(Cmd+Shift+C) 텍스트 인용구양식(Cmd+Shift+&amp;gt;) 코드 스니펫 쓰기(Cmd+Shift+Enter) </description>
+    </item>
+    
+    <item>
+      <title>Git 개념 요약</title>
+      <link>https://bsscco.github.io/posts/2018-11-18-about-git/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2018-11-18-about-git/</guid>
+      <description>변경된 내용 저장하기 add : 추가/수정/삭제 등 변경된 내용들을 스테이지에 담는다. commit : 스테이지에 담긴 내용들을 로컬 브랜치에 반영시킨다. push : 로컬 브랜치에 반영된 내용들을 원격 브랜치에 반영시킨다. 여러 버전으로 작업하고 필요한 버전만 합치기 (여럿이 작업하기1) branch : 선택한 커밋시점으로부터 새로운 로컬 브랜치를 만든다. checkout : 선택한 로컬 브랜치로 헤드를 옮긴다. merge : 헤드 로컬 브랜치에 선택한 로컬(또는 원격) 브랜치와 차이나는 변경 내용들을 반영시킨다. 충돌이 발생했을 땐 충돌된 파일들을 적절하게 수정하고 add한 다음에 commit하면 병합이 완료된다.</description>
+    </item>
+    
+  </channel>
+</rss>

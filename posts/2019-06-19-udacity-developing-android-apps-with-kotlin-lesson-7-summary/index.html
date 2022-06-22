@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.100.2" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/bsscco.github.io\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약",
+      "headline" : "Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약",
+      "description" : "Lesson 7: RecyclerView RecyclerView 1. Recycle Woman 2. Introduction 3. Your first RecyclerView Room\u002bViewModel과 Adapter의 연결 구조\nViewHolder의 역할\n4. Exercise: Add a RecyclerView 5. Exercise: Display SleepQuality Data 프래그먼트에서 db 데이터를 observe 하다가 데이터가 갱신되면 adapter.data에 대입해주는 부분이 있음.\n6. Exercise: Recycling ViewHolders 7. Displaying Sleep Quality ViewHolder에는 많은 기능이 있다. 활용하자.\ngetAdapterPosition() getLayoutPosition() getItemId() 8. Exercise: Display the SleepQuality List 9. Exercise: Refactor onBindViewHolder onBindViewHolder 로직을 ViewHolder의 bind 메소드로 이동",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-06-19 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2019-06-19 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary\/",
+      "keywords" : [ "kotlin", ]
+  }
+</script>
+<title>Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약</title>
+  <meta property="og:title" content="Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Lesson 7: RecyclerView RecyclerView 1. Recycle Woman 2. Introduction 3. Your first RecyclerView Room&#43;ViewModel과 Adapter의 연결 구조
+ViewHolder의 역할
+4. Exercise: Add a RecyclerView 5. Exercise: Display SleepQuality Data 프래그먼트에서 db 데이터를 observe 하다가 데이터가 갱신되면 adapter.data에 대입해주는 부분이 있음.
+6. Exercise: Recycling ViewHolders 7. Displaying Sleep Quality ViewHolder에는 많은 기능이 있다. 활용하자.
+getAdapterPosition() getLayoutPosition() getItemId() 8. Exercise: Display the SleepQuality List 9. Exercise: Refactor onBindViewHolder onBindViewHolder 로직을 ViewHolder의 bind 메소드로 이동" />
+  <meta name="description" content="Lesson 7: RecyclerView RecyclerView 1. Recycle Woman 2. Introduction 3. Your first RecyclerView Room&#43;ViewModel과 Adapter의 연결 구조
+ViewHolder의 역할
+4. Exercise: Add a RecyclerView 5. Exercise: Display SleepQuality Data 프래그먼트에서 db 데이터를 observe 하다가 데이터가 갱신되면 adapter.data에 대입해주는 부분이 있음.
+6. Exercise: Recycling ViewHolders 7. Displaying Sleep Quality ViewHolder에는 많은 기능이 있다. 활용하자.
+getAdapterPosition() getLayoutPosition() getItemId() 8. Exercise: Display the SleepQuality List 9. Exercise: Refactor onBindViewHolder onBindViewHolder 로직을 ViewHolder의 bind 메소드로 이동" />
+  <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Android Developer BSSCCO">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Android Developer BSSCCO</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-06-19 00:00:00 UTC">
+                19 Jun 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="lesson-7-recyclerview">Lesson 7: RecyclerView</h1>
+<h1 id="recyclerview">RecyclerView</h1>
+<hr>
+<h2 id="1-recycle-woman">1. Recycle Woman</h2>
+<h2 id="2-introduction">2. Introduction</h2>
+<h2 id="3-your-first-recyclerview">3. Your first RecyclerView</h2>
+<p><img src="/2019-06-19/Untitled-8cc83f7f-6ff5-41cc-b288-fdb2cc6fe053.png" alt=""></p>
+<p>Room+ViewModel과 Adapter의 연결 구조</p>
+<p><img src="/2019-06-19/Untitled-2b6cd176-f853-4959-abb7-4f621a41b8d1.png" alt=""></p>
+<p>ViewHolder의 역할</p>
+<h2 id="4-exercise-add-a-recyclerview">4. Exercise: Add a RecyclerView</h2>
+<h2 id="5-exercise-display-sleepquality-data">5. Exercise: Display SleepQuality Data</h2>
+<p>프래그먼트에서 db 데이터를 observe 하다가 데이터가 갱신되면 adapter.data에 대입해주는 부분이 있음.</p>
+<h2 id="6-exercise-recycling-viewholders">6. Exercise: Recycling ViewHolders</h2>
+<h2 id="7-displaying-sleep-quality">7. Displaying Sleep Quality</h2>
+<p>ViewHolder에는 많은 기능이 있다. 활용하자.</p>
+<ul>
+<li>getAdapterPosition()</li>
+<li>getLayoutPosition()</li>
+<li>getItemId()</li>
+</ul>
+<h2 id="8-exercise-display-the-sleepquality-list">8. Exercise: Display the SleepQuality List</h2>
+<h2 id="9-exercise-refactor-onbindviewholder">9. Exercise: Refactor onBindViewHolder</h2>
+<p>onBindViewHolder 로직을 ViewHolder의 bind 메소드로 이동</p>
+<h2 id="10-exercise-refactor-oncreateviewholder">10. Exercise: Refactor onCreateViewHolder</h2>
+<p>onCreateViewHolder 로직을 ViewHolder의 from 메소드로 이동</p>
+<h2 id="11-improving-data-refresh">11. Improving Data Refresh</h2>
+<p><img src="/2019-06-19/Untitled-f5c5f583-1fb0-4a9d-9973-a3e11c78dd89.png" alt=""></p>
+<p>RecyclerView의 Rich API를 활용하기에 딱 좋은 DiffUtil</p>
+<p><img src="/2019-06-19/Untitled-b2e20f48-7eb5-495f-ac74-c6327f082e2f.png" alt=""></p>
+<p>DiffUtil의 이점</p>
+<h1 id="12-exercise-refresh-data-with-diffutil">12. Exercise: Refresh Data with DiffUtil</h1>
+<pre><code>class SleepNightDiffCallback : DiffUtil.ItemCallback&lt;SleepNight&gt;() {
+  override fun areItemsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+      return oldItem.nightId == newItem.nightId
+  }
+
+  override fun areContentsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+      return oldItem == newItem // data 클래스이기에 비교 가능!
+  }
+}
+
+...
+
+adapter.submitList() // DiffUtil을 사용해 리스트를 갱신한다.
+</code></pre>
+<h1 id="data-binding-더하기">Data Binding 더하기</h1>
+<hr>
+<h2 id="13-exercise-add-databinding-to-the-adapter">13. Exercise: Add DataBinding to the Adapter</h2>
+<pre><code>fun from(parent: ViewGroup): ViewHolder {
+	val layoutInflater = LayoutInflater.from(parent.context)
+	val binding = ListItemSleepNightBinding.inflate(layoutInflater, parent, false)
+	return ViewHolder(binding)
+}
+
+class ViewHolder private constructor(val binding: ListItemSleepNightBinding):
+	RecyclerView.ViewHolder(binding.root) {
+}
+</code></pre>
+<h2 id="14-exercise-add-binding-adapters">14. Exercise: Add Binding Adapters</h2>
+<pre><code>@BindingAdapter(&quot;sleepImage&quot;)
+fun ImageView.setSleepImage(item: SleepNight) {
+    setImageResource(when (item.sleepQuality) {
+        0 -&gt; R.drawable.ic_sleep_0
+        1 -&gt; R.drawable.ic_sleep_1
+        2 -&gt; R.drawable.ic_sleep_2
+        3 -&gt; R.drawable.ic_sleep_3
+        4 -&gt; R.drawable.ic_sleep_4
+        5 -&gt; R.drawable.ic_sleep_5
+        else -&gt; R.drawable.ic_sleep_active
+   })
+}
+</code></pre>
+<p>코틀린 확장함수를 활용한 바인딩 메소드</p>
+<pre><code>binding.sleep = item
+binding.executePendingBindings() // 바인딩 어댑터를 적용시키기
+
+&lt;ImageView
+  android:id=&quot;@+id/quality_image&quot;
+  android:layout_width=&quot;@dimen/icon_size&quot;
+  android:layout_height=&quot;60dp&quot;
+  android:layout_marginStart=&quot;16dp&quot;
+  android:layout_marginTop=&quot;8dp&quot;
+  android:layout_marginBottom=&quot;8dp&quot;
+  app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+  app:layout_constraintStart_toStartOf=&quot;parent&quot;
+  app:layout_constraintTop_toTopOf=&quot;parent&quot;
+  tools:srcCompat=&quot;@drawable/ic_sleep_5&quot;
+  app:sleepImage=&quot;@{sleep}&quot;/&gt; &lt;!--요기--&gt;
+</code></pre>
+<h3 id="바인딩-어댑터를-썼을-때와-그냥-메소드를-썼을-때의-차이는">바인딩 어댑터를 썼을 때와 그냥 메소드를 썼을 때의 차이는?</h3>
+<p>바인딩 어댑터는 static 메소드라고 보면 됨.</p>
+<h2 id="15-finishing-your-first-recyclerview">15. Finishing Your First RecyclerView</h2>
+<p><img src="/2019-06-19/Untitled-2e45fcab-3ed9-48ff-af99-004e7b50ff02.png" alt=""></p>
+<p>RecyclerView를 사용하는 구조 정리</p>
+<h2 id="16-googler-interview-romain-guy-and-chet-haase">16. Googler Interview: Romain Guy and Chet Haase</h2>
+<h2 id="17-using-gridlayout">17. Using GridLayout</h2>
+<h2 id="18-exercise-change-linearlayout-to-gridlayout">18. Exercise: Change LinearLayout to GridLayout</h2>
+<h2 id="19-interacting-with-list-items">19. Interacting with List Items</h2>
+<p><img src="/2019-06-19/Untitled-af1f1cff-dc5d-4c83-9a2b-a49d87c3bc74.png" alt=""></p>
+<h2 id="20-exercise-implement-a-click-listener">20. Exercise: Implement a Click Listener</h2>
+<pre><code>&lt;variable
+     name=&quot;clickListener&quot; type=&quot;com.example.android.trackmysleepquality.sleeptracker.SleepNightListener&quot;/&gt;
+</code></pre>
+<h2 id="21-exercise-navigate-on-click">21. Exercise: Navigate on Click</h2>
+<h2 id="22-adding-headers-to-the-recyclerview">22. Adding Headers to the RecyclerView</h2>
+<h2 id="23-extra-credit-add-a-list-header">23. Extra Credit: Add a List Header</h2>
+<pre><code>sealed class DataItem {
+     data class SleepNightItem(val sleepNight: SleepNight): DataItem() {
+         override val id = sleepNight.nightId
+     }
+
+     object Header: DataItem() {
+         override val id = Long.MIN_VALUE
+     }
+
+     abstract val id: Long
+ }
+</code></pre>
+<h3 id="sealed">sealed?</h3>
+<p>enum 클래스의 확장</p>
+<pre><code>fun addHeaderAndSubmitList(list: List&lt;SleepNight&gt;?) {
+    adapterScope.launch {
+        val items = when (list) {
+            null -&gt; listOf(DataItem.Header)
+            else -&gt; listOf(DataItem.Header) + list.map { DataItem.SleepNightItem(it) }
+        }
+        withContext(Dispatchers.Main) {
+            submitList(items)
+        }
+    }
+}
+</code></pre>
+<h2 id="24-headers-in-gridlayout">24. Headers in GridLayout</h2>
+<h2 id="25-extra-credit-add-a-header-to-the-gridlayout">25. Extra Credit: Add a Header to the GridLayout</h2>
+<h2 id="26-summary">26. Summary</h2>
+<h2 id="마치면서">마치면서</h2>
+<p>이 레슨에서도 Room~LiveData<!-- raw HTML omitted --> 자동 갱신 연계가 인상적이었다. DB data Item이 추가 되면, DB data list가 갱신되는 것.</p>
+<p>페이징 라이브러리, Room, LiveData 연계 더 정확히 알아보기</p>
+<p>그리고 View 이벤트 리스닝의 흐름도 명확해서 좋았다. Fragment가 Adapter를 만들 때 생성자로 리스너를 넘겨주고, 리스너는 아이템뷰에 바인딩 된다. View 이벤트가 발생되면 리스너 구현부에서 ViewModel의 메소드를 호출하게 된다.</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/kotlin/">
+                kotlin
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/">Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약</a></li>
+    
+    <li><a href="/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/">Udacity Developing Android Apps with Kotlin 레슨5 App Architecture (UI Layer) 요약</a></li>
+    
+    <li><a href="/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/">Udacity Developing Android Apps with Kotlin 레슨4 Activity &amp; Fragment Lifecycle 요약</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

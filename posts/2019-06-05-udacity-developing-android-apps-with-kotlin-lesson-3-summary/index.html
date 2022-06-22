@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.100.2" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bsscco" />
+  <meta property="og:url" content="https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "https:\/\/bsscco.github.io\/"
+      },
+      "articleSection" : "posts",
+      "name" : "Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약",
+      "headline" : "Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약",
+      "description" : "Lesson 3: App Navigation Fragment 다양한 크기의 기기들에 대응할 수 있는 컴포넌트\nActivity Back stack vs Fragment Back stack\nActivity Back stack\n백버튼을 누르면 현재 액티비티는 닫힌다.\nFragment Back stack\nActivity 안에서 네비게이션 되고, Fragment Manager로 추가\/삭제 할 수 있다.\nNavigation graph는 activity 안에서 multi fragment를 다루는 기술이다.\nTitleFragment.kt\nval binding = DataBindingUtil.inflate\u0026lt;FragmentTitleBinding\u0026gt;(inflater, R.layout.fragment_title, container, false) return binding.root Navigation Navigation 원칙 Starting Place가 있어야 한다.\n언제나 Go Back 할 수 있어야 한다.",
+      "inLanguage" : "en-US",
+      "author" : "bsscco",
+      "creator" : "bsscco",
+      "publisher": "bsscco",
+      "accountablePerson" : "bsscco",
+      "copyrightHolder" : "bsscco",
+      "copyrightYear" : "2019",
+      "datePublished": "2019-06-05 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2019-06-05 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary\/",
+      "keywords" : [ "kotlin", ]
+  }
+</script>
+<title>Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약</title>
+  <meta property="og:title" content="Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Lesson 3: App Navigation Fragment 다양한 크기의 기기들에 대응할 수 있는 컴포넌트
+Activity Back stack vs Fragment Back stack
+Activity Back stack
+백버튼을 누르면 현재 액티비티는 닫힌다.
+Fragment Back stack
+Activity 안에서 네비게이션 되고, Fragment Manager로 추가/삭제 할 수 있다.
+Navigation graph는 activity 안에서 multi fragment를 다루는 기술이다.
+TitleFragment.kt
+val binding = DataBindingUtil.inflate&amp;lt;FragmentTitleBinding&amp;gt;(inflater, R.layout.fragment_title, container, false) return binding.root Navigation Navigation 원칙 Starting Place가 있어야 한다.
+언제나 Go Back 할 수 있어야 한다." />
+  <meta name="description" content="Lesson 3: App Navigation Fragment 다양한 크기의 기기들에 대응할 수 있는 컴포넌트
+Activity Back stack vs Fragment Back stack
+Activity Back stack
+백버튼을 누르면 현재 액티비티는 닫힌다.
+Fragment Back stack
+Activity 안에서 네비게이션 되고, Fragment Manager로 추가/삭제 할 수 있다.
+Navigation graph는 activity 안에서 multi fragment를 다루는 기술이다.
+TitleFragment.kt
+val binding = DataBindingUtil.inflate&amp;lt;FragmentTitleBinding&amp;gt;(inflater, R.layout.fragment_title, container, false) return binding.root Navigation Navigation 원칙 Starting Place가 있어야 한다.
+언제나 Go Back 할 수 있어야 한다." />
+  <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
+  
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="Android Developer BSSCCO">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >Android Developer BSSCCO</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="https://github.com/bsscco" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2019-06-05 00:00:00 UTC">
+                05 Jun 2019
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="lesson-3-app-navigation">Lesson 3: App Navigation</h1>
+<h3 id="fragment">Fragment</h3>
+<p>다양한 크기의 기기들에 대응할 수 있는 컴포넌트</p>
+<p>Activity Back stack vs Fragment Back stack</p>
+<p>Activity Back stack</p>
+<p>백버튼을 누르면 현재 액티비티는 닫힌다.</p>
+<p>Fragment Back stack</p>
+<p>Activity 안에서 네비게이션 되고, Fragment Manager로 추가/삭제 할 수 있다.</p>
+<p>Navigation graph는 activity 안에서 multi fragment를 다루는 기술이다.</p>
+<p>TitleFragment.kt</p>
+<pre><code>val binding = DataBindingUtil.inflate&lt;FragmentTitleBinding&gt;(inflater, R.layout.fragment_title, container, false)
+   return binding.root
+</code></pre>
+<h2 id="navigation">Navigation</h2>
+<h3 id="navigation-원칙">Navigation 원칙</h3>
+<ol>
+<li>
+<p>Starting Place가 있어야 한다.</p>
+</li>
+<li>
+<p>언제나 Go Back 할 수 있어야 한다.</p>
+</li>
+<li>
+<p>Up 버튼으로 뒤로 갈 수 있어야 한다.</p>
+<p>시스템 백버튼은 홈화면까지 되돌아갈 수 있지만 Up버튼은 Starting Place에서 없어진다.</p>
+</li>
+</ol>
+<p>여러 액티비티를 쓰면서 각 액티비티마다 Navigation을 따로 두는 게 일반적인 패턴인 듯. 이렇게 쓰면 네비게이션 그래프를 적당한 크기로 나눌 수 있음.</p>
+<h3 id="navigation-준비물">Navigation 준비물</h3>
+<p>1.Navigation graph 리소스를 추가하기</p>
+<ol start="2">
+<li>
+<p>NavHostFragment를 추가하기</p>
+<p>app:defaultNavHost=&ldquo;true&rdquo; # system 백버튼을 가로챌 수 있게 해준다.
+app:navGraph=&quot;@navigation/navigation&quot;</p>
+</li>
+<li>
+<p>Fragment들을 Navigation graph에 추가하기</p>
+</li>
+<li>
+<p>Navigation graph에서 Fragment들을 Action으로 연결하기</p>
+</li>
+</ol>
+<p><img src="/2019-06-05/Untitled-65ebda4a-f0a3-43e3-8863-91e7b555565d.png" alt=""></p>
+<ol start="5">
+<li>
+<p>onClickListener를 만들고 Navigation Controller를 찾아서 Action으로 네비게이팅 시키기</p>
+<p>// ktx 사용
+binding.playButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment))</p>
+<p>binding.playButton.setOnClickListener {
+Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_gameFragment)
+}</p>
+</li>
+</ol>
+<h3 id="조건부-navigation">조건부 Navigation</h3>
+<p>조건부 네비게이션은 코드에서 제어한다.</p>
+<pre><code>if (answers[answerIndex] == currentQuestion.answers[0]) {
+    questionIndex++
+    // Advance to the next question
+    if (questionIndex &lt; numQuestions) {
+        currentQuestion = questions[questionIndex]
+        setQuestion()
+        binding.invalidateAll()
+    } else {
+        view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+    }
+} else {
+    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+}
+</code></pre>
+<h3 id="pop-behavior">pop behavior</h3>
+<p>action에서 설정할 수 있다.</p>
+<p><img src="/2019-06-05/Untitled-e64c137a-aae3-4b9a-83b3-4f5c8bdf07f2.png" alt=""></p>
+<p>inclusive를 체크하면 pop to에 지정된 프래그먼트까지 이동 후에 그 프래그먼트에서 pop 동작을 수행한다.</p>
+<h3 id="support-navigate-up">support navigate up</h3>
+<pre><code>override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    @Suppress(&quot;UNUSED_VARIABLE&quot;)
+    val binding = DataBindingUtil.setContentView&lt;ActivityMainBinding&gt;(this, R.layout.activity_main)
+
+    val navigationController = this.findNavController(R.id.myNavHostFragment)
+    NavigationUI.setupActionBarWithNavController(this, navigationController)
+}
+
+override fun onSupportNavigateUp(): Boolean {
+    val navigationController = this.findNavController(R.id.myNavHostFragment)
+    return navigationController.navigateUp()
+}
+
+// override 메소드 목록을 보여주는 단축키 : Mac Ctrl+O
+</code></pre>
+<p><img src="/2019-06-05/Untitled-7aad67e6-48f3-4c09-ab0a-2579cf104d6c.png" alt=""></p>
+<p>setupActionBarWithNavController()를 호출한 뒤로는 ActionBar에 up 버튼이 생김</p>
+<h3 id="adding-a-menu">adding a menu</h3>
+<p><img src="/2019-06-05/Untitled-be671b18-cdce-4e67-aa84-3a9164c8e529.png" alt=""></p>
+<p>id를 aboutFragment로 설정</p>
+<p><img src="/2019-06-05/Untitled-6ed9d5bc-01c9-488d-879e-beb030502220.png" alt=""></p>
+<p>menu item의 id도 aboutFragment로 설정</p>
+<pre><code>override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+	...
+	setHasOptionsMenu(true)
+	...
+}
+
+override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    super.onCreateOptionsMenu(menu, inflater)
+    inflater?.inflate(R.menu.overflow_menu, menu)
+}
+
+override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    return NavigationUI.onNavDestinationSelected(item!!, view!!.findNavController()) || super.onOptionsItemSelected(item)
+}
+</code></pre>
+<p><img src="/2019-06-05/Untitled-a097eac0-3922-432b-8b20-e89532a6ddfd.png" alt=""></p>
+<p>menu에 네비게이션 프래그먼트를 연결할 땐 action을 사용하지 않아도 된다.</p>
+<h3 id="safeargs">safeArgs</h3>
+<pre><code>// in project gradle
+classpath &quot;android.arch.navigation:navigation-safe-args-gradle-plugin:$version_navigation&quot;
+
+// in app gradle
+apply plugin: 'androidx.navigation.fadeargs'
+
+// in GameFragment.kt
+view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(numQuestions, questionIndex))
+</code></pre>
+<p>한 번 safeargs를 사용하도록 설정해두면 앞으로는 NavDirections을 어디서나 사용할 수 있다.</p>
+<p><img src="/2019-06-05/Untitled-18c460e3-91f7-4fe9-bf9b-5808fe5971f0.png" alt=""></p>
+<p>arguments 설정</p>
+<pre><code>// in GameWonFragment.kt
+val args = GameWonFragmentArgs.fromBundle(arguments!!)
+Toast.makeText(context, &quot;NumCorrect: ${args.numCorrect}, NumQuestions: ${args.numQuestions}&quot;, Toast.LENGTH_LONG).show()
+</code></pre>
+<h3 id="implicit-intent">implicit intent</h3>
+<pre><code>override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.winner_menu, menu)
+        if(null == getShareIntent().resolveActivity(activity!!.packageManager)) {
+            menu?.findItem(R.id.share)?.setVisible(false)
+        }
+    }
+
+override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    when (item!!.itemId) {
+        R.id.share -&gt; startActivity(getShareIntent())
+    }
+    return super.onOptionsItemSelected(item)
+}
+
+// Creating our Share Intent
+private fun getShareIntent(): Intent {
+    val args = GameWonFragmentArgs.fromBundle(arguments!!)
+    return ShareCompat.IntentBuilder.from(activity)
+            .setText(getString(R.string.share_success_text, args.numCorrect, args.numQuestions))
+            .setType(&quot;text/plain&quot;)
+            .intent
+}
+</code></pre>
+<h2 id="navigation-drawer">Navigation drawer</h2>
+<ol>
+<li>
+<p>navdrawer_menu 리소스 생성</p>
+</li>
+<li>
+<p>Activity layout xml에 DrawerLayout, NavigationView를 추가</p>
+<p><img src="/2019-06-05/Untitled-8edb3576-ffab-4b96-9d35-fd575d796cae.png" alt=""></p>
+</li>
+<li>
+<p>MainActivity에서</p>
+<pre><code> // NavigationUI.setupActionBarWithNavController(this, navController)
+ NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+ NavigationUI.setupWithNavController(binding.navView, navController)
+
+ ...
+
+ // return navController.navigateUp()
+ return NavigationUI.navigateUp(navController, binding.drawerLayout)
+</code></pre>
+</li>
+<li></li>
+</ol>
+<pre><code>    // prevent nav gesture if not on start destination
+    navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, args: Bundle? -&gt;
+        if (nd.id == nc.graph.startDestination) {
+            binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        } else {
+            binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        }
+    }
+</code></pre>
+<h3 id="navigation-시스템을-사용했을-때-장점">Navigation 시스템을 사용했을 때 장점</h3>
+<p>Fragment 매니저를 사용하지 않아도 되고 프래그먼트 네비게이션을 GUI로 만들 수 있어서 간결하고 편하다.</p>
+<p>pop 동작을 GUI에서 자유롭게 설정할 수 있는 게 직관적이고 쉽고 편하다!</p>
+<p>ktx를 사용하면 코드가 더 간결해지는 것!</p>
+<p>네이게이션 흐름을 한 눈에 볼 수 있는 것</p>
+<p>safeArgs로 프래그먼트 간 데이터 통신에서 발생하는 에러를 정확하게 잡아줌</p>
+<p>enter, exit, popEnter, popExit 애니메이션을 nav graph에서 설정할 수 있는 편리함</p>
+<h2 id="궁금한-것">궁금한 것</h2>
+<p>AppBar를 다양하게 커스텀 시키는 우리 앱에서 setupActionBarWithNavController 같은 기능을 쓸 수 있을까? 방법이 없을까?</p>
+<p><strong>ToolBar를 사용하면 할 수 있을 듯!</strong></p>
+<p><strong>setCustomActionBar 사용해도 됨!</strong></p>
+<h2 id="논의하고-싶은-것">논의하고 싶은 것</h2>
+<p>강의를 보면 layout xml에서 view id의 이름을 camelCase로 짓는다.</p>
+<p>binding을 쓰는 코드에서 접근 변수들이 view id의 이름 그대로 사용하는데, 코드에선 camelCase로 네이밍 하는 게 표준이니까 view id의 이름을 camelCase로 지은 듯</p>
+<p>우리도 앞으로 짓는 view id의 이름을 camelCase로 지으면 좋겠다.</p>
+<p><strong>그렇게 하기로 함!</strong></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/kotlin/">
+                kotlin
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/">Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약</a></li>
+    
+    <li><a href="/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/">Udacity Developing Android Apps with Kotlin 레슨1 Build your First App 요약</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>
