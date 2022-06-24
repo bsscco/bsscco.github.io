@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="bsscco" />
-  <meta property="og:url" content="https://bsscco.github.io/tags/compose/" />
-  <link rel="canonical" href="https://bsscco.github.io/tags/compose/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+  <meta property="og:url" content="https://bsscco.github.io/posts/2022-06-22-composable-modifier/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2022-06-22-composable-modifier/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
 
   <script type="application/ld+json">
   {
@@ -18,10 +18,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/bsscco.github.io\/"
       },
-      "articleSection" : "tags",
-      "name" : "compose",
-      "headline" : "compose",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Compose 기초 - Composable Modifier",
+      "headline" : "Compose 기초 - Composable Modifier",
+      "description" : "Composable Modifier 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\nModifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 접근성 라벨과 같은 정보 추가 요소를 클릭 가능, 스크롤 가능하게 만드는 것과 같은 높은 수준의 상호작용 추가 @Composable fun Greeting(name: String) { Column(modifier = Modifier.padding(24.dp)) { Text(text = \u0026#34;Hello,\u0026#34;) Text(text = name) } } Modifier의 결과를 예상할 때 주의할 점 @Composable fun ArtistCard(\/*...*\/) { val padding = 16.",
       "inLanguage" : "en-US",
       "author" : "bsscco",
       "creator" : "bsscco",
@@ -29,17 +29,19 @@
       "accountablePerson" : "bsscco",
       "copyrightHolder" : "bsscco",
       "copyrightYear" : "2022",
-      "datePublished": "2022-06-22 21:10:04 \u002b0000 UTC",
-      "dateModified" : "2022-06-22 21:10:04 \u002b0000 UTC",
-      "url" : "https:\/\/bsscco.github.io\/tags\/compose\/",
-      "keywords" : [  ]
+      "datePublished": "2022-06-22 21:10:03 \u002b0000 UTC",
+      "dateModified" : "2022-06-22 21:10:03 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2022-06-22-composable-modifier\/",
+      "keywords" : [ "compose", ]
   }
 </script>
-<title>compose</title>
-  <meta property="og:title" content="compose" />
+<title>Compose 기초 - Composable Modifier</title>
+  <meta property="og:title" content="Compose 기초 - Composable Modifier" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="" />
-  <meta name="description" content="" />
+  <meta property="og:description" content="Composable Modifier 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 접근성 라벨과 같은 정보 추가 요소를 클릭 가능, 스크롤 가능하게 만드는 것과 같은 높은 수준의 상호작용 추가 @Composable fun Greeting(name: String) { Column(modifier = Modifier.padding(24.dp)) { Text(text = &amp;#34;Hello,&amp;#34;) Text(text = name) } } Modifier의 결과를 예상할 때 주의할 점 @Composable fun ArtistCard(/*...*/) { val padding = 16." />
+  <meta name="description" content="Composable Modifier 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 접근성 라벨과 같은 정보 추가 요소를 클릭 가능, 스크롤 가능하게 만드는 것과 같은 높은 수준의 상호작용 추가 @Composable fun Greeting(name: String) { Column(modifier = Modifier.padding(24.dp)) { Text(text = &amp;#34;Hello,&amp;#34;) Text(text = name) } } Modifier의 결과를 예상할 때 주의할 점 @Composable fun ArtistCard(/*...*/) { val padding = 16." />
   <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
   
 
@@ -66,10 +68,11 @@
 
 
 <body>
-  <article class="posts">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
-        
+        <div class="site-header">
+          
 <header>
   <div class="header-title">
     <a href="/"
@@ -90,81 +93,170 @@
 </div>
 <div class="header-line"></div>
 
-
-        <h1 class="taxonomy-term">compose</h1>
-        <div id="posts-list">
-          <section>
-            <h1 class="site-date-catalog">2022</h1>
-
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:04 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-compose-side-effect/">Compose 기초 - Compose 사이드이펙트</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:03 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-composable-modifier/">Compose 기초 - Composable Modifier</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:02 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-composable-lifecycle/">Compose 기초 - Composable의 수명주기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:01 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-composable-state/">Compose 기초 - Composable의 상태 관리</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:00 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-compose-mental-model/">Compose 기초 - Compose 이해, Recomposition</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-          
         </div>
+        <header class="post-header">
+          <h1 class="post-title">Compose 기초 - Composable Modifier</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2022-06-22 21:10:03 UTC">
+                22 Jun 2022
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="composable-modifierhttpsdeveloperandroidcomjetpackcomposemodifiers"><a href="https://developer.android.com/jetpack/compose/modifiers">Composable Modifier</a></h1>
+<p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
+<h2 id="modifier의-역할">Modifier의 역할</h2>
+<ul>
+<li>Composable의 크기, 레이아웃, 동작 및 모양 변경</li>
+<li>접근성 라벨과 같은 정보 추가</li>
+<li>요소를 클릭 가능, 스크롤 가능하게  만드는 것과 같은 높은 수준의 상호작용 추가</li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Greeting</span>(name: String) { 
+</span></span><span style="display:flex;"><span>    Column(modifier = Modifier.padding(<span style="color:#ae81ff">24.</span>dp)) {  
+</span></span><span style="display:flex;"><span>        Text(text = <span style="color:#e6db74">&#34;Hello,&#34;</span>)  
+</span></span><span style="display:flex;"><span>        Text(text = name) 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="modifier의-결과를-예상할-때-주의할-점httpsdeveloperandroidcomjetpackcomposemodifiersorder-modifier-matters"><a href="https://developer.android.com/jetpack/compose/modifiers#order-modifier-matters">Modifier의 결과를 예상할 때 주의할 점</a></h2>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">ArtistCard</span>(<span style="color:#75715e">/*...*/</span>) {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> padding = <span style="color:#ae81ff">16.</span>dp  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Column(   
+</span></span><span style="display:flex;"><span>        Modifier   
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// clickable() 뒤에 padding()이 호출되며, click 시 ripple 이펙트가 padding 부분까지 그려진다.   
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            .clickable(onClick = onClick)      
+</span></span><span style="display:flex;"><span>            .padding(padding)       
+</span></span><span style="display:flex;"><span>          .fillMaxWidth()  
+</span></span><span style="display:flex;"><span>    ) {    
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">ArtistCard</span>(<span style="color:#75715e">/*...*/</span>) {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> padding = <span style="color:#ae81ff">16.</span>dp  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Column(   
+</span></span><span style="display:flex;"><span>        Modifier   
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// padding() 뒤에 clickable()이 호출되며, click 시 ripple 이펙트가 padding 안쪽으로 제한된다. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            .padding(padding)       
+</span></span><span style="display:flex;"><span>            .clickable(onClick = onClick)      
+</span></span><span style="display:flex;"><span>          .fillMaxWidth()  
+</span></span><span style="display:flex;"><span>    ) {    
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="알아둘-만한-modifier-목록httpsdeveloperandroidcomjetpackcomposemodifiersbuilt-in-modifiers"><a href="https://developer.android.com/jetpack/compose/modifiers#built-in-modifiers">알아둘 만한 Modifier 목록</a></h2>
+<ul>
+<li><code>.requiredSize()</code>, <code>.requiredWidth()</code>, <code>.requiredHeight()</code>
+<ul>
+<li>상위 Composable로부터 수신된 제약조건에 의해 크기가 제한되지 않고 원하는 크기를 강제할 수 있다.</li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">ArtistCard</span>(<span style="color:#75715e">/*...*/</span>) {  
+</span></span><span style="display:flex;"><span>    Row(    
+</span></span><span style="display:flex;"><span>        modifier = Modifier.size(width = <span style="color:#ae81ff">400.</span>dp, height = <span style="color:#ae81ff">100.</span>dp)<span style="color:#75715e">// 제한된 높이는 100dp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ) {    
+</span></span><span style="display:flex;"><span>        Image(      
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">/*...*/</span>      
+</span></span><span style="display:flex;"><span>            modifier = Modifier.requiredSize(<span style="color:#ae81ff">150.</span>dp) <span style="color:#75715e">// 강제할 높이는 150dp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        )    
+</span></span><span style="display:flex;"><span>        Column { <span style="color:#75715e">/*...*/</span> }  
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li><code>.offset()</code>
+<ul>
+<li>origin 위치를 기준으로 보여지는 위치를 이동시킬 수 있다.</li>
+<li>실제 측정되는 x, y값은 변경되지 않는다.</li>
+</ul>
+</li>
+<li><code>BoxScope</code> 전용 <code>.matchParentSize()</code>
+<ul>
+<li><code>matchParentSize()</code>이 적용된 하위 Composable의 크기를 결정할 때 <code>Box</code>의 가장 큰 하위 요소에서 크기를 가져오도록 한다.</li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">MatchParentSizeComposable</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Spacer는 상위 Box에서 크기를 가져온다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 결과적으로 가장 큰 하위 요소(이 경우에는 ArtistCard)에서 크기를 가져오게 되는 것
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Box(Modifier.wrapContentSize()) {    
+</span></span><span style="display:flex;"><span>        Spacer(Modifier.matchParentSize().background(Color.LightGray))    
+</span></span><span style="display:flex;"><span>        ArtistCard()  
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/compose/">
+                compose
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2022-06-22-composable-state/">Compose 기초 - Composable의 상태 관리</a></li>
+    
+    <li><a href="/posts/2022-06-22-composable-lifecycle/">Compose 기초 - Composable의 수명주기</a></li>
+    
+    <li><a href="/posts/2022-06-22-compose-side-effect/">Compose 기초 - Compose 사이드이펙트</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
 
         <div class="site-footer">
   
@@ -184,6 +276,8 @@
     
   
 </script>
+
+  
 
 </body>
 

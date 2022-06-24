@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="bsscco" />
-  <meta property="og:url" content="https://bsscco.github.io/tags/compose/" />
-  <link rel="canonical" href="https://bsscco.github.io/tags/compose/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+  <meta property="og:url" content="https://bsscco.github.io/posts/2022-06-22-composable-lifecycle/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2022-06-22-composable-lifecycle/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
 
   <script type="application/ld+json">
   {
@@ -18,10 +18,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/bsscco.github.io\/"
       },
-      "articleSection" : "tags",
-      "name" : "compose",
-      "headline" : "compose",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Compose 기초 - Composable의 수명주기",
+      "headline" : "Compose 기초 - Composable의 수명주기",
+      "description" : "Composable의 수명주기 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\nComposable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가\/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000).",
       "inLanguage" : "en-US",
       "author" : "bsscco",
       "creator" : "bsscco",
@@ -29,17 +29,19 @@
       "accountablePerson" : "bsscco",
       "copyrightHolder" : "bsscco",
       "copyrightYear" : "2022",
-      "datePublished": "2022-06-22 21:10:04 \u002b0000 UTC",
-      "dateModified" : "2022-06-22 21:10:04 \u002b0000 UTC",
-      "url" : "https:\/\/bsscco.github.io\/tags\/compose\/",
-      "keywords" : [  ]
+      "datePublished": "2022-06-22 21:10:02 \u002b0000 UTC",
+      "dateModified" : "2022-06-22 21:10:02 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2022-06-22-composable-lifecycle\/",
+      "keywords" : [ "compose", ]
   }
 </script>
-<title>compose</title>
-  <meta property="og:title" content="compose" />
+<title>Compose 기초 - Composable의 수명주기</title>
+  <meta property="og:title" content="Compose 기초 - Composable의 수명주기" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="" />
-  <meta name="description" content="" />
+  <meta property="og:description" content="Composable의 수명주기 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000)." />
+  <meta name="description" content="Composable의 수명주기 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000)." />
   <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
   
 
@@ -66,10 +68,11 @@
 
 
 <body>
-  <article class="posts">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
-        
+        <div class="site-header">
+          
 <header>
   <div class="header-title">
     <a href="/"
@@ -90,81 +93,187 @@
 </div>
 <div class="header-line"></div>
 
-
-        <h1 class="taxonomy-term">compose</h1>
-        <div id="posts-list">
-          <section>
-            <h1 class="site-date-catalog">2022</h1>
-
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:04 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-compose-side-effect/">Compose 기초 - Compose 사이드이펙트</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:03 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-composable-modifier/">Compose 기초 - Composable Modifier</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:02 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-composable-lifecycle/">Compose 기초 - Composable의 수명주기</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:01 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-composable-state/">Compose 기초 - Composable의 상태 관리</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:00 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-compose-mental-model/">Compose 기초 - Compose 이해, Recomposition</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-          
         </div>
+        <header class="post-header">
+          <h1 class="post-title">Compose 기초 - Composable의 수명주기</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2022-06-22 21:10:02 UTC">
+                22 Jun 2022
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="composable의-수명주기httpsdeveloperandroidcomjetpackcomposelifecycle"><a href="https://developer.android.com/jetpack/compose/lifecycle">Composable의 수명주기</a></h1>
+<p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
+<h2 id="composable의-수명-주기">Composable의 수명 주기</h2>
+<ul>
+<li>Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다.</li>
+<li><img src="https://developer.android.com/images/jetpack/compose/lifecycle-composition.png" alt="lifecycle"></li>
+</ul>
+<h2 id="smart-recomposition에-도움이-되는-정보-추가하기httpsdeveloperandroidcomjetpackcomposelifecycleadd-info-smart-recomposition"><a href="https://developer.android.com/jetpack/compose/lifecycle#add-info-smart-recomposition">Smart Recomposition에 도움이 되는 정보 추가하기</a></h2>
+<ul>
+<li>목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다.
+<ul>
+<li><img src="https://developer.android.com/images/jetpack/compose/lifecycle-newelement-top-all-recompose.png" alt="new-top"></li>
+</ul>
+</li>
+<li><code>Column</code> 또는 <code>LazyColumn</code>에서 <code>key</code> Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다.
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Screen</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> items <span style="color:#66d9ef">by</span> remember {    
+</span></span><span style="display:flex;"><span>        mutableStateOf((<span style="color:#ae81ff">0</span> until <span style="color:#ae81ff">1000</span>).toList())
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> scope = rememberCoroutineScope()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ItemList(
+</span></span><span style="display:flex;"><span>        items = items,
+</span></span><span style="display:flex;"><span>        onItemClick = {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// scope 안에서 데이터를 변경하면 key가 재역할을 하지 못한다. ViewModel에서 데이터를 변경해도 마찬가지일 것. rememberUpdatedState()의 개념이 힌트일지도 모르겠다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// LazyColumn에선 key가 제대로 역할을 못하더라도 LazyColumn이 화면에 보여지는 항목들만 Recomposition 대상으로 삼기 때문에 성능문제가 크진 않다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// scope.launch {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">val</span> newItems = items.takeLast(items.size - <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>                items = newItems
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        },
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">ItemList</span>(items: List&lt;Int&gt;, onItemClick: () <span style="color:#f92672">-&gt;</span> Unit) {
+</span></span><span style="display:flex;"><span>    LazyColumn(Modifier.fillMaxSize()) {
+</span></span><span style="display:flex;"><span>        items(
+</span></span><span style="display:flex;"><span>            items = items,
+</span></span><span style="display:flex;"><span>            key = { item <span style="color:#f92672">-&gt;</span> item },
+</span></span><span style="display:flex;"><span>        ) { item <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 이 위치에선 아래와 같이 `@Composable` 함수를 호출하지 않고 Box { ... } 처럼 직접 풀어쓰면 key가 제대로 역할을 하지 못한다. (원인 모름)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 이 위치에선 아래와 같이 `@Composable` 함수를 호출하는 것 외에 실행코드 한 줄이라도 있으면 key가 제대로 역할을 하지 못한다. 예) Log.e(&#34;BSSCCO&#34;, &#34;$item&#34;). (원인 모름)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            Item(item, onClick = onItemClick)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Item</span>(item: Int, onClick: () <span style="color:#f92672">-&gt;</span> Unit) {
+</span></span><span style="display:flex;"><span>    Box(
+</span></span><span style="display:flex;"><span>        modifier = Modifier
+</span></span><span style="display:flex;"><span>            .clickable(onClick = onClick)
+</span></span><span style="display:flex;"><span>            .fillMaxWidth()
+</span></span><span style="display:flex;"><span>            .height(<span style="color:#ae81ff">50.</span>dp),
+</span></span><span style="display:flex;"><span>        contentAlignment = Alignment.Center,
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$item</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        Text(item.toString())
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li><code>key</code> 사용 시 주의할 점
+<ul>
+<li>coroutineScope 안에서 데이터를 변경하면 <code>key</code>가 제대로 역할을 하지 못한다. ViewModel에서 데이터를 변경해도 마찬가지일 것
+<ul>
+<li><code>rememberUpdatedState()</code>의 지연된 상태접근 개념이 원인의 힌트가 될지도 모르겠다..</li>
+</ul>
+</li>
+<li><code>LazyColumn</code>에선 <code>key</code>가 제대로 역할을 못하더라도 <code>LazyColumn</code>은 화면에 보여지는 항목들만 Recomposition 대상으로 삼기 때문에 성능문제가 크진 않다.</li>
+<li><code>items</code> 안에선 <code>Composable</code> 함수를 호출하지 않고 <code>Box { ... }</code> 처럼 직접 풀어쓰면 <code>key</code>가 제대로 역할을 하지 못한다. (원인 모름)</li>
+<li><code>items</code> 안에선 <code>Composable</code> 함수를 호출하는 것 외에 실행코드 한 줄이라도 있으면 <code>key</code>가 제대로 역할을 하지 못한다. 예) <code>Log.e(&quot;BSSCCO&quot;, &quot;$item&quot;)</code>. (원인 모름)</li>
+</ul>
+</li>
+</ul>
+<h2 id="composable이-recomposition에서-제외되는-조건httpsdeveloperandroidcomjetpackcomposelifecycleskipping"><a href="https://developer.android.com/jetpack/compose/lifecycle#skipping">Composable이 Recomposition에서 제외되는 조건</a></h2>
+<ul>
+<li>모든 입력(주로 <code>@Composable</code> 함수의 매개변수)이 <strong>안정적</strong>이고 <strong>변경되지 않았으면</strong> 건너띈다.</li>
+<li>안정적인 자료형
+<ul>
+<li>모든 원시 값 유형: Boolean, Int, Long, Float, Char 등</li>
+<li>문자열</li>
+<li>모든 함수 유형(람다)</li>
+<li>완전히 변경 불가능한 모든 유형</li>
+</ul>
+</li>
+<li>변경되지 않았는지 비교하는 방법
+<ul>
+<li>두 인스턴스의 equals 결과가 동일한지 비교한다.</li>
+</ul>
+</li>
+<li>안정적인 것으로 강제하기
+<ul>
+<li>Compose가 유형이 안정적이라고 추론할 수 없지만 안정적인 것으로 간주하도록 하려면 <a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Stable">@Stable</a> 어노테이션을 사용한다.</li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// Marking the type as stable to favor skipping and smart recompositions.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">@Stable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">UiState</span>&lt;T : Result&lt;T&gt;&gt; {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> value: T?  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> exception: Throwable?  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> hasError: Boolean    
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">get</span>() = exception <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/compose/">
+                compose
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2022-06-22-composable-modifier/">Compose 기초 - Composable Modifier</a></li>
+    
+    <li><a href="/posts/2022-06-22-composable-state/">Compose 기초 - Composable의 상태 관리</a></li>
+    
+    <li><a href="/posts/2022-06-22-compose-side-effect/">Compose 기초 - Compose 사이드이펙트</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
 
         <div class="site-footer">
   
@@ -184,6 +293,8 @@
     
   
 </script>
+
+  
 
 </body>
 

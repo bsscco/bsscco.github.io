@@ -6,14 +6,55 @@
     <description>Recent content in Posts on Android Developer BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 22 Jun 2022 21:10:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Jun 2022 21:10:04 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Compose 기초 - Compose의 이해</title>
+      <title>Compose 기초 - Compose 사이드이펙트</title>
+      <link>https://bsscco.github.io/posts/2022-06-22-compose-side-effect/</link>
+      <pubDate>Wed, 22 Jun 2022 21:10:04 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2022-06-22-compose-side-effect/</guid>
+      <description>Compose 사이드이펙트 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트가 발생할 수 있는 조건 : 공유객체의 값을 변경하는 행위 Composable 상태를 변경하는 등의 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>Compose 기초 - Composable Modifier</title>
+      <link>https://bsscco.github.io/posts/2022-06-22-composable-modifier/</link>
+      <pubDate>Wed, 22 Jun 2022 21:10:03 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2022-06-22-composable-modifier/</guid>
+      <description>Composable Modifier 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 접근성 라벨과 같은 정보 추가 요소를 클릭 가능, 스크롤 가능하게 만드는 것과 같은 높은 수준의 상호작용 추가 @Composable fun Greeting(name: String) { Column(modifier = Modifier.padding(24.dp)) { Text(text = &amp;#34;Hello,&amp;#34;) Text(text = name) } } Modifier의 결과를 예상할 때 주의할 점 @Composable fun ArtistCard(/*...*/) { val padding = 16.</description>
+    </item>
+    
+    <item>
+      <title>Compose 기초 - Composable의 수명주기</title>
+      <link>https://bsscco.github.io/posts/2022-06-22-composable-lifecycle/</link>
+      <pubDate>Wed, 22 Jun 2022 21:10:02 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2022-06-22-composable-lifecycle/</guid>
+      <description>Composable의 수명주기 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000).</description>
+    </item>
+    
+    <item>
+      <title>Compose 기초 - Composable의 상태 관리</title>
+      <link>https://bsscco.github.io/posts/2022-06-22-composable-state/</link>
+      <pubDate>Wed, 22 Jun 2022 21:10:01 +0000</pubDate>
+      
+      <guid>https://bsscco.github.io/posts/2022-06-22-composable-state/</guid>
+      <description>Composable의 상태 관리 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Composition 용어 Composition : UI를 기술하는 Composable의 트리구조 Initial Composition : 첫 Composition 구성 Recomposition : Composition을 재구성 Composable의 상태에 쓰이는 메모리를 관리하기 remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다. remember {...}를 호출한 Composable이 Composition에서 삭제되면 remember에 의해 계산된 값 또한 제거된다. 왜 remember {.</description>
+    </item>
+    
+    <item>
+      <title>Compose 기초 - Compose 이해, Recomposition</title>
       <link>https://bsscco.github.io/posts/2022-06-22-compose-mental-model/</link>
       <pubDate>Wed, 22 Jun 2022 21:10:00 +0000</pubDate>
       
       <guid>https://bsscco.github.io/posts/2022-06-22-compose-mental-model/</guid>
-      <description>Compose 이해 선언형 프로그래밍 패러다임이란? findViewById(R.id.text).setText(aText)와 같은 명령형 코드의 단점 aText가 여러 View에서 사용된다고 가정했을 때 aText의 값이 바뀌면 모든 View를 수동조작해야 한다. View 하나라도 빠뜨리기 쉽다. 반면에 선언형 코드는 UI빌드와 UI갱신을 자동화 한다. 선언형 프로그래밍 기법은 처음부터 화면 전체를 생성한 뒤에 필요한 변경사항만 적용하는 방식으로 동작한다. 선언형 패러다임, 좀 더 자세히 Compose의 선언형 접근 방식에서는 Composable들의 트리인 Composition을 빌드함으로써 UI를 초기화 한다. Composable은 setter 또는 getter 함수를 노출하지 않는다. 따라서 사실상 Composable은 객체로 노출되지 않으며 수동조작 할 수 없다.</description>
+      <description>Compose 이해 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+선언형 프로그래밍 패러다임이란? findViewById(R.id.text).setText(aText)와 같은 명령형 코드의 단점 aText가 여러 View에서 사용된다고 가정했을 때 aText의 값이 바뀌면 모든 View를 수동조작해야 한다. View 하나라도 빠뜨리기 쉽다. 반면에 선언형 코드는 UI빌드와 UI갱신을 자동화 한다. 선언형 프로그래밍 기법은 처음부터 화면 전체를 생성한 뒤에 필요한 변경사항만 적용하는 방식으로 동작한다. 선언형 패러다임, 좀 더 자세히 Compose의 선언형 접근 방식에서는 Composable들의 트리인 Composition을 빌드함으로써 UI를 초기화 한다.</description>
     </item>
     
     <item>

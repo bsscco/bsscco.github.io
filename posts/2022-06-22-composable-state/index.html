@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="bsscco" />
-  <meta property="og:url" content="https://bsscco.github.io/posts/2022-06-22-compose-mental-model/" />
-  <link rel="canonical" href="https://bsscco.github.io/posts/2022-06-22-compose-mental-model/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+  <meta property="og:url" content="https://bsscco.github.io/posts/2022-06-22-composable-state/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2022-06-22-composable-state/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
 
   <script type="application/ld+json">
   {
@@ -19,9 +19,9 @@
            "@id": "https:\/\/bsscco.github.io\/"
       },
       "articleSection" : "posts",
-      "name" : "Compose 기초 - Compose 이해, Recomposition",
-      "headline" : "Compose 기초 - Compose 이해, Recomposition",
-      "description" : "Compose 이해 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\n선언형 프로그래밍 패러다임이란? findViewById(R.id.text).setText(aText)와 같은 명령형 코드의 단점 aText가 여러 View에서 사용된다고 가정했을 때 aText의 값이 바뀌면 모든 View를 수동조작해야 한다. View 하나라도 빠뜨리기 쉽다. 반면에 선언형 코드는 UI빌드와 UI갱신을 자동화 한다. 선언형 프로그래밍 기법은 처음부터 화면 전체를 생성한 뒤에 필요한 변경사항만 적용하는 방식으로 동작한다. 선언형 패러다임, 좀 더 자세히 Compose의 선언형 접근 방식에서는 Composable들의 트리인 Composition을 빌드함으로써 UI를 초기화 한다.",
+      "name" : "Compose 기초 - Composable의 상태 관리",
+      "headline" : "Compose 기초 - Composable의 상태 관리",
+      "description" : "Composable의 상태 관리 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\nComposition 용어 Composition : UI를 기술하는 Composable의 트리구조 Initial Composition : 첫 Composition 구성 Recomposition : Composition을 재구성 Composable의 상태에 쓰이는 메모리를 관리하기 remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다. remember {...}를 호출한 Composable이 Composition에서 삭제되면 remember에 의해 계산된 값 또한 제거된다. 왜 remember {.",
       "inLanguage" : "en-US",
       "author" : "bsscco",
       "creator" : "bsscco",
@@ -29,19 +29,19 @@
       "accountablePerson" : "bsscco",
       "copyrightHolder" : "bsscco",
       "copyrightYear" : "2022",
-      "datePublished": "2022-06-22 21:10:00 \u002b0000 UTC",
-      "dateModified" : "2022-06-22 21:10:00 \u002b0000 UTC",
-      "url" : "https:\/\/bsscco.github.io\/posts\/2022-06-22-compose-mental-model\/",
+      "datePublished": "2022-06-22 21:10:01 \u002b0000 UTC",
+      "dateModified" : "2022-06-22 21:10:01 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2022-06-22-composable-state\/",
       "keywords" : [ "compose", ]
   }
 </script>
-<title>Compose 기초 - Compose 이해, Recomposition</title>
-  <meta property="og:title" content="Compose 기초 - Compose 이해, Recomposition" />
+<title>Compose 기초 - Composable의 상태 관리</title>
+  <meta property="og:title" content="Compose 기초 - Composable의 상태 관리" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="Compose 이해 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-선언형 프로그래밍 패러다임이란? findViewById(R.id.text).setText(aText)와 같은 명령형 코드의 단점 aText가 여러 View에서 사용된다고 가정했을 때 aText의 값이 바뀌면 모든 View를 수동조작해야 한다. View 하나라도 빠뜨리기 쉽다. 반면에 선언형 코드는 UI빌드와 UI갱신을 자동화 한다. 선언형 프로그래밍 기법은 처음부터 화면 전체를 생성한 뒤에 필요한 변경사항만 적용하는 방식으로 동작한다. 선언형 패러다임, 좀 더 자세히 Compose의 선언형 접근 방식에서는 Composable들의 트리인 Composition을 빌드함으로써 UI를 초기화 한다." />
-  <meta name="description" content="Compose 이해 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-선언형 프로그래밍 패러다임이란? findViewById(R.id.text).setText(aText)와 같은 명령형 코드의 단점 aText가 여러 View에서 사용된다고 가정했을 때 aText의 값이 바뀌면 모든 View를 수동조작해야 한다. View 하나라도 빠뜨리기 쉽다. 반면에 선언형 코드는 UI빌드와 UI갱신을 자동화 한다. 선언형 프로그래밍 기법은 처음부터 화면 전체를 생성한 뒤에 필요한 변경사항만 적용하는 방식으로 동작한다. 선언형 패러다임, 좀 더 자세히 Compose의 선언형 접근 방식에서는 Composable들의 트리인 Composition을 빌드함으로써 UI를 초기화 한다." />
+  <meta property="og:description" content="Composable의 상태 관리 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Composition 용어 Composition : UI를 기술하는 Composable의 트리구조 Initial Composition : 첫 Composition 구성 Recomposition : Composition을 재구성 Composable의 상태에 쓰이는 메모리를 관리하기 remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다. remember {...}를 호출한 Composable이 Composition에서 삭제되면 remember에 의해 계산된 값 또한 제거된다. 왜 remember {." />
+  <meta name="description" content="Composable의 상태 관리 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Composition 용어 Composition : UI를 기술하는 Composable의 트리구조 Initial Composition : 첫 Composition 구성 Recomposition : Composition을 재구성 Composable의 상태에 쓰이는 메모리를 관리하기 remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다. remember {...}를 호출한 Composable이 Composition에서 삭제되면 remember에 의해 계산된 값 또한 제거된다. 왜 remember {." />
   <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
   
 
@@ -95,12 +95,12 @@
 
         </div>
         <header class="post-header">
-          <h1 class="post-title">Compose 기초 - Compose 이해, Recomposition</h1>
+          <h1 class="post-title">Compose 기초 - Composable의 상태 관리</h1>
           
           <div class="row post-desc">
             <div class="col-xs-6">
               
-              <time class="post-date" datetime="2022-06-22 21:10:00 UTC">
+              <time class="post-date" datetime="2022-06-22 21:10:01 UTC">
                 22 Jun 2022
               </time>
               
@@ -118,75 +118,180 @@
 
         <div class="post-content markdown-body">
           
-          <h1 id="compose-이해httpsdeveloperandroidcomjetpackcomposemental-model"><a href="https://developer.android.com/jetpack/compose/mental-model">Compose 이해</a></h1>
+          <h1 id="composable의-상태-관리httpsdeveloperandroidcomjetpackcomposestate"><a href="https://developer.android.com/jetpack/compose/state">Composable의 상태 관리</a></h1>
 <p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
-<h2 id="선언형-프로그래밍-패러다임이란httpsdeveloperandroidcomjetpackcomposemental-modelparadigm"><a href="https://developer.android.com/jetpack/compose/mental-model#paradigm">선언형 프로그래밍 패러다임이란?</a></h2>
+<h2 id="composition-용어">Composition 용어</h2>
 <ul>
-<li><code>findViewById(R.id.text).setText(aText)</code>와 같은 명령형 코드의 단점
+<li>Composition : UI를 기술하는 Composable의 트리구조</li>
+<li>Initial Composition : 첫 Composition 구성</li>
+<li>Recomposition : Composition을 재구성</li>
+</ul>
+<h2 id="composable의-상태에-쓰이는-메모리를-관리하기httpsdeveloperandroidcomjetpackcomposestatestate-in-composables"><a href="https://developer.android.com/jetpack/compose/state#state-in-composables">Composable의 상태에 쓰이는 메모리를 관리하기</a></h2>
 <ul>
-<li><code>aText</code>가 여러 View에서 사용된다고 가정했을 때 <code>aText</code>의 값이 바뀌면 모든 View를 수동조작해야 한다. View 하나라도 빠뜨리기 쉽다.</li>
+<li><code>remember {...}</code>란?
+<ul>
+<li><code>remember {...}</code>에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다.</li>
+<li><code>remember {...}</code>를 호출한 Composable이 Composition에서 삭제되면 <code>remember</code>에 의해 계산된 값 또한 제거된다.</li>
 </ul>
 </li>
-<li>반면에 선언형 코드는 UI빌드와 UI갱신을 자동화 한다.
+<li>왜 <code>remember {...}</code> 앞에 <code>by</code> 위임자를 사용할까?
 <ul>
-<li>선언형 프로그래밍 기법은 처음부터 화면 전체를 생성한 뒤에 필요한 변경사항만 적용하는 방식으로 동작한다.</li>
+<li><code>var value = remember { ... }</code> : 사용할 때 <code>state.value</code>로 접근해야 함.</li>
+<li><code>var value by remember { ... }</code> : 사용할 때 <code>state</code>로 접근할 수 있음.</li>
 </ul>
 </li>
-</ul>
-<h2 id="선언형-패러다임-좀-더-자세히httpsdeveloperandroidcomjetpackcomposemental-modelparadigm"><a href="https://developer.android.com/jetpack/compose/mental-model#paradigm">선언형 패러다임, 좀 더 자세히</a></h2>
+<li><code>rememberSaveable</code>란?
 <ul>
-<li>Compose의 선언형 접근 방식에서는 Composable들의 트리인 Composition을 빌드함으로써 UI를 초기화 한다.
-<ul>
-<li>Composable은 setter 또는 getter 함수를 노출하지 않는다.</li>
-<li>따라서 사실상 Composable은 객체로 노출되지 않으며 수동조작 할 수 없다.</li>
-<li><img src="https://developer.android.com/images/jetpack/compose/mmodel-simple.png" alt="simple"></li>
-</ul>
-</li>
-<li>최상위 Composable로 제공된 데이터는 하위 Composable을 호출함으로써 UI(Composable Tree)를 형성한다. 그리고 적절한 데이터가 하위 Composable로 전달된다.
-<ul>
-<li><img src="https://developer.android.com/images/jetpack/compose/mmodel-flow-data.png" alt="dataflow"></li>
-</ul>
-</li>
-<li><code>onClick</code>과 같은 사용자 이벤트는 상위 Composable로 전달된다. 상위에서 변경사항이 발생하면 변경된 데이터가 다시 계층구조 아래로 전달된다.
-<ul>
-<li><img src="https://developer.android.com/images/jetpack/compose/mmodel-flow-data.png" alt="dataflow"></li>
+<li>Configuration changes, <code>Activity</code> 및 프로세스가 재생성 되었을 때도 상태를 <strong>복원</strong>할 수 있도록 해준다.</li>
+<li>내부적으로 <code>Bundle</code>을 사용한다.</li>
+<li><code>Bundle</code>이 지원하지 않는 값의 경우엔 맞춤 <code>Saver</code> 객체를 전달하면 된다.</li>
 </ul>
 </li>
 </ul>
-<h2 id="동적-컨텐츠로-구현-가능httpsdeveloperandroidcomjetpackcomposemental-modeldynamic"><a href="https://developer.android.com/jetpack/compose/mental-model#dynamic">동적 컨텐츠로 구현 가능</a></h2>
+<h2 id="stateful상태있는과-stateless상태없는-composablehttpsdeveloperandroidcomjetpackcomposestatestateful-vs-stateless"><a href="https://developer.android.com/jetpack/compose/state#stateful-vs-stateless">Stateful(상태있는)과 Stateless(상태없는) Composable</a></h2>
 <ul>
-<li><code>@Composable</code> 함수는 Kotlin으로 작성되기 때문에 <code>if</code>, <code>for</code> 문법을 사용하여 조건에 따라 UI를 빌드할 수 있다.</li>
+<li><code>remember</code> 등을 사용하는 Composable은 Stateful Composable이 된다.</li>
+<li>상태를 갖지 않는 Composable은 Stateless Composable이 된다.</li>
+<li>Stateful Composable을 Stateless Composable로 만드는 방법은 State Hoisting을 하는 것이다.</li>
 </ul>
-<h2 id="recomposition이란httpsdeveloperandroidcomjetpackcomposemental-modelrecomposition"><a href="https://developer.android.com/jetpack/compose/mental-model#recomposition">Recomposition이란?</a></h2>
+<h2 id="composable-상태-끌어올리기state-hoistinghttpsdeveloperandroidcomjetpackcomposestatestate-hoisting"><a href="https://developer.android.com/jetpack/compose/state#state-hoisting">Composable 상태 끌어올리기(State Hoisting)</a></h2>
 <ul>
-<li><code>@Composable</code> 함수의 매개변수가 변하면, 이 변수를 사용하는 하위의 <code>@Composable</code> 함수가 재호출된다. 그리고 해당하는 UI가 갱신된다. 이 프로세스를 Recomposition(재구성)이라고 한다.
+<li>Composable의 상태를 <code>@Composable</code> 함수의 매개변수로 만들어서 상위 Composable에 의해 상태를 전달받을 수 있도록 하는 게 State Hoisting이다.
 <ul>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Greeting</span>(name: String) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// name이 변하면 name을 사용하는 Text()가 재호출된다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Text(<span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">$name</span><span style="color:#e6db74">&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">HelloScreen</span>() {   
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> name <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#e6db74">&#34;&#34;</span>) }  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    HelloContent(name = name, onNameChange = { name = <span style="color:#66d9ef">it</span> })
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// name과 onNameChange를 상위 Composable로부터 전달받는다. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">HelloContent</span>(
+</span></span><span style="display:flex;"><span>    name: String, 
+</span></span><span style="display:flex;"><span>    onNameChange: (String) <span style="color:#f92672">-&gt;</span> Unit,
+</span></span><span style="display:flex;"><span>) {  
+</span></span><span style="display:flex;"><span>    Column(modifier = Modifier.padding(<span style="color:#ae81ff">16.</span>dp)) {    
+</span></span><span style="display:flex;"><span>        Text(      
+</span></span><span style="display:flex;"><span>            text = <span style="color:#e6db74">&#34;Hello, </span><span style="color:#e6db74">$name</span><span style="color:#e6db74">&#34;</span>,      
+</span></span><span style="display:flex;"><span>            modifier = Modifier.padding(bottom = <span style="color:#ae81ff">8.</span>dp),      
+</span></span><span style="display:flex;"><span>            style = MaterialTheme.typography.h5    
+</span></span><span style="display:flex;"><span>        )    
+</span></span><span style="display:flex;"><span>        OutlinedTextField(      
+</span></span><span style="display:flex;"><span>            value = name,      
+</span></span><span style="display:flex;"><span>            onValueChange = onNameChange,      
+</span></span><span style="display:flex;"><span>            label = { Text(<span style="color:#e6db74">&#34;Name&#34;</span>) }    
+</span></span><span style="display:flex;"><span>        )  
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 </ul>
 </li>
-<li>Recomposition에 대해 알아둘 점
+<li>State Hoisting의 장점
 <ul>
-<li>입력의 변화가 없는 <code>@Composable</code> 함수는 <strong>Recomposition에서 제외될 수 있다.</strong> (=Smart Recomposition)
+<li>단일 소스 저장소 : 상위 위치에서 데이터를 내려받기 때문에 코드 변경 범위가 더 한정되며 버그 방지에 도움이 된다.</li>
+<li>캡슐화 : 코드 변경 범위를 Stateful Composable로 한정할 수 있다.</li>
+<li>공유 가능함 : Hoisting된 상태를 여러 Composable과 공유할 수 있다.</li>
+<li>가로채기 가능함 : Stateless Composable의 호출자가 상태를 변경하기 전에 이벤트를 어떻게 처리할지 결정할 수 있다.</li>
+<li>분리됨 : Hoisting된 상태를 어디에나, 특히 State Holder에 저장할 수 있다.
 <ul>
-<li><img src="https://developer.android.com/images/jetpack/compose/lifecycle-showerror.png" alt="recomposition"></li>
+<li>*State Holder : 상태 관리를 책임지는 클래스. 예) 상태 관리 로직을 포함하는 Composable, Android ViewModel</li>
 </ul>
 </li>
-<li>또 애니메이션 렌더링 중의 모든 프레임에서 <code>@Composable</code> 함수가 <strong>빈번히 호출될 수 있다.</strong></li>
-<li><code>@Composable</code> 함수는 빈번히 호출될 수 있기 때문에 <strong>비용이 많이 드는 작업을 피해야 한다.</strong> 꼭 필요하다면 백그라운드 코루틴을 통해 작업을 실행하고, 결과값을 Composable의 매개변수로 전달해야 한다.</li>
-<li><code>@Composable</code> 함수는 <strong>순서와 관계없이 호출될 수 있다.</strong></li>
-<li><code>@Composable</code> 함수는 <strong>동시에 호출될 수 있다.</strong></li>
-<li>Recomposition은 <strong>낙관적이며 취소될 수 있다.</strong></li>
-<li>이런 이유들로 인해 <code>@Composable</code> 함수에서 사이드이펙트를 발생시키면 사이드이펙트의 결과를 사용자가 예측할 수 없다.
-<ul>
-<li>*사이드이펙트 예) 전역변수 등 공유객체의 값을 변경하는 행위</li>
 </ul>
 </li>
+<li>Hositing 원칙
+<ul>
+<li>상태는 <strong>적어도</strong> 그 상태를 사용하는 모든 Composable의 <strong>가장 가까운 공통 상위 요소</strong>로 끌어올려야 한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="복원-가능한-상태를-백업하기httpsdeveloperandroidcomjetpackcomposestaterestore-ui-state"><a href="https://developer.android.com/jetpack/compose/state#restore-ui-state">복원 가능한 상태를 백업하기</a></h2>
+<ul>
+<li>Parcelize
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Parcelizedata</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span>(<span style="color:#66d9ef">val</span> name: String, <span style="color:#66d9ef">val</span> country: String) : Parcelable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">CityScreen</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> selectedCity = rememberSaveable {    
+</span></span><span style="display:flex;"><span>        mutableStateOf(City(<span style="color:#e6db74">&#34;Madrid&#34;</span>, <span style="color:#e6db74">&#34;Spain&#34;</span>))  
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>MapSaver
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span>(<span style="color:#66d9ef">val</span> name: String, <span style="color:#66d9ef">val</span> country: String) : Parcelable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> CitySaver = run {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> nameKey = <span style="color:#e6db74">&#34;Name&#34;</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> countryKey = <span style="color:#e6db74">&#34;Country&#34;</span> 
+</span></span><span style="display:flex;"><span>    mapSaver(    
+</span></span><span style="display:flex;"><span>        save = { mapOf(nameKey to <span style="color:#66d9ef">it</span>.name, countryKey to <span style="color:#66d9ef">it</span>.country) },    
+</span></span><span style="display:flex;"><span>        restore = { City(<span style="color:#66d9ef">it</span>[nameKey] <span style="color:#66d9ef">as</span> String, <span style="color:#66d9ef">it</span>[countryKey] <span style="color:#66d9ef">as</span> String) }  
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">CityScreen</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> selectedCity = rememberSaveable(stateSaver = CitySaver) {    
+</span></span><span style="display:flex;"><span>        mutableStateOf(City(<span style="color:#e6db74">&#34;Madrid&#34;</span>, <span style="color:#e6db74">&#34;Spain&#34;</span>))  
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}  
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>ListSaver
+<ul>
+<li>MapSaver에 비해 사용이 간편</li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span>(<span style="color:#66d9ef">val</span> name: String, <span style="color:#66d9ef">val</span> country: String) : Parcelable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> CitySaver = listSaver&lt;City, Any&gt;(
+</span></span><span style="display:flex;"><span>    save = { listOf(<span style="color:#66d9ef">it</span>.name, <span style="color:#66d9ef">it</span>.country) },
+</span></span><span style="display:flex;"><span>    restore = { City(<span style="color:#66d9ef">it</span>[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">as</span> String, <span style="color:#66d9ef">it</span>[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">as</span> String) }
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">CityScreen</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> selectedCity = rememberSaveable(stateSaver = CitySaver) {    
+</span></span><span style="display:flex;"><span>        mutableStateOf(City(<span style="color:#e6db74">&#34;Madrid&#34;</span>, <span style="color:#e6db74">&#34;Spain&#34;</span>))  
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h2 id="composable-상태-전달의-의존성-방향httpsdeveloperandroidcomjetpackcomposestatemanaging-state"><a href="https://developer.android.com/jetpack/compose/state#managing-state">Composable 상태 전달의 의존성 방향</a></h2>
+<ul>
+<li><img src="https://developer.android.com/images/jetpack/compose/state-dependencies.svg" alt="state-dependencies"></li>
+</ul>
+<h2 id="composable-상태-용어-로직-용어httpsdeveloperandroidcomjetpackcomposestatetypes-of-state-and-logic"><a href="https://developer.android.com/jetpack/compose/state#types-of-state-and-logic">Composable 상태 용어, 로직 용어</a></h2>
+<ul>
+<li>UI요소 상태 : UI요소의 상태</li>
+<li>화면 상태 : 화면에 표시할 요소. 로드 플래그 등을 포함한다.</li>
+<li>UI 로직 : 화면의 상태 변경을 표시하는 방법. 이 로직은 주로 UI 레이어에 위치한다.</li>
+<li>비지니스 로직 : 상태 변경에 따라 진행해야 할 작업. 이 로직은 주로 데이터 레이어에 위치한다. 예) 결제 또는 환경설정 저장하기</li>
+</ul>
+<h2 id="composable-상태-생산자로써-viewmodel의-장점httpsdeveloperandroidcomjetpackcomposestateviewmodels-source-of-truth"><a href="https://developer.android.com/jetpack/compose/state#viewmodels-source-of-truth">Composable 상태 생산자로써 ViewModel의 장점</a></h2>
+<ul>
+<li>데이터 레이어 같이 다른 레이어에 위치하는 비즈니스 로직에 대한 액세스 권한을 제공한다.</li>
+<li>특정 화면에 표시하기 위한 애플리케이션 데이터를 준비(백그라운드 처리)하는 것에 유리하다.</li>
+<li>Composition보다 수명이 길기 때문에 <a href="https://developer.android.com/jetpack/compose/navigation">탐색 그래프</a>에서의 수명관리에 유리하다.
+<ul>
+<li>화면이 백 스택에 있는 동안 Navigation이 ViewModel을 캐시한다.</li>
+<li>화면(navigation destination)이 백 스택에서 사라질 때 ViewModel도 삭제된다.</li>
+</ul>
+</li>
+<li>ViewModel 사용 시 주의할 점
+<ul>
+<li>화면 수준 Composable에서만 ViewModel 인스턴스를 제공하는 것이 좋다. <a href="https://developer.android.com/jetpack/compose/state#viewmodels-source-of-truth">(왜지??? 답을 못찾음)</a></li>
+<li>ViewModel에서 상태 복원 작업은 <a href="https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate">SavedStateHandle</a>를 사용한다.</li>
 </ul>
 </li>
 </ul>
@@ -219,9 +324,9 @@
     
     <li><a href="/posts/2022-06-22-composable-modifier/">Compose 기초 - Composable Modifier</a></li>
     
-    <li><a href="/posts/2022-06-22-composable-state/">Compose 기초 - Composable의 상태 관리</a></li>
-    
     <li><a href="/posts/2022-06-22-composable-lifecycle/">Compose 기초 - Composable의 수명주기</a></li>
+    
+    <li><a href="/posts/2022-06-22-compose-side-effect/">Compose 기초 - Compose 사이드이펙트</a></li>
     
   </ul>
 </div>
