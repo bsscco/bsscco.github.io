@@ -19,9 +19,9 @@
            "@id": "https:\/\/bsscco.github.io\/"
       },
       "articleSection" : "posts",
-      "name" : "Compose 기초 - Composable의 수명주기",
-      "headline" : "Compose 기초 - Composable의 수명주기",
-      "description" : "Composable의 수명주기 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\nComposable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가\/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000).",
+      "name" : "Compose 기초 - Composable의 수명주기, Smart Recomposition",
+      "headline" : "Compose 기초 - Composable의 수명주기, Smart Recomposition",
+      "description" : "Composable의 수명주기 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\nComposable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가\/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn Composable에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000).",
       "inLanguage" : "en-US",
       "author" : "bsscco",
       "creator" : "bsscco",
@@ -35,13 +35,13 @@
       "keywords" : [ "compose", ]
   }
 </script>
-<title>Compose 기초 - Composable의 수명주기</title>
-  <meta property="og:title" content="Compose 기초 - Composable의 수명주기" />
+<title>Compose 기초 - Composable의 수명주기, Smart Recomposition</title>
+  <meta property="og:title" content="Compose 기초 - Composable의 수명주기, Smart Recomposition" />
   <meta property="og:type" content="article" />
   <meta property="og:description" content="Composable의 수명주기 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000)." />
+Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn Composable에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000)." />
   <meta name="description" content="Composable의 수명주기 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000)." />
+Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn Composable에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000)." />
   <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
   
 
@@ -95,7 +95,7 @@ Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되
 
         </div>
         <header class="post-header">
-          <h1 class="post-title">Compose 기초 - Composable의 수명주기</h1>
+          <h1 class="post-title">Compose 기초 - Composable의 수명주기, Smart Recomposition</h1>
           
           <div class="row post-desc">
             <div class="col-xs-6">
@@ -122,8 +122,11 @@ Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되
 <p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
 <h2 id="composable의-수명-주기">Composable의 수명 주기</h2>
 <ul>
-<li>Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다.</li>
+<li>Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다.
+<ul>
 <li><img src="https://developer.android.com/images/jetpack/compose/lifecycle-composition.png" alt="lifecycle"></li>
+</ul>
+</li>
 </ul>
 <h2 id="smart-recomposition에-도움이-되는-정보-추가하기httpsdeveloperandroidcomjetpackcomposelifecycleadd-info-smart-recomposition"><a href="https://developer.android.com/jetpack/compose/lifecycle#add-info-smart-recomposition">Smart Recomposition에 도움이 되는 정보 추가하기</a></h2>
 <ul>
@@ -132,7 +135,7 @@ Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되
 <li><img src="https://developer.android.com/images/jetpack/compose/lifecycle-newelement-top-all-recompose.png" alt="new-top"></li>
 </ul>
 </li>
-<li><code>Column</code> 또는 <code>LazyColumn</code>에서 <code>key</code> Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다.
+<li><code>Column</code> 또는 <code>LazyColumn</code> Composable에서 <code>key</code> Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다.
 <ul>
 <li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
@@ -198,9 +201,9 @@ Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되
 </ul>
 </li>
 </ul>
-<h2 id="composable이-recomposition에서-제외되는-조건httpsdeveloperandroidcomjetpackcomposelifecycleskipping"><a href="https://developer.android.com/jetpack/compose/lifecycle#skipping">Composable이 Recomposition에서 제외되는 조건</a></h2>
+<h2 id="recomposition에서-제외되는-조건httpsdeveloperandroidcomjetpackcomposelifecycleskipping"><a href="https://developer.android.com/jetpack/compose/lifecycle#skipping">Recomposition에서 제외되는 조건</a></h2>
 <ul>
-<li>모든 입력(주로 <code>@Composable</code> 함수의 매개변수)이 <strong>안정적</strong>이고 <strong>변경되지 않았으면</strong> 건너띈다.</li>
+<li>모든 입력(<code>@Composable</code> 함수의 매개변수, 함수 안에서 사용하고 있는 <code>State&lt;T&gt;</code> 변수 등)이 <strong>안정적</strong>이고 <strong>변경되지 않았으면</strong> 건너띈다.</li>
 <li>안정적인 자료형
 <ul>
 <li>모든 원시 값 유형: Boolean, Int, Long, Float, Char 등</li>
@@ -262,7 +265,7 @@ Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되
     
     <li><a href="/posts/2022-06-22-composable-state/">Compose 기초 - Composable의 상태 관리</a></li>
     
-    <li><a href="/posts/2022-06-22-compose-side-effect/">Compose 기초 - Compose 사이드이펙트</a></li>
+    <li><a href="/posts/2022-06-22-compose-side-effect/">Compose 기초 - Compose 사이드이펙트 관리</a></li>
     
   </ul>
 </div>

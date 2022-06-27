@@ -19,9 +19,9 @@
            "@id": "https:\/\/bsscco.github.io\/"
       },
       "articleSection" : "posts",
-      "name" : "Compose 기초 - Compose 사이드이펙트",
-      "headline" : "Compose 기초 - Compose 사이드이펙트",
-      "description" : "Compose 사이드이펙트 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\n왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트가 발생할 수 있는 조건 : 공유객체의 값을 변경하는 행위 Composable 상태를 변경하는 등의 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.",
+      "name" : "Compose 기초 - Compose 사이드이펙트 관리",
+      "headline" : "Compose 기초 - Compose 사이드이펙트 관리",
+      "description" : "Compose 사이드이펙트 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\n왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트 예) 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.",
       "inLanguage" : "en-US",
       "author" : "bsscco",
       "creator" : "bsscco",
@@ -35,13 +35,13 @@
       "keywords" : [ "compose", ]
   }
 </script>
-<title>Compose 기초 - Compose 사이드이펙트</title>
-  <meta property="og:title" content="Compose 기초 - Compose 사이드이펙트" />
+<title>Compose 기초 - Compose 사이드이펙트 관리</title>
+  <meta property="og:title" content="Compose 기초 - Compose 사이드이펙트 관리" />
   <meta property="og:type" content="article" />
   <meta property="og:description" content="Compose 사이드이펙트 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트가 발생할 수 있는 조건 : 공유객체의 값을 변경하는 행위 Composable 상태를 변경하는 등의 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다." />
+왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트 예) 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다." />
   <meta name="description" content="Compose 사이드이펙트 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트가 발생할 수 있는 조건 : 공유객체의 값을 변경하는 행위 Composable 상태를 변경하는 등의 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다." />
+왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트 예) 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다." />
   <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
   
 
@@ -95,7 +95,7 @@
 
         </div>
         <header class="post-header">
-          <h1 class="post-title">Compose 기초 - Compose 사이드이펙트</h1>
+          <h1 class="post-title">Compose 기초 - Compose 사이드이펙트 관리</h1>
           
           <div class="row post-desc">
             <div class="col-xs-6">
@@ -124,12 +124,12 @@
 <ul>
 <li>Recomposition에 의해 <code>@Composable</code> 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 <code>@Composable</code> 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.
 <ul>
-<li>*사이드이펙트가 발생할 수 있는 조건 : 공유객체의 값을 변경하는 행위</li>
+<li>*사이드이펙트 예) 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업</li>
 </ul>
 </li>
-<li>Composable 상태를 변경하는 등의 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.</li>
+<li>사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.</li>
 </ul>
-<h2 id="initial-composition-시점에-실행--launchedeffect-composablehttpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect"><a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">Initial Composition 시점에 실행 : <code>LaunchedEffect</code> Composable</a></h2>
+<h2 id="initial-composition-시점에-실행httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect--launchedeffect-"><a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">Initial Composition 시점에 실행</a> : <code>LaunchedEffect() {...}</code></h2>
 <ul>
 <li>Initial Composition 시점에 <code>LaunchedEffect() {...}</code>로 전달된 <strong>suspend</strong> 람다<code>{...}</code>를 실행한다.
 <ul>
@@ -150,7 +150,7 @@
 </li>
 <li>Recomposition 시점에 <code>Launchedeffect()</code>로 전달된 키값이 변화했다면 suspend 람다<code>{...}</code>가 새로 실행된다. 기존 suspend 람다<code>{...}</code>가 실행 중이었다면 중지됨.</li>
 </ul>
-<h2 id="composable-외부에서-실행--remembercoroutinescopehttpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope"><a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">Composable 외부에서 실행 : <code>rememberCoroutineScope()</code></a></h2>
+<h2 id="composable-외부에서-실행httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope--remembercoroutinescope"><a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">Composable 외부에서 실행</a> : <code>rememberCoroutineScope()</code></h2>
 <ul>
 <li><code>LaunchedEffect</code>는 Composable이므로 <code>@Composable</code> 함수 안에서만 사용할 수 있다.</li>
 <li>Composable 범위 밖에서 호출되는 <code>onClick</code>과 같은 람다<code>{...}</code>에서는 <code>rememberCoroutineScope</code>를 사용한다.</li>
@@ -177,7 +177,7 @@
 </li>
 <li><code>rememberCoroutineScope()</code>를 통해 만들어진 scope의 라이프사이클은 <code>rememberCoroutineScope()</code>를 호출한 Composable의 라이프사이클에 종속된다.</li>
 </ul>
-<h2 id="지연된-최신상태-접근--rememberupdatedstatehttpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate"><a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">지연된 최신상태 접근 : <code>rememberUpdatedState()</code></a></h2>
+<h2 id="지연된-최신상태-접근httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate--rememberupdatedstate"><a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">지연된 최신상태 접근</a> : <code>rememberUpdatedState()</code></h2>
 <ul>
 <li><code>LaunchedEffect() {...}</code>, <code>rememberCoroutineScope.launch {...}</code>의 람다<code>{...}</code> 안에서 지연된 상태접근을 시도할 때 최신 상태값을 가져올 수 있다.
 <ul>
@@ -215,21 +215,20 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
-<li><code>remember(state) { mutableStateOf(state) }</code>과 <code>rememberUpdatedState(state)</code>의 차이
+<li><code>remember(state) {...}</code>과 <code>rememberUpdatedState(state)</code>의 차이
 <ul>
-<li><code>remember(state) { mutableStateOf(state) }</code>는 위에서 알아본 지연된 상태접근 이슈를 해결할 순 없다.</li>
-<li><code>remember(state) { mutableStateOf(state) }</code>도 <code>rememberUpdatedState(state)</code> 처럼 Recomposition 과정에서 <code>state</code>값이 바뀐 것을 반영할 수 있다.</li>
-<li>하지만 <code>rememberUpdatedState(state)</code> 코드가 있으면 <code>state</code>가 바뀌었을 때 Composable을 두 번 Recomposition 되도록 만들기 때문에 낭비다.
+<li><code>remember(state) {...}</code>는 위에서 알아본 지연된 상태접근 이슈를 해결할 순 없다.</li>
+<li><code>remember(state) {...}</code>도 <code>rememberUpdatedState(state)</code> 처럼 Recomposition 과정에서 <code>state</code>값이 바뀐 것을 반영할 수 있다.</li>
+<li>그런데 <code>rememberUpdatedState(state)</code> 코드가 있으면 <code>state</code>가 바뀌었을 때 Composable을 두 번 Recomposition 되도록 만들기 때문에 낭비다.
 <ul>
-<li>*두 번 Recomposition 이유: <code>rememberUpdatedState()</code>는 호출될 때마다 내부코드에서 스스로 자신의 값을 한 번 더 set 하기 때문
-<ul>
-<li>자세한 코드 : <code>fun rememberUpdatedState(newValue: T) = remember { mutableStateOf(newValue) }.apply { it.value = newValue }</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>따라서 지연된 상태접근이 필요한 상황이 아니라면 <code>remember(state) { mutableStateOf(state) }</code> 사용이 맞다.
-<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 호출될 때마다 내부코드에서 스스로 자신의 값을 set 한다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">rememberUpdatedState</span>(newValue: T) = remember { 
+</span></span><span style="display:flex;"><span>    mutableStateOf(newValue) 
+</span></span><span style="display:flex;"><span>}.apply { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">it</span>.value = newValue 
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">`</span>
+</span></span></code></pre></div></li>
 <li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Parent</span>() {
@@ -263,14 +262,15 @@
 </span></span></code></pre></div></li>
 </ul>
 </li>
+<li>따라서 state값이 바뀐 것을 반영할 수 있어야 하면서 지연된 상태접근이 불필요하다면 <code>remember(state) {...}</code>를 사용해야 한다.</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="composition-종료-시점에-실행--disposableeffect-composablehttpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect"><a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">Composition 종료 시점에 실행 : <code>DisposableEffect</code> Composable</a></h2>
+<h2 id="composition-종료-시점에-실행httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect--disposableeffect-"><a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">Composition 종료 시점에 실행</a> : <code>DisposableEffect() {...}</code></h2>
 <ul>
-<li>Composable의 Composition을 종료될 때 <code>onDispose {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.
+<li>Composable의 Composition이 종료될 때 <code>onDispose {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.
 <ul>
 <li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span> 
@@ -308,7 +308,7 @@
 </li>
 <li><code>DisposableEffect() {...}</code>로 전달된 키값이 변화해 Recomposition 되면 <code>DisposableEffect() {...}</code>로 전달된 람다<code>{...}</code>가 새로 실행된다. 기존 람다는 suspend가 아니기 때문에 바로 중지되진 않는다.</li>
 </ul>
-<h2 id="recomposition-시점에-실행--sideeffect-composablehttpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish"><a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">Recomposition 시점에 실행 : <code>SideEffect</code> Composable</a></h2>
+<h2 id="recomposition-시점에-실행httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish--sideeffect-"><a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">Recomposition 시점에 실행</a> : <code>SideEffect {...}</code></h2>
 <ul>
 <li>Recomposition 시점에 <code>SideEffect {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.
 <ul>
@@ -323,7 +323,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="일반적인-값을-compose-상태로-변환--producestatehttpsdeveloperandroidcomjetpackcomposeside-effectsproducestate"><a href="https://developer.android.com/jetpack/compose/side-effects#producestate">일반적인 값을 Compose 상태로 변환 : <code>produceState()</code></a></h2>
+<h2 id="non-blocking-결과를-composable-상태로-변환httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate--producestate-"><a href="https://developer.android.com/jetpack/compose/side-effects#producestate">Non-blocking 결과를 Composable 상태로 변환</a> : <code>produceState() {...}</code></h2>
 <ul>
 <li><code>produceState() {...}</code>로 전달된 람다<code>suspend ProduceStateScope&lt;T&gt;.() -&gt; Unit</code>를 사용해 일반적인 값을 <code>State&lt;T&gt;</code>로 변환한다.
 <ul>
@@ -346,8 +346,9 @@
 </span></span></code></pre></div></li>
 </ul>
 </li>
+<li>Flow, LiveData 또는 RxJava와 같은 외부 구독 기반 상태를 <code>State&lt;T&gt;</code>로 변환할 때 유용하다.</li>
 <li><code>Flow&lt;T&gt;.collectAsState()</code>도 내부적으로 <code>produceState()</code>를 사용했다.</li>
-<li><code>produceState()</code>의 매개변수로 전달된 람다에서 scope가 종료되는 걸 알림받을 필요가 있다면 <code>awaitDispose {...}</code>를 사용한다.
+<li><code>produceState()</code>의 매개변수로 전달된 suspend 람다<code>{...}</code>에서 scope가 종료되는 걸 잡아내고 싶다면 <code>awaitDispose {...}</code>를 사용한다.
 <ul>
 <li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> currentPerson <span style="color:#66d9ef">by</span> produceState&lt;Person?&gt;(<span style="color:#66d9ef">null</span>, viewModel) {
@@ -363,10 +364,11 @@
 </ul>
 </li>
 </ul>
-<h2 id="무거운-변환이-필요할-때-recomposition을-피하기-derivedstateof-httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof"><a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">무거운 변환이 필요할 때 Recomposition을 피하기 <code>derivedStateOf {...}</code></a></h2>
+<h2 id="무거운-blocking-작업의-결과를-composable-상태로-변환httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof--remember--derivedstateof--"><a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">무거운 Blocking 작업의 결과를 Composable 상태로 변환</a> : <code>remember() { derivedStateOf {...} }</code></h2>
 <ul>
 <li><code>derivedStateOf {...}</code>는 <code>remember {...}</code> 안에서만 사용해야 쓸모가 있다.</li>
-<li><code>mutableStateOf {...}</code> 대신에 <code>derivedStateOf {...}</code>를 사용하면 <code>derivedStateOf {...}</code>로 전달된 람다<code>{...}</code>를 사용해 다른 값으로 변환할 수 있다.
+<li><code>mutableStateOf()</code>는 값을 인자로 넣는 반면에 <code>derivedStateOf {...}</code>는 람다<code>{...}</code>를 인자로 받는다.</li>
+<li><code>derivedStateOf {...}</code>로 전달된 람다<code>{...}</code>는 <code>remember {...}</code>에 의해 Recomposition 시 재호출 빈도가 최소화 되며 따라서 무거운 변환 작업에 대한 부담이 적다.
 <ul>
 <li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
@@ -448,9 +450,11 @@
 </ul>
 </li>
 </ul>
-<h2 id="compose-상태를-flow로-변환--snapshotflow-httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow"><a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">Compose 상태를 flow로 변환 : <code>snapshotFlow {...}</code></a></h2>
+<h2 id="composable-상태를-flow로-변환--snapshotflow-httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow"><a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">Composable 상태를 flow로 변환 : <code>snapshotFlow {...}</code></a></h2>
 <ul>
-<li>Compose 상태를 Flow로 변환하여 Flow의 다양한 연산자를 활용할 수 있다.
+<li>Composable 상태 <code>State&lt;T&gt;</code>는 구독 가능한 값이다.</li>
+<li>Flow는 구독 가능한 스트림이다.</li>
+<li><code>State&lt;T&gt;</code>를 Flow로 변환하여 Flow의 다양한 연산자를 활용할 수 있다.
 <ul>
 <li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> listState = rememberLazyListState()
@@ -474,7 +478,7 @@
 </ul>
 <h2 id="사이드이펙트에-주어진-람다가-다시-시작되는-조건httpsdeveloperandroidcomjetpackcomposeside-effectsrestarting-effects"><a href="https://developer.android.com/jetpack/compose/side-effects#restarting-effects">사이드이펙트에 주어진 람다가 다시 시작되는 조건</a></h2>
 <ul>
-<li><code>LaunchedEffect(key) {...}</code>, <code>remember(key) { produceState {...} }</code>, <code>DisposableEffect(key) {...}</code> 등에서 쓰이는 키값이 바뀌면 주어진 람다<code>{...}</code>가 새로 실행 된다.
+<li><code>LaunchedEffect(key) {...}</code>, <code>remember(key) {...}</code>, <code>DisposableEffect(key) {...}</code> 등에서 쓰이는 키값이 바뀌면 주어진 람다<code>{...}</code>가 새로 실행 된다.
 <ul>
 <li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>EffectName(restartIfThisKeyChanges, orThisKey, orThisKey, <span style="color:#f92672">..</span>.) { 
@@ -515,7 +519,7 @@
     
     <li><a href="/posts/2022-06-22-composable-state/">Compose 기초 - Composable의 상태 관리</a></li>
     
-    <li><a href="/posts/2022-06-22-composable-lifecycle/">Compose 기초 - Composable의 수명주기</a></li>
+    <li><a href="/posts/2022-06-22-composable-lifecycle/">Compose 기초 - Composable의 수명주기, Smart Recomposition</a></li>
     
   </ul>
 </div>

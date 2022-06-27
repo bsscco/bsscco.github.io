@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="bsscco" />
-  <meta property="og:url" content="https://bsscco.github.io/tags/compose/" />
-  <link rel="canonical" href="https://bsscco.github.io/tags/compose/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+  <meta property="og:url" content="https://bsscco.github.io/posts/2022-06-25-compose-arch-layers/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2022-06-25-compose-arch-layers/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
 
   <script type="application/ld+json">
   {
@@ -18,10 +18,10 @@
            "@type": "WebPage",
            "@id": "https:\/\/bsscco.github.io\/"
       },
-      "articleSection" : "tags",
-      "name" : "compose",
-      "headline" : "compose",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Compose 기초 - Compose 아키텍처 레이어링, 설계원칙",
+      "headline" : "Compose 기초 - Compose 아키텍처 레이어링, 설계원칙",
+      "description" : "Compose 아키텍처 레이어링 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\nCompose 아키텍쳐의 레이어별 모듈 Jetpack Compose는 다수의 모듈로 만들어졌다. 아래 레이어로 내려갈 수록 상위 레이어의 기반이 된다. Runtime 모듈 : 최하위 레이어 이 모듈은 remember, mutableStateOf, @Composable 주석, SideEffect 같은 Compose 런타임의 기초를 제공한다. UI가 아닌 Composable 트리 관리 기능만 필요한 경우 이 레이어에 바로 빌드하는 것이 좋다. UI 모듈 ui-text, ui-graphics, ui-tooling 모듈로 구성된다.",
       "inLanguage" : "en-US",
       "author" : "bsscco",
       "creator" : "bsscco",
@@ -29,17 +29,19 @@
       "accountablePerson" : "bsscco",
       "copyrightHolder" : "bsscco",
       "copyrightYear" : "2022",
-      "datePublished": "2022-06-25 22:00:02 \u002b0000 UTC",
-      "dateModified" : "2022-06-25 22:00:02 \u002b0000 UTC",
-      "url" : "https:\/\/bsscco.github.io\/tags\/compose\/",
-      "keywords" : [  ]
+      "datePublished": "2022-06-25 22:00:01 \u002b0000 UTC",
+      "dateModified" : "2022-06-25 22:00:01 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2022-06-25-compose-arch-layers\/",
+      "keywords" : [ "compose", ]
   }
 </script>
-<title>compose</title>
-  <meta property="og:title" content="compose" />
+<title>Compose 기초 - Compose 아키텍처 레이어링, 설계원칙</title>
+  <meta property="og:title" content="Compose 기초 - Compose 아키텍처 레이어링, 설계원칙" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="" />
-  <meta name="description" content="" />
+  <meta property="og:description" content="Compose 아키텍처 레이어링 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Compose 아키텍쳐의 레이어별 모듈 Jetpack Compose는 다수의 모듈로 만들어졌다. 아래 레이어로 내려갈 수록 상위 레이어의 기반이 된다. Runtime 모듈 : 최하위 레이어 이 모듈은 remember, mutableStateOf, @Composable 주석, SideEffect 같은 Compose 런타임의 기초를 제공한다. UI가 아닌 Composable 트리 관리 기능만 필요한 경우 이 레이어에 바로 빌드하는 것이 좋다. UI 모듈 ui-text, ui-graphics, ui-tooling 모듈로 구성된다." />
+  <meta name="description" content="Compose 아키텍처 레이어링 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Compose 아키텍쳐의 레이어별 모듈 Jetpack Compose는 다수의 모듈로 만들어졌다. 아래 레이어로 내려갈 수록 상위 레이어의 기반이 된다. Runtime 모듈 : 최하위 레이어 이 모듈은 remember, mutableStateOf, @Composable 주석, SideEffect 같은 Compose 런타임의 기초를 제공한다. UI가 아닌 Composable 트리 관리 기능만 필요한 경우 이 레이어에 바로 빌드하는 것이 좋다. UI 모듈 ui-text, ui-graphics, ui-tooling 모듈로 구성된다." />
   <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
   
 
@@ -66,10 +68,11 @@
 
 
 <body>
-  <article class="posts">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
-        
+        <div class="site-header">
+          
 <header>
   <div class="header-title">
     <a href="/"
@@ -90,120 +93,163 @@
 </div>
 <div class="header-line"></div>
 
-
-        <h1 class="taxonomy-term">compose</h1>
-        <div id="posts-list">
-          <section>
-            <h1 class="site-date-catalog">2022</h1>
-
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-25 22:00:02 UTC">Jun 25</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-25-compose-performance/">Compose 기초 - Compose 성능개선</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-25 22:00:01 UTC">Jun 25</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-25-compose-arch-layers/">Compose 기초 - Compose 아키텍처 레이어링, 설계원칙</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-25 22:00:00 UTC">Jun 25</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-25-compose-frame-phases/">Compose 기초 - Compose 프레임의 3단계 최적화</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:04 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-compose-side-effect/">Compose 기초 - Compose 사이드이펙트 관리</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:03 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-composable-modifier/">Compose 기초 - Composable Modifier</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:02 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-composable-lifecycle/">Compose 기초 - Composable의 수명주기, Smart Recomposition</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:01 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-composable-state/">Compose 기초 - Composable의 상태 관리</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-2">
-                <time datetime="2022-06-22 21:10:00 UTC">Jun 22</time>
-              </div>
-              <div class="posts-title col-xs-10">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <a href="/posts/2022-06-22-compose-mental-model/">Compose 기초 - Compose 이해, Recomposition</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-          
         </div>
+        <header class="post-header">
+          <h1 class="post-title">Compose 기초 - Compose 아키텍처 레이어링, 설계원칙</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2022-06-25 22:00:01 UTC">
+                25 Jun 2022
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="compose-아키텍처-레이어링httpsdeveloperandroidcomjetpackcomposelayering"><a href="https://developer.android.com/jetpack/compose/layering">Compose 아키텍처 레이어링</a></h1>
+<p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
+<h2 id="compose-아키텍쳐의-레이어별-모듈httpsdeveloperandroidcomjetpackcomposelayeringanchor"><a href="https://developer.android.com/jetpack/compose/layering#anchor">Compose 아키텍쳐의 레이어별 모듈</a></h2>
+<ul>
+<li>Jetpack  Compose는 다수의 모듈로 만들어졌다.
+<ul>
+<li><img src="https://developer.android.com/static/images/jetpack/compose/layering-major-layers.svg" alt="layers">
+<ul>
+<li>아래 레이어로 내려갈 수록 상위 레이어의 기반이 된다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary">Runtime 모듈</a> : 최하위 레이어
+<ul>
+<li>이 모듈은 <code>remember</code>, <code>mutableStateOf</code>, <code>@Composable</code> 주석, <code>SideEffect</code> 같은 Compose 런타임의 기초를 제공한다.</li>
+<li>UI가 아닌 Composable 트리 관리 기능만 필요한 경우 이 레이어에 바로 빌드하는 것이 좋다.</li>
+</ul>
+</li>
+<li><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/package-summary">UI 모듈</a>
+<ul>
+<li><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/package-summary">ui-text</a>, <a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/package-summary">ui-graphics</a>, <a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/tooling/package-summary">ui-tooling</a> 모듈로 구성된다.</li>
+<li>이런 모듈은 <code>LayoutNode</code>, <code>Modifier</code>, 입력 핸들러, 맞춤 레이아웃, 그리기 같은 UI 툴킷의 기본 사항을 구현한다.</li>
+<li>UI 툴킷의 기본 개념만 필요한 경우 이 레이어를 기반으로 빌드하는 것이 좋다.</li>
+</ul>
+</li>
+<li><a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary">Foundation</a> 모듈
+<ul>
+<li><code>Row</code>, <code>Column</code>, <code>LazyColumn</code>, 특정 동작 인식 같은 디자인 시스템에 구속되지 않는 구성요소를 제공한다.</li>
+<li>자체 디자인 시스템을 만들 때는 Foundation 레이어를 기반으로 빌드하는 것이 좋다.</li>
+</ul>
+</li>
+<li><a href="https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary">Material</a> 모듈 : 최상위 레이어
+<ul>
+<li>머티리얼 디자인 시스템의 구현을 제공하고 테마 설정 시스템, 스타일 적용된 구성요소, 물결 표시, 아이콘도 제공한다.</li>
+<li>앱에 머티리얼 디자인을 사용할 때는 이 레이어를 기반으로 빌드한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="compose-설계-원칙httpsdeveloperandroidcomjetpackcomposelayeringdesign-principles"><a href="https://developer.android.com/jetpack/compose/layering#design-principles">Compose 설계 원칙</a></h2>
+<ul>
+<li><a href="https://developer.android.com/jetpack/compose/layering#control">많은 제어가 필요할 때 하위수준의 구성요소를 사용한다.</a>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// animateColorAsState()를 사용하면 컬러 변경 트랜지션을 쉽게 적용할 수 있다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 하지만 첫 컬러를 다른 컬러로 지정할 수 없다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 여기 더해서 애니메이션 실행 시 프레임마다 Recomposition이 발생한다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> color <span style="color:#66d9ef">by</span> animateColorAsState(<span style="color:#66d9ef">if</span> (condition) Color.Green <span style="color:#66d9ef">else</span> Color.Red)
+</span></span><span style="display:flex;"><span>Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;RecompositionByAnim&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Box(
+</span></span><span style="display:flex;"><span>    modifier = Modifier
+</span></span><span style="display:flex;"><span>        .fillMaxSize()
+</span></span><span style="display:flex;"><span>        .background(color)
+</span></span><span style="display:flex;"><span>        .clickable { flag = flag.not() }
+</span></span></code></pre></div></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> color <span style="color:#66d9ef">by</span> remember {
+</span></span><span style="display:flex;"><span>    Animatable(Color.Gray)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;RecompositionByAnim?&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 첫 컬러를 다른 컬러로 지정할 수 있다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 람다를 사용해 Drawing 단계만 반복되도록 만들었으므로 애니메이션 실행 시 프레임마다 Recomposition이 발생하지 않는다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>LaunchedEffect(condition) {
+</span></span><span style="display:flex;"><span>    color.animateTo(<span style="color:#66d9ef">if</span> (condition) Color.Green <span style="color:#66d9ef">else</span> Color.Red)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Box(
+</span></span><span style="display:flex;"><span>    modifier = Modifier
+</span></span><span style="display:flex;"><span>        .fillMaxSize()
+</span></span><span style="display:flex;"><span>        .drawBehind {
+</span></span><span style="display:flex;"><span>            drawRect(color.value)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .clickable { flag = flag.not() }
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li><a href="https://developer.android.com/jetpack/compose/layering#pick-right-abstraction">정확한 추상화를 선택한다.</a>
+<ul>
+<li><code>Modifier.pointerInput</code>을 사용하는 것과 달리 <code>Modifier.draggable</code>, <code>Modifier.scrollable</code>, <code>Modifier.swipeable</code> 등을 사용하면 얻는 이점
+<ul>
+<li>추상화된 요소이름에서 의도가 드러나서 이해하기 쉽다.</li>
+<li>권장사항의 이점을 누릴 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+            <div class="post-tags">
+              <a href="/tags/compose/">
+                compose
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+<div class="related-content">
+  <h3>Related Posts</h3>
+  <ul>
+    
+    <li><a href="/posts/2022-06-25-compose-performance/">Compose 기초 - Compose 성능개선</a></li>
+    
+    <li><a href="/posts/2022-06-25-compose-frame-phases/">Compose 기초 - Compose 프레임의 3단계 최적화</a></li>
+    
+    <li><a href="/posts/2022-06-22-composable-modifier/">Compose 기초 - Composable Modifier</a></li>
+    
+  </ul>
+</div>
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
 
         <div class="site-footer">
   
@@ -223,6 +269,8 @@
     
   
 </script>
+
+  
 
 </body>
 

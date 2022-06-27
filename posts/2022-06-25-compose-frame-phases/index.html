@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="bsscco" />
-  <meta property="og:url" content="https://bsscco.github.io/posts/2022-06-22-composable-modifier/" />
-  <link rel="canonical" href="https://bsscco.github.io/posts/2022-06-22-composable-modifier/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
+  <meta property="og:url" content="https://bsscco.github.io/posts/2022-06-25-compose-frame-phases/" />
+  <link rel="canonical" href="https://bsscco.github.io/posts/2022-06-25-compose-frame-phases/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
 
   <script type="application/ld+json">
   {
@@ -19,9 +19,9 @@
            "@id": "https:\/\/bsscco.github.io\/"
       },
       "articleSection" : "posts",
-      "name" : "Compose 기초 - Composable Modifier",
-      "headline" : "Compose 기초 - Composable Modifier",
-      "description" : "Composable Modifier 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\nModifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 접근성 라벨과 같은 정보 추가 접근성 라벨은 UI 테스트에서 요소 접근을 쉽게 할 수 있게 해준다. 요소를 클릭 가능, 스크롤 가능하게 만드는 것과 같은 높은 수준의 상호작용 추가 @Composable fun Greeting(name: String) { Column(modifier = Modifier.padding(24.dp)) { Text(text = \u0026#34;Hello,\u0026#34;) Text(text = name) } } Modifier의 결과를 예상할 때 주의할 점 @Composable fun ArtistCard(\/*.",
+      "name" : "Compose 기초 - Compose 프레임의 3단계 최적화",
+      "headline" : "Compose 기초 - Compose 프레임의 3단계 최적화",
+      "description" : "Compose 프레임의 3단계 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\nCompose 프레임에서의 3단계 Android 뷰 시스템의 프레임에서 실행되는 3단계 측정 -\u0026gt; 레이아웃 -\u0026gt; 그리기 Compose의 프레임에서 실행되는 3단계 1단계 Composition : Composable들을 실행하고 UI설명을 만든다. 2단계 Layout : 레이아웃 트리에 있는 각 노드를 2D 좌표로 측정하고 배치한다. 3단계 Drawing : UI가 캔버스에 그려진다. 상태 읽기에 따라 Composition, Layout, Drawing 단계를 건너뛴다. Composition 단계 건너뛰기 @Composable 함수 안에서의 상태 읽기는 Composition과 이후 단계에 영향을 미친다.",
       "inLanguage" : "en-US",
       "author" : "bsscco",
       "creator" : "bsscco",
@@ -29,19 +29,19 @@
       "accountablePerson" : "bsscco",
       "copyrightHolder" : "bsscco",
       "copyrightYear" : "2022",
-      "datePublished": "2022-06-22 21:10:03 \u002b0000 UTC",
-      "dateModified" : "2022-06-22 21:10:03 \u002b0000 UTC",
-      "url" : "https:\/\/bsscco.github.io\/posts\/2022-06-22-composable-modifier\/",
+      "datePublished": "2022-06-25 22:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-06-25 22:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/bsscco.github.io\/posts\/2022-06-25-compose-frame-phases\/",
       "keywords" : [ "compose", ]
   }
 </script>
-<title>Compose 기초 - Composable Modifier</title>
-  <meta property="og:title" content="Compose 기초 - Composable Modifier" />
+<title>Compose 기초 - Compose 프레임의 3단계 최적화</title>
+  <meta property="og:title" content="Compose 기초 - Compose 프레임의 3단계 최적화" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="Composable Modifier 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 접근성 라벨과 같은 정보 추가 접근성 라벨은 UI 테스트에서 요소 접근을 쉽게 할 수 있게 해준다. 요소를 클릭 가능, 스크롤 가능하게 만드는 것과 같은 높은 수준의 상호작용 추가 @Composable fun Greeting(name: String) { Column(modifier = Modifier.padding(24.dp)) { Text(text = &amp;#34;Hello,&amp;#34;) Text(text = name) } } Modifier의 결과를 예상할 때 주의할 점 @Composable fun ArtistCard(/*." />
-  <meta name="description" content="Composable Modifier 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 접근성 라벨과 같은 정보 추가 접근성 라벨은 UI 테스트에서 요소 접근을 쉽게 할 수 있게 해준다. 요소를 클릭 가능, 스크롤 가능하게 만드는 것과 같은 높은 수준의 상호작용 추가 @Composable fun Greeting(name: String) { Column(modifier = Modifier.padding(24.dp)) { Text(text = &amp;#34;Hello,&amp;#34;) Text(text = name) } } Modifier의 결과를 예상할 때 주의할 점 @Composable fun ArtistCard(/*." />
+  <meta property="og:description" content="Compose 프레임의 3단계 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Compose 프레임에서의 3단계 Android 뷰 시스템의 프레임에서 실행되는 3단계 측정 -&amp;gt; 레이아웃 -&amp;gt; 그리기 Compose의 프레임에서 실행되는 3단계 1단계 Composition : Composable들을 실행하고 UI설명을 만든다. 2단계 Layout : 레이아웃 트리에 있는 각 노드를 2D 좌표로 측정하고 배치한다. 3단계 Drawing : UI가 캔버스에 그려진다. 상태 읽기에 따라 Composition, Layout, Drawing 단계를 건너뛴다. Composition 단계 건너뛰기 @Composable 함수 안에서의 상태 읽기는 Composition과 이후 단계에 영향을 미친다." />
+  <meta name="description" content="Compose 프레임의 3단계 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Compose 프레임에서의 3단계 Android 뷰 시스템의 프레임에서 실행되는 3단계 측정 -&amp;gt; 레이아웃 -&amp;gt; 그리기 Compose의 프레임에서 실행되는 3단계 1단계 Composition : Composable들을 실행하고 UI설명을 만든다. 2단계 Layout : 레이아웃 트리에 있는 각 노드를 2D 좌표로 측정하고 배치한다. 3단계 Drawing : UI가 캔버스에 그려진다. 상태 읽기에 따라 Composition, Layout, Drawing 단계를 건너뛴다. Composition 단계 건너뛰기 @Composable 함수 안에서의 상태 읽기는 Composition과 이후 단계에 영향을 미친다." />
   <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
   
 
@@ -95,13 +95,13 @@ Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 
 
         </div>
         <header class="post-header">
-          <h1 class="post-title">Compose 기초 - Composable Modifier</h1>
+          <h1 class="post-title">Compose 기초 - Compose 프레임의 3단계 최적화</h1>
           
           <div class="row post-desc">
             <div class="col-xs-6">
               
-              <time class="post-date" datetime="2022-06-22 21:10:03 UTC">
-                22 Jun 2022
+              <time class="post-date" datetime="2022-06-25 22:00:00 UTC">
+                25 Jun 2022
               </time>
               
             </div>
@@ -118,105 +118,186 @@ Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 
 
         <div class="post-content markdown-body">
           
-          <h1 id="composable-modifierhttpsdeveloperandroidcomjetpackcomposemodifiers"><a href="https://developer.android.com/jetpack/compose/modifiers">Composable Modifier</a></h1>
+          <h1 id="compose-프레임의-3단계httpsdeveloperandroidcomjetpackcomposephases"><a href="https://developer.android.com/jetpack/compose/phases">Compose 프레임의 3단계</a></h1>
 <p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
-<h2 id="modifier의-역할">Modifier의 역할</h2>
+<h2 id="compose-프레임에서의-3단계httpsdeveloperandroidcomjetpackcomposephases3-phases"><a href="https://developer.android.com/jetpack/compose/phases#3-phases">Compose 프레임에서의 3단계</a></h2>
 <ul>
-<li>Composable의 크기, 레이아웃, 동작 및 모양 변경</li>
-<li>접근성 라벨과 같은 정보 추가
+<li>Android 뷰 시스템의 프레임에서 실행되는 3단계
 <ul>
-<li>접근성 라벨은 UI 테스트에서 요소 접근을 쉽게 할 수 있게 해준다.</li>
+<li>측정 -&gt; 레이아웃 -&gt; 그리기</li>
 </ul>
 </li>
-<li>요소를 클릭 가능, 스크롤 가능하게  만드는 것과 같은 높은 수준의 상호작용 추가</li>
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Greeting</span>(name: String) { 
-</span></span><span style="display:flex;"><span>    Column(modifier = Modifier.padding(<span style="color:#ae81ff">24.</span>dp)) {  
-</span></span><span style="display:flex;"><span>        Text(text = <span style="color:#e6db74">&#34;Hello,&#34;</span>)  
-</span></span><span style="display:flex;"><span>        Text(text = name) 
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
+<li>Compose의 프레임에서 실행되는 3단계
+<ul>
+<li>1단계 Composition : Composable들을 실행하고 UI설명을 만든다.</li>
+<li>2단계 Layout : 레이아웃 트리에 있는 각 노드를 2D 좌표로 <strong>측정</strong>하고 <strong>배치</strong>한다.</li>
+<li>3단계 Drawing : UI가 캔버스에 그려진다.</li>
+<li><img src="https://developer.android.com/images/jetpack/compose/phases-3-phases.svg" alt="steps"></li>
 </ul>
-<h2 id="modifier의-결과를-예상할-때-주의할-점httpsdeveloperandroidcomjetpackcomposemodifiersorder-modifier-matters"><a href="https://developer.android.com/jetpack/compose/modifiers#order-modifier-matters">Modifier의 결과를 예상할 때 주의할 점</a></h2>
+</li>
+</ul>
+<h2 id="상태-읽기에-따라-composition-layout-drawing-단계를-건너뛴다httpsdeveloperandroidcomjetpackcomposephasesphased-state-reads"><a href="https://developer.android.com/jetpack/compose/phases#phased-state-reads">상태 읽기에 따라 Composition, Layout, Drawing 단계를 건너뛴다.</a></h2>
+<ul>
+<li>Composition 단계 건너뛰기
+<ul>
+<li><code>@Composable</code> 함수 안에서의 상태 읽기는 Composition과 이후 단계에 영향을 미친다.</li>
+</ul>
+<ol>
+<li>상태 값이 변경되면 Recomposer는 이 상태 값을 읽는 모든 <code>@Composable</code> 함수의 재실행을 예약한다.</li>
+<li>입력이 변경되지 않은 경우 런타임에서 <strong><code>@Composable</code> 함수의 일부 또는 모두를 건너뛸 수 있다.</strong></li>
+<li>크기값이나 Composable Tree가 변경되지 않았다면 <strong>다음 단계인 Layout 단계를 건너뛸 수 있다.</strong></li>
+</ol>
+</li>
+<li>Layout 단계 건너뛰기
+<ul>
+<li>Layout 단계는 __Measurement__과 __Placement__라는 두 단계로 구성된다.
+<ul>
+<li>Measurement 단계
+<ul>
+<li><code>Layout</code> Composable에 전달된 측정 람다<code>@Composable @UiComposable () -&gt; Unit</code>와 <code>Modifier.layout {...}</code>으로 전달된 람다 <code>MeasureScope.(Measurable, Constraints) -&gt; MeasureResult</code>를 실행한다.</li>
+</ul>
+</li>
+<li>Placement 단계
+<ul>
+<li><code>layout()</code>의 배치 블록과 <code>Modifier.offset { … }</code>로 전달된 람다<code>Density.() -&gt; IntOffset</code>를 실행한다.
 <ul>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">ArtistCard</span>(<span style="color:#75715e">/*...*/</span>) {  
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> padding = <span style="color:#ae81ff">16.</span>dp  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> offsetX <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#ae81ff">8.</span>dp) }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Column(   
-</span></span><span style="display:flex;"><span>        Modifier   
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// clickable() 뒤에 padding()이 호출되며, click 시 ripple 이펙트가 padding 부분까지 그려진다.   
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            .clickable(onClick = onClick)      
-</span></span><span style="display:flex;"><span>            .padding(padding)       
-</span></span><span style="display:flex;"><span>          .fillMaxWidth()  
-</span></span><span style="display:flex;"><span>    ) {    
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>Text(
+</span></span><span style="display:flex;"><span>    text = <span style="color:#e6db74">&#34;Hello&#34;</span>,
+</span></span><span style="display:flex;"><span>        modifier = Modifier.offset {
+</span></span><span style="display:flex;"><span>        IntOffset(offsetX.roundToPx(), <span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>)
 </span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>상태 값이 변경되면 Compose UI는 Layout단계를 예약한다.</li>
+<li>Placement 단계의 상태 읽기로 인해 Measurement 단계를 다시 시작시킬 수 있다.</li>
+<li>크기와 위치가 변경되지 않았다면 <strong>다음 단계인 Drawing 단계를 건너뛸 수 있다.</strong></li>
+</ol>
+</li>
+<li>Drawing 단계 건너뛰기
+<ol>
+<li><code>Canvas</code> Composable, <code>Modifier.drawBehind()</code>, <code>Modifier.drawWithContent()</code>에서 사용하는 상태값이 변경되면 Drawing 단계가 재실행 된다.
+<ul>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">ArtistCard</span>(<span style="color:#75715e">/*...*/</span>) {  
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> padding = <span style="color:#ae81ff">16.</span>dp  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> color <span style="color:#66d9ef">by</span> remember { mutableStateOf(Color.Red) }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Column(   
-</span></span><span style="display:flex;"><span>        Modifier   
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// padding() 뒤에 clickable()이 호출되며, click 시 ripple 이펙트가 padding 안쪽으로 제한된다. 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            .padding(padding)       
-</span></span><span style="display:flex;"><span>            .clickable(onClick = onClick)      
-</span></span><span style="display:flex;"><span>          .fillMaxWidth()  
-</span></span><span style="display:flex;"><span>    ) {    
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>Canvas(modifier = modifier) {
+</span></span><span style="display:flex;"><span>    drawRect(color)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 </ul>
-<h2 id="알아둘-만한-modifier-목록httpsdeveloperandroidcomjetpackcomposemodifiersbuilt-in-modifiers"><a href="https://developer.android.com/jetpack/compose/modifiers#built-in-modifiers">알아둘 만한 Modifier 목록</a></h2>
+</li>
+</ol>
+</li>
+<li><img src="https://developer.android.com/images/jetpack/compose/phases-state-read-draw.svg" alt="steps"></li>
+</ul>
+<h2 id="람다를-써서-프레임-단계-최적화-하기httpsdeveloperandroidcomjetpackcomposephasesoptimizing-state-reads"><a href="https://developer.android.com/jetpack/compose/phases#optimizing-state-reads">람다{&hellip;}를 써서 프레임 단계 최적화 하기</a></h2>
 <ul>
-<li><code>.requiredSize()</code>, <code>.requiredWidth()</code>, <code>.requiredHeight()</code>
+<li>Composition 단계에서 상태 읽기를 시도하면 값이 바뀔 때마다 Composition 단계부터 재시작된다. 람다를 사용해 Layout 단계에서 상태읽기를 시도하도록 만들면 값이 바뀔 때마다 Layout 단계부터 재시작 되도록 만들 수 있다.
 <ul>
-<li>상위 Composable로부터 수신된 제약조건에 의해 크기가 제한되지 않고 원하는 크기를 강제할 수 있다.</li>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">ArtistCard</span>(<span style="color:#75715e">/*...*/</span>) {  
-</span></span><span style="display:flex;"><span>    Row(    
-</span></span><span style="display:flex;"><span>        modifier = Modifier.size(width = <span style="color:#ae81ff">400.</span>dp, height = <span style="color:#ae81ff">100.</span>dp)<span style="color:#75715e">// 제한된 높이는 100dp
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ) {    
-</span></span><span style="display:flex;"><span>        Image(      
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">/*...*/</span>      
-</span></span><span style="display:flex;"><span>            modifier = Modifier.requiredSize(<span style="color:#ae81ff">150.</span>dp) <span style="color:#75715e">// 강제할 높이는 150dp
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        )    
-</span></span><span style="display:flex;"><span>        Column { <span style="color:#75715e">/*...*/</span> }  
-</span></span><span style="display:flex;"><span>    }
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 최적화되지 않은 코드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Box {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> listState = rememberLazyListState()
+</span></span><span style="display:flex;"><span>    Image(
+</span></span><span style="display:flex;"><span>        Modifier.offset(
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Composition 단계에서 listState.firstVisibleItemScrollOffet 값을 읽는다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 따라서 사용자가 스크롤할 때마다 listState.firstVisibleItemScrollOffset값이 변경되면서 Composition단계부터 재실행된다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            with(LocalDensity.current) {
+</span></span><span style="display:flex;"><span>                (listState.firstVisibleItemScrollOffset / <span style="color:#ae81ff">2</span>).toDp()
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    LazyColumn(state = listState)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
-</ul>
-</li>
-<li><code>.offset()</code>
-<ul>
-<li>origin 위치를 기준으로 보여지는 위치를 이동시킬 수 있다.</li>
-<li>실제 측정되는 x, y값은 변경되지 않는다.</li>
-</ul>
-</li>
-<li><code>BoxScope</code> 전용 <code>.matchParentSize()</code>
-<ul>
-<li><code>matchParentSize()</code>이 적용된 하위 Composable의 크기를 결정할 때 <code>Box</code>의 가장 큰 하위 요소에서 크기를 가져오도록 한다.</li>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">MatchParentSizeComposable</span>() {  
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Spacer는 상위 Box에서 크기를 가져온다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 결과적으로 가장 큰 하위 요소(이 경우에는 ArtistCard)에서 크기를 가져오게 되는 것
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Box(Modifier.wrapContentSize()) {    
-</span></span><span style="display:flex;"><span>        Spacer(Modifier.matchParentSize().background(Color.LightGray))    
-</span></span><span style="display:flex;"><span>        ArtistCard()  
-</span></span><span style="display:flex;"><span>    }
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 최적화가 된 코드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Box {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> listState = rememberLazyListState()
+</span></span><span style="display:flex;"><span>    Image(
+</span></span><span style="display:flex;"><span>        Modifier.offset {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Layout 단계에서 listState.firstVisibleItemScrollOffet 값을 읽는다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 따라서 사용자가 스크롤할 때마다 listState.firstVisibleItemScrollOffset값이 변경되면서 Layout단계부터 재실행된다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            IntOffset(x = <span style="color:#ae81ff">0</span>, y = listState.firstVisibleItemScrollOffset / <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    LazyColumn(state = listState)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 </ul>
 </li>
+<li>람다를 사용하면 추가 비용이 발생한다. 하지만 상태 읽기를 레이아웃 단계로 제한하는 이점이 람다 비용보다 더 크다.</li>
+</ul>
+<h2 id="상태-읽기를-최소화-해서-프레임-단계-최적화-하기httpsdeveloperandroidcomjetpackcomposephasesrecomp-loop"><a href="https://developer.android.com/jetpack/compose/phases#recomp-loop">상태 읽기를 최소화 해서 프레임 단계 최적화 하기</a></h2>
+<ul>
+<li>Layout 단계에서 상태 읽기를 시도하면 값이 바뀔 때마다 Composition 단계부터 재시작된다. 이 과정을 Recomposition Loop라고 부른다. 상태 읽기를 없애면서 동작은 그대로 유지시켜보자.
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 최적화되지 않은 코드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Box {
+</span></span><span style="display:flex;"><span>    Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;Box&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> imageHeightPx <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#ae81ff">0</span>) }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Image(
+</span></span><span style="display:flex;"><span>        painter = painterResource(R.drawable.rectangle),
+</span></span><span style="display:flex;"><span>        contentDescription = <span style="color:#e6db74">&#34;I&#39;m above the text&#34;</span>,
+</span></span><span style="display:flex;"><span>        modifier = Modifier
+</span></span><span style="display:flex;"><span>            .fillMaxWidth()
+</span></span><span style="display:flex;"><span>            .onSizeChanged { size <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>                Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;onSizeChanged : </span><span style="color:#e6db74">$size</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Layout 단계에서 onSizeChanged의 콜백람다가 호출되고, imageHeightPx값이 0에서 size로 재설정된다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                imageHeightPx = size.height
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Text(
+</span></span><span style="display:flex;"><span>        text = <span style="color:#e6db74">&#34;I&#39;m below the image&#34;</span>,
+</span></span><span style="display:flex;"><span>        modifier = Modifier.padding(
+</span></span><span style="display:flex;"><span>            top = with(LocalDensity.current) { imageHeightPx.toDp() }
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>위 코드에서 Recomposition Loop는 Layout 단계에서 <code>.onSizeChanged {...}</code>가 호출되면서 한 번 Recomposition 되는 것으로 끝나는 단순한 루프다.</li>
+<li><img src="https://developer.android.com/static/images/jetpack/compose/phases-recomp-loop.svg" alt="phases-recomposition-loop"></li>
+</ul>
+</li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 최적화 된 코드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Box 대신에 Column을 사용했다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Column {
+</span></span><span style="display:flex;"><span>    Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;Box&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> imageHeightPx <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#ae81ff">0</span>) }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Image(
+</span></span><span style="display:flex;"><span>        painter = painterResource(R.drawable.rectangle),
+</span></span><span style="display:flex;"><span>        contentDescription = <span style="color:#e6db74">&#34;I&#39;m above the text&#34;</span>,
+</span></span><span style="display:flex;"><span>        modifier = Modifier
+</span></span><span style="display:flex;"><span>            .fillMaxWidth()
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// .onSizeChanged {...}를 제거했다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Text(
+</span></span><span style="display:flex;"><span>        text = <span style="color:#e6db74">&#34;I&#39;m below the image&#34;</span>,
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>좀 더 복잡한 Layout을 작성해야 하는 경우엔  <a href="https://developer.android.com/jetpack/compose/layouts/custom">Custom Layout</a> 가이드를 참고한다.</li>
 </ul>
 
         </div>
@@ -245,11 +326,11 @@ Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 
   <h3>Related Posts</h3>
   <ul>
     
-    <li><a href="/posts/2022-06-22-composable-state/">Compose 기초 - Composable의 상태 관리</a></li>
+    <li><a href="/posts/2022-06-25-compose-performance/">Compose 기초 - Compose 성능개선</a></li>
     
-    <li><a href="/posts/2022-06-22-composable-lifecycle/">Compose 기초 - Composable의 수명주기, Smart Recomposition</a></li>
+    <li><a href="/posts/2022-06-25-compose-arch-layers/">Compose 기초 - Compose 아키텍처 레이어링, 설계원칙</a></li>
     
-    <li><a href="/posts/2022-06-22-compose-side-effect/">Compose 기초 - Compose 사이드이펙트 관리</a></li>
+    <li><a href="/posts/2022-06-22-composable-modifier/">Compose 기초 - Composable Modifier</a></li>
     
   </ul>
 </div>
