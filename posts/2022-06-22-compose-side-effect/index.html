@@ -21,7 +21,7 @@
       "articleSection" : "posts",
       "name" : "Compose 기초 - Compose 사이드이펙트 관리",
       "headline" : "Compose 기초 - Compose 사이드이펙트 관리",
-      "description" : "Compose 사이드이펙트 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\n왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트 예) 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.",
+      "description" : "Compose 사이드이펙트 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리\n왜 사이드이펙트에 대해서 조심해야 하나? (원문) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.\n*사이드이펙트 예시 : 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업\n사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.",
       "inLanguage" : "en-US",
       "author" : "bsscco",
       "creator" : "bsscco",
@@ -38,15 +38,19 @@
 <title>Compose 기초 - Compose 사이드이펙트 관리</title>
   <meta property="og:title" content="Compose 기초 - Compose 사이드이펙트 관리" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="Compose 사이드이펙트 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트 예) 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다." />
-  <meta name="description" content="Compose 사이드이펙트 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트 예) 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다." />
+  <meta property="og:description" content="Compose 사이드이펙트 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+왜 사이드이펙트에 대해서 조심해야 하나? (원문) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.
+*사이드이펙트 예시 : 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업
+사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다." />
+  <meta name="description" content="Compose 사이드이펙트 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+왜 사이드이펙트에 대해서 조심해야 하나? (원문) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.
+*사이드이펙트 예시 : 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업
+사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다." />
   <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
   
 
   
-    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+    <style>body{font-family:noto sans korean,bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body h2{margin-top:80px}.markdown-body h3{margin-top:40px}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:noto sans korean,bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px;border-width:3px;border-style:solid;border-color:#000;border-radius:10px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body h2{margin-top:80px}.markdown-body h3{margin-top:40px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
   
   
     <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
@@ -58,7 +62,7 @@
     title="Android Developer BSSCCO">
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean|Bree+Serif|Bungee+Shade" rel="stylesheet">
   
   
 
@@ -116,24 +120,38 @@
           
         </header>
 
+        <div class="related-content">
+          <h3>Table of Contents</h3>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#왜-사이드이펙트에-대해서-조심해야-하나-원문httpsdeveloperandroidcomjetpackcomposeside-effectsstate-effect-use-cases">왜 사이드이펙트에 대해서 조심해야 하나? (<a href="https://developer.android.com/jetpack/compose/side-effects#state-effect-use-cases">원문</a>)</a></li>
+    <li><a href="#initial-composition-시점에-실행--launchedeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 : <code>LaunchedEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</a></li>
+    <li><a href="#composable-외부에서-실행--remembercoroutinescope-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 : <code>rememberCoroutineScope()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</a></li>
+    <li><a href="#지연된-최신상태-접근--rememberupdatedstate-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">지연된 최신상태 접근 : <code>rememberUpdatedState()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</a>
+      <ul>
+        <li><a href="#rememberstate-과-rememberupdatedstatestate의-차이"><code>remember(state) {...}</code>과 <code>rememberUpdatedState(state)</code>의 차이</a></li>
+      </ul>
+    </li>
+    <li><a href="#composition-종료-시점에-실행--disposableeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 : <code>DisposableEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</a></li>
+    <li><a href="#recomposition-시점에-실행--sideeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 : <code>SideEffect {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</a></li>
+    <li><a href="#non-blocking-결과를-composable-상태로-변환--producestate--원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 Composable 상태로 변환 : <code>produceState() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</a></li>
+    <li><a href="#무거운-blocking-작업의-결과를-composable-상태로-변환--remember--derivedstateof---원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 Composable 상태로 변환 : <code>remember() { derivedStateOf {...} }</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</a></li>
+    <li><a href="#composable-상태를-flow로-변환--snapshotflow--원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow">Composable 상태를 flow로 변환 : <code>snapshotFlow {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</a></li>
+    <li><a href="#사이드이펙트에-주어진-람다가-다시-시작되는-조건-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrestarting-effects">사이드이펙트에 주어진 람다가 다시 시작되는 조건 (<a href="https://developer.android.com/jetpack/compose/side-effects#restarting-effects">원문</a>)</a></li>
+  </ul>
+</nav>
+        </div>
+
         <div class="post-content markdown-body">
           
-          <h1 id="compose-사이드이펙트httpsdeveloperandroidcomjetpackcomposeside-effects"><a href="https://developer.android.com/jetpack/compose/side-effects">Compose 사이드이펙트</a></h1>
+          <h1 id="compose-사이드이펙트-원문httpsdeveloperandroidcomjetpackcomposeside-effects">Compose 사이드이펙트 (<a href="https://developer.android.com/jetpack/compose/side-effects">원문</a>)</h1>
 <p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
-<h2 id="왜-사이드이펙트에-대해서-조심해야-하나httpsdeveloperandroidcomjetpackcomposeside-effectsstate-effect-use-cases"><a href="https://developer.android.com/jetpack/compose/side-effects#state-effect-use-cases">왜 사이드이펙트에 대해서 조심해야 하나?</a></h2>
-<ul>
-<li>Recomposition에 의해 <code>@Composable</code> 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 <code>@Composable</code> 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.
-<ul>
-<li>*사이드이펙트 예) 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업</li>
-</ul>
-</li>
-<li>사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.</li>
-</ul>
-<h2 id="initial-composition-시점에-실행httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect--launchedeffect-"><a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">Initial Composition 시점에 실행</a> : <code>LaunchedEffect() {...}</code></h2>
-<ul>
-<li>Initial Composition 시점에 <code>LaunchedEffect() {...}</code>로 전달된 <strong>suspend</strong> 람다<code>{...}</code>를 실행한다.
-<ul>
-<li>
+<h2 id="왜-사이드이펙트에-대해서-조심해야-하나-원문httpsdeveloperandroidcomjetpackcomposeside-effectsstate-effect-use-cases">왜 사이드이펙트에 대해서 조심해야 하나? (<a href="https://developer.android.com/jetpack/compose/side-effects#state-effect-use-cases">원문</a>)</h2>
+<p>Recomposition에 의해 <code>@Composable</code> 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 <code>@Composable</code> 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.</p>
+<p>*사이드이펙트 예시 : 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업</p>
+<p>사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.</p>
+<h2 id="initial-composition-시점에-실행--launchedeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 : <code>LaunchedEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</h2>
+<p>Initial Composition 시점에 <code>LaunchedEffect() {...}</code>로 전달된 <strong>suspend</strong> 람다<code>{...}</code>를 실행한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Child</span>(state: Boolean) { 
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 키값 : scaffoldState.snackbarHostState
@@ -145,18 +163,11 @@
 </span></span><span style="display:flex;"><span>        )    
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-<li>Recomposition 시점에 <code>Launchedeffect()</code>로 전달된 키값이 변화했다면 suspend 람다<code>{...}</code>가 새로 실행된다. 기존 suspend 람다<code>{...}</code>가 실행 중이었다면 중지됨.</li>
-</ul>
-<h2 id="composable-외부에서-실행httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope--remembercoroutinescope"><a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">Composable 외부에서 실행</a> : <code>rememberCoroutineScope()</code></h2>
-<ul>
-<li><code>LaunchedEffect</code>는 Composable이므로 <code>@Composable</code> 함수 안에서만 사용할 수 있다.</li>
-<li>Composable 범위 밖에서 호출되는 <code>onClick</code>과 같은 람다<code>{...}</code>에서는 <code>rememberCoroutineScope</code>를 사용한다.</li>
-<li><code>xXxxScope.launch {...}</code>로 전달된 suspend 람다<code>{...}</code>가 실행된다.
-<ul>
-<li>
+</span></span></code></pre></div><p>Recomposition 시점에 <code>Launchedeffect()</code>로 전달된 키값이 변화했다면 suspend 람다<code>{...}</code>가 새로 실행된다. 기존 suspend 람다<code>{...}</code>가 실행 중이었다면 중지됨.</p>
+<h2 id="composable-외부에서-실행--remembercoroutinescope-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 : <code>rememberCoroutineScope()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</h2>
+<p><code>LaunchedEffect</code>는 Composable이므로 <code>@Composable</code> 함수 안에서만 사용할 수 있다.</p>
+<p>Composable 범위 밖에서 호출되는 <code>onClick</code>과 같은 람다<code>{...}</code>에서는 <code>rememberCoroutineScope</code>를 사용한다.</p>
+<p><code>xXxxScope.launch {...}</code>로 전달된 suspend 람다<code>{...}</code>가 실행된다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">MoviesScreen</span>(scaffoldState: ScaffoldState = rememberScaffoldState()) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// scope의 라이프사이클은 MoviesScreen의 라이프사이클에 종속된다.
@@ -172,16 +183,9 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-<li><code>rememberCoroutineScope()</code>를 통해 만들어진 scope의 라이프사이클은 <code>rememberCoroutineScope()</code>를 호출한 Composable의 라이프사이클에 종속된다.</li>
-</ul>
-<h2 id="지연된-최신상태-접근httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate--rememberupdatedstate"><a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">지연된 최신상태 접근</a> : <code>rememberUpdatedState()</code></h2>
-<ul>
-<li><code>LaunchedEffect() {...}</code>, <code>rememberCoroutineScope.launch {...}</code>의 람다<code>{...}</code> 안에서 지연된 상태접근을 시도할 때 최신 상태값을 가져올 수 있다.
-<ul>
-<li>
+</span></span></code></pre></div><p><code>rememberCoroutineScope()</code>를 통해 만들어진 scope의 라이프사이클은 <code>rememberCoroutineScope()</code>를 호출한 Composable의 라이프사이클에 종속된다.</p>
+<h2 id="지연된-최신상태-접근--rememberupdatedstate-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">지연된 최신상태 접근 : <code>rememberUpdatedState()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</h2>
+<p><code>LaunchedEffect() {...}</code>, <code>rememberCoroutineScope.launch {...}</code>의 람다<code>{...}</code> 안에서 지연된 상태접근을 시도할 때 최신 상태값을 가져올 수 있다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Parent</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> state <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#66d9ef">false</span><span style="color:#75715e">/*첫값*/</span>) }
@@ -214,69 +218,52 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child rememberUpdatedState </span><span style="color:#e6db74">$rememberUpdatedState</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state true&#34; 최신값이 반영됐다.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-<li><code>remember(state) {...}</code>과 <code>rememberUpdatedState(state)</code>의 차이
-<ul>
-<li><code>remember(state) {...}</code>는 위에서 알아본 지연된 상태접근 이슈를 해결할 순 없다.</li>
-<li><code>remember(state) {...}</code>도 <code>rememberUpdatedState(state)</code> 처럼 Recomposition 과정에서 <code>state</code>값이 바뀐 것을 반영할 수 있다.</li>
-<li>그런데 <code>rememberUpdatedState(state)</code> 코드가 있으면 <code>state</code>가 바뀌었을 때 Composable을 두 번 Recomposition 되도록 만들기 때문에 낭비다.
-<ul>
-<li>
+</span></span></code></pre></div><h3 id="rememberstate-과-rememberupdatedstatestate의-차이"><code>remember(state) {...}</code>과 <code>rememberUpdatedState(state)</code>의 차이</h3>
+<p><code>remember(state) {...}</code>는 위에서 알아본 지연된 상태접근 이슈를 해결할 순 없다.</p>
+<p><code>remember(state) {...}</code>도 <code>rememberUpdatedState(state)</code> 처럼 Recomposition 과정에서 <code>state</code>값이 바뀐 것을 반영할 수 있다.</p>
+<p>그런데 <code>rememberUpdatedState(state)</code> 코드가 있으면 <code>state</code>가 바뀌었을 때 Composable을 두 번 Recomposition 되도록 만들기 때문에 낭비다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 호출될 때마다 내부코드에서 스스로 자신의 값을 set 한다.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">rememberUpdatedState</span>(newValue: T) = remember { 
 </span></span><span style="display:flex;"><span>    mutableStateOf(newValue) 
 </span></span><span style="display:flex;"><span>}.apply { 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">it</span>.value = newValue 
 </span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">`</span>
-</span></span></code></pre></div></li>
-<li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Parent</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> state <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#66d9ef">false</span><span style="color:#75715e">/*첫값*/</span>) }
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">var</span> state <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#66d9ef">false</span><span style="color:#75715e">/*첫값*/</span>) }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Box(
-</span></span><span style="display:flex;"><span>        modifier = Modifier
-</span></span><span style="display:flex;"><span>            .size(<span style="color:#ae81ff">50.</span>dp, <span style="color:#ae81ff">50.</span>dp)
-</span></span><span style="display:flex;"><span>            .background(Color.Blue)
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Box를 클릭하면 state값이 true로 바뀐다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            .clickable { state = state.not() },
-</span></span><span style="display:flex;"><span>    ) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// &#34;box state $state&#34;는 state값이 바뀔 때마다 출력된다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;box state </span><span style="color:#e6db74">$state</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>        Child(state)
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>   Box(
+</span></span><span style="display:flex;"><span>       modifier = Modifier
+</span></span><span style="display:flex;"><span>           .size(<span style="color:#ae81ff">50.</span>dp, <span style="color:#ae81ff">50.</span>dp)
+</span></span><span style="display:flex;"><span>           .background(Color.Blue)
+</span></span><span style="display:flex;"><span>           <span style="color:#75715e">// Box를 클릭하면 state값이 true로 바뀐다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>           .clickable { state = state.not() },
+</span></span><span style="display:flex;"><span>   ) {
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// &#34;box state $state&#34;는 state값이 바뀔 때마다 출력된다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;box state </span><span style="color:#e6db74">$state</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>       Child(state)
+</span></span><span style="display:flex;"><span>   }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Child</span>(state: Boolean) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> rememberState1 <span style="color:#66d9ef">by</span> remember { mutableStateOf(state) }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> rememberState2 <span style="color:#66d9ef">by</span> remember(state) { mutableStateOf(state) }
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// rememberUpdatedState() 호출로 인해 Child가 두 번 Recomposition 되어버린다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> rememberUpdatedState <span style="color:#66d9ef">by</span> rememberUpdatedState(state)
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">val</span> rememberState1 <span style="color:#66d9ef">by</span> remember { mutableStateOf(state) }
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">val</span> rememberState2 <span style="color:#66d9ef">by</span> remember(state) { mutableStateOf(state) }
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// rememberUpdatedState() 호출로 인해 Child가 두 번 Recomposition 되어버린다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#66d9ef">val</span> rememberUpdatedState <span style="color:#66d9ef">by</span> rememberUpdatedState(state)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child state </span><span style="color:#e6db74">$state</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state false&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child rememberState1 </span><span style="color:#e6db74">$rememberState1</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state false&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child rememberState2 </span><span style="color:#e6db74">$rememberState2</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state true&#34; 최신값이 반영됐다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child rememberUpdatedState </span><span style="color:#e6db74">$rememberUpdatedState</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state true&#34; 최신값이 반영됐다.
+</span></span><span style="display:flex;"><span>   Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child state </span><span style="color:#e6db74">$state</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state false&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child rememberState1 </span><span style="color:#e6db74">$rememberState1</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state false&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child rememberState2 </span><span style="color:#e6db74">$rememberState2</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state true&#34; 최신값이 반영됐다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child rememberUpdatedState </span><span style="color:#e6db74">$rememberUpdatedState</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state true&#34; 최신값이 반영됐다.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-<li>따라서 state값이 바뀐 것을 반영할 수 있어야 하면서 지연된 상태접근이 불필요하다면 <code>remember(state) {...}</code>를 사용해야 한다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="composition-종료-시점에-실행httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect--disposableeffect-"><a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">Composition 종료 시점에 실행</a> : <code>DisposableEffect() {...}</code></h2>
-<ul>
-<li>Composable의 Composition이 종료될 때 <code>onDispose {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.
-<ul>
-<li>
+</span></span></code></pre></div><p>따라서 state값이 바뀐 것을 반영할 수 있어야 하면서 지연된 상태접근이 불필요하다면 <code>remember(state) {...}</code>를 사용해야 한다.</p>
+<h2 id="composition-종료-시점에-실행--disposableeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 : <code>DisposableEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</h2>
+<p>Composable의 Composition이 종료될 때 <code>onDispose {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span> 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Parent</span>() { 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> state <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#66d9ef">false</span>) }
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span>    Box(
 </span></span><span style="display:flex;"><span>        modifier = Modifier.size(<span style="color:#ae81ff">50.</span>dp, <span style="color:#ae81ff">50.</span>dp)
 </span></span><span style="display:flex;"><span>            .background(Color.Blue)
@@ -296,38 +283,24 @@
 </span></span><span style="display:flex;"><span>    DisposableEffect(state) { 
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Initial Composition 또는 state값이 바뀔 때마다 &#34;DisposableEffect&#34;이 출력된다.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;DisposableEffect&#34;</span>)
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span>        onDispose { 
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Composition이 종료될 때 &#34;onDispose&#34;가 출력된다.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;onDispose&#34;</span>) 
 </span></span><span style="display:flex;"><span>        } 
 </span></span><span style="display:flex;"><span>    } 
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-<li><code>DisposableEffect() {...}</code>로 전달된 키값이 변화해 Recomposition 되면 <code>DisposableEffect() {...}</code>로 전달된 람다<code>{...}</code>가 새로 실행된다. 기존 람다는 suspend가 아니기 때문에 바로 중지되진 않는다.</li>
-</ul>
-<h2 id="recomposition-시점에-실행httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish--sideeffect-"><a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">Recomposition 시점에 실행</a> : <code>SideEffect {...}</code></h2>
-<ul>
-<li>Recomposition 시점에 <code>SideEffect {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.
-<ul>
-<li>
+</span></span></code></pre></div><p><code>DisposableEffect() {...}</code>로 전달된 키값이 변화해 Recomposition 되면 <code>DisposableEffect() {...}</code>로 전달된 람다<code>{...}</code>가 새로 실행된다. 기존 람다는 suspend가 아니기 때문에 바로 중지되진 않는다.</p>
+<h2 id="recomposition-시점에-실행--sideeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 : <code>SideEffect {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</h2>
+<p>Recomposition 시점에 <code>SideEffect {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Child</span>(state: Boolean) {
 </span></span><span style="display:flex;"><span>    SideEffect {      
 </span></span><span style="display:flex;"><span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;recomposition </span><span style="color:#e6db74">$state</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-</ul>
-<h2 id="non-blocking-결과를-composable-상태로-변환httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate--producestate-"><a href="https://developer.android.com/jetpack/compose/side-effects#producestate">Non-blocking 결과를 Composable 상태로 변환</a> : <code>produceState() {...}</code></h2>
-<ul>
-<li><code>produceState() {...}</code>로 전달된 람다<code>suspend ProduceStateScope&lt;T&gt;.() -&gt; Unit</code>를 사용해 일반적인 값을 <code>State&lt;T&gt;</code>로 변환한다.
-<ul>
-<li>
+</span></span></code></pre></div><h2 id="non-blocking-결과를-composable-상태로-변환--producestate--원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 Composable 상태로 변환 : <code>produceState() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</h2>
+<p><code>produceState() {...}</code>로 전달된 람다<code>suspend ProduceStateScope&lt;T&gt;.() -&gt; Unit</code>를 사용해 일반적인 값을 <code>State&lt;T&gt;</code>로 변환한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">loadNetworkImage</span>(
 </span></span><span style="display:flex;"><span>    url: String,
@@ -343,14 +316,9 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-<li>Flow, LiveData 또는 RxJava와 같은 외부 구독 기반 상태를 <code>State&lt;T&gt;</code>로 변환할 때 유용하다.</li>
-<li><code>Flow&lt;T&gt;.collectAsState()</code>도 내부적으로 <code>produceState()</code>를 사용했다.</li>
-<li><code>produceState()</code>의 매개변수로 전달된 suspend 람다<code>{...}</code>에서 scope가 종료되는 걸 잡아내고 싶다면 <code>awaitDispose {...}</code>를 사용한다.
-<ul>
-<li>
+</span></span></code></pre></div><p>Flow, LiveData 또는 RxJava와 같은 외부 구독 기반 상태를 <code>State&lt;T&gt;</code>로 변환할 때 유용하다.</p>
+<p><code>Flow&lt;T&gt;.collectAsState()</code>도 내부적으로 <code>produceState()</code>를 사용했다.</p>
+<p><code>produceState()</code>의 매개변수로 전달된 suspend 람다<code>{...}</code>에서 scope가 종료되는 걸 잡아내고 싶다면 <code>awaitDispose {...}</code>를 사용한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> currentPerson <span style="color:#66d9ef">by</span> produceState&lt;Person?&gt;(<span style="color:#66d9ef">null</span>, viewModel) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> disposable = viewModel.registerPersonObserver { person <span style="color:#f92672">-&gt;</span>
 </span></span><span style="display:flex;"><span>        value = person
@@ -360,17 +328,10 @@
 </span></span><span style="display:flex;"><span>        disposable.dispose()
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-</ul>
-<h2 id="무거운-blocking-작업의-결과를-composable-상태로-변환httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof--remember--derivedstateof--"><a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">무거운 Blocking 작업의 결과를 Composable 상태로 변환</a> : <code>remember() { derivedStateOf {...} }</code></h2>
-<ul>
-<li><code>derivedStateOf {...}</code>는 <code>remember {...}</code> 안에서만 사용해야 쓸모가 있다.</li>
-<li><code>mutableStateOf()</code>는 값을 인자로 넣는 반면에 <code>derivedStateOf {...}</code>는 람다<code>{...}</code>를 인자로 받는다.</li>
-<li><code>derivedStateOf {...}</code>로 전달된 람다<code>{...}</code>는 <code>remember {...}</code>에 의해 Recomposition 시 재호출 빈도가 최소화 되며 따라서 무거운 변환 작업에 대한 부담이 적다.
-<ul>
-<li>
+</span></span></code></pre></div><h2 id="무거운-blocking-작업의-결과를-composable-상태로-변환--remember--derivedstateof---원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 Composable 상태로 변환 : <code>remember() { derivedStateOf {...} }</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</h2>
+<p><code>derivedStateOf {...}</code>는 <code>remember {...}</code> 안에서만 사용해야 쓸모가 있다.</p>
+<p><code>mutableStateOf()</code>는 값을 인자로 넣는 반면에 <code>derivedStateOf {...}</code>는 람다<code>{...}</code>를 인자로 받는다.</p>
+<p><code>derivedStateOf {...}</code>로 전달된 람다<code>{...}</code>는 <code>remember {...}</code>에 의해 Recomposition 시 재호출 빈도가 최소화 되며 따라서 무거운 변환 작업에 대한 부담이 적다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Screen</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> flag <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#66d9ef">false</span>) }
@@ -446,17 +407,10 @@
 </span></span><span style="display:flex;"><span>        Text(item.toString())
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-</ul>
-<h2 id="composable-상태를-flow로-변환--snapshotflow-httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow"><a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">Composable 상태를 flow로 변환 : <code>snapshotFlow {...}</code></a></h2>
-<ul>
-<li>Composable 상태 <code>State&lt;T&gt;</code>는 구독 가능한 값이다.</li>
-<li>Flow는 구독 가능한 스트림이다.</li>
-<li><code>State&lt;T&gt;</code>를 Flow로 변환하여 Flow의 다양한 연산자를 활용할 수 있다.
-<ul>
-<li>
+</span></span></code></pre></div><h2 id="composable-상태를-flow로-변환--snapshotflow--원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow">Composable 상태를 flow로 변환 : <code>snapshotFlow {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</h2>
+<p>Composable 상태 <code>State&lt;T&gt;</code>는 구독 가능한 값이다.</p>
+<p>Flow는 구독 가능한 스트림이다.</p>
+<p><code>State&lt;T&gt;</code>를 Flow로 변환하여 Flow의 다양한 연산자를 활용할 수 있다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> listState = rememberLazyListState()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>LazyColumn(state = listState) { 
@@ -472,23 +426,12 @@
 </span></span><span style="display:flex;"><span>            MyAnalyticsService.sendScrolledPastFirstItemEvent()    
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-</ul>
-<h2 id="사이드이펙트에-주어진-람다가-다시-시작되는-조건httpsdeveloperandroidcomjetpackcomposeside-effectsrestarting-effects"><a href="https://developer.android.com/jetpack/compose/side-effects#restarting-effects">사이드이펙트에 주어진 람다가 다시 시작되는 조건</a></h2>
-<ul>
-<li><code>LaunchedEffect(key) {...}</code>, <code>remember(key) {...}</code>, <code>DisposableEffect(key) {...}</code> 등에서 쓰이는 키값이 바뀌면 주어진 람다<code>{...}</code>가 새로 실행 된다.
-<ul>
-<li>
+</span></span></code></pre></div><h2 id="사이드이펙트에-주어진-람다가-다시-시작되는-조건-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrestarting-effects">사이드이펙트에 주어진 람다가 다시 시작되는 조건 (<a href="https://developer.android.com/jetpack/compose/side-effects#restarting-effects">원문</a>)</h2>
+<p><code>LaunchedEffect(key) {...}</code>, <code>remember(key) {...}</code>, <code>DisposableEffect(key) {...}</code> 등에서 쓰이는 키값이 바뀌면 주어진 람다<code>{...}</code>가 새로 실행 된다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>EffectName(restartIfThisKeyChanges, orThisKey, orThisKey, <span style="color:#f92672">..</span>.) { 
 </span></span><span style="display:flex;"><span>   <span style="color:#f92672">..</span>.
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-</ul>
-
+</span></span></code></pre></div>
         </div>
 
         <div class="row middle-xs">

@@ -13,8 +13,12 @@
       <pubDate>Sat, 25 Jun 2022 22:00:02 +0000</pubDate>
       
       <guid>https://bsscco.github.io/posts/2022-06-25-compose-performance/</guid>
-      <description>Compose 성능개선 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-앱 설정으로 성능 개선 release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다. R8 컴파일러를 사용하여 앱에서 불필요한 코드를 삭제한다. Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다. *Baseline Profiles : Profile에 담긴 메소드 목록은 ART에 의해 AOT 컴파일 된다. 프레임 3단계에서 성능 개선 Composition 단계에서 성능 개선(≠Composition 단계 건너뛰기) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 @Composable 함수 외부에서 실행되도록 한다.</description>
+      <description>Compose 성능개선 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+앱 설정으로 성능 개선 (원문) release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다.
+R8 컴파일러를 사용하여 앱에서 불필요한 코드를 삭제한다.
+Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
+*Baseline Profiles : Profile에 담긴 메소드 목록은 ART에 의해 AOT 컴파일 된다.
+프레임 3단계에서 성능 개선 (원문) Composition 단계에서 성능 개선(≠Composition 단계 건너뛰기) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 @Composable 함수 외부에서 실행되도록 한다.</description>
     </item>
     
     <item>
@@ -23,8 +27,11 @@
       <pubDate>Sat, 25 Jun 2022 22:00:01 +0000</pubDate>
       
       <guid>https://bsscco.github.io/posts/2022-06-25-compose-arch-layers/</guid>
-      <description>Compose 아키텍처 레이어링 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Compose 아키텍쳐의 레이어별 모듈 Jetpack Compose는 다수의 모듈로 만들어졌다. 아래 레이어로 내려갈 수록 상위 레이어의 기반이 된다. Runtime 모듈 : 최하위 레이어 이 모듈은 remember, mutableStateOf, @Composable 주석, SideEffect 같은 Compose 런타임의 기초를 제공한다. UI가 아닌 Composable 트리 관리 기능만 필요한 경우 이 레이어에 바로 빌드하는 것이 좋다. UI 모듈 ui-text, ui-graphics, ui-tooling 모듈로 구성된다.</description>
+      <description>Compose 아키텍처 레이어링 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Compose 아키텍쳐의 레이어별 모듈 (원문) Jetpack Compose는 다수의 모듈로 만들어졌다. 아래 레이어로 내려갈 수록 상위 레이어의 기반이 된다.
+Runtime 모듈 : 최하위 레이어 이 모듈은 remember, mutableStateOf, @Composable 주석, SideEffect 같은 Compose 런타임의 기초를 제공한다.
+UI가 아닌 Composable 트리 관리 기능만 필요한 경우 이 레이어에 바로 빌드하는 것이 좋다.
+UI 모듈 ui-text, ui-graphics, ui-tooling 모듈로 구성된다.</description>
     </item>
     
     <item>
@@ -33,8 +40,12 @@ Compose 아키텍쳐의 레이어별 모듈 Jetpack Compose는 다수의 모듈�
       <pubDate>Sat, 25 Jun 2022 22:00:00 +0000</pubDate>
       
       <guid>https://bsscco.github.io/posts/2022-06-25-compose-frame-phases/</guid>
-      <description>Compose 프레임의 3단계 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Compose 프레임에서의 3단계 Android 뷰 시스템의 프레임에서 실행되는 3단계 측정 -&amp;gt; 레이아웃 -&amp;gt; 그리기 Compose의 프레임에서 실행되는 3단계 1단계 Composition : Composable들을 실행하고 UI설명을 만든다. 2단계 Layout : 레이아웃 트리에 있는 각 노드를 2D 좌표로 측정하고 배치한다. 3단계 Drawing : UI가 캔버스에 그려진다. 상태 읽기에 따라 Composition, Layout, Drawing 단계를 건너뛴다. Composition 단계 건너뛰기 @Composable 함수 안에서의 상태 읽기는 Composition과 이후 단계에 영향을 미친다.</description>
+      <description>Compose 프레임의 3단계 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Compose 프레임에서의 3단계 (원문) Android 뷰 시스템의 프레임에서 실행되는 3단계
+측정 -&amp;gt; 레이아웃 -&amp;gt; 그리기
+Compose의 프레임에서 실행되는 3단계 1단계 Composition : Composable들을 실행하고 UI설명을 만든다.
+2단계 Layout : 레이아웃 트리에 있는 각 노드를 2D 좌표로 측정하고 배치한다.
+3단계 Drawing : UI가 캔버스에 그려진다. 상태 읽기에 따라 Composition, Layout, Drawing 단계를 건너뛴다. (원문) Composition 단계 건너뛰기 @Composable 함수 안에서의 상태 읽기는 Composition과 이후 단계에 영향을 미친다.</description>
     </item>
     
     <item>
@@ -43,8 +54,10 @@ Compose 프레임에서의 3단계 Android 뷰 시스템의 프레임에서 실�
       <pubDate>Wed, 22 Jun 2022 21:10:04 +0000</pubDate>
       
       <guid>https://bsscco.github.io/posts/2022-06-22-compose-side-effect/</guid>
-      <description>Compose 사이드이펙트 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다. *사이드이펙트 예) 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.</description>
+      <description>Compose 사이드이펙트 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+왜 사이드이펙트에 대해서 조심해야 하나? (원문) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.
+*사이드이펙트 예시 : 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업
+사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.</description>
     </item>
     
     <item>
@@ -53,8 +66,12 @@ Compose 프레임에서의 3단계 Android 뷰 시스템의 프레임에서 실�
       <pubDate>Wed, 22 Jun 2022 21:10:03 +0000</pubDate>
       
       <guid>https://bsscco.github.io/posts/2022-06-22-composable-modifier/</guid>
-      <description>Composable Modifier 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 접근성 라벨과 같은 정보 추가 접근성 라벨은 UI 테스트에서 요소 접근을 쉽게 할 수 있게 해준다. 요소를 클릭 가능, 스크롤 가능하게 만드는 것과 같은 높은 수준의 상호작용 추가 @Composable fun Greeting(name: String) { Column(modifier = Modifier.padding(24.dp)) { Text(text = &amp;#34;Hello,&amp;#34;) Text(text = name) } } Modifier의 결과를 예상할 때 주의할 점 @Composable fun ArtistCard(/*.</description>
+      <description>Composable Modifier (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경
+접근성 라벨과 같은 정보 추가
+*접근성 라벨은 UI 테스트에서 요소 접근을 쉽게 할 수 있게 해준다.
+요소를 클릭 가능, 스크롤 가능하게 만드는 것과 같은 높은 수준의 상호작용 추가
+@Composable fun Greeting(name: String) { Column(modifier = Modifier.padding(24.dp)) { Text(text = &amp;#34;Hello,&amp;#34;) Text(text = name) } } Modifier의 결과를 예상할 때 주의할 점 (원문) @Composable fun ArtistCard(/*.</description>
     </item>
     
     <item>
@@ -63,8 +80,9 @@ Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경 
       <pubDate>Wed, 22 Jun 2022 21:10:02 +0000</pubDate>
       
       <guid>https://bsscco.github.io/posts/2022-06-22-composable-lifecycle/</guid>
-      <description>Composable의 수명주기 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn Composable에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다. @Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000).</description>
+      <description>Composable의 수명주기 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되고 Composition이 종료된다. Smart Recomposition에 도움이 되는 정보 추가하기 (원문) 목록 중간에 항목을 추가/삭제하는 경우, 목록이 재정렬되는 경우 모든 항목은 Recomposition의 대상이 된다. Column 또는 LazyColumn Composable에서 key Composable을 사용하면 변동이 없는 항목을 Recomposition 대상에서 제외시킬 수 있다.
+@Composable fun Screen() { var items by remember { mutableStateOf((0 until 1000).</description>
     </item>
     
     <item>
@@ -73,8 +91,13 @@ Composable의 수명 주기 Composition 시작 후 0회 이상 Recomposition 되
       <pubDate>Wed, 22 Jun 2022 21:10:01 +0000</pubDate>
       
       <guid>https://bsscco.github.io/posts/2022-06-22-composable-state/</guid>
-      <description>Composable의 상태 관리 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Composition 용어 Composition : UI를 기술하는 Composable의 트리구조 Initial Composition : 첫 Composition 구성 Recomposition : Composition을 재구성 Composable의 상태에 쓰이는 메모리를 관리하기 remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다. remember {...}를 호출한 Composable이 Composition에서 삭제되면 remember에 의해 계산된 값 또한 제거된다. 왜 remember {.</description>
+      <description>Composable의 상태 관리 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+Composition 용어 Composition UI를 기술하는 Composable의 트리구조
+Initial Composition 첫 Composition 구성
+Recomposition Composition을 재구성
+Composable의 상태에 쓰이는 메모리를 관리하기 (원문) remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다.
+remember {...}를 호출한 Composable이 Composition에서 삭제되면 remember에 의해 계산된 값 또한 제거된다.
+왜 remember {.</description>
     </item>
     
     <item>
@@ -83,8 +106,12 @@ Composition 용어 Composition : UI를 기술하는 Composable의 트리구조 I
       <pubDate>Wed, 22 Jun 2022 21:10:00 +0000</pubDate>
       
       <guid>https://bsscco.github.io/posts/2022-06-22-compose-mental-model/</guid>
-      <description>Compose 이해 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-선언형 프로그래밍 패러다임이란? findViewById(R.id.text).setText(aText)와 같은 명령형 코드의 단점 aText가 여러 View에서 사용된다고 가정했을 때 aText의 값이 바뀌면 모든 View를 수동조작해야 한다. View 하나라도 빠뜨리기 쉽다. 반면에 선언형 코드는 UI빌드와 UI갱신을 자동화 한다. 선언형 프로그래밍 기법은 처음부터 화면 전체를 생성한 뒤에 필요한 변경사항만 적용하는 방식으로 동작한다. 선언형 패러다임, 좀 더 자세히 Compose의 선언형 접근 방식에서는 Composable들의 트리인 Composition을 빌드함으로써 UI를 초기화 한다.</description>
+      <description>Compose 이해 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+선언형 프로그래밍 패러다임이란? (원문) findViewById(R.id.text).setText(aText)와 같은 명령형 코드의 단점은?
+aText가 여러 View에서 사용된다고 가정했을 때 aText의 값이 바뀌면 모든 View를 수동조작해야 한다. View 하나라도 빠뜨리기 쉽다.
+반면에 선언형 코드는 UI 갱신을 자동화 한다.
+선언형 프로그래밍 기법은 처음부터 화면 전체를 생성한 뒤에 필요한 변경사항만 자동 적용하는 방식으로 동작한다.
+선언형 패러다임, 좀 더 자세히 (원문) Compose의 선언형 접근방식에서는 Composable들의 트리인 Composition을 빌드함으로써 UI를 초기화한다.</description>
     </item>
     
     <item>
