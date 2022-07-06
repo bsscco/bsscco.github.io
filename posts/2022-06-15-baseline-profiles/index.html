@@ -1,230 +1,309 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.100.2" />
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="bsscco" />
-  <meta property="og:url" content="https://bsscco.github.io/posts/2022-06-15-baseline-profiles/" />
-  <link rel="canonical" href="https://bsscco.github.io/posts/2022-06-15-baseline-profiles/" /><link rel="alternate" type="application/atom+xml" href="https://bsscco.github.io/index.xml" title="Android Developer BSSCCO">
-
-  <script type="application/ld+json">
-  {
-      "@context" : "http://schema.org",
-      "@type" : "BlogPosting",
-      "mainEntityOfPage": {
-           "@type": "WebPage",
-           "@id": "https:\/\/bsscco.github.io\/"
-      },
-      "articleSection" : "posts",
-      "name" : "Baseline Profiles 정리",
-      "headline" : "Baseline Profiles 정리",
-      "description" : "Baseline Profiles 한글문서 구글블로그 Baseline Profiles란? APK에 담기는 클래스와 메소드의 목록이다. 앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다. 결과물 덕분에 앱 실행 시간과 jank가 감소된다. *jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간 기타 장점 AndroidX와 Compose는 \u0008안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있\u0008다. 하지만 최신 AndroidX와 Compose 1.",
-      "inLanguage" : "en-US",
-      "author" : "bsscco",
-      "creator" : "bsscco",
-      "publisher": "bsscco",
-      "accountablePerson" : "bsscco",
-      "copyrightHolder" : "bsscco",
-      "copyrightYear" : "2022",
-      "datePublished": "2022-06-15 20:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-06-15 20:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/bsscco.github.io\/posts\/2022-06-15-baseline-profiles\/",
-      "keywords" : [ "performance", ]
-  }
-</script>
-<title>Baseline Profiles 정리</title>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Baseline Profiles 정리 | ANDROID DEVELOPER BSSCCO</title>
+  <link rel = 'canonical' href = '/posts/2022-06-15-baseline-profiles/'>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Baseline Profiles 정리" />
-  <meta property="og:type" content="article" />
-  <meta property="og:description" content="Baseline Profiles 한글문서 구글블로그 Baseline Profiles란? APK에 담기는 클래스와 메소드의 목록이다. 앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다. 결과물 덕분에 앱 실행 시간과 jank가 감소된다. *jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간 기타 장점 AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다. 하지만 최신 AndroidX와 Compose 1." />
-  <meta name="description" content="Baseline Profiles 한글문서 구글블로그 Baseline Profiles란? APK에 담기는 클래스와 메소드의 목록이다. 앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다. 결과물 덕분에 앱 실행 시간과 jank가 감소된다. *jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간 기타 장점 AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다. 하지만 최신 AndroidX와 Compose 1." />
-  <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="" />
+<meta property="og:description" content="Baseline Profiles 한글문서 구글블로그 Baseline Profiles란? APK에 담기는 클래스와 메소드의 목록이다.
+앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다.
+결과물 덕분에 앱 실행 시간과 jank가 감소된다.
+*jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간
+Compose에 적용된 Baseline Profiles AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다.
+하지만 최신 AndroidX와 Compose 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/2022-06-15-baseline-profiles/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-15T20:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-15T20:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Baseline Profiles 정리"/>
+<meta name="twitter:description" content="Baseline Profiles 한글문서 구글블로그 Baseline Profiles란? APK에 담기는 클래스와 메소드의 목록이다.
+앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다.
+결과물 덕분에 앱 실행 시간과 jank가 감소된다.
+*jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간
+Compose에 적용된 Baseline Profiles AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다.
+하지만 최신 AndroidX와 Compose 1."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/styles.80728adc5361c3cae731802b9ef6cff6523dcdbfbe3a0e155b3a56ed163fbab33994c5475c56f478f801fef7a963175653973498ce6b2c29e3468c75edf4247b.css" integrity="sha512-gHKK3FNhw8rnMYArnvbP9lI9zb&#43;&#43;Og4VWzpW7RY/urM5lMVHXFb0ePgB/vepYxdWU5c0mM5rLCnjRox17fQkew=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   
 
   
-    <style>body{font-family:noto sans korean,bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body h2{margin-top:80px}.markdown-body h3{margin-top:40px}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:noto sans korean,bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px;border-width:3px;border-style:solid;border-color:#000;border-radius:10px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body h2{margin-top:80px}.markdown-body h3{margin-top:40px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
-  
-  
-    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
-  
-
-  
-
-  <link href="/index.xml" rel="alternate" type="application/rss+xml"
-    title="Android Developer BSSCCO">
-  
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean|Bree+Serif|Bungee+Shade" rel="stylesheet">
-  
-  
+<link rel="icon" type="image/png" href="images/favicon.ico" />
 
   
   
 </head>
 
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
 
-<body>
-  <article class="post " id="article">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="site-header">
-          
-<header>
-  <div class="header-title">
-    <a href="/"
-      >Android Developer BSSCCO</a
-    >
-  </div>
-  <div class="header-subtitle"></div>
-</header>
-<div class="row end-md center-xs header-items">
-  
-  <div class="header-item">
-    <a href="https://github.com/bsscco" target="_blank">Github</a>
-  </div>
-  
-</div>
-<div class="row end-xs">
-   
-</div>
-<div class="header-line"></div>
-
-        </div>
-        <header class="post-header">
-          <h1 class="post-title">Baseline Profiles 정리</h1>
-          
-          <div class="row post-desc">
-            <div class="col-xs-6">
-              
-              <time class="post-date" datetime="2022-06-15 20:00:00 UTC">
-                15 Jun 2022
-              </time>
-              
-            </div>
-            <div class="col-xs-6">
-              
-              <div class="post-author">
-                <a target="_blank" href="https://github.com/bsscco">@bsscco</a>
-              </div>
-              
-            </div>
-          </div>
-          
-        </header>
-
-        <div class="related-content">
-          <h3>Table of Contents</h3>
-          <nav id="TableOfContents">
-  <ul>
-    <li><a href="#baseline-profiles">Baseline Profiles</a>
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
       <ul>
-        <li><a href="#baseline-profiles란">Baseline Profiles란?</a></li>
-        <li><a href="#baseline-profiles는-어떻게-동작하나-원문httpsdeveloperandroidcomtopicperformancebaselineprofileshow-baseline-profiles-work">Baseline Profiles는 어떻게 동작하나? (<a href="https://developer.android.com/topic/performance/baselineprofiles#how-baseline-profiles-work">원문</a>)</a></li>
-        <li><a href="#안드로이드-버전-별-compilation-동작의-차이-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescompilation-behaviors">안드로이드 버전 별 Compilation 동작의 차이 (<a href="https://developer.android.com/topic/performance/baselineprofiles#compilation-behaviors">원문</a>)</a></li>
-        <li><a href="#baseline-profiles-만들기-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescreating-profile-rules">Baseline Profiles 만들기 (<a href="https://developer.android.com/topic/performance/baselineprofiles#creating-profile-rules">원문</a>)</a></li>
-        <li><a href="#baselineprofilerule-샘플"><code>BaselineProfileRule</code> 샘플</a></li>
-        <li><a href="#baselineprofilerule-vs-macrobenchmarkrule"><code>BaselineProfileRule</code> vs <code>MacrobenchmarkRule</code></a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/categories">Categories</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" /posts/2019-10-06-using-network-image-efficiently/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="/posts/2022-06-22-compose-mental-model/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2f2022-06-15-baseline-profiles%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2f2022-06-15-baseline-profiles%2f&text=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2f2022-06-15-baseline-profiles%2f&title=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2f2022-06-15-baseline-profiles%2f&is_video=false&description=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac&body=Check out this article: %2fposts%2f2022-06-15-baseline-profiles%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2f2022-06-15-baseline-profiles%2f&title=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2f2022-06-15-baseline-profiles%2f&title=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-15-baseline-profiles%2f&name=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac&description=Baseline%20Profiles%20%ed%95%9c%ea%b8%80%eb%ac%b8%ec%84%9c%20%ea%b5%ac%ea%b8%80%eb%b8%94%eb%a1%9c%ea%b7%b8%20Baseline%20Profiles%eb%9e%80%3f%20APK%ec%97%90%20%eb%8b%b4%ea%b8%b0%eb%8a%94%20%ed%81%b4%eb%9e%98%ec%8a%a4%ec%99%80%20%eb%a9%94%ec%86%8c%eb%93%9c%ec%9d%98%20%eb%aa%a9%eb%a1%9d%ec%9d%b4%eb%8b%a4.%0a%ec%95%b1%20%ec%84%a4%ec%b9%98%ea%b0%80%20%eb%90%98%eb%8a%94%20%eb%8f%99%ec%95%88%20%ec%9d%b4%20%eb%aa%a9%eb%a1%9d%ec%9d%98%20%ed%81%b4%eb%9e%98%ec%8a%a4%ec%99%80%20%eb%a9%94%ec%86%8c%eb%93%9c%eb%8a%94%20pre-compile%20%eb%90%9c%eb%8b%a4.%20%ec%9d%b4%20%ea%b2%b0%ea%b3%bc%eb%ac%bc%ec%9d%80%20%ec%8b%a4%ed%96%89%ec%9d%b4%20%eb%8d%94%20%eb%b9%a0%eb%a5%b4%eb%8b%a4.%0a%ea%b2%b0%ea%b3%bc%eb%ac%bc%20%eb%8d%95%eb%b6%84%ec%97%90%20%ec%95%b1%20%ec%8b%a4%ed%96%89%20%ec%8b%9c%ea%b0%84%ea%b3%bc%20jank%ea%b0%80%20%ea%b0%90%ec%86%8c%eb%90%9c%eb%8b%a4.%0a%2ajank%3a%20CPU%20%ec%9e%91%ec%97%85%ec%8b%9c%ea%b0%84%ec%9d%b4%2060%ed%94%84%eb%a0%88%ec%9e%84%20%eb%b2%94%ec%9c%84%eb%a5%bc%20%eb%84%98%ec%96%b4%ea%b0%80%ec%84%9c%20%ec%95%b1%ec%9d%b4%20%eb%b2%84%eb%b2%85%ec%9d%b4%ea%b2%8c%20%eb%a7%8c%eb%93%a4%20%ec%88%98%20%ec%9e%88%eb%8a%94%20CPU%ec%9d%98%20%ec%b4%88%ea%b3%bc%20%ec%9e%91%ec%97%85%ec%8b%9c%ea%b0%84%0aCompose%ec%97%90%20%ec%a0%81%ec%9a%a9%eb%90%9c%20Baseline%20Profiles%20AndroidX%ec%99%80%20Compose%eb%8a%94%20%ec%95%88%eb%93%9c%eb%a1%9c%ec%9d%b4%eb%93%9c%20%ec%8b%9c%ec%8a%a4%ed%85%9c%ec%9d%98%20%ec%9d%bc%eb%b6%80%ea%b0%80%20%ec%95%84%eb%8b%88%ea%b3%a0%20%eb%9d%bc%ec%9d%b4%eb%b8%8c%eb%9f%ac%eb%a6%ac%ec%9d%b4%eb%af%80%eb%a1%9c%20%ec%95%b1%20%ec%84%a4%ec%b9%98%20%ec%8b%9c%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%eb%90%98%ec%a7%80%20%ec%95%8a%ec%95%84%ec%84%9c%20cold%20startup%20%ec%8b%9c%ea%b0%84%ec%9d%84%20%ec%a6%9d%ea%b0%80%ec%8b%9c%ed%82%ac%20%ec%88%98%20%ec%9e%88%08%eb%8b%a4.%0a%ed%95%98%ec%a7%80%eb%a7%8c%20%ec%b5%9c%ec%8b%a0%20AndroidX%ec%99%80%20Compose%201." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2f2022-06-15-baseline-profiles%2f&t=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#baseline-profiles란">Baseline Profiles란?</a>
+      <ul>
+        <li><a href="#compose에-적용된-baseline-profiles">Compose에 적용된 Baseline Profiles</a></li>
       </ul>
     </li>
-    <li><a href="#macrobenchmark">Macrobenchmark</a>
+    <li><a href="#baseline-profiles는-어떻게-동작하나-원문httpsdeveloperandroidcomtopicperformancebaselineprofileshow-baseline-profiles-work">Baseline Profiles는 어떻게 동작하나? (<a href="https://developer.android.com/topic/performance/baselineprofiles#how-baseline-profiles-work">원문</a>)</a></li>
+    <li><a href="#안드로이드-버전-별-baseline-profiles의-compilation-동작-비교-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescompilation-behaviors">안드로이드 버전 별 Baseline Profiles의 Compilation 동작 비교 (<a href="https://developer.android.com/topic/performance/baselineprofiles#compilation-behaviors">원문</a>)</a>
       <ul>
-        <li><a href="#macrobenchmark란-원문httpsdeveloperandroidcomtopicperformancebenchmarkingbenchmarking-overviewmacrobenchmark">Macrobenchmark란? (<a href="https://developer.android.com/topic/performance/benchmarking/benchmarking-overview#macrobenchmark">원문</a>)</a></li>
-        <li><a href="#macrobenchmark-작성하기-원문httpsdeveloperandroidcomtopicperformancebenchmarkingmacrobenchmark-overview">Macrobenchmark 작성하기 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview">원문</a>)</a></li>
-        <li><a href="#matrics에-대해-원문httpsdeveloperandroidcomtopicperformancebenchmarkingmacrobenchmark-metrics">Matrics에 대해 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-metrics">원문</a>)</a></li>
-        <li><a href="#특정-요소-측정을-위한-앱-제어-원문httpsdeveloperandroidcomtopicperformancebenchmarkingmacrobenchmark-control-app">특정 요소 측정을 위한 앱 제어 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-control-app">원문</a>)</a></li>
-        <li><a href="#benchmarking-in-ci-원문httpsdeveloperandroidcomtopicperformancebenchmarkingbenchmarking-in-ci">Benchmarking in CI (<a href="https://developer.android.com/topic/performance/benchmarking/benchmarking-in-ci">원문</a>)</a></li>
+        <li><a href="#android-5api-21--6api-23">Android 5(API 21) ~ 6(API 23)</a></li>
+        <li><a href="#android-7api-24--81api-27">Android 7(API 24) ~ 8.1(API 27)</a></li>
+        <li><a href="#android-9api-28-">Android 9(API 28) ~</a></li>
+      </ul>
+    </li>
+    <li><a href="#baseline-profiles-만들기-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescreating-profile-rules">Baseline Profiles 만들기 (<a href="https://developer.android.com/topic/performance/baselineprofiles#creating-profile-rules">원문</a>)</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#baselineprofilerule-vs-macrobenchmarkrule"><code>BaselineProfileRule</code> vs <code>MacrobenchmarkRule</code></a>
+      <ul>
+        <li></li>
       </ul>
     </li>
   </ul>
-</nav>
-        </div>
 
-        <div class="post-content markdown-body">
+  <ul>
+    <li><a href="#macrobenchmark란-원문httpsdeveloperandroidcomtopicperformancebenchmarkingbenchmarking-overviewmacrobenchmark">Macrobenchmark란? (<a href="https://developer.android.com/topic/performance/benchmarking/benchmarking-overview#macrobenchmark">원문</a>)</a></li>
+    <li><a href="#macrobenchmark-작성하기-원문httpsdeveloperandroidcomtopicperformancebenchmarkingmacrobenchmark-overview">Macrobenchmark 작성하기 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview">원문</a>)</a></li>
+    <li><a href="#macrobenchmark-기타">Macrobenchmark 기타</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Baseline Profiles 정리
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
           
-          <h2 id="baseline-profiles">Baseline Profiles</h2>
+          <time datetime="2022-06-15 20:00:00 &#43;0000 UTC" itemprop="datePublished">2022-06-15</time>
+          
+        </div>
+        
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="/categories/android">Android</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/performance" rel="tag">performance</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h1 id="baseline-profiles">Baseline Profiles</h1>
 <ul>
 <li><a href="https://developer.android.com/studio/profile/baselineprofiles?hl=ko">한글문서</a></li>
 <li><a href="https://developers-kr.googleblog.com/2022/03/improving-app-performance-with-baseline.html">구글블로그</a></li>
 </ul>
-<h3 id="baseline-profiles란">Baseline Profiles란?</h3>
-<ul>
-<li>APK에 담기는 클래스와 메소드의 <strong>목록</strong>이다.</li>
-<li>앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다.</li>
-<li>결과물 덕분에 앱 실행 시간과  jank가 감소된다.
-<ul>
-<li>*jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간</li>
-</ul>
-</li>
-<li>기타 장점
-<ul>
-<li>AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다.</li>
-<li>하지만 최신 AndroidX와 Compose 1.0.0 이상은 자동으로 Baseline Profile을 제공하기 때문에 이런 문제가 발생하지 않는다.
-<ul>
-<li>*Baseline Profile을 제공: baseline-prof.txt가 각 라이브러리에 담겨있다는 뜻. <a href="https://github.com/androidx/constraintlayout/pull/423/files">예시</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="baseline-profiles는-어떻게-동작하나-원문httpsdeveloperandroidcomtopicperformancebaselineprofileshow-baseline-profiles-work">Baseline Profiles는 어떻게 동작하나? (<a href="https://developer.android.com/topic/performance/baselineprofiles#how-baseline-profiles-work">원문</a>)</h3>
-<ul>
-<li>Profile rules가 binary form으로 컴파일되어 APK 안에 담긴다.</li>
-<li>앱 설치 동안 ART는 profile 안에 메소드를 대상으로 AOT compilation을 수행한다.</li>
-<li>만약 profile이 앱실행 또는 랜더링 프레임 동안 사용되는 메소드를 포함한다면 앱 실행을 더 빠르게 만들 수 있고 jank를 감소시킬 수 있다.</li>
-<li>Critical user journeys의 예로는 app startup, transition, scrolling 등이 있다.</li>
-</ul>
-<h3 id="안드로이드-버전-별-compilation-동작의-차이-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescompilation-behaviors">안드로이드 버전 별 Compilation 동작의 차이 (<a href="https://developer.android.com/topic/performance/baselineprofiles#compilation-behaviors">원문</a>)</h3>
-<ul>
-<li>Android 5 (API level 21) up to Android 6 (API level 23)
-<ul>
-<li>Full AOT</li>
-<li>앱 설치 동안 앱 전체를 최적화 한다.</li>
-<li>RAM과 disk 사용량, disk로부터 읽어오는 시간이 증가한다.</li>
-<li>결과적으로 cold startup 시간을 증가시킨다.</li>
-</ul>
-</li>
-<li>Android 7 (API level 24) up to Android 8.1 (API level 27)
-<ul>
-<li>Partial AOT (Baseline Profile)</li>
-<li>앱 설치 동안 Baseline Profile에 명시된 메소드를 대상으로 최적화 한다.</li>
-<li>ART는 앱이 사용되는 동안 profile rules를 추가하고 기기가 유휴 상태일 때 컴파일을 수행해서 최적화할 수 있다.</li>
-<li>이 최적화는 disk 사용량과 disk로부터 읽어오는 시간을 감소시킨다.</li>
-<li>결과적으로 cold startup 시간도 줄어든다.</li>
-</ul>
-</li>
-<li>Android 9 (API level 28) and higher
-<ul>
-<li>Partial AOT (Baseline + Cloud Profile)</li>
-<li>구글플레이가 앱 설치 동안 Baseline profiles와, 가능하다면 Cloud profiles까지 사용해 APK를 최적화 한다.</li>
-<li>설치 후에 ART profiles는 구글플레이로 업로드되어 수집된다.</li>
-<li>이후 다른 사용자가 앱을 설치/업데이트 할 때 Cloud profiles가 함께 제공된다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="baseline-profiles-만들기-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescreating-profile-rules">Baseline Profiles 만들기 (<a href="https://developer.android.com/topic/performance/baselineprofiles#creating-profile-rules">원문</a>)</h3>
-<ul>
+<h2 id="baseline-profiles란">Baseline Profiles란?</h2>
+<p>APK에 담기는 클래스와 메소드의 <strong>목록</strong>이다.</p>
+<p>앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다.</p>
+<p>결과물 덕분에 앱 실행 시간과  jank가 감소된다.</p>
+<p>*jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간</p>
+<h3 id="compose에-적용된-baseline-profiles">Compose에 적용된 Baseline Profiles</h3>
+<p>AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다.</p>
+<p>하지만 최신 AndroidX와 Compose 1.0.0 이상은 자동으로 Baseline Profile을 제공하기 때문에 이런 문제가 발생하지 않는다.</p>
+<p>*Baseline Profile을 제공: baseline-prof.txt가 각 라이브러리에 담겨있다는 뜻. <a href="https://github.com/androidx/constraintlayout/pull/423/files">예시</a></p>
+<h2 id="baseline-profiles는-어떻게-동작하나-원문httpsdeveloperandroidcomtopicperformancebaselineprofileshow-baseline-profiles-work">Baseline Profiles는 어떻게 동작하나? (<a href="https://developer.android.com/topic/performance/baselineprofiles#how-baseline-profiles-work">원문</a>)</h2>
+<p>Profile rules가 binary form으로 컴파일되어 APK 안에 담긴다.</p>
+<p>앱 설치 동안 ART는 profile 안에 메소드를 대상으로 AOT compilation을 수행한다.</p>
+<p>만약 profile이 앱실행 또는 랜더링 프레임 동안 사용되는 메소드를 포함한다면 앱 실행을 더 빠르게 만들 수 있고 jank를 감소시킬 수 있다.</p>
+<p>Critical user journeys의 예로는 app startup, transition, scrolling 등이 있다.</p>
+<h2 id="안드로이드-버전-별-baseline-profiles의-compilation-동작-비교-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescompilation-behaviors">안드로이드 버전 별 Baseline Profiles의 Compilation 동작 비교 (<a href="https://developer.android.com/topic/performance/baselineprofiles#compilation-behaviors">원문</a>)</h2>
+<h3 id="android-5api-21--6api-23">Android 5(API 21) ~ 6(API 23)</h3>
+<p>Full AOT</p>
+<p>앱 설치 동안 앱 전체를 최적화 한다.</p>
+<p>RAM과 disk 사용량, disk로부터 읽어오는 시간이 증가한다.</p>
+<p>결과적으로 cold startup 시간을 증가시킨다.</p>
+<h3 id="android-7api-24--81api-27">Android 7(API 24) ~ 8.1(API 27)</h3>
+<p>Partial AOT (Baseline Profile)</p>
+<p>앱 설치 동안 Baseline Profile에 명시된 메소드를 대상으로 최적화 한다.</p>
+<p>ART는 앱이 사용되는 동안 profile rules를 추가하고 기기가 유휴 상태일 때 컴파일을 수행해서 최적화할 수 있다.</p>
+<p>이 최적화는 disk 사용량과 disk로부터 읽어오는 시간을 감소시킨다.</p>
+<p>결과적으로 cold startup 시간도 줄어든다.</p>
+<h3 id="android-9api-28-">Android 9(API 28) ~</h3>
+<p>Partial AOT (Baseline + Cloud Profile)</p>
+<p>구글플레이가 앱 설치 동안 Baseline profiles와, 가능하다면 Cloud profiles까지 사용해 APK를 최적화 한다.</p>
+<p>설치 후에 ART profiles는 구글플레이로 업로드되어 수집된다.</p>
+<p>이후 다른 사용자가 앱을 설치/업데이트 할 때 Cloud profiles가 함께 제공된다.</p>
+<h2 id="baseline-profiles-만들기-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescreating-profile-rules">Baseline Profiles 만들기 (<a href="https://developer.android.com/topic/performance/baselineprofiles#creating-profile-rules">원문</a>)</h2>
+<ol>
 <li><a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview">Jetpack Macrobenchmark 라이브러리</a>를 사용해야 한다.</li>
 <li><code>BaselineProfileRule</code>을 사용해서 테스트를 작성한다.</li>
 <li>rooted 기기 또는 구글플레이가 설치되지 않은 emulator에서 테스트를 실행한다.</li>
-<li>Test Results 패널에서 생성된 profiles 로그를 찾는다. 로그 예)
+<li>Test Results 패널에서 생성된 profiles 로그를 찾는다. 로그 예)</li>
+</ol>
 <pre tabindex="0"><code>To copy the profile use:
 adb pull &#34;/sdcard/Android/media/com.example.macrobenchmark/additional_test_output/TrivialBaselineProfileBenchmark_startup-baseline-prof.txt&#34;
-</code></pre></li>
+</code></pre><ol start="5">
 <li>이름을 baseline-prof.txt으로 바꿔서 앱모듈의 src/main 디렉토리에 위치시킨다.</li>
-</ul>
-<h3 id="baselineprofilerule-샘플"><code>BaselineProfileRule</code> 샘플</h3>
+</ol>
+<h4 id="baselineprofilerule-샘플"><code>BaselineProfileRule</code> 샘플</h4>
 <ul>
 <li><a href="https://github.com/android/performance-samples/tree/main/MacrobenchmarkSample">https://github.com/android/performance-samples/tree/main/MacrobenchmarkSample</a></li>
 <li><a href="https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:benchmark/integration-tests/macrobenchmark/src/androidTest/java/androidx/benchmark/integration/macrobenchmark/AudioUnderrunBenchmark.kt">https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:benchmark/integration-tests/macrobenchmark/src/androidTest/java/androidx/benchmark/integration/macrobenchmark/AudioUnderrunBenchmark.kt</a></li>
 </ul>
-<h3 id="baselineprofilerule-vs-macrobenchmarkrule"><code>BaselineProfileRule</code> vs <code>MacrobenchmarkRule</code></h3>
-<ul>
-<li><code>BaselineProfileRule</code>
-<ul>
-<li>Baseline profiles 생성을 위한 용도</li>
-</ul>
+<h2 id="baselineprofilerule-vs-macrobenchmarkrule"><code>BaselineProfileRule</code> vs <code>MacrobenchmarkRule</code></h2>
+<h4 id="baselineprofilerule"><code>BaselineProfileRule</code></h4>
+<p>Baseline profiles 생성을 위한 용도</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@OptIn</span>(ExperimentalBaselineProfilesApi<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TrivialBaselineProfileBenchmark</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// [START baseline_profile_basic]
@@ -242,11 +321,8 @@ adb pull &#34;/sdcard/Android/media/com.example.macrobenchmark/additional_test_o
 </span></span><span style="display:flex;"><span>    )
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// [END baseline_profile_basic]
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div></li>
-<li><code>MacrobenchmarkRule</code>
-<ul>
-<li>startup, scrolling, transition 등의 성능을 측정하는 용도</li>
-</ul>
+</span></span></code></pre></div><h4 id="macrobenchmarkrule"><code>MacrobenchmarkRule</code></h4>
+<p>startup, scrolling, transition 등의 성능을 측정하는 용도</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@LargeTest</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RunWith</span>(AndroidJUnit4<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SampleStartupBenchmark</span> {
@@ -268,85 +344,194 @@ adb pull &#34;/sdcard/Android/media/com.example.macrobenchmark/additional_test_o
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        startActivityAndWait()
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-</ul>
-<h2 id="macrobenchmark">Macrobenchmark</h2>
-<h3 id="macrobenchmark란-원문httpsdeveloperandroidcomtopicperformancebenchmarkingbenchmarking-overviewmacrobenchmark">Macrobenchmark란? (<a href="https://developer.android.com/topic/performance/benchmarking/benchmarking-overview#macrobenchmark">원문</a>)</h3>
-<ul>
-<li>startup, UI 인터렉션, 애니메이션과 같은 큰 인터렉션을 측정한다.</li>
-<li>이 라이브러리는 당신이 앱 startup, scrolling을 측정하기 위해 앱의 compiling, starting, stopping을 제어할 수 있게 해준다.</li>
-<li>이벤트를 injects 해서 앱으로부터의 결과를 모니터링 한다.</li>
-<li>따라서 벤치마크를 작성할 때 앱 코드를 직접 호출하지 않아도 된다.</li>
-</ul>
-<h3 id="macrobenchmark-작성하기-원문httpsdeveloperandroidcomtopicperformancebenchmarkingmacrobenchmark-overview">Macrobenchmark 작성하기 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview">원문</a>)</h3>
-<ul>
+</span></span></code></pre></div><hr>
+<h1 id="macrobenchmark">Macrobenchmark</h1>
+<h2 id="macrobenchmark란-원문httpsdeveloperandroidcomtopicperformancebenchmarkingbenchmarking-overviewmacrobenchmark">Macrobenchmark란? (<a href="https://developer.android.com/topic/performance/benchmarking/benchmarking-overview#macrobenchmark">원문</a>)</h2>
+<p>startup, UI 인터렉션, 애니메이션과 같은 큰 인터렉션을 측정한다.</p>
+<p>이 라이브러리는 당신이 앱 startup, scrolling을 측정하기 위해 앱의 compiling, starting, stopping을 제어할 수 있게 해준다.</p>
+<p>이벤트를 injects 해서 앱으로부터의 결과를 모니터링 한다.</p>
+<p>따라서 벤치마크를 작성할 때 앱 코드를 직접 호출하지 않아도 된다.</p>
+<h2 id="macrobenchmark-작성하기-원문httpsdeveloperandroidcomtopicperformancebenchmarkingmacrobenchmark-overview">Macrobenchmark 작성하기 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview">원문</a>)</h2>
+<ol>
 <li>라이브러리의 벤치마킹 결과를 AndroidStudio와, 더 자세히는 JSON 파일로 출력한다.</li>
 <li>CI 환경에 적용하려면 <a href="https://developer.android.com/studio/profile/benchmarking-in-ci">Run benchmarks in Continuous Integration</a>를 참고한다.</li>
+</ol>
+<h2 id="macrobenchmark-기타">Macrobenchmark 기타</h2>
+<ul>
+<li>Matrics에 대해 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-metrics">원문</a>)</li>
+<li>특정 요소 측정을 위한 앱 제어 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-control-app">원문</a>)</li>
+<li>Benchmarking in CI (<a href="https://developer.android.com/topic/performance/benchmarking/benchmarking-in-ci">원문</a>)</li>
 </ul>
-<h3 id="matrics에-대해-원문httpsdeveloperandroidcomtopicperformancebenchmarkingmacrobenchmark-metrics">Matrics에 대해 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-metrics">원문</a>)</h3>
-<h3 id="특정-요소-측정을-위한-앱-제어-원문httpsdeveloperandroidcomtopicperformancebenchmarkingmacrobenchmark-control-app">특정 요소 측정을 위한 앱 제어 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-control-app">원문</a>)</h3>
-<h3 id="benchmarking-in-ci-원문httpsdeveloperandroidcomtopicperformancebenchmarkingbenchmarking-in-ci">Benchmarking in CI (<a href="https://developer.android.com/topic/performance/benchmarking/benchmarking-in-ci">원문</a>)</h3>
 
-        </div>
-
-        <div class="row middle-xs">
-          <div class="col-xs-12">
-            
-            <div class="post-tags">
-              <a href="/tags/performance/">
-                performance
-              </a>
-            </div>
-            
-          </div>
-        </div>
-        
-          <div class="row">
-            <div class="col-xs-12">
-              
-            </div>
-          </div>
-
-          
-
-<div class="related-content">
-  <h3>Related Posts</h3>
-  <ul>
-    
-    <li><a href="/posts/2019-10-06-using-network-image-efficiently/">네트워크 이미지를 효율적으로 사용하기</a></li>
-    
-  </ul>
-</div>
-
-
-
-          
-          
-          <div style="height: 50px;"></div>
-          
-        
-
-        <div class="site-footer">
-  
-  
-</div>
-
-      </div>
     </div>
   </article>
 
   
+  
 
-<script>
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/posts">Posts</a></li>
+         
+          <li><a href="/categories">Categories</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#baseline-profiles란">Baseline Profiles란?</a>
+      <ul>
+        <li><a href="#compose에-적용된-baseline-profiles">Compose에 적용된 Baseline Profiles</a></li>
+      </ul>
+    </li>
+    <li><a href="#baseline-profiles는-어떻게-동작하나-원문httpsdeveloperandroidcomtopicperformancebaselineprofileshow-baseline-profiles-work">Baseline Profiles는 어떻게 동작하나? (<a href="https://developer.android.com/topic/performance/baselineprofiles#how-baseline-profiles-work">원문</a>)</a></li>
+    <li><a href="#안드로이드-버전-별-baseline-profiles의-compilation-동작-비교-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescompilation-behaviors">안드로이드 버전 별 Baseline Profiles의 Compilation 동작 비교 (<a href="https://developer.android.com/topic/performance/baselineprofiles#compilation-behaviors">원문</a>)</a>
+      <ul>
+        <li><a href="#android-5api-21--6api-23">Android 5(API 21) ~ 6(API 23)</a></li>
+        <li><a href="#android-7api-24--81api-27">Android 7(API 24) ~ 8.1(API 27)</a></li>
+        <li><a href="#android-9api-28-">Android 9(API 28) ~</a></li>
+      </ul>
+    </li>
+    <li><a href="#baseline-profiles-만들기-원문httpsdeveloperandroidcomtopicperformancebaselineprofilescreating-profile-rules">Baseline Profiles 만들기 (<a href="https://developer.android.com/topic/performance/baselineprofiles#creating-profile-rules">원문</a>)</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#baselineprofilerule-vs-macrobenchmarkrule"><code>BaselineProfileRule</code> vs <code>MacrobenchmarkRule</code></a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#macrobenchmark란-원문httpsdeveloperandroidcomtopicperformancebenchmarkingbenchmarking-overviewmacrobenchmark">Macrobenchmark란? (<a href="https://developer.android.com/topic/performance/benchmarking/benchmarking-overview#macrobenchmark">원문</a>)</a></li>
+    <li><a href="#macrobenchmark-작성하기-원문httpsdeveloperandroidcomtopicperformancebenchmarkingmacrobenchmark-overview">Macrobenchmark 작성하기 (<a href="https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview">원문</a>)</a></li>
+    <li><a href="#macrobenchmark-기타">Macrobenchmark 기타</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
   
   
     
-    
   
-</script>
-
   
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2f2022-06-15-baseline-profiles%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2f2022-06-15-baseline-profiles%2f&text=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2f2022-06-15-baseline-profiles%2f&title=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2f2022-06-15-baseline-profiles%2f&is_video=false&description=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac&body=Check out this article: %2fposts%2f2022-06-15-baseline-profiles%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2f2022-06-15-baseline-profiles%2f&title=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2f2022-06-15-baseline-profiles%2f&title=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-15-baseline-profiles%2f&name=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac&description=Baseline%20Profiles%20%ed%95%9c%ea%b8%80%eb%ac%b8%ec%84%9c%20%ea%b5%ac%ea%b8%80%eb%b8%94%eb%a1%9c%ea%b7%b8%20Baseline%20Profiles%eb%9e%80%3f%20APK%ec%97%90%20%eb%8b%b4%ea%b8%b0%eb%8a%94%20%ed%81%b4%eb%9e%98%ec%8a%a4%ec%99%80%20%eb%a9%94%ec%86%8c%eb%93%9c%ec%9d%98%20%eb%aa%a9%eb%a1%9d%ec%9d%b4%eb%8b%a4.%0a%ec%95%b1%20%ec%84%a4%ec%b9%98%ea%b0%80%20%eb%90%98%eb%8a%94%20%eb%8f%99%ec%95%88%20%ec%9d%b4%20%eb%aa%a9%eb%a1%9d%ec%9d%98%20%ed%81%b4%eb%9e%98%ec%8a%a4%ec%99%80%20%eb%a9%94%ec%86%8c%eb%93%9c%eb%8a%94%20pre-compile%20%eb%90%9c%eb%8b%a4.%20%ec%9d%b4%20%ea%b2%b0%ea%b3%bc%eb%ac%bc%ec%9d%80%20%ec%8b%a4%ed%96%89%ec%9d%b4%20%eb%8d%94%20%eb%b9%a0%eb%a5%b4%eb%8b%a4.%0a%ea%b2%b0%ea%b3%bc%eb%ac%bc%20%eb%8d%95%eb%b6%84%ec%97%90%20%ec%95%b1%20%ec%8b%a4%ed%96%89%20%ec%8b%9c%ea%b0%84%ea%b3%bc%20jank%ea%b0%80%20%ea%b0%90%ec%86%8c%eb%90%9c%eb%8b%a4.%0a%2ajank%3a%20CPU%20%ec%9e%91%ec%97%85%ec%8b%9c%ea%b0%84%ec%9d%b4%2060%ed%94%84%eb%a0%88%ec%9e%84%20%eb%b2%94%ec%9c%84%eb%a5%bc%20%eb%84%98%ec%96%b4%ea%b0%80%ec%84%9c%20%ec%95%b1%ec%9d%b4%20%eb%b2%84%eb%b2%85%ec%9d%b4%ea%b2%8c%20%eb%a7%8c%eb%93%a4%20%ec%88%98%20%ec%9e%88%eb%8a%94%20CPU%ec%9d%98%20%ec%b4%88%ea%b3%bc%20%ec%9e%91%ec%97%85%ec%8b%9c%ea%b0%84%0aCompose%ec%97%90%20%ec%a0%81%ec%9a%a9%eb%90%9c%20Baseline%20Profiles%20AndroidX%ec%99%80%20Compose%eb%8a%94%20%ec%95%88%eb%93%9c%eb%a1%9c%ec%9d%b4%eb%93%9c%20%ec%8b%9c%ec%8a%a4%ed%85%9c%ec%9d%98%20%ec%9d%bc%eb%b6%80%ea%b0%80%20%ec%95%84%eb%8b%88%ea%b3%a0%20%eb%9d%bc%ec%9d%b4%eb%b8%8c%eb%9f%ac%eb%a6%ac%ec%9d%b4%eb%af%80%eb%a1%9c%20%ec%95%b1%20%ec%84%a4%ec%b9%98%20%ec%8b%9c%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%eb%90%98%ec%a7%80%20%ec%95%8a%ec%95%84%ec%84%9c%20cold%20startup%20%ec%8b%9c%ea%b0%84%ec%9d%84%20%ec%a6%9d%ea%b0%80%ec%8b%9c%ed%82%ac%20%ec%88%98%20%ec%9e%88%08%eb%8b%a4.%0a%ed%95%98%ec%a7%80%eb%a7%8c%20%ec%b5%9c%ec%8b%a0%20AndroidX%ec%99%80%20Compose%201." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2f2022-06-15-baseline-profiles%2f&t=Baseline%20Profiles%20%ec%a0%95%eb%a6%ac" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
 
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Booseol Shin 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/categories">Categories</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
 </body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
 
 </html>

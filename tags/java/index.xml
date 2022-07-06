@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/tags/java/</link>
-    <description>Recent content in java on Android Developer BSSCCO</description>
+    <title>java on ANDROID DEVELOPER BSSCCO</title>
+    <link>/tags/java/</link>
+    <description>Recent content in java on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 07 Apr 2019 09:51:41 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Sun, 07 Apr 2019 09:51:41 +0000</lastBuildDate><atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RxJava SubscribeOn과 ObserveOn의 동작 차이</title>
-      <link>https://bsscco.github.io/posts/2019-04-07-rx-subscribe-on-and-observe-on/</link>
+      <link>/posts/2019-04-07-rx-subscribe-on-and-observe-on/</link>
       <pubDate>Sun, 07 Apr 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-04-07-rx-subscribe-on-and-observe-on/</guid>
+      <guid>/posts/2019-04-07-rx-subscribe-on-and-observe-on/</guid>
       <description>참고 : https://github.com/ReactiveX/RxAndroid/blob/2.x/README.md
 SubscribeOn Observable의 create()부터 onNext(), onComplete(), onError()까지 모든 과정을 subscribeOn()으로 지정한 스레드에서 실행시킨다.
 ObserveOn Observable의 메소드체인 호출 사이에서 observeOn()이 호출된 지점부터 onNext(), onComplete(), onError()까지의 과정을 observeOn()으로 지정한 스레드에서 실행시킨다.

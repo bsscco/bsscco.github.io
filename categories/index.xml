@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/categories/</link>
-    <description>Recent content in Categories on Android Developer BSSCCO</description>
+    <title>Categories on ANDROID DEVELOPER BSSCCO</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sat, 25 Jun 2022 22:00:02 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Fri, 01 Jul 2022 22:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android</title>
-      <link>https://bsscco.github.io/categories/android/</link>
-      <pubDate>Sat, 25 Jun 2022 22:00:02 +0000</pubDate>
+      <link>/categories/android/</link>
+      <pubDate>Fri, 01 Jul 2022 22:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/categories/android/</guid>
+      <guid>/categories/android/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Server</title>
-      <link>https://bsscco.github.io/categories/server/</link>
+      <link>/categories/server/</link>
       <pubDate>Tue, 05 Mar 2019 08:49:14 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/categories/server/</guid>
+      <guid>/categories/server/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jira</title>
-      <link>https://bsscco.github.io/categories/jira/</link>
+      <link>/categories/jira/</link>
       <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/categories/jira/</guid>
+      <guid>/categories/jira/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Attribution</title>
-      <link>https://bsscco.github.io/categories/attribution/</link>
+      <link>/categories/attribution/</link>
       <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/categories/attribution/</guid>
+      <guid>/categories/attribution/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Slack</title>
-      <link>https://bsscco.github.io/categories/slack/</link>
+      <link>/categories/slack/</link>
       <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/categories/slack/</guid>
+      <guid>/categories/slack/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>https://bsscco.github.io/categories/git/</link>
+      <link>/categories/git/</link>
       <pubDate>Sun, 18 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/categories/git/</guid>
+      <guid>/categories/git/</guid>
       <description></description>
     </item>
     

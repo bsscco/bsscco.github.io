@@ -1,108 +1,99 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/tags/</link>
-    <description>Recent content in Tags on Android Developer BSSCCO</description>
+    <title>Tags on ANDROID DEVELOPER BSSCCO</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sat, 25 Jun 2022 22:00:02 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Fri, 01 Jul 2022 22:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>compose</title>
-      <link>https://bsscco.github.io/tags/compose/</link>
-      <pubDate>Sat, 25 Jun 2022 22:00:02 +0000</pubDate>
+      <link>/tags/compose/</link>
+      <pubDate>Fri, 01 Jul 2022 22:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/compose/</guid>
+      <guid>/tags/compose/</guid>
       <description></description>
     </item>
     
     <item>
       <title>performance</title>
-      <link>https://bsscco.github.io/tags/performance/</link>
-      <pubDate>Wed, 15 Jun 2022 20:00:00 +0000</pubDate>
+      <link>/tags/performance/</link>
+      <pubDate>Sat, 25 Jun 2022 22:00:02 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/performance/</guid>
+      <guid>/tags/performance/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kotlin</title>
-      <link>https://bsscco.github.io/tags/kotlin/</link>
+      <link>/tags/kotlin/</link>
       <pubDate>Wed, 10 Jul 2019 10:27:28 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/kotlin/</guid>
+      <guid>/tags/kotlin/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rx</title>
-      <link>https://bsscco.github.io/tags/rx/</link>
+      <link>/tags/rx/</link>
       <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/rx/</guid>
+      <guid>/tags/rx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>flutter</title>
-      <link>https://bsscco.github.io/tags/flutter/</link>
+      <link>/tags/flutter/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/flutter/</guid>
+      <guid>/tags/flutter/</guid>
       <description></description>
     </item>
     
     <item>
       <title>dart</title>
-      <link>https://bsscco.github.io/tags/dart/</link>
+      <link>/tags/dart/</link>
       <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/dart/</guid>
+      <guid>/tags/dart/</guid>
       <description></description>
     </item>
     
     <item>
       <title>java</title>
-      <link>https://bsscco.github.io/tags/java/</link>
+      <link>/tags/java/</link>
       <pubDate>Sun, 07 Apr 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/java/</guid>
+      <guid>/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>bloc</title>
-      <link>https://bsscco.github.io/tags/bloc/</link>
+      <link>/tags/bloc/</link>
       <pubDate>Sun, 31 Mar 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/bloc/</guid>
+      <guid>/tags/bloc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>appsflyer</title>
-      <link>https://bsscco.github.io/tags/appsflyer/</link>
+      <link>/tags/appsflyer/</link>
       <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/appsflyer/</guid>
+      <guid>/tags/appsflyer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>onelink</title>
-      <link>https://bsscco.github.io/tags/onelink/</link>
+      <link>/tags/onelink/</link>
       <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/tags/onelink/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>slack</title>
-      <link>https://bsscco.github.io/tags/slack/</link>
-      <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://bsscco.github.io/tags/slack/</guid>
+      <guid>/tags/onelink/</guid>
       <description></description>
     </item>
     

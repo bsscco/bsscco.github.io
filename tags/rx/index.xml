@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>rx on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/tags/rx/</link>
-    <description>Recent content in rx on Android Developer BSSCCO</description>
+    <title>rx on ANDROID DEVELOPER BSSCCO</title>
+    <link>/tags/rx/</link>
+    <description>Recent content in rx on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Tue, 09 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/rx/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Tue, 09 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/rx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>드로이드나이츠 2019 RxBinding 발표영상 리뷰</title>
-      <link>https://bsscco.github.io/posts/2019-07-09-droid-knights-2019-rx-binding/</link>
+      <link>/posts/2019-07-09-droid-knights-2019-rx-binding/</link>
       <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-07-09-droid-knights-2019-rx-binding/</guid>
+      <guid>/posts/2019-07-09-droid-knights-2019-rx-binding/</guid>
       <description>RxBinding 소개 참고 [DroidKnights 2019 - Track 1] 하동현 - 지금까지 이런 간단한 Logic 처리는 없었다
 RxBinding 정의 뷰 이벤트를 Observable로 받아서 사용할 수 있는 라이브러리 by 제이크와튼
 언제 쓰나요? 뷰 이벤트 스트림을 조합해서 한 번에 처리하고 싶을 때 뷰 이벤트 스트림에 다양한 조건을 깔끔하게 추가하고 싶을 때 코드 비교 RxBinding 사용 전 https://gist.github.com/bsscco/65e70856ab1ab725efaee8aec22294bc
@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() { private var isButtonClickProcessing =
     
     <item>
       <title>RxJava SubscribeOn과 ObserveOn의 동작 차이</title>
-      <link>https://bsscco.github.io/posts/2019-04-07-rx-subscribe-on-and-observe-on/</link>
+      <link>/posts/2019-04-07-rx-subscribe-on-and-observe-on/</link>
       <pubDate>Sun, 07 Apr 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-04-07-rx-subscribe-on-and-observe-on/</guid>
+      <guid>/posts/2019-04-07-rx-subscribe-on-and-observe-on/</guid>
       <description>참고 : https://github.com/ReactiveX/RxAndroid/blob/2.x/README.md
 SubscribeOn Observable의 create()부터 onNext(), onComplete(), onError()까지 모든 과정을 subscribeOn()으로 지정한 스레드에서 실행시킨다.
 ObserveOn Observable의 메소드체인 호출 사이에서 observeOn()이 호출된 지점부터 onNext(), onComplete(), onError()까지의 과정을 observeOn()으로 지정한 스레드에서 실행시킨다.

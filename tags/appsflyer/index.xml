@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>appsflyer on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/tags/appsflyer/</link>
-    <description>Recent content in appsflyer on Android Developer BSSCCO</description>
+    <title>appsflyer on ANDROID DEVELOPER BSSCCO</title>
+    <link>/tags/appsflyer/</link>
+    <description>Recent content in appsflyer on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Wed, 21 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/appsflyer/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Wed, 21 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/appsflyer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Appsflyer 어트리뷰션 모델에서 헷갈리는 것들 정리</title>
-      <link>https://bsscco.github.io/posts/2018-11-21-appsflyer-attribution-model/</link>
+      <link>/posts/2018-11-21-appsflyer-attribution-model/</link>
       <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2018-11-21-appsflyer-attribution-model/</guid>
+      <guid>/posts/2018-11-21-appsflyer-attribution-model/</guid>
       <description>참고 : https://support.appsflyer.com/hc/en-us/articles/207447053-What-is-AppsFlyer-s-Attribution-Model-
 New-Attribution 구분 이미 특정 media_source로 New-attribution된 사용자는 다른 어떤 media_source에도 New-attribution으로 인식되지 않습니다. Attribution Lookback window View-through lookback window(1-7days) 사용자가 앱스플라이어를 통한 광고를 보고, 정해진 View-through lookback window 이내에 클릭 없이 앱을 설치한 경우 New-attribution으로 인정합니다. window 기본값은 1day onelink에서 설정할 수 있는 값은 아니고, 외부 partners setting에서 파트너마다 설정할 수 있습니다. Click-through lookback window(1-30days) 사용자가 앱스플라이어 링크 또는 광고를 클릭하고, 정해진 Click-through lookback window 이내에 앱을 설치한 경우 New-attribution으로 인정합니다.</description>
     </item>
     
     <item>
       <title>Appsflyer 원링크 파라메터 정리</title>
-      <link>https://bsscco.github.io/posts/2018-11-21-appsflyer-onelink/</link>
+      <link>/posts/2018-11-21-appsflyer-onelink/</link>
       <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2018-11-21-appsflyer-onelink/</guid>
+      <guid>/posts/2018-11-21-appsflyer-onelink/</guid>
       <description>ex)
 https://ohouse.onelink.me/1234567?pid=Social%20Facebook&amp;amp;c=bssccocampaign&amp;amp;af_channel=bssccochannel&amp;amp;is_retargeting=true&amp;amp;af_click_lookback=15d&amp;amp;af_dp=ohouseapp%3A%2F%2Fohou.se%2Fcards%2F1234&amp;amp;af_web_dp=https%3A%2F%2Fohou.se%2Fcards%2F1234 pid media_source
 c campagin

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dart on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/tags/dart/</link>
-    <description>Recent content in dart on Android Developer BSSCCO</description>
+    <title>dart on ANDROID DEVELOPER BSSCCO</title>
+    <link>/tags/dart/</link>
+    <description>Recent content in dart on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sat, 25 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/dart/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Sat, 25 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/dart/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dart 2.3 - UI를 빌딩에 최적화 됐어요.</title>
-      <link>https://bsscco.github.io/posts/2019-05-25-dart-2.3/</link>
+      <link>/posts/2019-05-25-dart-2.3/</link>
       <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-05-25-dart-2.3/</guid>
+      <guid>/posts/2019-05-25-dart-2.3/</guid>
       <description>원문 : https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff
 새로운 language features spread 연산자 리스트의 요소들을 다른 리스트 안으로 풀어서 넣어주는 &amp;hellip; 연산자 (spread operator)
 Widget build(BuildContext context) { return Column(children: [ Header(), ...buildMainElements(), // spread 연산자 Footer(), ]); } List&amp;lt;Widget&amp;gt; buildMainElements() { ... } collection if 조건에 맞지 않으면 요소가 들어가지 않게 해주는 문법. 단, list 리터럴에서만 사용할 수 있어요!
@@ -21,10 +21,10 @@ Widget build(BuildContext context) { return Column(children: [ Text(mainText), i
     
     <item>
       <title>서버사이드 Dart(5) - 서버사이드 시작하기</title>
-      <link>https://bsscco.github.io/posts/2019-03-05-dart-get-started-with-server-side-dart/</link>
+      <link>/posts/2019-03-05-dart-get-started-with-server-side-dart/</link>
       <pubDate>Tue, 05 Mar 2019 08:49:14 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-05-dart-get-started-with-server-side-dart/</guid>
+      <guid>/posts/2019-03-05-dart-get-started-with-server-side-dart/</guid>
       <description>Get Started with Server-Side Dart https://www.dartlang.org/tutorials/server/get-started
 What&amp;rsquo;s the point? Dart SDK에는 개발도구들과 라이브러리들이 담겨있다. 앱을 만들기 위해 WebStorm과 같은 IDE를 써라. 모든 Dart 앱들은 main() 함수에서 시작한다. Dart는 top-level 함수를 지원한다. Download Dart and an IDE Get the Dart SDK
 What did you get? 다운로드한 Dart SDK 보면 그 안에서 bin 디렉토리의 도구들과 lib 디렉토리의 라이브러리들을 볼 수 있다.
@@ -33,10 +33,10 @@ lib 디렉토리엔 dart:core, dart:html, dart:io와 같은 라이브러리가 �
     
     <item>
       <title>서버사이드 Dart(4) - dart:io 라이브러리 여행하기</title>
-      <link>https://bsscco.github.io/posts/2019-03-03-dart-a-tour-of-the-dart-io-library/</link>
+      <link>/posts/2019-03-03-dart-a-tour-of-the-dart-io-library/</link>
       <pubDate>Sun, 03 Mar 2019 22:16:46 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-03-dart-a-tour-of-the-dart-io-library/</guid>
+      <guid>/posts/2019-03-03-dart-a-tour-of-the-dart-io-library/</guid>
       <description>A Tour of the dart:io Library https://www.dartlang.org/server/io-library-tour
 dart:io는 files, directories, processes, sockets, WebSockets, and HTTP clients and servers를 다루는 API를 제공한다.
 note: 웹서버를 위해 쓸 수 있지만 웹앱을 위한 라이브러리는 아니다.
@@ -47,10 +47,10 @@ Files and directories dart:io는 커맨드라인 앱에서 파일을 읽고 쓰�
     
     <item>
       <title>서버사이드 Dart(3) - 다트의 주요 라이브러리들</title>
-      <link>https://bsscco.github.io/posts/2019-03-03-dart-api-overview/</link>
+      <link>/posts/2019-03-03-dart-api-overview/</link>
       <pubDate>Sun, 03 Mar 2019 21:16:19 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-03-dart-api-overview/</guid>
+      <guid>/posts/2019-03-03-dart-api-overview/</guid>
       <description>Dart API https://api.dartlang.org/stable/2.2.0/index.html
 기초가 되는 Dart 라이브러리:
 dart:core: strings, numbers, collections, errors, URIs 같은 코어 기능들이 있다. dart:html: 웹앱을 위한 DOM 조작 기능들이 있다. dart:io: 웹앱이 아닌 앱을 위한 I/O 기능들이 있다. dart:core를 제외하고 필요한 라이브러리는 import 해야 한다.
@@ -63,10 +63,10 @@ dart:core의 collection 클래스를 보충하는 클래스와 유틸이 들어�
     
     <item>
       <title>서버사이드 Dart(2) - 다트 SDK에 있는 도구들</title>
-      <link>https://bsscco.github.io/posts/2019-03-03-dart-what-is-in-dart-sdk/</link>
+      <link>/posts/2019-03-03-dart-what-is-in-dart-sdk/</link>
       <pubDate>Sun, 03 Mar 2019 09:48:14 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-03-dart-what-is-in-dart-sdk/</guid>
+      <guid>/posts/2019-03-03-dart-what-is-in-dart-sdk/</guid>
       <description>What’s in the SDK https://www.dartlang.org/tools/sdk#whats-in-the-sdk
 dart standalone VM.
 dartdoc API 문서 생성기
@@ -75,10 +75,10 @@ dartdoc API 문서 생성기
     
     <item>
       <title>서버사이드 Dart(1) - 학습 참고 목록</title>
-      <link>https://bsscco.github.io/posts/2019-03-03-dart-server-side-dart/</link>
+      <link>/posts/2019-03-03-dart-server-side-dart/</link>
       <pubDate>Sun, 03 Mar 2019 01:17:20 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-03-dart-server-side-dart/</guid>
+      <guid>/posts/2019-03-03-dart-server-side-dart/</guid>
       <description>Server-Side Dart https://www.dartlang.org/server
 Tools DartPad DartPad는 dart:* API들을 바로 사용해볼 수 있는 웹패드다.
 note: dart:io와 라이브러리 import를 지원하지 않는다.
@@ -92,10 +92,10 @@ Write HTTP Clients &amp;amp; Servers dart:io와 http_server 패키지의 특징�
     
     <item>
       <title>Dart 샘플코드 번역</title>
-      <link>https://bsscco.github.io/posts/2019-03-02-dart-sample-code/</link>
+      <link>/posts/2019-03-02-dart-sample-code/</link>
       <pubDate>Sat, 02 Mar 2019 22:35:49 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-02-dart-sample-code/</guid>
+      <guid>/posts/2019-03-02-dart-sample-code/</guid>
       <description>Sample Code https://www.dartlang.org/samples
 Hello world 모든 앱은 main() 함수에서 시작한다.
 void main() { print(&amp;#39;Hello, World!&amp;#39;); } Variables type-safe인 Dart에서 대부분의 변수들은 타입 명시가 필요하지 않다. 타입 추론 덕분이다.
@@ -104,10 +104,10 @@ var name = &amp;#39;Voyager I&amp;#39;; var year = 1977; var antennaDiameter = 3
     
     <item>
       <title>이펙티브 Dart(4) - 사용성 가이드</title>
-      <link>https://bsscco.github.io/posts/2019-03-02-dart-effective-dart-4/</link>
+      <link>/posts/2019-03-02-dart-effective-dart-4/</link>
       <pubDate>Sat, 02 Mar 2019 22:05:06 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-02-dart-effective-dart-4/</guid>
+      <guid>/posts/2019-03-02-dart-effective-dart-4/</guid>
       <description>Effective Dart: Usage https://www.dartlang.org/guides/language/effective-dart/usage
 Libraries
 DO part of 지시어에서 URI를 사용해라. DON’T 다른 패키지의 src 디렉토리를 가지고 있는 라이브러리는 import 하지 마라. PREFER relative paths when importing libraries within your own package’s lib directory. Strings Collections Functions Parameters Variables Merbers Constructors Error handling Asynchrony Libraries DO use strings in part of directives. part of 지시어에서 URI를 사용해라. part of에 URI 대신에 라이브러리 이름을 지정하면 툴이 메인 라이브러리 파일을 찾기 어려워지기 때문이다.</description>
@@ -115,10 +115,10 @@ DO part of 지시어에서 URI를 사용해라. DON’T 다른 패키지의 src 
     
     <item>
       <title>이펙티브 Dart(3) - 문서화 가이드</title>
-      <link>https://bsscco.github.io/posts/2019-03-02-dart-effective-dart-3/</link>
+      <link>/posts/2019-03-02-dart-effective-dart-3/</link>
       <pubDate>Sat, 02 Mar 2019 08:05:06 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-02-dart-effective-dart-3/</guid>
+      <guid>/posts/2019-03-02-dart-effective-dart-3/</guid>
       <description>Effective Dart: Documentation https://www.dartlang.org/guides/language/effective-dart/documentation
 간결하고 정확한 주석은 몇초면 쓸 수 있고, 여러 사람의 코드파악 시간을 아껴준다.
 Comments
@@ -128,10 +128,10 @@ DO 멤버와 타입의 문서화를 위해 doc 주석(///)을 사용해라. PREF
     
     <item>
       <title>이펙티브 Dart(2) - 스타일 가이드</title>
-      <link>https://bsscco.github.io/posts/2019-02-28-dart-effective-dart-2/</link>
+      <link>/posts/2019-02-28-dart-effective-dart-2/</link>
       <pubDate>Thu, 28 Feb 2019 08:05:06 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-28-dart-effective-dart-2/</guid>
+      <guid>/posts/2019-02-28-dart-effective-dart-2/</guid>
       <description>Effective Dart: Style https://www.dartlang.org/guides/language/effective-dart/style
 naming, ordering, formatting의 일관성은 다른 사람들이 코드를 배우고, 공유하기 쉽게 해준다.
 Identifiers DO 타입 이름은 UpperCamelCase로 지어라. DO 라이브러리, 패키지, 디렉토리, 소스파일 이름은 lowercase_with_underscores로 지어라. DO import prefix(alias)는 lowercase_with_underscores로 지어라. DO 나머지 다른 identifier는 lowerCamelCase로 지어라. PREFER 상수 이름은 lowerCamelCase로 지어라. DO 2글자보다 더 긴 축약어는 첫글자만 대문자화 해라. // ex) IOStream (X) DON’T prefix 문자를 사용하지 마라. ex) kDefaultTimeout (X) Ordering DO dart: import를 다른 라이브러리 import 이전에 써라.</description>
@@ -139,10 +139,10 @@ Identifiers DO 타입 이름은 UpperCamelCase로 지어라. DO 라이브러리,
     
     <item>
       <title>이펙티브 Dart(1) - 개요</title>
-      <link>https://bsscco.github.io/posts/2019-02-27-dart-effective-dart-1/</link>
+      <link>/posts/2019-02-27-dart-effective-dart-1/</link>
       <pubDate>Wed, 27 Feb 2019 08:05:06 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-27-dart-effective-dart-1/</guid>
+      <guid>/posts/2019-02-27-dart-effective-dart-1/</guid>
       <description>Effective Dart https://www.dartlang.org/guides/language/effective-dart
 모든 걸 아우르는 테마 2가지 코드를 일관성 있게 만들자. 코드를 간결하게 만들자. Dart 분석기엔 좋은 코드를 돕는 linter가 있다. prefer_collection_literals, enabling linter rules
 The guides Style Guide - 코드 배치와 조직화, dartfmt가 다루지 않는 부분을 위한 규칙을 정의한다. camelCase, using_underscores와 같이 identifier의 이름을 어떻게 짓는지도 정의한다. Documentation Guide - 문서화에 필요한 모든 걸 알려준다. Usage Guide - Dart 언어의 특징을 잘 사용할 수 있는 방법을 가르쳐준다. Design Guide - 가장 넓은 영역을 담는다.</description>
@@ -150,50 +150,50 @@ The guides Style Guide - 코드 배치와 조직화, dartfmt가 다루지 않는
     
     <item>
       <title>Dart 언어 여행하기 요약(4)</title>
-      <link>https://bsscco.github.io/posts/2019-02-25-dart-a-tour-of-the-dart-language-4/</link>
+      <link>/posts/2019-02-25-dart-a-tour-of-the-dart-language-4/</link>
       <pubDate>Mon, 25 Feb 2019 08:55:16 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-25-dart-a-tour-of-the-dart-language-4/</guid>
+      <guid>/posts/2019-02-25-dart-a-tour-of-the-dart-language-4/</guid>
       <description>Dart A Tour of the Dart Language https://www.dartlang.org/guides/language/language-tour
 Generics Why use generics? 타입을 명시해서 컴파일타임에 에러를 잡아낼 수 있다. 여러 타입에 사용해야 해서 코드를 중복작성해야 할 때 중복 코드를 없앤다. Using collection literls &amp;lt;String&amp;gt;[&#39;Seth&#39;, &#39;Kathy&#39;, &#39;Lars&#39;]; Using parameterized types with constructors var names = List&amp;lt;String&amp;gt;(); Generic collections and the types they contain print(names is List&amp;lt;String&amp;gt;); // Java는 List까지만 체크되지만 Dart에선 제네릭 타입까지 체크가 된다. Restricting the parameterized type // T는 SomeBaseClass 또는 sub class 들만 대상으로 강제한다.</description>
     </item>
     
     <item>
       <title>Dart 언어 여행하기 요약(3)</title>
-      <link>https://bsscco.github.io/posts/2019-02-24-dart-a-tour-of-the-dart-language-3/</link>
+      <link>/posts/2019-02-24-dart-a-tour-of-the-dart-language-3/</link>
       <pubDate>Sun, 24 Feb 2019 22:44:28 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-24-dart-a-tour-of-the-dart-language-3/</guid>
+      <guid>/posts/2019-02-24-dart-a-tour-of-the-dart-language-3/</guid>
       <description>Dart A Tour of the Dart Language https://www.dartlang.org/guides/language/language-tour
 Classes 개요 Dart 클래스는 단일상속과 mixin을 지원한다. 모든 클래스는 Object의 후손이다. Using class members Using constructors var p1 = Point(2, 2); // 일반 생성자 var p2 = Point.fromJson({&amp;#39;x&amp;#39;: 1, &amp;#39;y&amp;#39;: 2}); // named 생성자 var p = const ImmutablePoint(2, 2); // 생성자 앞에 const를 붙이면 컴파일타임에 상수로 만들어버린다. 상수화가 가능한 클래스가 되려면 조건을 만족해야 한다. var a = const ImmutablePoint(1, 1); var b = const ImmutablePoint(1, 1); assert(identical(a, b)); // 상수화된 두 객체는 정확히 일치한다.</description>
     </item>
     
     <item>
       <title>Dart 언어 여행하기 요약(2)</title>
-      <link>https://bsscco.github.io/posts/2019-02-21-dart-a-tour-of-the-dart-language-2/</link>
+      <link>/posts/2019-02-21-dart-a-tour-of-the-dart-language-2/</link>
       <pubDate>Thu, 21 Feb 2019 23:30:49 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-21-dart-a-tour-of-the-dart-language-2/</guid>
+      <guid>/posts/2019-02-21-dart-a-tour-of-the-dart-language-2/</guid>
       <description>Dart A Tour of the Dart Language https://www.dartlang.org/guides/language/language-tour
 Functions 개요 일급함수로 사용할 수 있다. Effective Dart는 리턴형에 type 어노테이션을 사용하길 권장한다. bool isNoble(int atomicNumber) { return _nobleGases[atomicNumber] != null; } one-line은 shorthand로 쓸 수 있다. bool isNoble(int atomicNumber) =&amp;gt; _nobleGases[atomicNumber] != null; required와 optional 두 종류의 파라메터를 사용할 수 있다. Optional parameters optional named 파라메터 void enableFlags({bool bold, bool hidden}) {...} // 파라메터들을 named 파라메터로 선언 enableFlags(bold: true, hidden: false); // named 인자로 사용 required 파라메터 const Scrollbar({Key key, @required Widget child}) // optional named 파라메터들 중 child파라메터는 꼭 넣어야 한다.</description>
     </item>
     
     <item>
       <title>Dart 언어 여행하기 요약(1)</title>
-      <link>https://bsscco.github.io/posts/2019-02-21-dart-a-tour-of-the-dart-language-1/</link>
+      <link>/posts/2019-02-21-dart-a-tour-of-the-dart-language-1/</link>
       <pubDate>Thu, 21 Feb 2019 22:57:49 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-21-dart-a-tour-of-the-dart-language-1/</guid>
+      <guid>/posts/2019-02-21-dart-a-tour-of-the-dart-language-1/</guid>
       <description>Dart A Tour of the Dart Language https://www.dartlang.org/guides/language/language-tour
 Inportant concepts 모든 게 객체(1, null, function, true, &amp;hellip;) var/final형 선언 : 타입 추론 , 어느 타입이든 담게 하려면 dynamic형 선언 제네릭 타입 List 일급함수, 정적메소드, nested 함수, 지역함수 일급변수, 정적변수 private 변수/메소드화 : _(underscore)로 시작해서 이름짓기. 라이브러리 내에서만 접근 가능 is-else같은 statements는 expression이 될 수 없다. Keywords 생소한 키워드 as 형변환 연산자, import문에서 alias 연산자 covariant 상위타입을 지정해야 하는 곳에 하위 타입을 지정할 수 있게 해준다.</description>
     </item>
     
     <item>
       <title>Dart 비동기 프로그래밍 Streams 요약</title>
-      <link>https://bsscco.github.io/posts/2019-02-21-dart-asynchronous-programming-streams/</link>
+      <link>/posts/2019-02-21-dart-asynchronous-programming-streams/</link>
       <pubDate>Thu, 21 Feb 2019 00:19:30 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-21-dart-asynchronous-programming-streams/</guid>
+      <guid>/posts/2019-02-21-dart-asynchronous-programming-streams/</guid>
       <description>https://www.dartlang.org/tutorials/language/streams
 Future는 결과가 준비됐을 때 우리에게 알려준다. Stream은 이벤트가 발생할 때마다 우리에게 알려준다.
 import &amp;#39;dart:async&amp;#39;; Stream&amp;lt;Future&amp;lt;int&amp;gt;&amp;gt; countStream(int to) async* { for (int i = 1; i &amp;lt;= to; i++) { yield Future.delayed(Duration(seconds: 1), () =&amp;gt; i); // 1초 후에 i를 반환하는 Future를 발생시킨다. } } Future&amp;lt;void&amp;gt; printSumStream(Stream&amp;lt;Future&amp;lt;int&amp;gt;&amp;gt; stream) async { var sum = &amp;#39;&amp;#39;; await for (var value in stream) { // 스트림의 이벤트 발생이 끝날 때가지 기다린다. sum += (await value).</description>
@@ -201,10 +201,10 @@ import &amp;#39;dart:async&amp;#39;; Stream&amp;lt;Future&amp;lt;int&amp;gt;&amp
     
     <item>
       <title>Dart 비동기 프로그래밍 Futures 요약</title>
-      <link>https://bsscco.github.io/posts/2019-02-20-dart-asynchronous-programming-futures/</link>
+      <link>/posts/2019-02-20-dart-asynchronous-programming-futures/</link>
       <pubDate>Wed, 20 Feb 2019 23:59:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-20-dart-asynchronous-programming-futures/</guid>
+      <guid>/posts/2019-02-20-dart-asynchronous-programming-futures/</guid>
       <description>https://www.dartlang.org/tutorials/language/futures
 import &amp;#39;dart:async&amp;#39;; Future&amp;lt;void&amp;gt; printAsyncMsg() async { String result = await execLongTask(); // 반환값 Future&amp;lt;String&amp;gt;가 작업을 끝낼 때까지 기다린다. print(result); // Future의 작업이 끝나면 result에 String값이 담기고, 그 다음 print()가 호출된다. } Future&amp;lt;String&amp;gt; execLongTask() { // Future를 반환한다. return Future.delayed(Duration(seconds: 1), () =&amp;gt; &amp;#39;This is async msg.&amp;#39;); } printSyncMsg() { print(&amp;#39;This is sync msg.&amp;#39;); // 호출받자마자 바로 출력한다. } main() { printAsyncMsg(); // 비동기 함수를 먼저 호출한다. printSyncMsg(); // 동기 함수를 뒤에 호출한다.</description>
     </item>

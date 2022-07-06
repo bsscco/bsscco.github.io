@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jira on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/categories/jira/</link>
-    <description>Recent content in Jira on Android Developer BSSCCO</description>
+    <title>Jira on ANDROID DEVELOPER BSSCCO</title>
+    <link>/categories/jira/</link>
+    <description>Recent content in Jira on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 18 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/categories/jira/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Mon, 18 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="/categories/jira/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jira 보드 단축키 꿀팁</title>
-      <link>https://bsscco.github.io/posts/2019-02-18-jira-shortcut/</link>
+      <link>/posts/2019-02-18-jira-shortcut/</link>
       <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-18-jira-shortcut/</guid>
+      <guid>/posts/2019-02-18-jira-shortcut/</guid>
       <description> 보드로 이동(G → A) : 보드에 포커스가 안 들어가서 단축키가 안 먹힐 때 써준다. 이전/다음 컬럼의 카드 선택(P/N) 위/아래 카드 선택(K/J) 명령(.) : 카드에서 특정 컬럼을 수정할 때 유용하다. 카드 정보패널 열기/닫기(T) 카드 열기(O) 카드를 열었다가 보드로 돌아가기(at Chrome)(Cmd + ←) 검색(/) 검색 종료(Esc) 단축키 도움말(?) 단축기 도움말 닫기(Esc) </description>
     </item>
     

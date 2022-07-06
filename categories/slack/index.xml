@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Slack on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/categories/slack/</link>
-    <description>Recent content in Slack on Android Developer BSSCCO</description>
+    <title>Slack on ANDROID DEVELOPER BSSCCO</title>
+    <link>/categories/slack/</link>
+    <description>Recent content in Slack on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Wed, 21 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/categories/slack/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Wed, 21 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="/categories/slack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Slack 단축키 꿀팁</title>
-      <link>https://bsscco.github.io/posts/2018-11-21-slack-shortcut/</link>
+      <link>/posts/2018-11-21-slack-shortcut/</link>
       <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2018-11-21-slack-shortcut/</guid>
+      <guid>/posts/2018-11-21-slack-shortcut/</guid>
       <description> 검색(Cmd+F) : 예전 메시지를 찾는 데에 유용하다. Quick Switcher(Cmd+K) : 채널 또는 DM방으로 빠르게 찾아갈 수 있다. 활동(Cmd+Shift+M) 내가 멘션 돼있는 메시지를 최신순으로 빠르게 확인할 수 있다. 다른 사람의 이모지가 달린 내 메시지를 최신순으로 빠르게 확인할 수 있다. All threads(Cmd+Shift+T) : 내가 관여된 채널의 메시지를 최신순으로 빠르게 확인할 수 있다. Starred items(Cmd+Shift+S) : 까먹지 않으려고 star해놓은 메시지들을 확인할 수 있다. 텍스트 볼드(Cmd+B) 텍스트 삭선(Cmd+Shift+X) 텍스트 코드양식(Cmd+Shift+C) 텍스트 인용구양식(Cmd+Shift+&amp;gt;) 코드 스니펫 쓰기(Cmd+Shift+Enter) </description>
     </item>
     

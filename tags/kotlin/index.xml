@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kotlin on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/tags/kotlin/</link>
-    <description>Recent content in kotlin on Android Developer BSSCCO</description>
+    <title>kotlin on ANDROID DEVELOPER BSSCCO</title>
+    <link>/tags/kotlin/</link>
+    <description>Recent content in kotlin on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Wed, 10 Jul 2019 10:27:28 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Wed, 10 Jul 2019 10:27:28 +0000</lastBuildDate><atom:link href="/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Do it! 코틀린 프로그래밍 04 프로그램의 흐름 제어</title>
-      <link>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-04/</link>
+      <link>/posts/2019-07-10-do-it-kotlin-programming-ch-04/</link>
       <pubDate>Wed, 10 Jul 2019 10:27:28 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-04/</guid>
+      <guid>/posts/2019-07-10-do-it-kotlin-programming-ch-04/</guid>
       <description>04 프로그램의 흐름 제어 01 조건문 조건문도 표현식
 val max = if (a &amp;gt; b) a else 0 조건문에서 in연산자와 범위연산자 사용하기
 if(num in 1..100) // 범위에는 100도 포함 when문
@@ -23,10 +23,10 @@ for(n in 1..10 step 2) { // 상행 println(n) } for(n in 10 downTo 1 step 2){ //
     
     <item>
       <title>Do it! 코틀린 프로그래밍 03 함수와 함수형 프로그래밍</title>
-      <link>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-03/</link>
+      <link>/posts/2019-07-10-do-it-kotlin-programming-ch-03/</link>
       <pubDate>Wed, 10 Jul 2019 09:27:28 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-03/</guid>
+      <guid>/posts/2019-07-10-do-it-kotlin-programming-ch-03/</guid>
       <description>03 함수와 함수형 프로그래밍 01 함수 선언하고 호출하기 반환하지 않는다 = Unit
 함수 매개변수는 val로 선언되기 때문에 바꿀 수 없다!
 default 매개변수 지원!
@@ -39,10 +39,10 @@ fun foo(vararg numbers: Int) { ... } 02 함수형 프로그래밍 함수형 프�
     
     <item>
       <title>Do it! 코틀린 프로그래밍 02 변수와 자료형, 연산자 요약</title>
-      <link>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-02/</link>
+      <link>/posts/2019-07-10-do-it-kotlin-programming-ch-02/</link>
       <pubDate>Wed, 10 Jul 2019 08:26:28 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-07-10-do-it-kotlin-programming-ch-02/</guid>
+      <guid>/posts/2019-07-10-do-it-kotlin-programming-ch-02/</guid>
       <description>02 변수와 자료형, 연산자 01 코틀린 패키지 import~ as 연산자: 클래스에 이름 짓기
 파일 안에 여러 클래스가 있으면 파일명에 .kt가 붙어서 보여진다. 1:1 매치되는 경우에는 .kt가 안 보인다.
 여러 클래스가 같은 이름을 가질 때 conflict를 예방하기 위해 파일 안에 패키지를 명시하는 게 좋다.
@@ -54,10 +54,10 @@ Int, Float 같은 기본 자료형은 코틀린 컴파일러에서 원시 자료
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨10 Designing for Everyone 요약</title>
-      <link>https://bsscco.github.io/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/</link>
+      <link>/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:01 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/</guid>
+      <guid>/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-10-summary/</guid>
       <description>Lesson 10: Designing for Everyone 1. Party Planning 2. Styling on Android 안드로이드 스타일링 계층도
 테마 정의: 앱의 전체적인 색감
 스타일 정의: 재활용 가능한 뷰의 스타일
@@ -70,10 +70,10 @@ Int, Float 같은 기본 자료형은 코틀린 컴파일러에서 원시 자료
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨9 Behind the scenes 요약</title>
-      <link>https://bsscco.github.io/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/</link>
+      <link>/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/</guid>
+      <guid>/posts/2019-06-26-udacity-developing-android-apps-with-kotlin-lesson-9-summary/</guid>
       <description>Lesson 9: Behind the scenes 1. Offline Movie Night 2. Exercise: Introduction offline caching에 대해 배울 거야!
 3. What’s in a Cache 캐시란, 다음에 곧 쓸 데이터를 로컬에 저장해뒀다가 필요할 때 다시 쓰는 것
 우리앱에서 레포지토리 패턴을 써야 하는 이유 앱 실행 시에 다운로드받아 캐시해 사용할 만한 데이터들이 있다. 필터 목록 같은 데이터. 이 데이터를 따로 관리하는 클래스를 두는 것보다, 레포지토리 패턴을 써서 레포지토리 안에서 필요한 데이터만 캐시 시키면 레포지토리를 쓰는 곳에서는 캐시되는 데이터인지 실시간 데이터인지 알 필요 없어서 관심사의 분리가 된다.</description>
@@ -81,10 +81,10 @@ Int, Float 같은 기본 자료형은 코틀린 컴파일러에서 원시 자료
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨8 Connect to the Internet 요약</title>
-      <link>https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/</link>
+      <link>/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:01 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/</guid>
+      <guid>/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-8-summary/</guid>
       <description>Lesson 8: Connect to the Internet 1. Greetings Earth Friends! 2. Introduction 3. RESTful Services URI가 URL을 포함하는 개념
 4. Libraries 5. App Walkthrough and Starter Code 6. Exercise: Connecting to the Internet 7. Permissions 8. Exercise: Parsing the JSON Response moshi가 gson이나 jackson보다 더 좋은 이유가 있을까? https://medium.com/@IlyaEremin/android-json-parsers-comparison-2017-8b5221721e31
 jackson이 성능에서 가장 좋은데 친숙하지 않은 API가 단점이라고 함.
@@ -94,10 +94,10 @@ moshi는 제이크 와튼이 만든 거라 함께 사용한 듯
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨7 RecyclerView 요약</title>
-      <link>https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/</link>
+      <link>/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/</guid>
+      <guid>/posts/2019-06-19-udacity-developing-android-apps-with-kotlin-lesson-7-summary/</guid>
       <description>Lesson 7: RecyclerView RecyclerView 1. Recycle Woman 2. Introduction 3. Your first RecyclerView Room+ViewModel과 Adapter의 연결 구조
 ViewHolder의 역할
 4. Exercise: Add a RecyclerView 5. Exercise: Display SleepQuality Data 프래그먼트에서 db 데이터를 observe 하다가 데이터가 갱신되면 adapter.data에 대입해주는 부분이 있음.
@@ -107,10 +107,10 @@ getAdapterPosition() getLayoutPosition() getItemId() 8. Exercise: Display the Sl
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨6 App Architecture (Persistence) 요약</title>
-      <link>https://bsscco.github.io/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/</link>
+      <link>/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:01 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/</guid>
+      <guid>/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-6-summary/</guid>
       <description>Lesson 6: App Architecture (Persistence) 1. Wake Up, Aleks! 2. Introduction Room Database DAO Application Architecture with Room Coroutines Room 3. SQLite Primer SQLite 문법에 대한 간단 설명
 4. Designing Entities Room DB layer 구조
 5. Exercise: Creating the SleepNight Entity data class를 사용해 Entity 클래스 만들기
@@ -121,10 +121,10 @@ getAdapterPosition() getLayoutPosition() getItemId() 8. Exercise: Display the Sl
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨5 App Architecture (UI Layer) 요약</title>
-      <link>https://bsscco.github.io/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/</link>
+      <link>/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/</guid>
+      <guid>/posts/2019-06-12-udacity-developing-android-apps-with-kotlin-lesson-5-summary/</guid>
       <description>Lesson 5: App Architecture (UI Layer) 1. Architecting on the fly 2. Lesson Introduction Application Architecture ViewModel LiveData Data Binding 3. Exercise: Tour of the App ktx를 쓰고 싶은 곳에서만 ktx가 구현된 파일을 import 할 수 있구나
 4. Where the App Falls Short 5. What is Architecture 안드로이드 MVVM 패턴
 M : Repository + Data provider V : UI Controller VM : ViewModel(ViewModel 클래스의 기능은 Presenter의 기능과 다르지 않다) UI Controller는 데이터를 표현하고, 사용자입력을 잡아내는 역할을 한다.</description>
@@ -132,10 +132,10 @@ M : Repository + Data provider V : UI Controller VM : ViewModel(ViewModel 클래
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨4 Activity &amp; Fragment Lifecycle 요약</title>
-      <link>https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/</link>
+      <link>/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/</link>
       <pubDate>Wed, 05 Jun 2019 00:00:01 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/</guid>
+      <guid>/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-4-summary/</guid>
       <description>Lesson 4: Activity &amp;amp; Fragment Lifecycle Activity lifecycle 네모:state, 네모없는 텍스트: callback
 액티비티가 생성(객체 생성)됐으면 initialized
 액티비티가 보이면 started 상태 또는 resumed 상태
@@ -150,10 +150,10 @@ onActivityCreated : 액티비티의 onCreate가 반환된 직후에 호출됨.</
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨3 App Navigation 요약</title>
-      <link>https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/</link>
+      <link>/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/</link>
       <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/</guid>
+      <guid>/posts/2019-06-05-udacity-developing-android-apps-with-kotlin-lesson-3-summary/</guid>
       <description>Lesson 3: App Navigation Fragment 다양한 크기의 기기들에 대응할 수 있는 컴포넌트
 Activity Back stack vs Fragment Back stack
 Activity Back stack
@@ -168,19 +168,19 @@ val binding = DataBindingUtil.inflate&amp;lt;FragmentTitleBinding&amp;gt;(inflat
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨2 Layouts 요약</title>
-      <link>https://bsscco.github.io/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/</link>
+      <link>/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/</link>
       <pubDate>Thu, 30 May 2019 00:00:01 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/</guid>
+      <guid>/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-2-summary/</guid>
       <description>Lesson 2: Layouts TextView.fontFamily donloadable font apk에 폰트 사이즈 적재 없이 사용 가능 fonts source가 google fonts로 제한되는 게 단점 데이터 바인딩 라이브러리 사용 app/build.gradle android { dataBinding { enabled = true } } activity_main.xml &amp;hellip; findViewById 대체 MainActivity.kt private lateinit var binding: ActivityMainBinding &amp;hellip; binding = DataBindingUtils.setContentView(this, R.layout.activity_main) binding.name.text = &amp;ldquo;BSSCCO&amp;rdquo; 데이터 바인딩 개념 데이터와 뷰를 한 번 연결시켜두면 이후엔 데이터만 수정해도 뷰는 알아서 바뀐다. 데이터가 바뀔 때 뷰의 속성들을 일일히 수정할 필요 없이 레이아웃을 구성하는 단계에서 레이아웃 파일 안에다 데이터값을 명시해두면 된다.</description>
     </item>
     
     <item>
       <title>Udacity Developing Android Apps with Kotlin 레슨1 Build your First App 요약</title>
-      <link>https://bsscco.github.io/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/</link>
+      <link>/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/</link>
       <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/</guid>
+      <guid>/posts/2019-05-30-udacity-developing-android-apps-with-kotlin-lesson-1-summary/</guid>
       <description>Lesson 1: Build your First App lateinit 키워드 findViewById()를 반복적으로 사용할 때 view hierarchy를 찾는 불필요 연산을 없애기 위해 View를 멤버변수에 홀딩시켜놓는데, 멤버변수를 val로 선언해서 null check가 필요 없도록 하려면 멤버변수 선언 앞에 lateinit 키워드를 붙여서 나중에 꼭 초기화될 것임을 알린다. vector drawable min sdk 21 namespace:tools 미리보기용 빌드할 땐 없어져서 개발하기 편함 </description>
     </item>
     

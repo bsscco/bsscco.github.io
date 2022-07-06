@@ -1,27 +1,46 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>performance on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/tags/performance/</link>
-    <description>Recent content in performance on Android Developer BSSCCO</description>
+    <title>performance on ANDROID DEVELOPER BSSCCO</title>
+    <link>/tags/performance/</link>
+    <description>Recent content in performance on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Wed, 15 Jun 2022 20:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Sat, 25 Jun 2022 22:00:02 +0000</lastBuildDate><atom:link href="/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compose 기초 - Compose 성능개선</title>
+      <link>/posts/2022-06-25-compose-performance/</link>
+      <pubDate>Sat, 25 Jun 2022 22:00:02 +0000</pubDate>
+      
+      <guid>/posts/2022-06-25-compose-performance/</guid>
+      <description>Compose 성능개선 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+앱 설정으로 성능 개선 (원문) release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다.
+R8 컴파일러를 사용하여 앱에서 불필요한 코드를 삭제한다.
+Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
+*Baseline Profiles : Profile에 담긴 메소드 목록은 ART에 의해 AOT 컴파일 된다.
+프레임 3단계에서 성능 개선 (원문) Composition 단계에서 성능 개선(≠Composition 단계 건너뛰기) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 @Composable 함수 외부에서 실행되도록 한다.</description>
+    </item>
+    
     <item>
       <title>Baseline Profiles 정리</title>
-      <link>https://bsscco.github.io/posts/2022-06-15-baseline-profiles/</link>
+      <link>/posts/2022-06-15-baseline-profiles/</link>
       <pubDate>Wed, 15 Jun 2022 20:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2022-06-15-baseline-profiles/</guid>
-      <description>Baseline Profiles 한글문서 구글블로그 Baseline Profiles란? APK에 담기는 클래스와 메소드의 목록이다. 앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다. 결과물 덕분에 앱 실행 시간과 jank가 감소된다. *jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간 기타 장점 AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다. 하지만 최신 AndroidX와 Compose 1.</description>
+      <guid>/posts/2022-06-15-baseline-profiles/</guid>
+      <description>Baseline Profiles 한글문서 구글블로그 Baseline Profiles란? APK에 담기는 클래스와 메소드의 목록이다.
+앱 설치가 되는 동안 이 목록의 클래스와 메소드는 pre-compile 된다. 이 결과물은 실행이 더 빠르다.
+결과물 덕분에 앱 실행 시간과 jank가 감소된다.
+*jank: CPU 작업시간이 60프레임 범위를 넘어가서 앱이 버벅이게 만들 수 있는 CPU의 초과 작업시간
+Compose에 적용된 Baseline Profiles AndroidX와 Compose는 안드로이드 시스템의 일부가 아니고 라이브러리이므로 앱 설치 시 컴파일되지 않아서 cold startup 시간을 증가시킬 수 있다.
+하지만 최신 AndroidX와 Compose 1.</description>
     </item>
     
     <item>
       <title>네트워크 이미지를 효율적으로 사용하기</title>
-      <link>https://bsscco.github.io/posts/2019-10-06-using-network-image-efficiently/</link>
+      <link>/posts/2019-10-06-using-network-image-efficiently/</link>
       <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-10-06-using-network-image-efficiently/</guid>
+      <guid>/posts/2019-10-06-using-network-image-efficiently/</guid>
       <description>네트워크 이미지를 효율적으로 사용하기 리사이징 방법 1. 서버로부터 리사이징된 이미지를 다운로드 받는다.
 예) https://image.ohou.se/image/central_crop/bucketplace-v2-development/xxxxxxx.jpg/{가로px}/{세로px}
 장점 : 네트워크 통신리소스 감소

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>flutter on Android Developer BSSCCO</title>
-    <link>https://bsscco.github.io/tags/flutter/</link>
-    <description>Recent content in flutter on Android Developer BSSCCO</description>
+    <title>flutter on ANDROID DEVELOPER BSSCCO</title>
+    <link>/tags/flutter/</link>
+    <description>Recent content in flutter on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 26 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://bsscco.github.io/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Sun, 26 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>이펙티브 Dart 한 장으로 요약!</title>
-      <link>https://bsscco.github.io/posts/2019-05-26-effective-dart-summary-/</link>
+      <link>/posts/2019-05-26-effective-dart-summary-/</link>
       <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-05-26-effective-dart-summary-/</guid>
+      <guid>/posts/2019-05-26-effective-dart-summary-/</guid>
       <description>원문 : https://dart.dev/guides/language/effective-dart
 들어가면서 general한 지향점 코드를 일관성 있게 만들자. 코드를 간결하게 만들자. linter를 애용하자! : enabling linter rules
 가이드 종류 Style Guide - 코딩 스타일 가이드 Documentation Guide - 문서화 가이드 Usage Guide - language features 사용 가이드 Design Guide - 일관성 있는 설계를 위한 가이드 가이드를 어떻게 읽어야 할까? DO - 꼭 이렇게 하세요! DON’T - 절대 이렇게 하지 마세요! PREFER - 특별한 상황이 아니라면 이렇게 하세요. AVOID - 특별한 이유가 없다면 이렇게 하지 마세요.</description>
@@ -20,10 +20,10 @@
     
     <item>
       <title>Dart 2.3 - UI를 빌딩에 최적화 됐어요.</title>
-      <link>https://bsscco.github.io/posts/2019-05-25-dart-2.3/</link>
+      <link>/posts/2019-05-25-dart-2.3/</link>
       <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-05-25-dart-2.3/</guid>
+      <guid>/posts/2019-05-25-dart-2.3/</guid>
       <description>원문 : https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff
 새로운 language features spread 연산자 리스트의 요소들을 다른 리스트 안으로 풀어서 넣어주는 &amp;hellip; 연산자 (spread operator)
 Widget build(BuildContext context) { return Column(children: [ Header(), ...buildMainElements(), // spread 연산자 Footer(), ]); } List&amp;lt;Widget&amp;gt; buildMainElements() { ... } collection if 조건에 맞지 않으면 요소가 들어가지 않게 해주는 문법. 단, list 리터럴에서만 사용할 수 있어요!
@@ -32,40 +32,40 @@ Widget build(BuildContext context) { return Column(children: [ Text(mainText), i
     
     <item>
       <title>Flutter Today I Learned - 2019-04-24</title>
-      <link>https://bsscco.github.io/posts/2019-04-24-flutter-til/</link>
+      <link>/posts/2019-04-24-flutter-til/</link>
       <pubDate>Wed, 24 Apr 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-04-24-flutter-til/</guid>
+      <guid>/posts/2019-04-24-flutter-til/</guid>
       <description>배울 문서 : https://drive.google.com/file/d/1d19SQry7jXwGd-wy3MeXJ35uCoy4veib/view 예제 소스코드 : https://github.com/markclow/flutter_book_examples
 Flutter 소개 Dart 언어 사용 One source, multi flatform hot reload 높은 퀄리티의 기본 UI 위젯들, material, cupertino 구글 차세대 OS Fuchsia용 앱 개발 Android Studio Flutter 플러그인 VS Code Flutter Extension Flutter Hot Restarting &amp;amp; Reloading hot restarting - 바뀐 코드를 Dar VM으로 로드시키고 앱을 재실행 hot reloading - 바뀐 코드를 Dart VM으로 로드시키고 앱 상태 변경 없이 갱신 Flutter Dependencies &amp;amp; Packages https://pub.</description>
     </item>
     
     <item>
       <title>Flutter Today I Learned - 2019-04-23</title>
-      <link>https://bsscco.github.io/posts/2019-04-23-flutter-til/</link>
+      <link>/posts/2019-04-23-flutter-til/</link>
       <pubDate>Tue, 23 Apr 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-04-23-flutter-til/</guid>
+      <guid>/posts/2019-04-23-flutter-til/</guid>
       <description>배울 문서 : https://drive.google.com/file/d/1d19SQry7jXwGd-wy3MeXJ35uCoy4veib/view 예제 소스코드 : https://github.com/markclow/flutter_book_examples
 Dart 클래스 이어서 연산자 오버라이딩 - operator ==(orther) =&amp;gt; (other is Car) &amp;amp;&amp;amp; (_make == other._make) &amp;amp;&amp;amp; (_model == other._model);. == 연산자를 오버라이딩 할 땐 hashCode 메소드도 적절하게 오버라이딩 해줘야 함. collections 프레임워크에서 hashCode 메소드를 사용하기 때문 리플렉션 - dart:mirrors mixin - 다른 클래스에 의해 사용되는 메소드를 포함하는 클래스 Dart Collections 라이브러리 - dart:collection List - 순서가 있는 컬렉션 Map - key, value 쌍을 담는 컬렉션 Dart Assertions 방어적 프로그래밍을 가능케 함.</description>
     </item>
     
     <item>
       <title>Flutter Today I Learned - 2019-04-22</title>
-      <link>https://bsscco.github.io/posts/2019-04-22-flutter-til/</link>
+      <link>/posts/2019-04-22-flutter-til/</link>
       <pubDate>Mon, 22 Apr 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-04-22-flutter-til/</guid>
+      <guid>/posts/2019-04-22-flutter-til/</guid>
       <description>배울 문서 : https://drive.google.com/file/d/1d19SQry7jXwGd-wy3MeXJ35uCoy4veib/view 예제 소스코드 : https://github.com/markclow/flutter_book_examples
 Flutter 빅픽쳐 구글과 애플이 제공한 United API는 서로를 100% 커버하지 못함. Xamarin, Appcelerator, Nativescript WebView를 사용한 방법은 앱 속도가 느림. Cordova, PhoneGap ReactNative는 bridge를 사용해 WebView보다 빠르지만 여전히 네이티브 코드보다 느림. Flutter는 자체 렌더링 엔진을 사용하기 때문에 네이티브 만큼 빠르고 플랫폼에 독립적. 여기에 더해서 핫리로딩 &amp;amp; 가상돔을 제공. Dart 소개 Java, C# like 언어 SDK dart - 코어 라이브러리 dart2js - 소스코드 dart to js dartdevc - dart to js.</description>
     </item>
     
     <item>
       <title>Flutter 위젯의 계층구조</title>
-      <link>https://bsscco.github.io/posts/2019-04-16-flutter-widget-hierarchy/</link>
+      <link>/posts/2019-04-16-flutter-widget-hierarchy/</link>
       <pubDate>Tue, 16 Apr 2019 21:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-04-16-flutter-widget-hierarchy/</guid>
+      <guid>/posts/2019-04-16-flutter-widget-hierarchy/</guid>
       <description>참고
 https://api.flutter.dev/flutter/widgets/Widget-class.html Widget Widget - immutable한 UI 정보입니다. mutable 상태를 가지게 하려면 StatefulWidget을 사용해야 합니다. PreferredSizeWidget - unconstrained일 때 미리 설정한 기본크기를 가지게 하는 위젯
 AppBar - 머터리얼 디자인 앱바 CupertinoTabBar - iOS 스타일의 bottom 네비게이션 탭바 ObstructingPerferredSizeWidget - 기본크기를 가지고, 뒤에 있는 위젯들을 완전히 막는 위젯 CupertinoNavigationBar - iOS 스타일의 네비게이션바 PreferredSize - 자식의 레이아웃에 어떤 영향도 끼치지 않으면서 단지 부모에 의해 사용될 기본크기를 가지는 위젯 TabBar - 머터리얼 디자인 탭바.</description>
@@ -73,10 +73,10 @@ AppBar - 머터리얼 디자인 앱바 CupertinoTabBar - iOS 스타일의 bottom
     
     <item>
       <title>Flutter로 개발하기(27) - 레이아웃 위젯 목록</title>
-      <link>https://bsscco.github.io/posts/2019-04-09-flutter-layout-widgets/</link>
+      <link>/posts/2019-04-09-flutter-layout-widgets/</link>
       <pubDate>Tue, 09 Apr 2019 21:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-04-09-flutter-layout-widgets/</guid>
+      <guid>/posts/2019-04-09-flutter-layout-widgets/</guid>
       <description>참고
 https://flutter.dev/docs/development/ui/widgets/layout https://api.flutter.dev/flutter/widgets/widgets-library.html https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e multi-child 레이아웃 위젯 Row 수평으로 자식들을 배치합니다. Row의 height는 자식들의 height들 중에서 가장 긴 height에 맞춰집니다.
 기본값
@@ -87,19 +87,19 @@ mainAxisSize: max mainAxisAlignment: start crossAxisAlignment: center Scaffold( 
     
     <item>
       <title>Flutter로 개발하기(26) - 개발 제대로 준비하기</title>
-      <link>https://bsscco.github.io/posts/2019-04-01-flutter-prepare-development-well/</link>
+      <link>/posts/2019-04-01-flutter-prepare-development-well/</link>
       <pubDate>Mon, 01 Apr 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-04-01-flutter-prepare-development-well/</guid>
+      <guid>/posts/2019-04-01-flutter-prepare-development-well/</guid>
       <description>도구 및 학습 Flutter 60 FPS UI of the Future - 베를린 2017 드로이드콘 플러터 소개 발표 Flutter for Android developers - 안드로이드 개발자를 위한 플러터 공식 문서[한글] Flutter Development - 플러터 개발 기본 개념 학습할 수 있는 공식 문서 Flutter Studio - WYGIWYG 방식으로 플러터 UI를 구성할 수 있고, 구성한 UI를 코드로 뽑아낼 수도 있는 웹사이트 Flutter Layout Cheat Sheet - 플러터 레이아웃 시스템을 익힐 수 있는 미디엄 글 Flutter widget index - 플러터 위젯들을 학습할 수 있는 공식 문서 Learn Google Flutter Fast - 플러터에 대한 오픈BOOK pdf Tensor Programming - 플러터 기초부터 중급까지 유튜브 강의[영어] Bloc Library - 플러터에서 가장 많이 쓰이는 상태 관리 라이브러리 Json Placeholder - REST API 형태의 가짜 데이터를 제공하는 서비스 </description>
     </item>
     
     <item>
       <title>Flutter로 개발하기(25) - Bloc 도구</title>
-      <link>https://bsscco.github.io/posts/2019-03-31-flutter-bloc-tools/</link>
+      <link>/posts/2019-03-31-flutter-bloc-tools/</link>
       <pubDate>Sun, 31 Mar 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-31-flutter-bloc-tools/</guid>
+      <guid>/posts/2019-03-31-flutter-bloc-tools/</guid>
       <description>Bloc document - 도구 https://felangel.github.io/bloc
 intelliJ Bloc Plugin for IntelliJ and Android Studio 소개 IntelliJ와 안드로이드 스튜디오를 위한 Bloc 플러그인은 Bloc 라이브러리를 지원하고 Bloc 생성을 효과적으로 돕습니다.
 설치 IntelliJ와 안드로이드 스튜디오 마켓플레이스에서 플러그인을 찾을 수 있습니다. Bloc Code Generator
@@ -109,20 +109,20 @@ intelliJ Bloc Plugin for IntelliJ and Android Studio 소개 IntelliJ와 안드�
     
     <item>
       <title>Flutter로 개발하기(24) - Bloc 튜토리얼 Todos</title>
-      <link>https://bsscco.github.io/posts/2019-03-30-flutter-bloc-todos-tutorial/</link>
+      <link>/posts/2019-03-30-flutter-bloc-todos-tutorial/</link>
       <pubDate>Sat, 30 Mar 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-30-flutter-bloc-todos-tutorial/</guid>
+      <guid>/posts/2019-03-30-flutter-bloc-todos-tutorial/</guid>
       <description>Bloc document - Todos 튜토리얼 원문: https://felangel.github.io/bloc
 Setup flutter create flutter_todos name: flutter_todos description: A new Flutter project. environment: sdk: &amp;#34;&amp;gt;=2.0.0 &amp;lt;3.0.0&amp;#34; dependencies: meta: &amp;#34;&amp;gt;=1.1.0 &amp;lt;2.0.0&amp;#34; equatable: ^0.2.0 flutter_bloc: ^0.9.0 flutter: sdk: flutter dependency_overrides: todos_app_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_app_core ref: expose-repositories todos_repository_core: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_core ref: expose-repositories todos_repository_simple: git: url: https://github.com/felangel/flutter_architecture_samples path: todos_repository_simple ref: expose-repositories flutter: uses-material-design: true flutter packages get 우리는 몇개의 의존성들을 오버라이딩 할 겁니다. Brian Egan&amp;rsquo;s Flutter Architecture Samples로부터 그 의존성들을 재사용할 것이기 때문입니다.</description>
     </item>
     
     <item>
       <title>Flutter로 개발하기(23) - Bloc 튜토리얼</title>
-      <link>https://bsscco.github.io/posts/2019-03-25-flutter-bloc-tutorials/</link>
+      <link>/posts/2019-03-25-flutter-bloc-tutorials/</link>
       <pubDate>Mon, 25 Mar 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-25-flutter-bloc-tutorials/</guid>
+      <guid>/posts/2019-03-25-flutter-bloc-tutorials/</guid>
       <description>Bloc document - 튜토리얼 원문: https://felangel.github.io/bloc
 플러터 Counter Setup 터미널에서
 flutter create flutter_counter pubspec.yaml에서
@@ -132,10 +132,10 @@ flutter packages get Counter Events enum CounterEvent { increment, decrement } C
     
     <item>
       <title>Flutter로 개발하기(22) - Bloc 소개</title>
-      <link>https://bsscco.github.io/posts/2019-03-24-flutter-bloc-introduction/</link>
+      <link>/posts/2019-03-24-flutter-bloc-introduction/</link>
       <pubDate>Sun, 24 Mar 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-24-flutter-bloc-introduction/</guid>
+      <guid>/posts/2019-03-24-flutter-bloc-introduction/</guid>
       <description>Bloc document - 소개 원문: https://felangel.github.io/bloc
 시작하기 개요 Bloc은 세 가지 패키지로 구성됩니다.
 bloc - 코어 라이브러리 flutter_bloc - bloc을 사용하기 위한 플러터 위젯 angular_bloc - bloc을 사용하기 위한 앵귤러 컴포넌트 설치 플터터의 경우 pubspec.yaml에서
@@ -146,10 +146,10 @@ import &amp;#39;package:bloc/bloc.dart&amp;#39;; import &amp;#39;package:flutter
     
     <item>
       <title>Flutter로 개발하기(21) - Bloc패턴 샘플</title>
-      <link>https://bsscco.github.io/posts/2019-03-23-flutter-bloc-library-sample/</link>
+      <link>/posts/2019-03-23-flutter-bloc-library-sample/</link>
       <pubDate>Sat, 23 Mar 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-23-flutter-bloc-library-sample/</guid>
+      <guid>/posts/2019-03-23-flutter-bloc-library-sample/</guid>
       <description>bloc_library sample 참고 예제: https://github.com/brianegan/flutter_architecture_samples/tree/master/bloc_library
 이 샘플은 상태관리를 위해 bloc 과 flutter_bloc 라이브러리를 사용했습니다. 더 자세한 내용과 튜토리얼은 bloc library document 를 확인하세요.
 핵심 개념 상태를 위로 올리기 여러 위젯에서 같은 bloc이 필요할 땐 공통의 조상 위젯에 BlocProvider를 사용합니다. Events는 bloc의 입력입니다. 이들은 일반적으로 버튼 누르기와 같은 유저 인터렉션 또는 페이지 로드 같은 라이프사이클 이벤트로 디스패치됩니다. States는 bloc의 출력이며 앱 상태의 한 부분을 대표합니다. 컴포넌트들은 상태를 공지 받을 수 있고 그 상태에 의해 다시 그려질 수 있습니다.</description>
@@ -157,20 +157,20 @@ import &amp;#39;package:bloc/bloc.dart&amp;#39;; import &amp;#39;package:flutter
     
     <item>
       <title>Flutter로 개발하기(18) - 상태관리 접근법들</title>
-      <link>https://bsscco.github.io/posts/2019-03-18-flutter-list-of-state-management-approaches/</link>
+      <link>/posts/2019-03-18-flutter-list-of-state-management-approaches/</link>
       <pubDate>Mon, 18 Mar 2019 09:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-18-flutter-list-of-state-management-approaches/</guid>
+      <guid>/posts/2019-03-18-flutter-list-of-state-management-approaches/</guid>
       <description>List of state management approaches 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/options
 개요 구글 IO 2018에서 발표했던 영상 플러터로 반응형 모바일앱 만들기와, 관련 글 Brian Egan의 플러터 설계 샘플 setState 플러터 튜토리얼 플러터앱에 상호작용 추가하기 Agung Surya의 플러터에서 기본 상태 관리 InheritedWidget &amp;amp; Scoped model Eric Windmill의 효과적으로 플러터 InheritedWidget 사용하기 Ryan Edge의 당신은 Redux가 필요 없을지도 모른다. Tensor Programming 영상 scoped model 패턴으로 상태 관리하기 MTechViral의 Inherited Widget과 Scoped Model 설명 영상 scoped model scoped model 패키지 Didier Bolelens의 Widget-State-Context-InheritedWidget Redux DartConf 2018에서 발표했던 영상 Redux로 애니메이션 관리하기와 관련 글 플러터 Redux 패키지 Xavi Rigau의 플러터 Redux 소개 Paulina Szklarska의 플러터+Redux로 쇼핑앱을 만드는 방법 Tensor Programming 영상 플러터 Redux로 Todo앱 만들기 Jack Wong의 플러터 Redux 예제 Hillel Coren의 Redux로 규모가 큰 플러터앱 만들기 Alibaba의 리더스 기반으로 플러터 앱 다루기 BLoC / Rx Sagar Suri의 BLoC 패턴을 사용한 플러터 프로젝트 설계 Felix Angelov의 Bloc 라이브러리 Didier Boelens의 반응형 프로그래밍, 스트림, BLoC Usecase MobX MobX.</description>
     </item>
     
     <item>
       <title>Flutter로 개발하기(17) - 간단한 상태관리 앱</title>
-      <link>https://bsscco.github.io/posts/2019-03-17-flutter-simple-app-state-management/</link>
+      <link>/posts/2019-03-17-flutter-simple-app-state-management/</link>
       <pubDate>Sun, 17 Mar 2019 22:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-17-flutter-simple-app-state-management/</guid>
+      <guid>/posts/2019-03-17-flutter-simple-app-state-management/</guid>
       <description>Simple app state management 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple
 이번 예제 로그인화면, 카탈로그화면, 장바구니화면으로 구성된 앱입니다.
 우리는 최소한 6개의 위젯을 만들 겁니다.
@@ -180,10 +180,10 @@ import &amp;#39;package:bloc/bloc.dart&amp;#39;; import &amp;#39;package:flutter
     
     <item>
       <title>Flutter로 개발하기(16) - 상태 관리</title>
-      <link>https://bsscco.github.io/posts/2019-03-17-flutter-state-management/</link>
+      <link>/posts/2019-03-17-flutter-state-management/</link>
       <pubDate>Sun, 17 Mar 2019 21:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-17-flutter-state-management/</guid>
+      <guid>/posts/2019-03-17-flutter-state-management/</guid>
       <description>상태 관리 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro
 선언적으로 생각하기 원문: https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative
 플러터는 안드로이드 SDK, iOS UIKit과 달리 선언적입니다. 선언적이라는 뜻은 플러터가 알아서 현재 상태에 맞는 UI를 빌드한다는 뜻입니다.
@@ -195,10 +195,10 @@ import &amp;#39;package:bloc/bloc.dart&amp;#39;; import &amp;#39;package:flutter
     
     <item>
       <title>Flutter로 개발하기(15) - Sliver와 제스처</title>
-      <link>https://bsscco.github.io/posts/2019-03-17-flutter-slivers/</link>
+      <link>/posts/2019-03-17-flutter-slivers/</link>
       <pubDate>Sun, 17 Mar 2019 17:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-17-flutter-slivers/</guid>
+      <guid>/posts/2019-03-17-flutter-slivers/</guid>
       <description>Slivers 원문: https://flutter.dev/docs/development/ui/advanced/slivers
 Sliver는 스크롤 영역의 일부입니다. 맞춤 스크롤 효과를 만들기 위해 Sliver를 사용할 수 있습니다.
 플러터에서 Sliver 구현 예로 SliverList, SliverGrid, SliverAppBar가 있습니다. Slivers, Demystified, Flutter Publication도 참고하세요.
@@ -210,10 +210,10 @@ PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent 포인터가
     
     <item>
       <title>Flutter로 개발하기(10) - 애니메이션 소개</title>
-      <link>https://bsscco.github.io/posts/2019-03-17-flutter-introduction-to-animations/</link>
+      <link>/posts/2019-03-17-flutter-introduction-to-animations/</link>
       <pubDate>Sun, 17 Mar 2019 00:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-17-flutter-introduction-to-animations/</guid>
+      <guid>/posts/2019-03-17-flutter-introduction-to-animations/</guid>
       <description>Introduction to animations https://flutter.dev/docs/development/ui/animations
 플러터 애니메이션 프레임워크를 배울 수 있는 리소스는 다음과 같습니다.
 애니메이션 튜토리얼 플러터 애니메이션 패키지에 있는 기본 클래스들(controllers, Animatable, curves, listeners, builders)을 설명합니다.
@@ -225,10 +225,10 @@ PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent 포인터가
     
     <item>
       <title>Flutter로 개발하기(09) - 화면 전환에 애니메이션 넣기</title>
-      <link>https://bsscco.github.io/posts/2019-03-16-flutter-animating-a-widget-across-screens/</link>
+      <link>/posts/2019-03-16-flutter-animating-a-widget-across-screens/</link>
       <pubDate>Sat, 16 Mar 2019 22:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-16-flutter-animating-a-widget-across-screens/</guid>
+      <guid>/posts/2019-03-16-flutter-animating-a-widget-across-screens/</guid>
       <description>Animating a Widget across screens https://flutter.dev/docs/cookbook/navigation/hero-animations
 현재 화면에서 다른 화면을 열 때 사용자에게 연속성을 주어야 하는 경우가 종종 있습니다. 연속성을 구현하기 위한 일반적인 기술은 현재 화면의 위젯이 다음 화면으로 이동하는 애니메이션을 적용하는 것입니다. 두 화면 간에 시각적 요소를 연결하려면 Hero 위젯을 사용하면 됩니다.
 같은 이미지를 보여주는 2개의 화면 만들기 class MainScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#39;Main Screen&amp;#39;), ), body: GestureDetector( onTap: () { Navigator.</description>
@@ -236,10 +236,10 @@ PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent 포인터가
     
     <item>
       <title>Flutter로 개발하기(08) - named route를 통해 화면 관리하기</title>
-      <link>https://bsscco.github.io/posts/2019-03-16-flutter-navigate-with-named-routes/</link>
+      <link>/posts/2019-03-16-flutter-navigate-with-named-routes/</link>
       <pubDate>Sat, 16 Mar 2019 18:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-16-flutter-navigate-with-named-routes/</guid>
+      <guid>/posts/2019-03-16-flutter-navigate-with-named-routes/</guid>
       <description>Navigate with named routes https://flutter.dev/docs/cookbook/navigation/named-routes
 만약 여러 곳에서 같은 화면으로 navigate 해야 할 때 매번 Route 코드를 추가해야 하는 중복이 발생할 수 있습니다. 이 문제를 해결해주는 게 &amp;ldquo;named route&amp;quot;입니다. named route로 navigate를 하려면 Navigator.pushNamed()를 이용해야 합니다.
 1. 두 화면 만들기 class FirstScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#39;첫 번째 화면&amp;#39;), ), body: Center( child: RaisedButton( child: Text(&amp;#39;새 화면 실행하기&amp;#39;), onPressed: () { }, ), ), ); } } class SecondScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#34;두 번째 화면&amp;#34;), ), body: Center( child: RaisedButton( onPressed: () { }, child: Text(&amp;#39;돌아가기&amp;#39;), ), ), ); } } 2.</description>
@@ -247,20 +247,20 @@ PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent 포인터가
     
     <item>
       <title>Flutter로 개발하기(07) - 닫히는 화면으로부터 데이터 전달 받기</title>
-      <link>https://bsscco.github.io/posts/2019-03-16-flutter-return-data-from-a-screen/</link>
+      <link>/posts/2019-03-16-flutter-return-data-from-a-screen/</link>
       <pubDate>Sat, 16 Mar 2019 17:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-16-flutter-return-data-from-a-screen/</guid>
+      <guid>/posts/2019-03-16-flutter-return-data-from-a-screen/</guid>
       <description>Return data from a screen https://flutter.dev/docs/cookbook/navigation/returning-data
 1. 홈 화면 정의하기 class HomeScreen extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#39;Returning Data Demo&amp;#39;), ), // 다음 단계에서 SelectionButton 위젯을 만들 겁니다. body: Center(child: SelectionButton()), ); } } 2. 선택 화면을 실행하는 버튼 추가하기 class SelectionButton extends StatelessWidget { @override Widget build(BuildContext context) { return RaisedButton( onPressed: () { _navigateAndDisplaySelection(context); }, child: Text(&amp;#39;옵션을 선택하세요!&amp;#39;), ); } _navigateAndDisplaySelection(BuildContext context) async { // Navigator.</description>
     </item>
     
     <item>
       <title>Flutter로 개발하기(06) - 새 화면에 데이터 넘기기</title>
-      <link>https://bsscco.github.io/posts/2019-03-16-flutter-send-data-to-a-new-screen/</link>
+      <link>/posts/2019-03-16-flutter-send-data-to-a-new-screen/</link>
       <pubDate>Sat, 16 Mar 2019 07:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-16-flutter-send-data-to-a-new-screen/</guid>
+      <guid>/posts/2019-03-16-flutter-send-data-to-a-new-screen/</guid>
       <description>Send data to a new screen https://flutter.dev/docs/cookbook/navigation/passing-data
 기억하세요. 플러터에서 화면은 단지 위젯일 뿐입니다. 이 예제에서 우리는 Todo 목록을 만들고 Todo를 tap 했을 때 Todo를 보여줄 새 화면(위젯)으로 이동할 겁니다.
 1. Todo 클래스 정의하기 class Todo { final String title; final String description; Todo(this.title, this.description); } 2. Todo 목록 만들기 final todos = List&amp;lt;Todo&amp;gt;.generate( 20, (i) =&amp;gt; Todo( &amp;#39;Todo $i&amp;#39;, &amp;#39;A description of what needs to be done for Todo $i&amp;#39;, ), ); ------------------------------------------------------------ ListView.</description>
@@ -268,10 +268,10 @@ PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent 포인터가
     
     <item>
       <title>Flutter로 개발하기(05) - 새로운 화면 열기</title>
-      <link>https://bsscco.github.io/posts/2019-03-14-flutter-navigate-to-a-new-screen-and-back/</link>
+      <link>/posts/2019-03-14-flutter-navigate-to-a-new-screen-and-back/</link>
       <pubDate>Thu, 14 Mar 2019 07:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-14-flutter-navigate-to-a-new-screen-and-back/</guid>
+      <guid>/posts/2019-03-14-flutter-navigate-to-a-new-screen-and-back/</guid>
       <description>Navigate to a new screen and back https://flutter.dev/docs/cookbook/navigation/navigation-basics
 플러터에서는 화면이나 페이지를 Route라고 부릅니다. 안드로이드에서는 액티비티와 대응되고, iOS에서는 뷰컨트롤러와 대응됩니다. Route 또한 위젯입니다.
 1. 두 Route 만들기 class FirstRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#39;First Route&amp;#39;), ), body: Center( child: RaisedButton( child: Text(&amp;#39;Open route&amp;#39;), onPressed: () { // Navigate to second route when tapped. }, ), ), ); } } class SecondRoute extends StatelessWidget { @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(&amp;#34;Second Route&amp;#34;), ), body: Center( child: RaisedButton( onPressed: () { // Navigate back to first route when tapped.</description>
@@ -279,10 +279,10 @@ PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent 포인터가
     
     <item>
       <title>Flutter로 개발하기(04) - 위젯의 크기 제약조건</title>
-      <link>https://bsscco.github.io/posts/2019-03-13-flutter-dealing-with-box-constraints/</link>
+      <link>/posts/2019-03-13-flutter-dealing-with-box-constraints/</link>
       <pubDate>Wed, 13 Mar 2019 07:49:13 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-13-flutter-dealing-with-box-constraints/</guid>
+      <guid>/posts/2019-03-13-flutter-dealing-with-box-constraints/</guid>
       <description>Dealing with box constraints https://flutter.dev/docs/development/ui/layout/box-constraints
 플러터에서 위젯은 자신의 렌더박스에 그려집니다. 렌더박스의 크기는 부모 위젯으로부터 받은 제약조건에 의해 결정됩니다. 제약조건은 최소, 최대 너비와 높이로 구성됩니다.
 제약조건의 유형은 일반적으로 3가지로 분류됩니다.
@@ -291,10 +291,10 @@ PointerDownEvent PointerMoveEvent PointerUpEvent PointerCancelEvent 포인터가
     
     <item>
       <title>Flutter로 개발하기(03) - 레이아웃 튜토리얼</title>
-      <link>https://bsscco.github.io/posts/2019-03-12-flutter-layout-tutorial/</link>
+      <link>/posts/2019-03-12-flutter-layout-tutorial/</link>
       <pubDate>Tue, 12 Mar 2019 07:51:41 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-12-flutter-layout-tutorial/</guid>
+      <guid>/posts/2019-03-12-flutter-layout-tutorial/</guid>
       <description>Layout tutorial https://flutter.dev/docs/development/ui/layout/tutorial
 이 가이드에서는 아래 보이는 앱을 만들면서 레이아웃을 짜는 법을 배워봅니다.
 Step 0: 앱 베이스코드 만들기 플러터 어플리케이션 프로젝트를 만들고 다음과 같이 코드를 수정합니다.
@@ -303,10 +303,10 @@ import &amp;#39;package:flutter/material.dart&amp;#39;; void main() =&amp;gt; ru
     
     <item>
       <title>Flutter로 개발하기(02) - 레이아웃 위젯 소개</title>
-      <link>https://bsscco.github.io/posts/2019-03-11-flutter-layouts-in-flutter/</link>
+      <link>/posts/2019-03-11-flutter-layouts-in-flutter/</link>
       <pubDate>Mon, 11 Mar 2019 07:49:13 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-11-flutter-layouts-in-flutter/</guid>
+      <guid>/posts/2019-03-11-flutter-layouts-in-flutter/</guid>
       <description>Layouts in Flutter https://flutter.dev/docs/development/ui/layout
 위젯 배치하기 1. 레이아웃 위젯을 선택합니다. Column, Row, Center 등
 2. visible 위젯을 생성합니다. Text(&amp;#39;Hello World&amp;#39;), Image.asset( &amp;#39;images/lake.jpg&amp;#39;, fit: BoxFit.cover, ), Icon( Icons.star, color: Colors.red[500], ), 3. visible 위젯을 레이아웃 위젯에 추가합니다. Center( child: Text(&amp;#39;Hello World&amp;#39;), ), 4. 레이아웃 위젯을 페이지에 추가합니다. class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &amp;#39;Flutter layout demo&amp;#39;, home: Scaffold( appBar: AppBar( title: Text(&amp;#39;Flutter layout demo&amp;#39;), ), body: Center( child: Text(&amp;#39;Hello World&amp;#39;), ), ), ); } } 여러 위젯을 수직, 수평으로 배치하기 위젯 Aligning Row Row( mainAxisAlignment: MainAxisAlignment.</description>
@@ -314,10 +314,10 @@ import &amp;#39;package:flutter/material.dart&amp;#39;; void main() =&amp;gt; ru
     
     <item>
       <title>Flutter로 개발하기(01) - 위젯 소개</title>
-      <link>https://bsscco.github.io/posts/2019-03-09-flutter-introduction-to-widgets/</link>
+      <link>/posts/2019-03-09-flutter-introduction-to-widgets/</link>
       <pubDate>Sat, 09 Mar 2019 06:49:58 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-09-flutter-introduction-to-widgets/</guid>
+      <guid>/posts/2019-03-09-flutter-introduction-to-widgets/</guid>
       <description>Introduction to widgets https://flutter.dev/docs/development/ui/widgets-intro
 플러터 위젯은 React로부터 영감을 받아 반응형 스타일로 제작됐습니다.
 플러터 위젯의 중심 아이디어는 위젯으로만 UI를 제작하는 것입니다. 위젯은 자신에게 주어진 상태에 따라 어떻게 그릴 것인가를 기술하는 객체입니다. 위젯의 상태가 바뀌면 위젯은 다시 빌드되는데, 이때 프레임워크는 이전 상태와 다음 상태를 비교해서 render tree가 최소한만 변경되도록 합니다.
@@ -327,10 +327,10 @@ import &amp;#39;package:flutter/meterial.dart&amp;#39;; void main() { runApp( Ce
     
     <item>
       <title>Dart 샘플코드 번역</title>
-      <link>https://bsscco.github.io/posts/2019-03-02-dart-sample-code/</link>
+      <link>/posts/2019-03-02-dart-sample-code/</link>
       <pubDate>Sat, 02 Mar 2019 22:35:49 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-03-02-dart-sample-code/</guid>
+      <guid>/posts/2019-03-02-dart-sample-code/</guid>
       <description>Sample Code https://www.dartlang.org/samples
 Hello world 모든 앱은 main() 함수에서 시작한다.
 void main() { print(&amp;#39;Hello, World!&amp;#39;); } Variables type-safe인 Dart에서 대부분의 변수들은 타입 명시가 필요하지 않다. 타입 추론 덕분이다.
@@ -339,10 +339,10 @@ var name = &amp;#39;Voyager I&amp;#39;; var year = 1977; var antennaDiameter = 3
     
     <item>
       <title>Flutter 코드랩 리뷰 - 플러터를 위한 파이어베이스</title>
-      <link>https://bsscco.github.io/posts/2019-02-16-flutter-firebase-for-flutter/</link>
+      <link>/posts/2019-02-16-flutter-firebase-for-flutter/</link>
       <pubDate>Sat, 16 Feb 2019 15:41:07 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-16-flutter-firebase-for-flutter/</guid>
+      <guid>/posts/2019-02-16-flutter-firebase-for-flutter/</guid>
       <description>Flutter를 위한 Firebase
 https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html
 프로젝트 소스 : https://github.com/bsscco/baby_name_votes 눈에 띄는 내용 named 생성자를 지원한다. class Record { final String name; final int votes; Record.fromMap(Map&amp;lt;String, dynamic&amp;gt; map) : assert(map[&amp;#39;name&amp;#39;] != null), assert(map[&amp;#39;votes&amp;#39;] != null), name = map[&amp;#39;name&amp;#39;], votes = map[&amp;#39;votes&amp;#39;]; } StreamBuilder는 인자를 통해 받은 스트림이 변경되면 다시 빌드하는 기능을 한다. Widget _buildBody(BuildContext context) { return StreamBuilder&amp;lt;QuerySnapshot&amp;gt;( stream: Firestore.instance.collection(&amp;#39;baby&amp;#39;).snapshots(), builder: (context, snapshot) { if (!snapshot.hasData) { return LinearProgressIndicator(); } return _buildList(context, snapshot.</description>
@@ -350,10 +350,10 @@ https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html
     
     <item>
       <title>Flutter 코드랩 리뷰 - 플러터로 아름다운 UI 만들기</title>
-      <link>https://bsscco.github.io/posts/2019-02-14-flutter-build-beautiful-ui-with-flutter/</link>
+      <link>/posts/2019-02-14-flutter-build-beautiful-ui-with-flutter/</link>
       <pubDate>Thu, 14 Feb 2019 23:11:44 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-14-flutter-build-beautiful-ui-with-flutter/</guid>
+      <guid>/posts/2019-02-14-flutter-build-beautiful-ui-with-flutter/</guid>
       <description>Flutter로 아름다운 UI 만들기 https://codelabs.developers.google.com/codelabs/flutter/index.html
 프로젝트 소스 : https://github.com/bsscco/friendly_chat
 Flutter의 장점 한 번 작성하면 iOS, Android에 배포 가능하다. Material Design과 Cupertino 위젯과 동작들을 지원한다. 스크롤링, 네비게이션 패턴, 폰트, 그 이상을 지원한다. 반응형 functional 프로그래밍을 지원한다. 겁나 빠른 핫리로드를 지원한다. Dart로 쓰여진 코드는 Android, iOS의 환경에 맞게 컴파일된다. 눈에 띄는 내용 마진에 들어가는 숫자는 디바이스에 따라 적절한 픽셀로 변환된다. (Android는 dip로 변환) CrossAxisAlignment.start 는 부모의 메인 Axis의 교차 Axis를 기준으로 앞쪽에 위치하도록 하겠다는 뜻이다.</description>
@@ -361,10 +361,10 @@ Flutter의 장점 한 번 작성하면 iOS, Android에 배포 가능하다. Mate
     
     <item>
       <title>Flutter 코드랩 리뷰 - 자바에서 다트로 넘어가기</title>
-      <link>https://bsscco.github.io/posts/2019-02-14-dart-from-java-to-dart/</link>
+      <link>/posts/2019-02-14-dart-from-java-to-dart/</link>
       <pubDate>Thu, 14 Feb 2019 23:02:51 +0000</pubDate>
       
-      <guid>https://bsscco.github.io/posts/2019-02-14-dart-from-java-to-dart/</guid>
+      <guid>/posts/2019-02-14-dart-from-java-to-dart/</guid>
       <description>Java에서 Dart로 넘어가기 https://codelabs.developers.google.com/codelabs/from-java-to-dart/index.html
 생성자 // 다음 두 생성자는 완전히 같은 동작을 한다. Bicycle(this.cadence); // 이거 추천 Bicycle(int cadence) { this.cadence = cadence; } 변수 선언 var bike = bicycle(1, 2, 0); // 변수 생성 final bike = bicycle(1, 2, 0); // 상수 생성 toString() @override String toString() =&amp;gt; &amp;#39;Bicycle: $speed mph&amp;#39;; String single qoutes, double qoutes 둘 다 사용 가능하다. string interpolation을 지원한다. &#39;speed: $speed&#39; // $var, ${exp} 함수&amp;amp;메소드 one-line 함수/메소드를 지원한다.</description>
     </item>
