@@ -170,18 +170,18 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#왜-사이드이펙트에-대해서-조심해야-하나-원문httpsdeveloperandroidcomjetpackcomposeside-effectsstate-effect-use-cases">왜 사이드이펙트에 대해서 조심해야 하나? (<a href="https://developer.android.com/jetpack/compose/side-effects#state-effect-use-cases">원문</a>)</a></li>
-    <li><a href="#initial-composition-시점에-실행--launchedeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 : <code>LaunchedEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</a></li>
-    <li><a href="#composable-외부에서-실행--remembercoroutinescope-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 : <code>rememberCoroutineScope()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</a></li>
-    <li><a href="#지연된-최신상태-접근--rememberupdatedstate-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">지연된 최신상태 접근 : <code>rememberUpdatedState()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</a>
+    <li><a href="#initial-composition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</a></li>
+    <li><a href="#composable-외부에서-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</a></li>
+    <li><a href="#remember된-상태의-최신값에-지연-접근하기-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">remember된 상태의 최신값에 지연 접근하기 (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</a>
       <ul>
         <li><a href="#rememberstate-과-rememberupdatedstatestate의-차이"><code>remember(state) {...}</code>과 <code>rememberUpdatedState(state)</code>의 차이</a></li>
       </ul>
     </li>
-    <li><a href="#composition-종료-시점에-실행--disposableeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 : <code>DisposableEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</a></li>
-    <li><a href="#recomposition-시점에-실행--sideeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 : <code>SideEffect {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</a></li>
-    <li><a href="#non-blocking-결과를-composable-상태로-변환--producestate--원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 Composable 상태로 변환 : <code>produceState() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</a></li>
-    <li><a href="#무거운-blocking-작업의-결과를-composable-상태로-변환--remember--derivedstateof---원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 Composable 상태로 변환 : <code>remember() { derivedStateOf {...} }</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</a></li>
-    <li><a href="#composable-상태를-flow로-변환--snapshotflow--원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow">Composable 상태를 flow로 변환 : <code>snapshotFlow {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</a></li>
+    <li><a href="#composition-종료-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</a></li>
+    <li><a href="#recomposition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</a></li>
+    <li><a href="#non-blocking-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</a></li>
+    <li><a href="#무거운-blocking-작업의-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</a></li>
+    <li><a href="#statet를-flow로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow"><code>State&lt;T&gt;</code>를 flow로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</a></li>
     <li><a href="#사이드이펙트에-주어진-람다가-다시-시작되는-조건-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrestarting-effects">사이드이펙트에 주어진 람다가 다시 시작되는 조건 (<a href="https://developer.android.com/jetpack/compose/side-effects#restarting-effects">원문</a>)</a></li>
   </ul>
 </nav>
@@ -235,7 +235,8 @@
 <p>Recomposition에 의해 <code>@Composable</code> 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 <code>@Composable</code> 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.</p>
 <p>*사이드이펙트 예시 : 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업</p>
 <p>사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.</p>
-<h2 id="initial-composition-시점에-실행--launchedeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 : <code>LaunchedEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</h2>
+<h2 id="initial-composition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</h2>
+<p><strong><code>LaunchedEffect() {...}</code></strong></p>
 <p>Initial Composition 시점에 <code>LaunchedEffect() {...}</code>로 전달된 <strong>suspend</strong> 람다<code>{...}</code>를 실행한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Child</span>(state: Boolean) { 
@@ -249,7 +250,8 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Recomposition 시점에 <code>Launchedeffect()</code>로 전달된 키값이 변화했다면 suspend 람다<code>{...}</code>가 새로 실행된다. 기존 suspend 람다<code>{...}</code>가 실행 중이었다면 중지됨.</p>
-<h2 id="composable-외부에서-실행--remembercoroutinescope-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 : <code>rememberCoroutineScope()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</h2>
+<h2 id="composable-외부에서-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</h2>
+<p><strong><code>rememberCoroutineScope()</code></strong></p>
 <p><code>LaunchedEffect</code>는 Composable이므로 <code>@Composable</code> 함수 안에서만 사용할 수 있다.</p>
 <p>Composable 범위 밖에서 호출되는 <code>onClick</code>과 같은 람다<code>{...}</code>에서는 <code>rememberCoroutineScope</code>를 사용한다.</p>
 <p><code>xXxxScope.launch {...}</code>로 전달된 suspend 람다<code>{...}</code>가 실행된다.</p>
@@ -269,7 +271,8 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>rememberCoroutineScope()</code>를 통해 만들어진 scope의 라이프사이클은 <code>rememberCoroutineScope()</code>를 호출한 Composable의 라이프사이클에 종속된다.</p>
-<h2 id="지연된-최신상태-접근--rememberupdatedstate-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">지연된 최신상태 접근 : <code>rememberUpdatedState()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</h2>
+<h2 id="remember된-상태의-최신값에-지연-접근하기-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">remember된 상태의 최신값에 지연 접근하기 (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</h2>
+<p><strong><code>rememberUpdatedState()</code></strong></p>
 <p><code>LaunchedEffect() {...}</code>, <code>rememberCoroutineScope.launch {...}</code>의 람다<code>{...}</code> 안에서 지연된 상태접근을 시도할 때 최신 상태값을 가져올 수 있다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Parent</span>() {
@@ -311,8 +314,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">rememberUpdatedState</span>(newValue: T) = remember { 
 </span></span><span style="display:flex;"><span>    mutableStateOf(newValue) 
 </span></span><span style="display:flex;"><span>}.apply { 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">it</span>.value = newValue 
-</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">it</span>.<span style="color:#66d9ef">value</span> = newValue 
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Parent</span>() {
 </span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">var</span> state <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#66d9ef">false</span><span style="color:#75715e">/*첫값*/</span>) }
@@ -343,7 +346,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child rememberUpdatedState </span><span style="color:#e6db74">$rememberUpdatedState</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state true&#34; 최신값이 반영됐다.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><p>따라서 state값이 바뀐 것을 반영할 수 있어야 하면서 지연된 상태접근이 불필요하다면 <code>remember(state) {...}</code>를 사용해야 한다.</p>
-<h2 id="composition-종료-시점에-실행--disposableeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 : <code>DisposableEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</h2>
+<h2 id="composition-종료-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</h2>
+<p><strong><code>DisposableEffect() {...}</code></strong></p>
 <p>Composable의 Composition이 종료될 때 <code>onDispose {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span> 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Parent</span>() { 
@@ -376,7 +380,8 @@
 </span></span><span style="display:flex;"><span>    } 
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>DisposableEffect() {...}</code>로 전달된 키값이 변화해 Recomposition 되면 <code>DisposableEffect() {...}</code>로 전달된 람다<code>{...}</code>가 새로 실행된다. 기존 람다는 suspend가 아니기 때문에 바로 중지되진 않는다.</p>
-<h2 id="recomposition-시점에-실행--sideeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 : <code>SideEffect {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</h2>
+<h2 id="recomposition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</h2>
+<p><strong><code>SideEffect {...}</code></strong></p>
 <p>Recomposition 시점에 <code>SideEffect {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">Child</span>(state: Boolean) {
@@ -384,7 +389,8 @@
 </span></span><span style="display:flex;"><span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;recomposition </span><span style="color:#e6db74">$state</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="non-blocking-결과를-composable-상태로-변환--producestate--원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 Composable 상태로 변환 : <code>produceState() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</h2>
+</span></span></code></pre></div><h2 id="non-blocking-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</h2>
+<p><strong><code>produceState() {...}</code></strong></p>
 <p><code>produceState() {...}</code>로 전달된 람다<code>suspend ProduceStateScope&lt;T&gt;.() -&gt; Unit</code>를 사용해 일반적인 값을 <code>State&lt;T&gt;</code>로 변환한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">loadNetworkImage</span>(
@@ -394,7 +400,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> produceState(initialValue = Result.Loading, url, imageRepository) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> image = imageRepository.load(url)
-</span></span><span style="display:flex;"><span>        value = <span style="color:#66d9ef">if</span> (image <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">value</span> = <span style="color:#66d9ef">if</span> (image <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
 </span></span><span style="display:flex;"><span>            Result.Error
 </span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>            Result.Success(image)
@@ -406,14 +412,15 @@
 <p><code>produceState()</code>의 매개변수로 전달된 suspend 람다<code>{...}</code>에서 scope가 종료되는 걸 잡아내고 싶다면 <code>awaitDispose {...}</code>를 사용한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> currentPerson <span style="color:#66d9ef">by</span> produceState&lt;Person?&gt;(<span style="color:#66d9ef">null</span>, viewModel) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> disposable = viewModel.registerPersonObserver { person <span style="color:#f92672">-&gt;</span>
-</span></span><span style="display:flex;"><span>        value = person
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">value</span> = person
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    awaitDispose {      
 </span></span><span style="display:flex;"><span>        disposable.dispose()
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="무거운-blocking-작업의-결과를-composable-상태로-변환--remember--derivedstateof---원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 Composable 상태로 변환 : <code>remember() { derivedStateOf {...} }</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</h2>
+</span></span></code></pre></div><h2 id="무거운-blocking-작업의-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</h2>
+<p><strong><code>remember() { derivedStateOf {...} }</code></strong></p>
 <p><code>derivedStateOf {...}</code>는 <code>remember {...}</code> 안에서만 사용해야 쓸모가 있다.</p>
 <p><code>mutableStateOf()</code>는 값을 인자로 넣는 반면에 <code>derivedStateOf {...}</code>는 람다<code>{...}</code>를 인자로 받는다.</p>
 <p><code>derivedStateOf {...}</code>로 전달된 람다<code>{...}</code>는 <code>remember {...}</code>에 의해 Recomposition 시 재호출 빈도가 최소화 되며 따라서 무거운 변환 작업에 대한 부담이 적다.</p>
@@ -492,7 +499,8 @@
 </span></span><span style="display:flex;"><span>        Text(item.toString())
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="composable-상태를-flow로-변환--snapshotflow--원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow">Composable 상태를 flow로 변환 : <code>snapshotFlow {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</h2>
+</span></span></code></pre></div><h2 id="statet를-flow로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow"><code>State&lt;T&gt;</code>를 flow로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</h2>
+<p><strong><code>snapshotFlow {...}</code></strong></p>
 <p>Composable 상태 <code>State&lt;T&gt;</code>는 구독 가능한 값이다.</p>
 <p>Flow는 구독 가능한 스트림이다.</p>
 <p><code>State&lt;T&gt;</code>를 Flow로 변환하여 Flow의 다양한 연산자를 활용할 수 있다.</p>
@@ -548,18 +556,18 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#왜-사이드이펙트에-대해서-조심해야-하나-원문httpsdeveloperandroidcomjetpackcomposeside-effectsstate-effect-use-cases">왜 사이드이펙트에 대해서 조심해야 하나? (<a href="https://developer.android.com/jetpack/compose/side-effects#state-effect-use-cases">원문</a>)</a></li>
-    <li><a href="#initial-composition-시점에-실행--launchedeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 : <code>LaunchedEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</a></li>
-    <li><a href="#composable-외부에서-실행--remembercoroutinescope-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 : <code>rememberCoroutineScope()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</a></li>
-    <li><a href="#지연된-최신상태-접근--rememberupdatedstate-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">지연된 최신상태 접근 : <code>rememberUpdatedState()</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</a>
+    <li><a href="#initial-composition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</a></li>
+    <li><a href="#composable-외부에서-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</a></li>
+    <li><a href="#remember된-상태의-최신값에-지연-접근하기-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">remember된 상태의 최신값에 지연 접근하기 (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</a>
       <ul>
         <li><a href="#rememberstate-과-rememberupdatedstatestate의-차이"><code>remember(state) {...}</code>과 <code>rememberUpdatedState(state)</code>의 차이</a></li>
       </ul>
     </li>
-    <li><a href="#composition-종료-시점에-실행--disposableeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 : <code>DisposableEffect() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</a></li>
-    <li><a href="#recomposition-시점에-실행--sideeffect--원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 : <code>SideEffect {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</a></li>
-    <li><a href="#non-blocking-결과를-composable-상태로-변환--producestate--원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 Composable 상태로 변환 : <code>produceState() {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</a></li>
-    <li><a href="#무거운-blocking-작업의-결과를-composable-상태로-변환--remember--derivedstateof---원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 Composable 상태로 변환 : <code>remember() { derivedStateOf {...} }</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</a></li>
-    <li><a href="#composable-상태를-flow로-변환--snapshotflow--원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow">Composable 상태를 flow로 변환 : <code>snapshotFlow {...}</code> (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</a></li>
+    <li><a href="#composition-종료-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</a></li>
+    <li><a href="#recomposition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</a></li>
+    <li><a href="#non-blocking-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</a></li>
+    <li><a href="#무거운-blocking-작업의-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</a></li>
+    <li><a href="#statet를-flow로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow"><code>State&lt;T&gt;</code>를 flow로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</a></li>
     <li><a href="#사이드이펙트에-주어진-람다가-다시-시작되는-조건-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrestarting-effects">사이드이펙트에 주어진 람다가 다시 시작되는 조건 (<a href="https://developer.android.com/jetpack/compose/side-effects#restarting-effects">원문</a>)</a></li>
   </ul>
 </nav>

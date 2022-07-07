@@ -17,7 +17,7 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Compose 기초 - Composable의 상태 관리" />
 <meta property="og:description" content="Composable의 상태 관리 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Composition 용어 Composition : UI를 기술하는 Composable의 트리구조 Initial Composition : 첫 Composition 구성 Recomposition : Composition을 재구성 Composable의 상태에 쓰이는 메모리를 관리하기 (원문) remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다.
+Composition 용어 Composition : UI를 기술하는 Composable의 트리구조 Initial Composition : 첫 Composition 구성 Recomposition : Composition을 재구성 Composable의 상태에 쓰이는 메모리를 관리하기 (원문) remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 재사용된다.
 remember {...}를 호출한 Composable이 Composition에서 삭제되면 remember에 의해 계산된 값 또한 제거된다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/2022-06-22-composable-state/" /><meta property="article:section" content="posts" />
@@ -28,7 +28,7 @@ remember {...}를 호출한 Composable이 Composition에서 삭제되면 remembe
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Compose 기초 - Composable의 상태 관리"/>
 <meta name="twitter:description" content="Composable의 상태 관리 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-Composition 용어 Composition : UI를 기술하는 Composable의 트리구조 Initial Composition : 첫 Composition 구성 Recomposition : Composition을 재구성 Composable의 상태에 쓰이는 메모리를 관리하기 (원문) remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다.
+Composition 용어 Composition : UI를 기술하는 Composable의 트리구조 Initial Composition : 첫 Composition 구성 Recomposition : Composition을 재구성 Composable의 상태에 쓰이는 메모리를 관리하기 (원문) remember {...}란? remember {...}에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 재사용된다.
 remember {...}를 호출한 Composable이 Composition에서 삭제되면 remember에 의해 계산된 값 또한 제거된다."/>
 
   
@@ -151,7 +151,7 @@ remember {...}를 호출한 Composable이 Composition에서 삭제되면 remembe
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-22-composable-state%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Composable%ec%9d%98%20%ec%83%81%ed%83%9c%20%ea%b4%80%eb%a6%ac&description=Composable%ec%9d%98%20%ec%83%81%ed%83%9c%20%ea%b4%80%eb%a6%ac%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0aComposition%20%ec%9a%a9%ec%96%b4%20Composition%20%3a%20UI%eb%a5%bc%20%ea%b8%b0%ec%88%a0%ed%95%98%eb%8a%94%20Composable%ec%9d%98%20%ed%8a%b8%eb%a6%ac%ea%b5%ac%ec%a1%b0%20Initial%20Composition%20%3a%20%ec%b2%ab%20Composition%20%ea%b5%ac%ec%84%b1%20Recomposition%20%3a%20Composition%ec%9d%84%20%ec%9e%ac%ea%b5%ac%ec%84%b1%20Composable%ec%9d%98%20%ec%83%81%ed%83%9c%ec%97%90%20%ec%93%b0%ec%9d%b4%eb%8a%94%20%eb%a9%94%eb%aa%a8%eb%a6%ac%eb%a5%bc%20%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0%20%28%ec%9b%90%eb%ac%b8%29%20remember%20%7b...%7d%eb%9e%80%3f%20remember%20%7b...%7d%ec%97%90%20%ec%9d%98%ed%95%b4%20%ea%b3%84%ec%82%b0%eb%90%9c%20%ea%b0%92%ec%9d%80%20Initial%20Composition%20%ec%a4%91%ec%97%90%20Composition%ec%97%90%20%ec%a0%80%ec%9e%a5%eb%90%98%ea%b3%a0%2c%20%ec%a0%80%ec%9e%a5%eb%90%9c%20%ea%b0%92%ec%9d%80%20Recomposition%20%ec%a4%91%ec%97%90%20%eb%b0%98%ed%99%98%eb%90%98%ec%96%b4%20%ec%82%ac%ec%9a%a9%eb%90%9c%eb%8b%a4.%0aremember%20%7b...%7d%eb%a5%bc%20%ed%98%b8%ec%b6%9c%ed%95%9c%20Composable%ec%9d%b4%20Composition%ec%97%90%ec%84%9c%20%ec%82%ad%ec%a0%9c%eb%90%98%eb%a9%b4%20remember%ec%97%90%20%ec%9d%98%ed%95%b4%20%ea%b3%84%ec%82%b0%eb%90%9c%20%ea%b0%92%20%eb%98%90%ed%95%9c%20%ec%a0%9c%ea%b1%b0%eb%90%9c%eb%8b%a4." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-22-composable-state%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Composable%ec%9d%98%20%ec%83%81%ed%83%9c%20%ea%b4%80%eb%a6%ac&description=Composable%ec%9d%98%20%ec%83%81%ed%83%9c%20%ea%b4%80%eb%a6%ac%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0aComposition%20%ec%9a%a9%ec%96%b4%20Composition%20%3a%20UI%eb%a5%bc%20%ea%b8%b0%ec%88%a0%ed%95%98%eb%8a%94%20Composable%ec%9d%98%20%ed%8a%b8%eb%a6%ac%ea%b5%ac%ec%a1%b0%20Initial%20Composition%20%3a%20%ec%b2%ab%20Composition%20%ea%b5%ac%ec%84%b1%20Recomposition%20%3a%20Composition%ec%9d%84%20%ec%9e%ac%ea%b5%ac%ec%84%b1%20Composable%ec%9d%98%20%ec%83%81%ed%83%9c%ec%97%90%20%ec%93%b0%ec%9d%b4%eb%8a%94%20%eb%a9%94%eb%aa%a8%eb%a6%ac%eb%a5%bc%20%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0%20%28%ec%9b%90%eb%ac%b8%29%20remember%20%7b...%7d%eb%9e%80%3f%20remember%20%7b...%7d%ec%97%90%20%ec%9d%98%ed%95%b4%20%ea%b3%84%ec%82%b0%eb%90%9c%20%ea%b0%92%ec%9d%80%20Initial%20Composition%20%ec%a4%91%ec%97%90%20Composition%ec%97%90%20%ec%a0%80%ec%9e%a5%eb%90%98%ea%b3%a0%2c%20%ec%a0%80%ec%9e%a5%eb%90%9c%20%ea%b0%92%ec%9d%80%20Recomposition%20%ec%a4%91%ec%97%90%20%eb%b0%98%ed%99%98%eb%90%98%ec%96%b4%20%ec%9e%ac%ec%82%ac%ec%9a%a9%eb%90%9c%eb%8b%a4.%0aremember%20%7b...%7d%eb%a5%bc%20%ed%98%b8%ec%b6%9c%ed%95%9c%20Composable%ec%9d%b4%20Composition%ec%97%90%ec%84%9c%20%ec%82%ad%ec%a0%9c%eb%90%98%eb%a9%b4%20remember%ec%97%90%20%ec%9d%98%ed%95%b4%20%ea%b3%84%ec%82%b0%eb%90%9c%20%ea%b0%92%20%eb%98%90%ed%95%9c%20%ec%a0%9c%ea%b1%b0%eb%90%9c%eb%8b%a4." aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -190,7 +190,6 @@ remember {...}를 호출한 Composable이 Composition에서 삭제되면 remembe
       </ul>
     </li>
     <li><a href="#composable-상태-전달의-의존성-방향-원문httpsdeveloperandroidcomjetpackcomposestatemanaging-state">Composable 상태 전달의 의존성 방향 (<a href="https://developer.android.com/jetpack/compose/state#managing-state">원문</a>)</a></li>
-    <li><a href="#composable-상태-용어-로직-용어-원문httpsdeveloperandroidcomjetpackcomposestatetypes-of-state-and-logic">Composable 상태 용어, 로직 용어 (<a href="https://developer.android.com/jetpack/compose/state#types-of-state-and-logic">원문</a>)</a></li>
     <li><a href="#composable-상태-생산자로써-viewmodel의-장점-원문httpsdeveloperandroidcomjetpackcomposestateviewmodels-source-of-truth">Composable 상태 생산자로써 ViewModel의 장점 (<a href="https://developer.android.com/jetpack/compose/state#viewmodels-source-of-truth">원문</a>)</a>
       <ul>
         <li></li>
@@ -252,7 +251,7 @@ remember {...}를 호출한 Composable이 Composition에서 삭제되면 remembe
 </ul>
 <h2 id="composable의-상태에-쓰이는-메모리를-관리하기-원문httpsdeveloperandroidcomjetpackcomposestatestate-in-composables">Composable의 상태에 쓰이는 메모리를 관리하기 (<a href="https://developer.android.com/jetpack/compose/state#state-in-composables">원문</a>)</h2>
 <h3 id="remember-란"><code>remember {...}</code>란?</h3>
-<p><code>remember {...}</code>에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 사용된다.</p>
+<p><code>remember {...}</code>에 의해 계산된 값은 Initial Composition 중에 Composition에 저장되고, 저장된 값은 Recomposition 중에 반환되어 재사용된다.</p>
 <p><code>remember {...}</code>를 호출한 Composable이 Composition에서 삭제되면 <code>remember</code>에 의해 계산된 값 또한 제거된다.</p>
 <h3 id="왜-remember--앞에-by-위임자를-사용할까">왜 <code>remember {...}</code> 앞에 <code>by</code> 위임자를 사용할까?</h3>
 <ul>
@@ -288,7 +287,7 @@ remember {...}를 호출한 Composable이 Composition에서 삭제되면 remembe
 </span></span><span style="display:flex;"><span>            style = MaterialTheme.typography.h5    
 </span></span><span style="display:flex;"><span>        )    
 </span></span><span style="display:flex;"><span>        OutlinedTextField(      
-</span></span><span style="display:flex;"><span>            value = name,      
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">value</span> = name,      
 </span></span><span style="display:flex;"><span>            onValueChange = onNameChange,      
 </span></span><span style="display:flex;"><span>            label = { Text(<span style="color:#e6db74">&#34;Name&#34;</span>) }    
 </span></span><span style="display:flex;"><span>        )  
@@ -354,21 +353,14 @@ remember {...}를 호출한 Composable이 Composition에서 삭제되면 remembe
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="composable-상태-전달의-의존성-방향-원문httpsdeveloperandroidcomjetpackcomposestatemanaging-state">Composable 상태 전달의 의존성 방향 (<a href="https://developer.android.com/jetpack/compose/state#managing-state">원문</a>)</h2>
 <p><img src="https://developer.android.com/images/jetpack/compose/state-dependencies.svg" alt="state-dependencies"></p>
-<h2 id="composable-상태-용어-로직-용어-원문httpsdeveloperandroidcomjetpackcomposestatetypes-of-state-and-logic">Composable 상태 용어, 로직 용어 (<a href="https://developer.android.com/jetpack/compose/state#types-of-state-and-logic">원문</a>)</h2>
-<ul>
-<li>UI요소 상태 : UI요소의 상태</li>
-<li>화면 상태 : 화면에 표시할 요소. 로드 플래그 등을 포함한다.</li>
-<li>UI 로직 : 화면의 상태 변경을 표시하는 방법. 이 로직은 주로 UI 레이어에 위치한다.</li>
-<li>비지니스 로직 : 상태 변경에 따라 진행해야 할 작업. 이 로직은 주로 데이터 레이어에 위치한다. 예) 결제 또는 환경설정 저장하기</li>
-</ul>
 <h2 id="composable-상태-생산자로써-viewmodel의-장점-원문httpsdeveloperandroidcomjetpackcomposestateviewmodels-source-of-truth">Composable 상태 생산자로써 ViewModel의 장점 (<a href="https://developer.android.com/jetpack/compose/state#viewmodels-source-of-truth">원문</a>)</h2>
 <p>데이터 레이어 같이 다른 레이어에 위치하는 비즈니스 로직에 대한 액세스 권한을 제공한다.
 특정 화면에 표시하기 위한 애플리케이션 데이터를 준비(백그라운드 처리)하는 것에 유리하다.</p>
 <p><strong>Composition보다 수명이 길기 때문에 <a href="https://developer.android.com/jetpack/compose/navigation">탐색 그래프</a>에서의 수명관리에 유리하다.</strong></p>
-<ul>
+<ol>
 <li>화면(navigation destination)이 백 스택에 있는 동안 Navigation이 ViewModel을 캐시한다.</li>
 <li>화면이 백 스택에서 사라질 때 ViewModel도 삭제된다.</li>
-</ul>
+</ol>
 <h4 id="viewmodel-사용-시-주의할-점">ViewModel 사용 시 주의할 점</h4>
 <p>화면 수준 Composable에서만 ViewModel 인스턴스를 제공하는 것이 좋다. <a href="https://developer.android.com/jetpack/compose/state#viewmodels-source-of-truth">(왜지??? 답을 못찾음)</a></p>
 <p>ViewModel에서 상태 복원 작업은 <a href="https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate">SavedStateHandle</a>를 사용한다.</p>
@@ -426,7 +418,6 @@ remember {...}를 호출한 Composable이 Composition에서 삭제되면 remembe
       </ul>
     </li>
     <li><a href="#composable-상태-전달의-의존성-방향-원문httpsdeveloperandroidcomjetpackcomposestatemanaging-state">Composable 상태 전달의 의존성 방향 (<a href="https://developer.android.com/jetpack/compose/state#managing-state">원문</a>)</a></li>
-    <li><a href="#composable-상태-용어-로직-용어-원문httpsdeveloperandroidcomjetpackcomposestatetypes-of-state-and-logic">Composable 상태 용어, 로직 용어 (<a href="https://developer.android.com/jetpack/compose/state#types-of-state-and-logic">원문</a>)</a></li>
     <li><a href="#composable-상태-생산자로써-viewmodel의-장점-원문httpsdeveloperandroidcomjetpackcomposestateviewmodels-source-of-truth">Composable 상태 생산자로써 ViewModel의 장점 (<a href="https://developer.android.com/jetpack/compose/state#viewmodels-source-of-truth">원문</a>)</a>
       <ul>
         <li></li>
@@ -481,7 +472,7 @@ remember {...}를 호출한 Composable이 Composition에서 삭제되면 remembe
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-22-composable-state%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Composable%ec%9d%98%20%ec%83%81%ed%83%9c%20%ea%b4%80%eb%a6%ac&description=Composable%ec%9d%98%20%ec%83%81%ed%83%9c%20%ea%b4%80%eb%a6%ac%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0aComposition%20%ec%9a%a9%ec%96%b4%20Composition%20%3a%20UI%eb%a5%bc%20%ea%b8%b0%ec%88%a0%ed%95%98%eb%8a%94%20Composable%ec%9d%98%20%ed%8a%b8%eb%a6%ac%ea%b5%ac%ec%a1%b0%20Initial%20Composition%20%3a%20%ec%b2%ab%20Composition%20%ea%b5%ac%ec%84%b1%20Recomposition%20%3a%20Composition%ec%9d%84%20%ec%9e%ac%ea%b5%ac%ec%84%b1%20Composable%ec%9d%98%20%ec%83%81%ed%83%9c%ec%97%90%20%ec%93%b0%ec%9d%b4%eb%8a%94%20%eb%a9%94%eb%aa%a8%eb%a6%ac%eb%a5%bc%20%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0%20%28%ec%9b%90%eb%ac%b8%29%20remember%20%7b...%7d%eb%9e%80%3f%20remember%20%7b...%7d%ec%97%90%20%ec%9d%98%ed%95%b4%20%ea%b3%84%ec%82%b0%eb%90%9c%20%ea%b0%92%ec%9d%80%20Initial%20Composition%20%ec%a4%91%ec%97%90%20Composition%ec%97%90%20%ec%a0%80%ec%9e%a5%eb%90%98%ea%b3%a0%2c%20%ec%a0%80%ec%9e%a5%eb%90%9c%20%ea%b0%92%ec%9d%80%20Recomposition%20%ec%a4%91%ec%97%90%20%eb%b0%98%ed%99%98%eb%90%98%ec%96%b4%20%ec%82%ac%ec%9a%a9%eb%90%9c%eb%8b%a4.%0aremember%20%7b...%7d%eb%a5%bc%20%ed%98%b8%ec%b6%9c%ed%95%9c%20Composable%ec%9d%b4%20Composition%ec%97%90%ec%84%9c%20%ec%82%ad%ec%a0%9c%eb%90%98%eb%a9%b4%20remember%ec%97%90%20%ec%9d%98%ed%95%b4%20%ea%b3%84%ec%82%b0%eb%90%9c%20%ea%b0%92%20%eb%98%90%ed%95%9c%20%ec%a0%9c%ea%b1%b0%eb%90%9c%eb%8b%a4." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-22-composable-state%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Composable%ec%9d%98%20%ec%83%81%ed%83%9c%20%ea%b4%80%eb%a6%ac&description=Composable%ec%9d%98%20%ec%83%81%ed%83%9c%20%ea%b4%80%eb%a6%ac%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0aComposition%20%ec%9a%a9%ec%96%b4%20Composition%20%3a%20UI%eb%a5%bc%20%ea%b8%b0%ec%88%a0%ed%95%98%eb%8a%94%20Composable%ec%9d%98%20%ed%8a%b8%eb%a6%ac%ea%b5%ac%ec%a1%b0%20Initial%20Composition%20%3a%20%ec%b2%ab%20Composition%20%ea%b5%ac%ec%84%b1%20Recomposition%20%3a%20Composition%ec%9d%84%20%ec%9e%ac%ea%b5%ac%ec%84%b1%20Composable%ec%9d%98%20%ec%83%81%ed%83%9c%ec%97%90%20%ec%93%b0%ec%9d%b4%eb%8a%94%20%eb%a9%94%eb%aa%a8%eb%a6%ac%eb%a5%bc%20%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0%20%28%ec%9b%90%eb%ac%b8%29%20remember%20%7b...%7d%eb%9e%80%3f%20remember%20%7b...%7d%ec%97%90%20%ec%9d%98%ed%95%b4%20%ea%b3%84%ec%82%b0%eb%90%9c%20%ea%b0%92%ec%9d%80%20Initial%20Composition%20%ec%a4%91%ec%97%90%20Composition%ec%97%90%20%ec%a0%80%ec%9e%a5%eb%90%98%ea%b3%a0%2c%20%ec%a0%80%ec%9e%a5%eb%90%9c%20%ea%b0%92%ec%9d%80%20Recomposition%20%ec%a4%91%ec%97%90%20%eb%b0%98%ed%99%98%eb%90%98%ec%96%b4%20%ec%9e%ac%ec%82%ac%ec%9a%a9%eb%90%9c%eb%8b%a4.%0aremember%20%7b...%7d%eb%a5%bc%20%ed%98%b8%ec%b6%9c%ed%95%9c%20Composable%ec%9d%b4%20Composition%ec%97%90%ec%84%9c%20%ec%82%ad%ec%a0%9c%eb%90%98%eb%a9%b4%20remember%ec%97%90%20%ec%9d%98%ed%95%b4%20%ea%b3%84%ec%82%b0%eb%90%9c%20%ea%b0%92%20%eb%98%90%ed%95%9c%20%ec%a0%9c%ea%b1%b0%eb%90%9c%eb%8b%a4." aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>

@@ -483,7 +483,7 @@ Setup flutter create flutter_todos name: flutter_todos description: A new Flutte
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TodosBloc</span> <span style="color:#66d9ef">extends</span> Bloc<span style="color:#f92672">&lt;</span>TodosEvent, TodosState<span style="color:#f92672">&gt;</span> {
 </span></span><span style="display:flex;"><span> <span style="color:#66d9ef">final</span> TodosRepositoryFlutter todosRepository;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> TodosBloc({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todosRepository});
+</span></span><span style="display:flex;"><span> TodosBloc({<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.todosRepository});
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">@</span>override
 </span></span><span style="display:flex;"><span> TodosState <span style="color:#66d9ef">get</span> initialState <span style="color:#f92672">=&gt;</span> TodosLoading();
@@ -682,7 +682,7 @@ Setup flutter create flutter_todos name: flutter_todos description: A new Flutte
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> TodosBloc todosBloc;
 </span></span><span style="display:flex;"><span>  StreamSubscription todosSubscription;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  FilteredTodosBloc({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todosBloc}) {
+</span></span><span style="display:flex;"><span>  FilteredTodosBloc({<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.todosBloc}) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 역주: todosBloc의 상태 변화를 감지하기 시작합니다.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    todosSubscription <span style="color:#f92672">=</span> todosBloc.state.listen((state) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (state <span style="color:#66d9ef">is</span> TodosLoaded) {
@@ -838,7 +838,7 @@ Setup flutter create flutter_todos name: flutter_todos description: A new Flutte
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> TodosBloc todosBloc;
 </span></span><span style="display:flex;"><span>  StreamSubscription todosSubscription;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  StatsBloc({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.todosBloc}) {
+</span></span><span style="display:flex;"><span>  StatsBloc({<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.todosBloc}) {
 </span></span><span style="display:flex;"><span>    todosSubscription <span style="color:#f92672">=</span> todosBloc.state.listen((state) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (state <span style="color:#66d9ef">is</span> TodosLoaded) {
 </span></span><span style="display:flex;"><span>        dispatch(UpdateStats(state.todos));
@@ -996,7 +996,7 @@ Setup flutter create flutter_todos name: flutter_todos description: A new Flutte
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HomeScreen</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> Function() onInit;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  HomeScreen({<span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.onInit}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: ArchSampleKeys.homeScreen);
+</span></span><span style="display:flex;"><span>  HomeScreen({<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.onInit}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: ArchSampleKeys.homeScreen);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
 </span></span><span style="display:flex;"><span>  _HomeScreenState createState() <span style="color:#f92672">=&gt;</span> _HomeScreenState();
@@ -1105,7 +1105,7 @@ Setup flutter create flutter_todos name: flutter_todos description: A new Flutte
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DetailsScreen</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> id;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  DetailsScreen({Key key, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.id})
+</span></span><span style="display:flex;"><span>  DetailsScreen({Key key, <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.id})
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key <span style="color:#f92672">??</span> ArchSampleKeys.todoDetailsScreen);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span>override
@@ -1243,8 +1243,8 @@ Setup flutter create flutter_todos name: flutter_todos description: A new Flutte
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  AddEditScreen({
 </span></span><span style="display:flex;"><span>    Key key,
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.onSave,
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.isEditing,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.onSave,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.isEditing,
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.todo,
 </span></span><span style="display:flex;"><span>  }) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key <span style="color:#f92672">??</span> ArchSampleKeys.addTodoScreen);
 </span></span><span style="display:flex;"><span>
@@ -1380,10 +1380,10 @@ Setup flutter create flutter_todos name: flutter_todos description: A new Flutte
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_Button</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> _Button({
 </span></span><span style="display:flex;"><span>    Key key,
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.onSelected,
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.activeFilter,
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.activeStyle,
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.defaultStyle,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.onSelected,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.activeFilter,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.activeStyle,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#66d9ef">required</span> <span style="color:#66d9ef">this</span>.defaultStyle,
 </span></span><span style="display:flex;"><span>  }) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> PopupMenuItemSelected<span style="color:#f92672">&lt;</span>VisibilityFilter<span style="color:#f92672">&gt;</span> onSelected;

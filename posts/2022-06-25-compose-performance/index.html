@@ -258,7 +258,7 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
 </span></span><span style="display:flex;"><span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;in Box&#34;</span>)
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 스크롤 오프셋 scroll.value가 변경될 때마다 Screen, Title이 Recomposition 된다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        TextList(scroll.value)    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        TextList(scroll.<span style="color:#66d9ef">value</span>)    
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>  
@@ -292,7 +292,7 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
 </span></span><span style="display:flex;"><span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;in Box&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// scrollProvider가 Title Composable 안에서 호출되므로 스크롤 오프셋 scroll.value가 변경될 때마다 Title만 Recomposition 된다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        TextList(scrollProvider = { scroll.value })    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        TextList(scrollProvider = { scroll.<span style="color:#66d9ef">value</span> })    
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
@@ -328,7 +328,7 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
 </span></span><span style="display:flex;"><span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;in Box&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// scrollProvider가 Title Composable의 Layout단계에서 호출되므로 스크롤 오프셋 scroll.value가 변경될 때마다 Title의 Layout 단계만 재실행된다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      TextList(scrollProvider = { scroll.value })    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      TextList(scrollProvider = { scroll.<span style="color:#66d9ef">value</span> })    
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
@@ -356,10 +356,10 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
 <h2 id="성능-개선-권장사항-종합-원문httpsdeveloperandroidcomjetpackcomposeperformancebest-practices">성능 개선 권장사항 종합 (<a href="https://developer.android.com/jetpack/compose/performance#best-practices">원문</a>)</h2>
 <h4 id="remember-로-값을-저장해서-recomposition-시점에-재사용하기"><code>remember {...}</code>로 값을 저장해서 Recomposition 시점에 재사용하기</h4>
 <p><a href="/posts/2022-06-22-composable-state/#remember-%EB%9E%80">Composable의 상태에 쓰이는 메모리를 관리하기</a></p>
-<h4 id="key-composable을-사용해서-불필요한-전체-항목-reocmposition을-막기"><code>key</code> Composable을 사용해서 불필요한 전체 항목 Reocmposition을 막기</h4>
+<h4 id="key-composable을-사용해서-불필요한-전체-항목-recomposition을-막기"><code>key</code> Composable을 사용해서 불필요한 전체 항목 Recomposition을 막기</h4>
 <p><a href="/posts/2022-06-22-composable-lifecycle/#smart-recomposition%EC%97%90-%EB%8F%84%EC%9B%80%EC%9D%B4-%EB%90%98%EB%8A%94-%EC%A0%95%EB%B3%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0-%EC%9B%90%EB%AC%B8httpsdeveloperandroidcomjetpackcomposelifecycleadd-info-smart-recomposition">Smart Recomposition에 도움이 되는 정보 추가하기</a></p>
 <h4 id="remember--derivedstateof--로-무거운-작업의-결과를-저장해서-recomposition-시점에-재사용하기"><code>remember { derivedStateOf {...} }</code>로 무거운 작업의 결과를 저장해서 Recomposition 시점에 재사용하기</h4>
-<p><a href="/posts/2022-06-22-compose-side-effect/#%EB%AC%B4%EA%B1%B0%EC%9A%B4-blocking-%EC%9E%91%EC%97%85%EC%9D%98-%EA%B2%B0%EA%B3%BC%EB%A5%BC-composable-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%ED%99%98--remember--derivedstateof---%EC%9B%90%EB%AC%B8httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 Composable 상태로 변환 : remember() { derivedStateOf {&hellip;} }</a></p>
+<p><a href="/posts/2022-06-22-compose-side-effect/#%EB%AC%B4%EA%B1%B0%EC%9A%B4-blocking-%EC%9E%91%EC%97%85%EC%9D%98-%EA%B2%B0%EA%B3%BC%EB%A5%BC-remember%EB%90%9C-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%ED%99%98-%EC%9B%90%EB%AC%B8httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 remember된 상태로 변환</a></p>
 <h4 id="상태-읽기를-최대한-미뤄서-프레임3단계를-최적화-하기">상태 읽기를 최대한 미뤄서 프레임3단계를 최적화 하기</h4>
 <p><a href="/posts/2022-06-25-compose-performance/#%ED%94%84%EB%A0%88%EC%9E%84-3%EB%8B%A8%EA%B3%84%EC%97%90%EC%84%9C-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0-%EC%9B%90%EB%AC%B8httpsdeveloperandroidcomjetpackcomposeperformancethree-phases">프레임 3단계에서 성능 개선</a></p>
 <p><strong><code>Modifier.drawBehind()</code>를 사용해서 프레임 3단계를 최소화 하기</strong></p>

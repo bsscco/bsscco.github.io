@@ -9,13 +9,13 @@
   <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title> Compose 기초 - Compose 시멘틱 | ANDROID DEVELOPER BSSCCO</title>
+  <title> Compose 기초 - Compose 시멘틱(for 접근성, UI테스트) | ANDROID DEVELOPER BSSCCO</title>
   <link rel = 'canonical' href = '/posts/2022-07-01-compose-semantics/'>
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Compose 기초 - Compose 시멘틱" />
+  <meta property="og:title" content="Compose 기초 - Compose 시멘틱(for 접근성, UI테스트)" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/2022-07-01-compose-semantics/" /><meta property="article:section" content="posts" />
@@ -24,7 +24,7 @@
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Compose 기초 - Compose 시멘틱"/>
+<meta name="twitter:title" content="Compose 기초 - Compose 시멘틱(for 접근성, UI테스트)"/>
 <meta name="twitter:description" content=""/>
 
   
@@ -111,42 +111,42 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2f2022-07-01-compose-semantics%2f&text=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2f2022-07-01-compose-semantics%2f&text=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2f2022-07-01-compose-semantics%2f&is_video=false&description=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2f2022-07-01-compose-semantics%2f&is_video=false&description=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1&body=Check out this article: %2fposts%2f2022-07-01-compose-semantics%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29&body=Check out this article: %2fposts%2f2022-07-01-compose-semantics%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-01-compose-semantics%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1&description=" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-01-compose-semantics%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29&description=" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2f2022-07-01-compose-semantics%2f&t=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2f2022-07-01-compose-semantics%2f&t=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -165,7 +165,7 @@
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
       <h1 class="posttitle" itemprop="name headline">
-        Compose 기초 - Compose 시멘틱
+        Compose 기초 - Compose 시멘틱(for 접근성, UI테스트)
       </h1>
       <div class="meta">
         
@@ -247,42 +247,42 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2f2022-07-01-compose-semantics%2f&text=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2f2022-07-01-compose-semantics%2f&text=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2f2022-07-01-compose-semantics%2f&is_video=false&description=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2f2022-07-01-compose-semantics%2f&is_video=false&description=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1&body=Check out this article: %2fposts%2f2022-07-01-compose-semantics%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29&body=Check out this article: %2fposts%2f2022-07-01-compose-semantics%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2f2022-07-01-compose-semantics%2f&title=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-01-compose-semantics%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1&description=" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-01-compose-semantics%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29&description=" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2f2022-07-01-compose-semantics%2f&t=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2f2022-07-01-compose-semantics%2f&t=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%8b%9c%eb%a9%98%ed%8b%b1%28for%20%ec%a0%91%ea%b7%bc%ec%84%b1%2c%20UI%ed%85%8c%ec%8a%a4%ed%8a%b8%29" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>

@@ -247,7 +247,7 @@ Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    Column(   
 </span></span><span style="display:flex;"><span>        Modifier   
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// clickable() 뒤에 padding()이 호출되며, click 시 ripple 이펙트가 padding 부분까지 그려진다.   
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// clickable() 뒤에 padding()이 호출되며, 클릭범위와 ripple 이펙트가 padding 부분까지 포함된다.   
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            .clickable(onClick = onClick)      
 </span></span><span style="display:flex;"><span>            .padding(padding)       
 </span></span><span style="display:flex;"><span>          .fillMaxWidth()  
@@ -261,7 +261,7 @@ Modifier의 역할 Composable의 크기, 레이아웃, 동작 및 모양 변경
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    Column(   
 </span></span><span style="display:flex;"><span>        Modifier   
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// padding() 뒤에 clickable()이 호출되며, click 시 ripple 이펙트가 padding 안쪽으로 제한된다. 
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// padding() 뒤에 clickable()이 호출되며, 클릭범위와 ripple 이펙트가 padding 안쪽으로 제한된다. 
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            .padding(padding)       
 </span></span><span style="display:flex;"><span>            .clickable(onClick = onClick)      
 </span></span><span style="display:flex;"><span>          .fillMaxWidth()  
