@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>architecture on ANDROID DEVELOPER BSSCCO</title>
+    <link>/tags/architecture/</link>
+    <description>Recent content in architecture on ANDROID DEVELOPER BSSCCO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Booseol Shin</copyright>
+    <lastBuildDate>Fri, 08 Jul 2022 22:00:00 +0000</lastBuildDate><atom:link href="/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MAD Skills 앱 아키텍쳐 - Data 레이어</title>
+      <link>/posts/2022-07-08-mad-skills-data-layer/</link>
+      <pubDate>Fri, 08 Jul 2022 22:00:00 +0000</pubDate>
+      
+      <guid>/posts/2022-07-08-mad-skills-data-layer/</guid>
+      <description>Architecture: The data layer - MAD Skills (영상, 문서) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+레이어드 구조 UI Layer Domain Layer Data Layer Repositories RemoteDataSources LocalDataSources Data 레이어의 Source of truth Data 레이어에 Source of truth를 적용하려면 여러 데이터공급처(RemoteDataSource, LocalDataSource)가 있더라도 오직 한 곳으로부터 데이터를 공급받을 수 있도록 만들어주어야 한다.
+Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데이터의 변화 시 DataSource들의 동작을 신경 쓸 필요 없이 관심사를 한 곳으로 모아준다.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -14,11 +14,11 @@
       
       <guid>/posts/2022-06-25-compose-performance/</guid>
       <description>Compose 성능개선 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-앱 설정으로 성능 개선 (원문) release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다.
+앱 설정으로 성능 개선 release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다.
 R8 컴파일러를 사용하여 앱에서 불필요한 코드를 삭제한다.
 Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
 *Baseline Profiles : Profile에 담긴 메소드 목록은 ART에 의해 AOT 컴파일 된다.
-프레임 3단계에서 성능 개선 (원문) Composition 단계에서 성능 개선(≠Composition 단계 건너뛰기) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 @Composable 함수 외부에서 실행되도록 한다.</description>
+프레임 3단계에서 성능 개선 Composition 단계에서 성능 개선(≠Composition 단계 건너뛰기) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 @Composable 함수 외부에서 실행되도록 한다.</description>
     </item>
     
     <item>

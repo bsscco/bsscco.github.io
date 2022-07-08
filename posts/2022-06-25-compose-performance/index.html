@@ -17,11 +17,11 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Compose 기초 - Compose 성능개선" />
 <meta property="og:description" content="Compose 성능개선 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-앱 설정으로 성능 개선 (원문) release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다.
+앱 설정으로 성능 개선 release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다.
 R8 컴파일러를 사용하여 앱에서 불필요한 코드를 삭제한다.
 Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
 *Baseline Profiles : Profile에 담긴 메소드 목록은 ART에 의해 AOT 컴파일 된다.
-프레임 3단계에서 성능 개선 (원문) Composition 단계에서 성능 개선(≠Composition 단계 건너뛰기) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 @Composable 함수 외부에서 실행되도록 한다." />
+프레임 3단계에서 성능 개선 Composition 단계에서 성능 개선(≠Composition 단계 건너뛰기) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 @Composable 함수 외부에서 실행되도록 한다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/2022-06-25-compose-performance/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-25T00:00:00+00:00" />
@@ -31,11 +31,11 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Compose 기초 - Compose 성능개선"/>
 <meta name="twitter:description" content="Compose 성능개선 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-앱 설정으로 성능 개선 (원문) release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다.
+앱 설정으로 성능 개선 release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다.
 R8 컴파일러를 사용하여 앱에서 불필요한 코드를 삭제한다.
 Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
 *Baseline Profiles : Profile에 담긴 메소드 목록은 ART에 의해 AOT 컴파일 된다.
-프레임 3단계에서 성능 개선 (원문) Composition 단계에서 성능 개선(≠Composition 단계 건너뛰기) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 @Composable 함수 외부에서 실행되도록 한다."/>
+프레임 3단계에서 성능 개선 Composition 단계에서 성능 개선(≠Composition 단계 건너뛰기) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 @Composable 함수 외부에서 실행되도록 한다."/>
 
   
   
@@ -157,7 +157,7 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-25-compose-performance%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%84%b1%eb%8a%a5%ea%b0%9c%ec%84%a0&description=Compose%20%ec%84%b1%eb%8a%a5%ea%b0%9c%ec%84%a0%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%95%b1%20%ec%84%a4%ec%a0%95%ec%9c%bc%eb%a1%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%20%28%ec%9b%90%eb%ac%b8%29%20release%20%eb%aa%a8%eb%93%9c%eb%a1%9c%20%eb%b9%8c%eb%93%9c%ed%95%98%ec%97%ac%20%ec%84%b1%eb%8a%a5%20%eb%b9%84%ec%9a%a9%ec%9d%b4%20%eb%b0%9c%ec%83%9d%ed%95%98%eb%8a%94%20%eb%94%94%eb%b2%84%ea%b9%85%20%ec%bd%94%eb%93%9c%eb%a5%bc%20%ec%82%ad%ec%a0%9c%ed%95%9c%eb%8b%a4.%0aR8%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%eb%9f%ac%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%98%ec%97%ac%20%ec%95%b1%ec%97%90%ec%84%9c%20%eb%b6%88%ed%95%84%ec%9a%94%ed%95%9c%20%ec%bd%94%eb%93%9c%eb%a5%bc%20%ec%82%ad%ec%a0%9c%ed%95%9c%eb%8b%a4.%0aBaseline%20Profiles%eb%a5%bc%20%ec%a0%81%ec%9a%a9%ed%95%98%ec%97%ac%20%ec%95%b1%20%ec%8b%a4%ed%96%89%20%ec%8b%9c%ea%b0%84%ea%b3%bc%20jank%eb%a5%bc%20%ea%b0%90%ec%86%8c%ec%8b%9c%ed%82%a8%eb%8b%a4.%0a%2aBaseline%20Profiles%20%3a%20Profile%ec%97%90%20%eb%8b%b4%ea%b8%b4%20%eb%a9%94%ec%86%8c%eb%93%9c%20%eb%aa%a9%eb%a1%9d%ec%9d%80%20ART%ec%97%90%20%ec%9d%98%ed%95%b4%20AOT%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%20%eb%90%9c%eb%8b%a4.%0a%ed%94%84%eb%a0%88%ec%9e%84%203%eb%8b%a8%ea%b3%84%ec%97%90%ec%84%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%20%28%ec%9b%90%eb%ac%b8%29%20Composition%20%eb%8b%a8%ea%b3%84%ec%97%90%ec%84%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%28%e2%89%a0Composition%20%eb%8b%a8%ea%b3%84%20%ea%b1%b4%eb%84%88%eb%9b%b0%ea%b8%b0%29%20Recomposition%ec%97%90%20%ec%9d%98%ed%95%b4%20%40Composable%20%ed%95%a8%ec%88%98%ea%b0%80%20%eb%b9%88%eb%b2%88%ed%9e%88%20%ed%98%b8%ec%b6%9c%eb%90%98%ea%b1%b0%eb%82%98%20%ed%98%b8%ec%b6%9c%20%ec%a0%9c%ec%99%b8%20%eb%90%a0%20%ec%88%98%20%ec%9e%88%ea%b8%b0%20%eb%95%8c%eb%ac%b8%ec%97%90%20%eb%b3%b5%ec%9e%a1%ed%95%9c%20%ea%b3%84%ec%82%b0%ec%9d%80%20%40Composable%20%ed%95%a8%ec%88%98%20%ec%99%b8%eb%b6%80%ec%97%90%ec%84%9c%20%ec%8b%a4%ed%96%89%eb%90%98%eb%8f%84%eb%a1%9d%20%ed%95%9c%eb%8b%a4." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-25-compose-performance%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%84%b1%eb%8a%a5%ea%b0%9c%ec%84%a0&description=Compose%20%ec%84%b1%eb%8a%a5%ea%b0%9c%ec%84%a0%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%95%b1%20%ec%84%a4%ec%a0%95%ec%9c%bc%eb%a1%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%20release%20%eb%aa%a8%eb%93%9c%eb%a1%9c%20%eb%b9%8c%eb%93%9c%ed%95%98%ec%97%ac%20%ec%84%b1%eb%8a%a5%20%eb%b9%84%ec%9a%a9%ec%9d%b4%20%eb%b0%9c%ec%83%9d%ed%95%98%eb%8a%94%20%eb%94%94%eb%b2%84%ea%b9%85%20%ec%bd%94%eb%93%9c%eb%a5%bc%20%ec%82%ad%ec%a0%9c%ed%95%9c%eb%8b%a4.%0aR8%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%eb%9f%ac%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%98%ec%97%ac%20%ec%95%b1%ec%97%90%ec%84%9c%20%eb%b6%88%ed%95%84%ec%9a%94%ed%95%9c%20%ec%bd%94%eb%93%9c%eb%a5%bc%20%ec%82%ad%ec%a0%9c%ed%95%9c%eb%8b%a4.%0aBaseline%20Profiles%eb%a5%bc%20%ec%a0%81%ec%9a%a9%ed%95%98%ec%97%ac%20%ec%95%b1%20%ec%8b%a4%ed%96%89%20%ec%8b%9c%ea%b0%84%ea%b3%bc%20jank%eb%a5%bc%20%ea%b0%90%ec%86%8c%ec%8b%9c%ed%82%a8%eb%8b%a4.%0a%2aBaseline%20Profiles%20%3a%20Profile%ec%97%90%20%eb%8b%b4%ea%b8%b4%20%eb%a9%94%ec%86%8c%eb%93%9c%20%eb%aa%a9%eb%a1%9d%ec%9d%80%20ART%ec%97%90%20%ec%9d%98%ed%95%b4%20AOT%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%20%eb%90%9c%eb%8b%a4.%0a%ed%94%84%eb%a0%88%ec%9e%84%203%eb%8b%a8%ea%b3%84%ec%97%90%ec%84%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%20Composition%20%eb%8b%a8%ea%b3%84%ec%97%90%ec%84%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%28%e2%89%a0Composition%20%eb%8b%a8%ea%b3%84%20%ea%b1%b4%eb%84%88%eb%9b%b0%ea%b8%b0%29%20Recomposition%ec%97%90%20%ec%9d%98%ed%95%b4%20%40Composable%20%ed%95%a8%ec%88%98%ea%b0%80%20%eb%b9%88%eb%b2%88%ed%9e%88%20%ed%98%b8%ec%b6%9c%eb%90%98%ea%b1%b0%eb%82%98%20%ed%98%b8%ec%b6%9c%20%ec%a0%9c%ec%99%b8%20%eb%90%a0%20%ec%88%98%20%ec%9e%88%ea%b8%b0%20%eb%95%8c%eb%ac%b8%ec%97%90%20%eb%b3%b5%ec%9e%a1%ed%95%9c%20%ea%b3%84%ec%82%b0%ec%9d%80%20%40Composable%20%ed%95%a8%ec%88%98%20%ec%99%b8%eb%b6%80%ec%97%90%ec%84%9c%20%ec%8b%a4%ed%96%89%eb%90%98%eb%8f%84%eb%a1%9d%20%ed%95%9c%eb%8b%a4." aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -173,15 +173,15 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
     <div id="toc">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#앱-설정으로-성능-개선-원문httpsdeveloperandroidcomjetpackcomposeperformanceconfig">앱 설정으로 성능 개선 (<a href="https://developer.android.com/jetpack/compose/performance#config">원문</a>)</a></li>
-    <li><a href="#프레임-3단계에서-성능-개선-원문httpsdeveloperandroidcomjetpackcomposeperformancethree-phases">프레임 3단계에서 성능 개선 (<a href="https://developer.android.com/jetpack/compose/performance#three-phases">원문</a>)</a>
+    <li><a href="#앱-설정으로-성능-개선">앱 설정으로 성능 개선</a></li>
+    <li><a href="#프레임-3단계에서-성능-개선">프레임 3단계에서 성능 개선</a>
       <ul>
         <li><a href="#composition-단계에서-성능-개선composition-단계-건너뛰기posts2022-06-25-compose-frame-phases">Composition 단계에서 성능 개선(≠<a href="/posts/2022-06-25-compose-frame-phases">Composition 단계 건너뛰기</a>)</a></li>
         <li><a href="#상위-단계를-건너뛰어서-성능-개선">상위 단계를 건너뛰어서 성능 개선</a></li>
       </ul>
     </li>
-    <li><a href="#도구를-사용해-성능-문제-발견-원문httpsdeveloperandroidcomjetpackcomposeperformancetools">도구를 사용해 성능 문제 발견 (<a href="https://developer.android.com/jetpack/compose/performance#tools">원문</a>)</a></li>
-    <li><a href="#성능-개선-권장사항-종합-원문httpsdeveloperandroidcomjetpackcomposeperformancebest-practices">성능 개선 권장사항 종합 (<a href="https://developer.android.com/jetpack/compose/performance#best-practices">원문</a>)</a>
+    <li><a href="#도구를-사용해-성능-문제-발견">도구를 사용해 성능 문제 발견</a></li>
+    <li><a href="#성능-개선-권장사항-종합">성능 개선 권장사항 종합</a>
       <ul>
         <li></li>
       </ul>
@@ -237,12 +237,12 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
     <div class="content" itemprop="articleBody">
       <h1 id="compose-성능개선-원문httpsdeveloperandroidcomjetpackcomposeperformance">Compose 성능개선 (<a href="https://developer.android.com/jetpack/compose/performance">원문</a>)</h1>
 <p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
-<h2 id="앱-설정으로-성능-개선-원문httpsdeveloperandroidcomjetpackcomposeperformanceconfig">앱 설정으로 성능 개선 (<a href="https://developer.android.com/jetpack/compose/performance#config">원문</a>)</h2>
+<h2 id="앱-설정으로-성능-개선">앱 설정으로 성능 개선</h2>
 <p>release 모드로 빌드하여 성능 비용이 발생하는 디버깅 코드를 삭제한다.</p>
 <p><a href="https://developer.android.com/studio/build/shrink-code">R8 컴파일러</a>를 사용하여 앱에서 불필요한 코드를 삭제한다.</p>
 <p>Baseline Profiles를 적용하여 앱 실행 시간과  jank를 감소시킨다.</p>
 <p>*Baseline Profiles : Profile에 담긴 메소드 목록은 ART에 의해 AOT 컴파일 된다.</p>
-<h2 id="프레임-3단계에서-성능-개선-원문httpsdeveloperandroidcomjetpackcomposeperformancethree-phases">프레임 3단계에서 성능 개선 (<a href="https://developer.android.com/jetpack/compose/performance#three-phases">원문</a>)</h2>
+<h2 id="프레임-3단계에서-성능-개선">프레임 3단계에서 성능 개선</h2>
 <h3 id="composition-단계에서-성능-개선composition-단계-건너뛰기posts2022-06-25-compose-frame-phases">Composition 단계에서 성능 개선(≠<a href="/posts/2022-06-25-compose-frame-phases">Composition 단계 건너뛰기</a>)</h3>
 <p>Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 복잡한 계산은 <code>@Composable</code> 함수 외부에서 실행되도록 한다. ex) ViewModel</p>
 <p>자주 변경되는 상태는 값 대신에 값에 접근할 수 있는 람다<code>{...}</code>를 Composable에 전달한다.</p>
@@ -350,18 +350,18 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
 </span></span><span style="display:flex;"><span>        Text(modifier = modifier, text = <span style="color:#e6db74">&#34;g&#34;</span>)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}      
-</span></span></code></pre></div><h2 id="도구를-사용해-성능-문제-발견-원문httpsdeveloperandroidcomjetpackcomposeperformancetools">도구를 사용해 성능 문제 발견 (<a href="https://developer.android.com/jetpack/compose/performance#tools">원문</a>)</h2>
+</span></span></code></pre></div><h2 id="도구를-사용해-성능-문제-발견">도구를 사용해 성능 문제 발견</h2>
 <p>Layout Inspector를 사용해 Composable이 Recomposition되거나 건너뛰는 빈도를 확인할 수 있다.
 <img src="https://developer.android.com/static/images/jetpack/compose/tooling-layout-inspector-recomposition-counts.png" alt="tool"></p>
-<h2 id="성능-개선-권장사항-종합-원문httpsdeveloperandroidcomjetpackcomposeperformancebest-practices">성능 개선 권장사항 종합 (<a href="https://developer.android.com/jetpack/compose/performance#best-practices">원문</a>)</h2>
+<h2 id="성능-개선-권장사항-종합">성능 개선 권장사항 종합</h2>
 <h4 id="remember-로-값을-저장해서-recomposition-시점에-재사용하기"><code>remember {...}</code>로 값을 저장해서 Recomposition 시점에 재사용하기</h4>
 <p><a href="/posts/2022-06-22-composable-state/#remember-%EB%9E%80">Composable의 상태에 쓰이는 메모리를 관리하기</a></p>
 <h4 id="key-composable을-사용해서-불필요한-전체-항목-recomposition을-막기"><code>key</code> Composable을 사용해서 불필요한 전체 항목 Recomposition을 막기</h4>
-<p><a href="/posts/2022-06-22-composable-lifecycle/#smart-recomposition%EC%97%90-%EB%8F%84%EC%9B%80%EC%9D%B4-%EB%90%98%EB%8A%94-%EC%A0%95%EB%B3%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0-%EC%9B%90%EB%AC%B8httpsdeveloperandroidcomjetpackcomposelifecycleadd-info-smart-recomposition">Smart Recomposition에 도움이 되는 정보 추가하기</a></p>
+<p><a href="/posts/2022-06-22-composable-lifecycle/#smart-recomposition%EC%97%90-%EB%8F%84%EC%9B%80%EC%9D%B4-%EB%90%98%EB%8A%94-%EC%A0%95%EB%B3%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0">Smart Recomposition에 도움이 되는 정보 추가하기</a></p>
 <h4 id="remember--derivedstateof--로-무거운-작업의-결과를-저장해서-recomposition-시점에-재사용하기"><code>remember { derivedStateOf {...} }</code>로 무거운 작업의 결과를 저장해서 Recomposition 시점에 재사용하기</h4>
-<p><a href="/posts/2022-06-22-compose-side-effect/#%EB%AC%B4%EA%B1%B0%EC%9A%B4-blocking-%EC%9E%91%EC%97%85%EC%9D%98-%EA%B2%B0%EA%B3%BC%EB%A5%BC-remember%EB%90%9C-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%ED%99%98-%EC%9B%90%EB%AC%B8httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 remember된 상태로 변환</a></p>
+<p><a href="/posts/2022-06-22-compose-side-effect/#%EB%AC%B4%EA%B1%B0%EC%9A%B4-blocking-%EC%9E%91%EC%97%85%EC%9D%98-%EA%B2%B0%EA%B3%BC%EB%A5%BC-remember%EB%90%9C-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%B3%80%ED%99%98">무거운 Blocking 작업의 결과를 remember된 상태로 변환</a></p>
 <h4 id="상태-읽기를-최대한-미뤄서-프레임3단계를-최적화-하기">상태 읽기를 최대한 미뤄서 프레임3단계를 최적화 하기</h4>
-<p><a href="/posts/2022-06-25-compose-performance/#%ED%94%84%EB%A0%88%EC%9E%84-3%EB%8B%A8%EA%B3%84%EC%97%90%EC%84%9C-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0-%EC%9B%90%EB%AC%B8httpsdeveloperandroidcomjetpackcomposeperformancethree-phases">프레임 3단계에서 성능 개선</a></p>
+<p><a href="/posts/2022-06-25-compose-performance/#%ED%94%84%EB%A0%88%EC%9E%84-3%EB%8B%A8%EA%B3%84%EC%97%90%EC%84%9C-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0">프레임 3단계에서 성능 개선</a></p>
 <p><strong><code>Modifier.drawBehind()</code>를 사용해서 프레임 3단계를 최소화 하기</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// 애니메이션 실행 시 프레임마다 Composition단계부터 재실행된다.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> color <span style="color:#66d9ef">by</span> animateColorBetween()
@@ -451,15 +451,15 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
     <div id="toc-footer" style="display: none">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#앱-설정으로-성능-개선-원문httpsdeveloperandroidcomjetpackcomposeperformanceconfig">앱 설정으로 성능 개선 (<a href="https://developer.android.com/jetpack/compose/performance#config">원문</a>)</a></li>
-    <li><a href="#프레임-3단계에서-성능-개선-원문httpsdeveloperandroidcomjetpackcomposeperformancethree-phases">프레임 3단계에서 성능 개선 (<a href="https://developer.android.com/jetpack/compose/performance#three-phases">원문</a>)</a>
+    <li><a href="#앱-설정으로-성능-개선">앱 설정으로 성능 개선</a></li>
+    <li><a href="#프레임-3단계에서-성능-개선">프레임 3단계에서 성능 개선</a>
       <ul>
         <li><a href="#composition-단계에서-성능-개선composition-단계-건너뛰기posts2022-06-25-compose-frame-phases">Composition 단계에서 성능 개선(≠<a href="/posts/2022-06-25-compose-frame-phases">Composition 단계 건너뛰기</a>)</a></li>
         <li><a href="#상위-단계를-건너뛰어서-성능-개선">상위 단계를 건너뛰어서 성능 개선</a></li>
       </ul>
     </li>
-    <li><a href="#도구를-사용해-성능-문제-발견-원문httpsdeveloperandroidcomjetpackcomposeperformancetools">도구를 사용해 성능 문제 발견 (<a href="https://developer.android.com/jetpack/compose/performance#tools">원문</a>)</a></li>
-    <li><a href="#성능-개선-권장사항-종합-원문httpsdeveloperandroidcomjetpackcomposeperformancebest-practices">성능 개선 권장사항 종합 (<a href="https://developer.android.com/jetpack/compose/performance#best-practices">원문</a>)</a>
+    <li><a href="#도구를-사용해-성능-문제-발견">도구를 사용해 성능 문제 발견</a></li>
+    <li><a href="#성능-개선-권장사항-종합">성능 개선 권장사항 종합</a>
       <ul>
         <li></li>
       </ul>
@@ -513,7 +513,7 @@ Baseline Profiles를 적용하여 앱 실행 시간과 jank를 감소시킨다.
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-25-compose-performance%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%84%b1%eb%8a%a5%ea%b0%9c%ec%84%a0&description=Compose%20%ec%84%b1%eb%8a%a5%ea%b0%9c%ec%84%a0%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%95%b1%20%ec%84%a4%ec%a0%95%ec%9c%bc%eb%a1%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%20%28%ec%9b%90%eb%ac%b8%29%20release%20%eb%aa%a8%eb%93%9c%eb%a1%9c%20%eb%b9%8c%eb%93%9c%ed%95%98%ec%97%ac%20%ec%84%b1%eb%8a%a5%20%eb%b9%84%ec%9a%a9%ec%9d%b4%20%eb%b0%9c%ec%83%9d%ed%95%98%eb%8a%94%20%eb%94%94%eb%b2%84%ea%b9%85%20%ec%bd%94%eb%93%9c%eb%a5%bc%20%ec%82%ad%ec%a0%9c%ed%95%9c%eb%8b%a4.%0aR8%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%eb%9f%ac%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%98%ec%97%ac%20%ec%95%b1%ec%97%90%ec%84%9c%20%eb%b6%88%ed%95%84%ec%9a%94%ed%95%9c%20%ec%bd%94%eb%93%9c%eb%a5%bc%20%ec%82%ad%ec%a0%9c%ed%95%9c%eb%8b%a4.%0aBaseline%20Profiles%eb%a5%bc%20%ec%a0%81%ec%9a%a9%ed%95%98%ec%97%ac%20%ec%95%b1%20%ec%8b%a4%ed%96%89%20%ec%8b%9c%ea%b0%84%ea%b3%bc%20jank%eb%a5%bc%20%ea%b0%90%ec%86%8c%ec%8b%9c%ed%82%a8%eb%8b%a4.%0a%2aBaseline%20Profiles%20%3a%20Profile%ec%97%90%20%eb%8b%b4%ea%b8%b4%20%eb%a9%94%ec%86%8c%eb%93%9c%20%eb%aa%a9%eb%a1%9d%ec%9d%80%20ART%ec%97%90%20%ec%9d%98%ed%95%b4%20AOT%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%20%eb%90%9c%eb%8b%a4.%0a%ed%94%84%eb%a0%88%ec%9e%84%203%eb%8b%a8%ea%b3%84%ec%97%90%ec%84%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%20%28%ec%9b%90%eb%ac%b8%29%20Composition%20%eb%8b%a8%ea%b3%84%ec%97%90%ec%84%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%28%e2%89%a0Composition%20%eb%8b%a8%ea%b3%84%20%ea%b1%b4%eb%84%88%eb%9b%b0%ea%b8%b0%29%20Recomposition%ec%97%90%20%ec%9d%98%ed%95%b4%20%40Composable%20%ed%95%a8%ec%88%98%ea%b0%80%20%eb%b9%88%eb%b2%88%ed%9e%88%20%ed%98%b8%ec%b6%9c%eb%90%98%ea%b1%b0%eb%82%98%20%ed%98%b8%ec%b6%9c%20%ec%a0%9c%ec%99%b8%20%eb%90%a0%20%ec%88%98%20%ec%9e%88%ea%b8%b0%20%eb%95%8c%eb%ac%b8%ec%97%90%20%eb%b3%b5%ec%9e%a1%ed%95%9c%20%ea%b3%84%ec%82%b0%ec%9d%80%20%40Composable%20%ed%95%a8%ec%88%98%20%ec%99%b8%eb%b6%80%ec%97%90%ec%84%9c%20%ec%8b%a4%ed%96%89%eb%90%98%eb%8f%84%eb%a1%9d%20%ed%95%9c%eb%8b%a4." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-25-compose-performance%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%84%b1%eb%8a%a5%ea%b0%9c%ec%84%a0&description=Compose%20%ec%84%b1%eb%8a%a5%ea%b0%9c%ec%84%a0%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%95%b1%20%ec%84%a4%ec%a0%95%ec%9c%bc%eb%a1%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%20release%20%eb%aa%a8%eb%93%9c%eb%a1%9c%20%eb%b9%8c%eb%93%9c%ed%95%98%ec%97%ac%20%ec%84%b1%eb%8a%a5%20%eb%b9%84%ec%9a%a9%ec%9d%b4%20%eb%b0%9c%ec%83%9d%ed%95%98%eb%8a%94%20%eb%94%94%eb%b2%84%ea%b9%85%20%ec%bd%94%eb%93%9c%eb%a5%bc%20%ec%82%ad%ec%a0%9c%ed%95%9c%eb%8b%a4.%0aR8%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%eb%9f%ac%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%98%ec%97%ac%20%ec%95%b1%ec%97%90%ec%84%9c%20%eb%b6%88%ed%95%84%ec%9a%94%ed%95%9c%20%ec%bd%94%eb%93%9c%eb%a5%bc%20%ec%82%ad%ec%a0%9c%ed%95%9c%eb%8b%a4.%0aBaseline%20Profiles%eb%a5%bc%20%ec%a0%81%ec%9a%a9%ed%95%98%ec%97%ac%20%ec%95%b1%20%ec%8b%a4%ed%96%89%20%ec%8b%9c%ea%b0%84%ea%b3%bc%20jank%eb%a5%bc%20%ea%b0%90%ec%86%8c%ec%8b%9c%ed%82%a8%eb%8b%a4.%0a%2aBaseline%20Profiles%20%3a%20Profile%ec%97%90%20%eb%8b%b4%ea%b8%b4%20%eb%a9%94%ec%86%8c%eb%93%9c%20%eb%aa%a9%eb%a1%9d%ec%9d%80%20ART%ec%97%90%20%ec%9d%98%ed%95%b4%20AOT%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%20%eb%90%9c%eb%8b%a4.%0a%ed%94%84%eb%a0%88%ec%9e%84%203%eb%8b%a8%ea%b3%84%ec%97%90%ec%84%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%20Composition%20%eb%8b%a8%ea%b3%84%ec%97%90%ec%84%9c%20%ec%84%b1%eb%8a%a5%20%ea%b0%9c%ec%84%a0%28%e2%89%a0Composition%20%eb%8b%a8%ea%b3%84%20%ea%b1%b4%eb%84%88%eb%9b%b0%ea%b8%b0%29%20Recomposition%ec%97%90%20%ec%9d%98%ed%95%b4%20%40Composable%20%ed%95%a8%ec%88%98%ea%b0%80%20%eb%b9%88%eb%b2%88%ed%9e%88%20%ed%98%b8%ec%b6%9c%eb%90%98%ea%b1%b0%eb%82%98%20%ed%98%b8%ec%b6%9c%20%ec%a0%9c%ec%99%b8%20%eb%90%a0%20%ec%88%98%20%ec%9e%88%ea%b8%b0%20%eb%95%8c%eb%ac%b8%ec%97%90%20%eb%b3%b5%ec%9e%a1%ed%95%9c%20%ea%b3%84%ec%82%b0%ec%9d%80%20%40Composable%20%ed%95%a8%ec%88%98%20%ec%99%b8%eb%b6%80%ec%97%90%ec%84%9c%20%ec%8b%a4%ed%96%89%eb%90%98%eb%8f%84%eb%a1%9d%20%ed%95%9c%eb%8b%a4." aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>

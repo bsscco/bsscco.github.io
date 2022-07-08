@@ -17,7 +17,7 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Compose 기초 - Compose 사이드이펙트 관리" />
 <meta property="og:description" content="Compose 사이드이펙트 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-왜 사이드이펙트에 대해서 조심해야 하나? (원문) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.
+왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.
 *사이드이펙트 예시 : 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업
 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다." />
 <meta property="og:type" content="article" />
@@ -29,7 +29,7 @@
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Compose 기초 - Compose 사이드이펙트 관리"/>
 <meta name="twitter:description" content="Compose 사이드이펙트 (원문) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-왜 사이드이펙트에 대해서 조심해야 하나? (원문) Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.
+왜 사이드이펙트에 대해서 조심해야 하나? Recomposition에 의해 @Composable 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 @Composable 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.
 *사이드이펙트 예시 : 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업
 사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다."/>
 
@@ -153,7 +153,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-22-compose-side-effect%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ea%b4%80%eb%a6%ac&description=Compose%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%99%9c%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%ec%97%90%20%eb%8c%80%ed%95%b4%ec%84%9c%20%ec%a1%b0%ec%8b%ac%ed%95%b4%ec%95%bc%20%ed%95%98%eb%82%98%3f%20%28%ec%9b%90%eb%ac%b8%29%20Recomposition%ec%97%90%20%ec%9d%98%ed%95%b4%20%40Composable%20%ed%95%a8%ec%88%98%ea%b0%80%20%eb%b9%88%eb%b2%88%ed%9e%88%20%ed%98%b8%ec%b6%9c%eb%90%98%ea%b1%b0%eb%82%98%20%ed%98%b8%ec%b6%9c%20%ec%a0%9c%ec%99%b8%20%eb%90%a0%20%ec%88%98%20%ec%9e%88%ea%b8%b0%20%eb%95%8c%eb%ac%b8%ec%97%90%20%40Composable%20%ed%95%a8%ec%88%98%ec%97%90%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%ea%b0%80%20%ec%a1%b4%ec%9e%ac%ed%95%98%eb%a9%b4%20%ec%82%ac%ec%9a%a9%ec%9e%90%ec%9d%98%20%ec%98%88%ec%83%81%ec%9d%84%20%eb%b2%97%ec%96%b4%eb%82%98%eb%8a%94%20%eb%8f%99%ec%9e%91%ec%9d%84%20%ed%95%a0%20%ec%88%98%eb%8f%84%20%ec%9e%88%eb%8b%a4.%0a%2a%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%98%88%ec%8b%9c%20%3a%20%ec%a0%84%ec%97%ad%eb%b3%80%ec%88%98%2c%20SharedPreference%20%eb%93%b1%ec%9d%98%20%ea%b0%92%ec%9d%84%20%eb%b3%80%ea%b2%bd%ed%95%98%eb%8a%94%20%ed%96%89%ec%9c%84%2c%20%ed%95%9c%20%eb%b2%88%eb%a7%8c%20%ec%8b%a4%ed%96%89%ed%95%b4%ec%95%bc%20%ed%95%98%eb%8a%94%20%ec%9e%91%ec%97%85%0a%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%9e%91%ec%97%85%ec%9d%84%20%ed%95%b4%ec%95%bc%20%ed%95%9c%eb%8b%a4%eb%a9%b4%20Effect%20API%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%a8%ec%9c%bc%eb%a1%9c%ec%8d%a8%20%eb%8d%94%20%ec%95%88%ec%a0%84%ed%95%9c%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%9e%91%ec%97%85%ec%9c%bc%eb%a1%9c%20%eb%a7%8c%eb%93%a4%20%ec%88%98%20%ec%9e%88%eb%8b%a4." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-22-compose-side-effect%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ea%b4%80%eb%a6%ac&description=Compose%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%99%9c%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%ec%97%90%20%eb%8c%80%ed%95%b4%ec%84%9c%20%ec%a1%b0%ec%8b%ac%ed%95%b4%ec%95%bc%20%ed%95%98%eb%82%98%3f%20Recomposition%ec%97%90%20%ec%9d%98%ed%95%b4%20%40Composable%20%ed%95%a8%ec%88%98%ea%b0%80%20%eb%b9%88%eb%b2%88%ed%9e%88%20%ed%98%b8%ec%b6%9c%eb%90%98%ea%b1%b0%eb%82%98%20%ed%98%b8%ec%b6%9c%20%ec%a0%9c%ec%99%b8%20%eb%90%a0%20%ec%88%98%20%ec%9e%88%ea%b8%b0%20%eb%95%8c%eb%ac%b8%ec%97%90%20%40Composable%20%ed%95%a8%ec%88%98%ec%97%90%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%ea%b0%80%20%ec%a1%b4%ec%9e%ac%ed%95%98%eb%a9%b4%20%ec%82%ac%ec%9a%a9%ec%9e%90%ec%9d%98%20%ec%98%88%ec%83%81%ec%9d%84%20%eb%b2%97%ec%96%b4%eb%82%98%eb%8a%94%20%eb%8f%99%ec%9e%91%ec%9d%84%20%ed%95%a0%20%ec%88%98%eb%8f%84%20%ec%9e%88%eb%8b%a4.%0a%2a%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%98%88%ec%8b%9c%20%3a%20%ec%a0%84%ec%97%ad%eb%b3%80%ec%88%98%2c%20SharedPreference%20%eb%93%b1%ec%9d%98%20%ea%b0%92%ec%9d%84%20%eb%b3%80%ea%b2%bd%ed%95%98%eb%8a%94%20%ed%96%89%ec%9c%84%2c%20%ed%95%9c%20%eb%b2%88%eb%a7%8c%20%ec%8b%a4%ed%96%89%ed%95%b4%ec%95%bc%20%ed%95%98%eb%8a%94%20%ec%9e%91%ec%97%85%0a%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%9e%91%ec%97%85%ec%9d%84%20%ed%95%b4%ec%95%bc%20%ed%95%9c%eb%8b%a4%eb%a9%b4%20Effect%20API%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%a8%ec%9c%bc%eb%a1%9c%ec%8d%a8%20%eb%8d%94%20%ec%95%88%ec%a0%84%ed%95%9c%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%9e%91%ec%97%85%ec%9c%bc%eb%a1%9c%20%eb%a7%8c%eb%93%a4%20%ec%88%98%20%ec%9e%88%eb%8b%a4." aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -169,20 +169,20 @@
     <div id="toc">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#왜-사이드이펙트에-대해서-조심해야-하나-원문httpsdeveloperandroidcomjetpackcomposeside-effectsstate-effect-use-cases">왜 사이드이펙트에 대해서 조심해야 하나? (<a href="https://developer.android.com/jetpack/compose/side-effects#state-effect-use-cases">원문</a>)</a></li>
-    <li><a href="#initial-composition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</a></li>
-    <li><a href="#composable-외부에서-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</a></li>
-    <li><a href="#remember된-상태의-최신값에-지연-접근하기-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">remember된 상태의 최신값에 지연 접근하기 (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</a>
+    <li><a href="#왜-사이드이펙트에-대해서-조심해야-하나">왜 사이드이펙트에 대해서 조심해야 하나?</a></li>
+    <li><a href="#initial-composition-시점에-실행">Initial Composition 시점에 실행</a></li>
+    <li><a href="#composable-외부에서-실행">Composable 외부에서 실행</a></li>
+    <li><a href="#remember된-상태의-최신값에-지연-접근하기">remember된 상태의 최신값에 지연 접근하기</a>
       <ul>
         <li><a href="#rememberstate-과-rememberupdatedstatestate의-차이"><code>remember(state) {...}</code>과 <code>rememberUpdatedState(state)</code>의 차이</a></li>
       </ul>
     </li>
-    <li><a href="#composition-종료-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</a></li>
-    <li><a href="#recomposition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</a></li>
-    <li><a href="#non-blocking-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</a></li>
-    <li><a href="#무거운-blocking-작업의-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</a></li>
-    <li><a href="#statet를-flow로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow"><code>State&lt;T&gt;</code>를 flow로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</a></li>
-    <li><a href="#사이드이펙트에-주어진-람다가-다시-시작되는-조건-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrestarting-effects">사이드이펙트에 주어진 람다가 다시 시작되는 조건 (<a href="https://developer.android.com/jetpack/compose/side-effects#restarting-effects">원문</a>)</a></li>
+    <li><a href="#composition-종료-시점에-실행">Composition 종료 시점에 실행</a></li>
+    <li><a href="#recomposition-시점에-실행">Recomposition 시점에 실행</a></li>
+    <li><a href="#non-blocking-결과를-remember된-상태로-변환">Non-blocking 결과를 remember된 상태로 변환</a></li>
+    <li><a href="#무거운-blocking-작업의-결과를-remember된-상태로-변환">무거운 Blocking 작업의 결과를 remember된 상태로 변환</a></li>
+    <li><a href="#statet를-flow로-변환"><code>State&lt;T&gt;</code>를 flow로 변환</a></li>
+    <li><a href="#사이드이펙트에-주어진-람다가-다시-시작되는-조건">사이드이펙트에 주어진 람다가 다시 시작되는 조건</a></li>
   </ul>
 </nav>
     </div>
@@ -231,11 +231,11 @@
     <div class="content" itemprop="articleBody">
       <h1 id="compose-사이드이펙트-원문httpsdeveloperandroidcomjetpackcomposeside-effects">Compose 사이드이펙트 (<a href="https://developer.android.com/jetpack/compose/side-effects">원문</a>)</h1>
 <p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
-<h2 id="왜-사이드이펙트에-대해서-조심해야-하나-원문httpsdeveloperandroidcomjetpackcomposeside-effectsstate-effect-use-cases">왜 사이드이펙트에 대해서 조심해야 하나? (<a href="https://developer.android.com/jetpack/compose/side-effects#state-effect-use-cases">원문</a>)</h2>
+<h2 id="왜-사이드이펙트에-대해서-조심해야-하나">왜 사이드이펙트에 대해서 조심해야 하나?</h2>
 <p>Recomposition에 의해 <code>@Composable</code> 함수가 빈번히 호출되거나 호출 제외 될 수 있기 때문에 <code>@Composable</code> 함수에 사이드이펙트가 존재하면 사용자의 예상을 벗어나는 동작을 할 수도 있다.</p>
 <p>*사이드이펙트 예시 : 전역변수, SharedPreference 등의 값을 변경하는 행위, 한 번만 실행해야 하는 작업</p>
 <p>사이드이펙트 작업을 해야 한다면 Effect API를 사용함으로써 더 안전한 사이드이펙트 작업으로 만들 수 있다.</p>
-<h2 id="initial-composition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</h2>
+<h2 id="initial-composition-시점에-실행">Initial Composition 시점에 실행</h2>
 <p><strong><code>LaunchedEffect() {...}</code></strong></p>
 <p>Initial Composition 시점에 <code>LaunchedEffect() {...}</code>로 전달된 <strong>suspend</strong> 람다<code>{...}</code>를 실행한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
@@ -250,7 +250,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Recomposition 시점에 <code>Launchedeffect()</code>로 전달된 키값이 변화했다면 suspend 람다<code>{...}</code>가 새로 실행된다. 기존 suspend 람다<code>{...}</code>가 실행 중이었다면 중지됨.</p>
-<h2 id="composable-외부에서-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</h2>
+<h2 id="composable-외부에서-실행">Composable 외부에서 실행</h2>
 <p><strong><code>rememberCoroutineScope()</code></strong></p>
 <p><code>LaunchedEffect</code>는 Composable이므로 <code>@Composable</code> 함수 안에서만 사용할 수 있다.</p>
 <p>Composable 범위 밖에서 호출되는 <code>onClick</code>과 같은 람다<code>{...}</code>에서는 <code>rememberCoroutineScope</code>를 사용한다.</p>
@@ -271,7 +271,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>rememberCoroutineScope()</code>를 통해 만들어진 scope의 라이프사이클은 <code>rememberCoroutineScope()</code>를 호출한 Composable의 라이프사이클에 종속된다.</p>
-<h2 id="remember된-상태의-최신값에-지연-접근하기-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">remember된 상태의 최신값에 지연 접근하기 (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</h2>
+<h2 id="remember된-상태의-최신값에-지연-접근하기">remember된 상태의 최신값에 지연 접근하기</h2>
 <p><strong><code>rememberUpdatedState()</code></strong></p>
 <p><code>LaunchedEffect() {...}</code>, <code>rememberCoroutineScope.launch {...}</code>의 람다<code>{...}</code> 안에서 지연된 상태접근을 시도할 때 최신 상태값을 가져올 수 있다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
@@ -346,7 +346,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;child rememberUpdatedState </span><span style="color:#e6db74">$rememberUpdatedState</span><span style="color:#e6db74">&#34;</span>) <span style="color:#75715e">// &#34;child state true&#34; 최신값이 반영됐다.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div><p>따라서 state값이 바뀐 것을 반영할 수 있어야 하면서 지연된 상태접근이 불필요하다면 <code>remember(state) {...}</code>를 사용해야 한다.</p>
-<h2 id="composition-종료-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</h2>
+<h2 id="composition-종료-시점에-실행">Composition 종료 시점에 실행</h2>
 <p><strong><code>DisposableEffect() {...}</code></strong></p>
 <p>Composable의 Composition이 종료될 때 <code>onDispose {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span> 
@@ -380,7 +380,7 @@
 </span></span><span style="display:flex;"><span>    } 
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>DisposableEffect() {...}</code>로 전달된 키값이 변화해 Recomposition 되면 <code>DisposableEffect() {...}</code>로 전달된 람다<code>{...}</code>가 새로 실행된다. 기존 람다는 suspend가 아니기 때문에 바로 중지되진 않는다.</p>
-<h2 id="recomposition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</h2>
+<h2 id="recomposition-시점에-실행">Recomposition 시점에 실행</h2>
 <p><strong><code>SideEffect {...}</code></strong></p>
 <p>Recomposition 시점에 <code>SideEffect {...}</code>로 전달된 람다<code>{...}</code>를 실행한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
@@ -389,7 +389,7 @@
 </span></span><span style="display:flex;"><span>        Log.e(<span style="color:#e6db74">&#34;BSSCCO&#34;</span>, <span style="color:#e6db74">&#34;recomposition </span><span style="color:#e6db74">$state</span><span style="color:#e6db74">&#34;</span>)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="non-blocking-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</h2>
+</span></span></code></pre></div><h2 id="non-blocking-결과를-remember된-상태로-변환">Non-blocking 결과를 remember된 상태로 변환</h2>
 <p><strong><code>produceState() {...}</code></strong></p>
 <p><code>produceState() {...}</code>로 전달된 람다<code>suspend ProduceStateScope&lt;T&gt;.() -&gt; Unit</code>를 사용해 일반적인 값을 <code>State&lt;T&gt;</code>로 변환한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
@@ -419,7 +419,7 @@
 </span></span><span style="display:flex;"><span>        disposable.dispose()
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="무거운-blocking-작업의-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</h2>
+</span></span></code></pre></div><h2 id="무거운-blocking-작업의-결과를-remember된-상태로-변환">무거운 Blocking 작업의 결과를 remember된 상태로 변환</h2>
 <p><strong><code>remember() { derivedStateOf {...} }</code></strong></p>
 <p><code>derivedStateOf {...}</code>는 <code>remember {...}</code> 안에서만 사용해야 쓸모가 있다.</p>
 <p><code>mutableStateOf()</code>는 값을 인자로 넣는 반면에 <code>derivedStateOf {...}</code>는 람다<code>{...}</code>를 인자로 받는다.</p>
@@ -499,7 +499,7 @@
 </span></span><span style="display:flex;"><span>        Text(item.toString())
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="statet를-flow로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow"><code>State&lt;T&gt;</code>를 flow로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</h2>
+</span></span></code></pre></div><h2 id="statet를-flow로-변환"><code>State&lt;T&gt;</code>를 flow로 변환</h2>
 <p><strong><code>snapshotFlow {...}</code></strong></p>
 <p>Composable 상태 <code>State&lt;T&gt;</code>는 구독 가능한 값이다.</p>
 <p>Flow는 구독 가능한 스트림이다.</p>
@@ -519,7 +519,7 @@
 </span></span><span style="display:flex;"><span>            MyAnalyticsService.sendScrolledPastFirstItemEvent()    
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="사이드이펙트에-주어진-람다가-다시-시작되는-조건-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrestarting-effects">사이드이펙트에 주어진 람다가 다시 시작되는 조건 (<a href="https://developer.android.com/jetpack/compose/side-effects#restarting-effects">원문</a>)</h2>
+</span></span></code></pre></div><h2 id="사이드이펙트에-주어진-람다가-다시-시작되는-조건">사이드이펙트에 주어진 람다가 다시 시작되는 조건</h2>
 <p><code>LaunchedEffect(key) {...}</code>, <code>remember(key) {...}</code>, <code>DisposableEffect(key) {...}</code> 등에서 쓰이는 키값이 바뀌면 주어진 람다<code>{...}</code>가 새로 실행 된다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>EffectName(restartIfThisKeyChanges, orThisKey, orThisKey, <span style="color:#f92672">..</span>.) { 
 </span></span><span style="display:flex;"><span>   <span style="color:#f92672">..</span>.
@@ -555,20 +555,20 @@
     <div id="toc-footer" style="display: none">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#왜-사이드이펙트에-대해서-조심해야-하나-원문httpsdeveloperandroidcomjetpackcomposeside-effectsstate-effect-use-cases">왜 사이드이펙트에 대해서 조심해야 하나? (<a href="https://developer.android.com/jetpack/compose/side-effects#state-effect-use-cases">원문</a>)</a></li>
-    <li><a href="#initial-composition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectslaunchedeffect">Initial Composition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#launchedeffect">원문</a>)</a></li>
-    <li><a href="#composable-외부에서-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsremembercoroutinescope">Composable 외부에서 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#remembercoroutinescope">원문</a>)</a></li>
-    <li><a href="#remember된-상태의-최신값에-지연-접근하기-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrememberupdatedstate">remember된 상태의 최신값에 지연 접근하기 (<a href="https://developer.android.com/jetpack/compose/side-effects#rememberupdatedstate">원문</a>)</a>
+    <li><a href="#왜-사이드이펙트에-대해서-조심해야-하나">왜 사이드이펙트에 대해서 조심해야 하나?</a></li>
+    <li><a href="#initial-composition-시점에-실행">Initial Composition 시점에 실행</a></li>
+    <li><a href="#composable-외부에서-실행">Composable 외부에서 실행</a></li>
+    <li><a href="#remember된-상태의-최신값에-지연-접근하기">remember된 상태의 최신값에 지연 접근하기</a>
       <ul>
         <li><a href="#rememberstate-과-rememberupdatedstatestate의-차이"><code>remember(state) {...}</code>과 <code>rememberUpdatedState(state)</code>의 차이</a></li>
       </ul>
     </li>
-    <li><a href="#composition-종료-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectsdisposableeffect">Composition 종료 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#disposableeffect">원문</a>)</a></li>
-    <li><a href="#recomposition-시점에-실행-원문httpsdeveloperandroidcomjetpackcomposeside-effectssideeffect-publish">Recomposition 시점에 실행 (<a href="https://developer.android.com/jetpack/compose/side-effects#sideeffect-publish">원문</a>)</a></li>
-    <li><a href="#non-blocking-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsproducestate">Non-blocking 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#producestate">원문</a>)</a></li>
-    <li><a href="#무거운-blocking-작업의-결과를-remember된-상태로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectsderivedstateof">무거운 Blocking 작업의 결과를 remember된 상태로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#derivedstateof">원문</a>)</a></li>
-    <li><a href="#statet를-flow로-변환-원문httpsdeveloperandroidcomjetpackcomposeside-effectssnapshotflow"><code>State&lt;T&gt;</code>를 flow로 변환 (<a href="https://developer.android.com/jetpack/compose/side-effects#snapshotFlow">원문</a>)</a></li>
-    <li><a href="#사이드이펙트에-주어진-람다가-다시-시작되는-조건-원문httpsdeveloperandroidcomjetpackcomposeside-effectsrestarting-effects">사이드이펙트에 주어진 람다가 다시 시작되는 조건 (<a href="https://developer.android.com/jetpack/compose/side-effects#restarting-effects">원문</a>)</a></li>
+    <li><a href="#composition-종료-시점에-실행">Composition 종료 시점에 실행</a></li>
+    <li><a href="#recomposition-시점에-실행">Recomposition 시점에 실행</a></li>
+    <li><a href="#non-blocking-결과를-remember된-상태로-변환">Non-blocking 결과를 remember된 상태로 변환</a></li>
+    <li><a href="#무거운-blocking-작업의-결과를-remember된-상태로-변환">무거운 Blocking 작업의 결과를 remember된 상태로 변환</a></li>
+    <li><a href="#statet를-flow로-변환"><code>State&lt;T&gt;</code>를 flow로 변환</a></li>
+    <li><a href="#사이드이펙트에-주어진-람다가-다시-시작되는-조건">사이드이펙트에 주어진 람다가 다시 시작되는 조건</a></li>
   </ul>
 </nav>
     </div>
@@ -618,7 +618,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-22-compose-side-effect%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ea%b4%80%eb%a6%ac&description=Compose%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%99%9c%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%ec%97%90%20%eb%8c%80%ed%95%b4%ec%84%9c%20%ec%a1%b0%ec%8b%ac%ed%95%b4%ec%95%bc%20%ed%95%98%eb%82%98%3f%20%28%ec%9b%90%eb%ac%b8%29%20Recomposition%ec%97%90%20%ec%9d%98%ed%95%b4%20%40Composable%20%ed%95%a8%ec%88%98%ea%b0%80%20%eb%b9%88%eb%b2%88%ed%9e%88%20%ed%98%b8%ec%b6%9c%eb%90%98%ea%b1%b0%eb%82%98%20%ed%98%b8%ec%b6%9c%20%ec%a0%9c%ec%99%b8%20%eb%90%a0%20%ec%88%98%20%ec%9e%88%ea%b8%b0%20%eb%95%8c%eb%ac%b8%ec%97%90%20%40Composable%20%ed%95%a8%ec%88%98%ec%97%90%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%ea%b0%80%20%ec%a1%b4%ec%9e%ac%ed%95%98%eb%a9%b4%20%ec%82%ac%ec%9a%a9%ec%9e%90%ec%9d%98%20%ec%98%88%ec%83%81%ec%9d%84%20%eb%b2%97%ec%96%b4%eb%82%98%eb%8a%94%20%eb%8f%99%ec%9e%91%ec%9d%84%20%ed%95%a0%20%ec%88%98%eb%8f%84%20%ec%9e%88%eb%8b%a4.%0a%2a%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%98%88%ec%8b%9c%20%3a%20%ec%a0%84%ec%97%ad%eb%b3%80%ec%88%98%2c%20SharedPreference%20%eb%93%b1%ec%9d%98%20%ea%b0%92%ec%9d%84%20%eb%b3%80%ea%b2%bd%ed%95%98%eb%8a%94%20%ed%96%89%ec%9c%84%2c%20%ed%95%9c%20%eb%b2%88%eb%a7%8c%20%ec%8b%a4%ed%96%89%ed%95%b4%ec%95%bc%20%ed%95%98%eb%8a%94%20%ec%9e%91%ec%97%85%0a%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%9e%91%ec%97%85%ec%9d%84%20%ed%95%b4%ec%95%bc%20%ed%95%9c%eb%8b%a4%eb%a9%b4%20Effect%20API%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%a8%ec%9c%bc%eb%a1%9c%ec%8d%a8%20%eb%8d%94%20%ec%95%88%ec%a0%84%ed%95%9c%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%9e%91%ec%97%85%ec%9c%bc%eb%a1%9c%20%eb%a7%8c%eb%93%a4%20%ec%88%98%20%ec%9e%88%eb%8b%a4." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-06-22-compose-side-effect%2f&name=Compose%20%ea%b8%b0%ec%b4%88%20-%20Compose%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ea%b4%80%eb%a6%ac&description=Compose%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%28%ec%9b%90%eb%ac%b8%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%99%9c%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%ec%97%90%20%eb%8c%80%ed%95%b4%ec%84%9c%20%ec%a1%b0%ec%8b%ac%ed%95%b4%ec%95%bc%20%ed%95%98%eb%82%98%3f%20Recomposition%ec%97%90%20%ec%9d%98%ed%95%b4%20%40Composable%20%ed%95%a8%ec%88%98%ea%b0%80%20%eb%b9%88%eb%b2%88%ed%9e%88%20%ed%98%b8%ec%b6%9c%eb%90%98%ea%b1%b0%eb%82%98%20%ed%98%b8%ec%b6%9c%20%ec%a0%9c%ec%99%b8%20%eb%90%a0%20%ec%88%98%20%ec%9e%88%ea%b8%b0%20%eb%95%8c%eb%ac%b8%ec%97%90%20%40Composable%20%ed%95%a8%ec%88%98%ec%97%90%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%ea%b0%80%20%ec%a1%b4%ec%9e%ac%ed%95%98%eb%a9%b4%20%ec%82%ac%ec%9a%a9%ec%9e%90%ec%9d%98%20%ec%98%88%ec%83%81%ec%9d%84%20%eb%b2%97%ec%96%b4%eb%82%98%eb%8a%94%20%eb%8f%99%ec%9e%91%ec%9d%84%20%ed%95%a0%20%ec%88%98%eb%8f%84%20%ec%9e%88%eb%8b%a4.%0a%2a%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%98%88%ec%8b%9c%20%3a%20%ec%a0%84%ec%97%ad%eb%b3%80%ec%88%98%2c%20SharedPreference%20%eb%93%b1%ec%9d%98%20%ea%b0%92%ec%9d%84%20%eb%b3%80%ea%b2%bd%ed%95%98%eb%8a%94%20%ed%96%89%ec%9c%84%2c%20%ed%95%9c%20%eb%b2%88%eb%a7%8c%20%ec%8b%a4%ed%96%89%ed%95%b4%ec%95%bc%20%ed%95%98%eb%8a%94%20%ec%9e%91%ec%97%85%0a%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%9e%91%ec%97%85%ec%9d%84%20%ed%95%b4%ec%95%bc%20%ed%95%9c%eb%8b%a4%eb%a9%b4%20Effect%20API%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%a8%ec%9c%bc%eb%a1%9c%ec%8d%a8%20%eb%8d%94%20%ec%95%88%ec%a0%84%ed%95%9c%20%ec%82%ac%ec%9d%b4%eb%93%9c%ec%9d%b4%ed%8e%99%ed%8a%b8%20%ec%9e%91%ec%97%85%ec%9c%bc%eb%a1%9c%20%eb%a7%8c%eb%93%a4%20%ec%88%98%20%ec%9e%88%eb%8b%a4." aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
