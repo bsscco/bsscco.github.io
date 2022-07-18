@@ -17,8 +17,8 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="MAD Skills 앱 아키텍쳐 - Data 레이어" />
 <meta property="og:description" content="Architecture: The data layer - MAD Skills (영상, 문서) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-레이어드 구조 UI Layer Domain Layer Data Layer Repositories RemoteDataSources LocalDataSources Data 레이어의 Source of truth Data 레이어에 Source of truth를 적용하려면 여러 데이터공급처(RemoteDataSource, LocalDataSource)가 있더라도 오직 한 곳으로부터 데이터를 공급받을 수 있도록 만들어주어야 한다.
-Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데이터의 변화 시 DataSource들의 동작을 신경 쓸 필요 없이 관심사를 한 곳으로 모아준다." />
+앱 아키텍쳐의 레이어드 구조 UI Layer Domain Layer Data Layer Repositories RemoteDataSources LocalDataSources Data 레이어의 Source of truth Data 레이어에 Source of truth를 적용하려면 여러 데이터공급처(RemoteDataSource, LocalDataSource)가 있더라도 오직 한 곳으로부터 데이터를 공급받을 수 있도록 만들어주어야 한다.
+Repository 데이터 접근 위치를 한 곳으로 모아준다. 데이터의 변화 시 DataSource들의 동작을 신경 쓸 필요 없이 관심사를 한 곳으로 모아준다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/2022-07-08-mad-skills-data-layer/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-08T00:00:00+00:00" />
@@ -28,8 +28,8 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MAD Skills 앱 아키텍쳐 - Data 레이어"/>
 <meta name="twitter:description" content="Architecture: The data layer - MAD Skills (영상, 문서) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-레이어드 구조 UI Layer Domain Layer Data Layer Repositories RemoteDataSources LocalDataSources Data 레이어의 Source of truth Data 레이어에 Source of truth를 적용하려면 여러 데이터공급처(RemoteDataSource, LocalDataSource)가 있더라도 오직 한 곳으로부터 데이터를 공급받을 수 있도록 만들어주어야 한다.
-Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데이터의 변화 시 DataSource들의 동작을 신경 쓸 필요 없이 관심사를 한 곳으로 모아준다."/>
+앱 아키텍쳐의 레이어드 구조 UI Layer Domain Layer Data Layer Repositories RemoteDataSources LocalDataSources Data 레이어의 Source of truth Data 레이어에 Source of truth를 적용하려면 여러 데이터공급처(RemoteDataSource, LocalDataSource)가 있더라도 오직 한 곳으로부터 데이터를 공급받을 수 있도록 만들어주어야 한다.
+Repository 데이터 접근 위치를 한 곳으로 모아준다. 데이터의 변화 시 DataSource들의 동작을 신경 쓸 필요 없이 관심사를 한 곳으로 모아준다."/>
 
   
   
@@ -83,6 +83,12 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
           </a>
         </li>
         
+        
+        <li>
+          <a class="icon" href="/posts/2022-07-08-mad-skills-domain-layer/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
         
         <li>
           <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
@@ -145,7 +151,7 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-08-mad-skills-data-layer%2f&name=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4&description=Architecture%3a%20The%20data%20layer%20-%20MAD%20Skills%20%28%ec%98%81%ec%83%81%2c%20%eb%ac%b8%ec%84%9c%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%eb%a0%88%ec%9d%b4%ec%96%b4%eb%93%9c%20%ea%b5%ac%ec%a1%b0%20UI%20Layer%20Domain%20Layer%20Data%20Layer%20Repositories%20RemoteDataSources%20LocalDataSources%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%9d%98%20Source%20of%20truth%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%97%90%20Source%20of%20truth%eb%a5%bc%20%ec%a0%81%ec%9a%a9%ed%95%98%eb%a0%a4%eb%a9%b4%20%ec%97%ac%eb%9f%ac%20%eb%8d%b0%ec%9d%b4%ed%84%b0%ea%b3%b5%ea%b8%89%ec%b2%98%28RemoteDataSource%2c%20LocalDataSource%29%ea%b0%80%20%ec%9e%88%eb%8d%94%eb%9d%bc%eb%8f%84%20%ec%98%a4%ec%a7%81%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%eb%b6%80%ed%84%b0%20%eb%8d%b0%ec%9d%b4%ed%84%b0%eb%a5%bc%20%ea%b3%b5%ea%b8%89%eb%b0%9b%ec%9d%84%20%ec%88%98%20%ec%9e%88%eb%8f%84%eb%a1%9d%20%eb%a7%8c%eb%93%a4%ec%96%b4%ec%a3%bc%ec%96%b4%ec%95%bc%20%ed%95%9c%eb%8b%a4.%0aRepository%ec%9d%98%20%ec%97%ad%ed%95%a0%20%eb%8d%b0%ec%9d%b4%ed%84%b0%20%ec%a0%91%ea%b7%bc%20%ec%9c%84%ec%b9%98%eb%a5%bc%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%20%eb%aa%a8%ec%95%84%ec%a4%80%eb%8b%a4.%20%eb%8d%b0%ec%9d%b4%ed%84%b0%ec%9d%98%20%eb%b3%80%ed%99%94%20%ec%8b%9c%20DataSource%eb%93%a4%ec%9d%98%20%eb%8f%99%ec%9e%91%ec%9d%84%20%ec%8b%a0%ea%b2%bd%20%ec%93%b8%20%ed%95%84%ec%9a%94%20%ec%97%86%ec%9d%b4%20%ea%b4%80%ec%8b%ac%ec%82%ac%eb%a5%bc%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%20%eb%aa%a8%ec%95%84%ec%a4%80%eb%8b%a4." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-08-mad-skills-data-layer%2f&name=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4&description=Architecture%3a%20The%20data%20layer%20-%20MAD%20Skills%20%28%ec%98%81%ec%83%81%2c%20%eb%ac%b8%ec%84%9c%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%ec%9d%98%20%eb%a0%88%ec%9d%b4%ec%96%b4%eb%93%9c%20%ea%b5%ac%ec%a1%b0%20UI%20Layer%20Domain%20Layer%20Data%20Layer%20Repositories%20RemoteDataSources%20LocalDataSources%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%9d%98%20Source%20of%20truth%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%97%90%20Source%20of%20truth%eb%a5%bc%20%ec%a0%81%ec%9a%a9%ed%95%98%eb%a0%a4%eb%a9%b4%20%ec%97%ac%eb%9f%ac%20%eb%8d%b0%ec%9d%b4%ed%84%b0%ea%b3%b5%ea%b8%89%ec%b2%98%28RemoteDataSource%2c%20LocalDataSource%29%ea%b0%80%20%ec%9e%88%eb%8d%94%eb%9d%bc%eb%8f%84%20%ec%98%a4%ec%a7%81%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%eb%b6%80%ed%84%b0%20%eb%8d%b0%ec%9d%b4%ed%84%b0%eb%a5%bc%20%ea%b3%b5%ea%b8%89%eb%b0%9b%ec%9d%84%20%ec%88%98%20%ec%9e%88%eb%8f%84%eb%a1%9d%20%eb%a7%8c%eb%93%a4%ec%96%b4%ec%a3%bc%ec%96%b4%ec%95%bc%20%ed%95%9c%eb%8b%a4.%0aRepository%20%eb%8d%b0%ec%9d%b4%ed%84%b0%20%ec%a0%91%ea%b7%bc%20%ec%9c%84%ec%b9%98%eb%a5%bc%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%20%eb%aa%a8%ec%95%84%ec%a4%80%eb%8b%a4.%20%eb%8d%b0%ec%9d%b4%ed%84%b0%ec%9d%98%20%eb%b3%80%ed%99%94%20%ec%8b%9c%20DataSource%eb%93%a4%ec%9d%98%20%eb%8f%99%ec%9e%91%ec%9d%84%20%ec%8b%a0%ea%b2%bd%20%ec%93%b8%20%ed%95%84%ec%9a%94%20%ec%97%86%ec%9d%b4%20%ea%b4%80%ec%8b%ac%ec%82%ac%eb%a5%bc%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%20%eb%aa%a8%ec%95%84%ec%a4%80%eb%8b%a4." aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -161,25 +167,36 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
     <div id="toc">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#레이어드-구조">레이어드 구조</a></li>
+    <li><a href="#앱-아키텍쳐의-레이어드-구조">앱 아키텍쳐의 레이어드 구조</a></li>
     <li><a href="#data-레이어의-source-of-truth">Data 레이어의 Source of truth</a></li>
-    <li><a href="#repository의-역할">Repository의 역할</a>
+    <li><a href="#repository">Repository</a>
       <ul>
-        <li><a href="#repository의-메소드">Repository의 메소드</a></li>
-        <li><a href="#거대한-repository의-관심사-분리">거대한 Repository의 관심사 분리</a></li>
+        <li><a href="#repository의-api-노출">Repository의 API 노출</a></li>
+        <li><a href="#repository의-관심사-분리">Repository의 관심사 분리</a></li>
         <li><a href="#repository의-동작-흐름">Repository의 동작 흐름</a></li>
+        <li><a href="#repository에서-외부-scope-사용">Repository에서 외부 Scope 사용</a></li>
       </ul>
     </li>
-    <li><a href="#datasources">DataSources</a></li>
-    <li><a href="#models">Models</a>
+    <li><a href="#datasource">DataSource</a>
       <ul>
-        <li><a href="#immutability">Immutability</a></li>
+        <li><a href="#datasource의-관심사-분리">DataSource의 관심사 분리</a></li>
+        <li><a href="#remotedatasource에서-백그라운드-처리">RemoteDataSource에서 백그라운드 처리</a></li>
+        <li><a href="#localdatasource에서-저장위치-선택하기">LocalDataSource에서 저장위치 선택하기</a></li>
+      </ul>
+    </li>
+    <li><a href="#model">Model</a>
+      <ul>
+        <li><a href="#멀티스레드에서-안전한-데이터-접근">멀티스레드에서 안전한 데이터 접근</a></li>
         <li><a href="#data-model과-ui-model의-차이">Data Model과 UI Model의 차이</a></li>
       </ul>
     </li>
-    <li><a href="#백그라운드-처리">백그라운드 처리</a></li>
-    <li><a href="#에러-핸들링">에러 핸들링</a></li>
-    <li><a href="#테스트">테스트</a></li>
+    <li><a href="#주기적인-데이터-최신화">주기적인 데이터 최신화</a>
+      <ul>
+        <li><a href="#workmanager를-사용하여-작업-예약">WorkManager를 사용하여 작업 예약</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-레이어에서-에러-핸들링">Data 레이어에서 에러 핸들링</a></li>
+    <li><a href="#data-레이어-테스트">Data 레이어 테스트</a></li>
   </ul>
 </nav>
     </div>
@@ -228,7 +245,7 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
     <div class="content" itemprop="articleBody">
       <h1 id="architecture-the-data-layer---mad-skills-영상httpswwwyoutubecomwatchvr5asekqh2ze-문서httpsdeveloperandroidcomtopicarchitecturedata-layer">Architecture: The data layer - MAD Skills (<a href="https://www.youtube.com/watch?v=r5AseKQh2ZE">영상</a>, <a href="https://developer.android.com/topic/architecture/data-layer">문서</a>)</h1>
 <p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
-<h2 id="레이어드-구조">레이어드 구조</h2>
+<h2 id="앱-아키텍쳐의-레이어드-구조">앱 아키텍쳐의 레이어드 구조</h2>
 <ul>
 <li>UI Layer</li>
 <li>Domain Layer</li>
@@ -246,29 +263,29 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
 <p><img src="/2022-07-08/app-architecture-data-layer.png" alt="data-layer"></p>
 <h2 id="data-레이어의-source-of-truth">Data 레이어의 Source of truth</h2>
 <p>Data 레이어에 Source of truth를 적용하려면 여러 데이터공급처(RemoteDataSource, LocalDataSource)가 있더라도 오직 한 곳으로부터 데이터를 공급받을 수 있도록 만들어주어야 한다.</p>
-<h2 id="repository의-역할">Repository의 역할</h2>
+<h2 id="repository">Repository</h2>
 <ul>
 <li>데이터 접근 위치를 한 곳으로 모아준다.</li>
 <li>데이터의 변화 시 DataSource들의 동작을 신경 쓸 필요 없이 관심사를 한 곳으로 모아준다.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MoviesRepository</span>(
-</span></span><span style="display:flex;"><span>    databaseSource: Database,
-</span></span><span style="display:flex;"><span>    apiSource: APiDataSource,
-</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    databaseSource: Database, <span style="color:#75715e">// LocalDataSource
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    apiSource: APiDataSource, <span style="color:#75715e">// RemoteDataSource
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">..</span>.
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="repository의-메소드">Repository의 메소드</h3>
+</span></span></code></pre></div><h3 id="repository의-api-노출">Repository의 API 노출</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MoviesRepository</span>(<span style="color:#f92672">..</span>.) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Write
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">markMovieAsFavorite</span>(<span style="color:#f92672">..</span>.) { <span style="color:#f92672">..</span>. }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Read
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Read : fetchXxxx()
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">fetchMovies</span>(): List&lt;Movie&gt; { <span style="color:#f92672">..</span>. }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Read as Flow
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> movies: Flow&lt;Movie&gt; = <span style="color:#f92672">..</span>.
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="거대한-repository의-관심사-분리">거대한 Repository의 관심사 분리</h3>
+</span></span></code></pre></div><h3 id="repository의-관심사-분리">Repository의 관심사 분리</h3>
 <p>Repository에는 데이터 접근을 위한 많은 메소드가 있으므로 데이터 타입에 따라 Repository를 분류하면 관심사 분리에 도움이 된다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MoviesRepository</span>(<span style="color:#f92672">..</span>.)
 </span></span><span style="display:flex;"><span>
@@ -296,22 +313,38 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
 <li><code>NewsRepository</code>는 <code>RemoteNewsDataSource</code>로부터 뉴스 목록을 가져와서 <code>LocalNewsDataSource</code>로 업데이트한다. (=로컬 캐싱)</li>
 <li>그리고 <code>LocalNewsDataSource</code>로부터 뉴스 목록을 가져와 반환한다.</li>
 </ol>
-<h2 id="datasources">DataSources</h2>
-<p>DataSource는 데이터 타입별, 데이터 출처별로 분류한다.</p>
+<h3 id="repository에서-외부-scope-사용">Repository에서 외부 Scope 사용</h3>
+<p>API 호출자의 CoroutineScope를 따르면 화면이 닫히는 등의 이벤트가 발생할 때 호출자 수명주기가 끝나며 Scope도 종료된다. 호출자 수명주기와 상관없이 요청된 작업을 마무리 하게 만들려면 외부 Scope를 사용해야 한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewsRepository</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> remoteNewsDataSource: RemoteNewsDataSource,        
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// This could be CoroutineScope(SupervisorJob() + Dispatchers.Default).    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> externalScope: CoroutineScope,    
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">fetchNews</span>() : List&lt;Article&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">if</span> (refresh) {
+</span></span><span style="display:flex;"><span>      externalScope.async {
+</span></span><span style="display:flex;"><span>        latestNews = remoteNewsDataSource.fetchLatestNews()
+</span></span><span style="display:flex;"><span>      }.await()
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      latestNews 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>사용자가 화면에서 벗어나면 <code>await()</code>가 취소되지만 <code>async</code> 내부의 로직은 계속 실행된다.</p>
+<h2 id="datasource">DataSource</h2>
+<h3 id="datasource의-관심사-분리">DataSource의 관심사 분리</h3>
+<p>DataSource는 데이터 타입별, 데이터 위치(Local/Remote)별로 분류한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RemoteArticleDataSource</span>(<span style="color:#f92672">..</span>.)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LocalUsersDataSouce</span>(<span style="color:#f92672">..</span>.)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LocalUsersDataSource</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">val</span> userDao : UserDao,
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">val</span> userDataStore : UserDataStore,
+</span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RemoteMoviesDataSource</span>(<span style="color:#f92672">..</span>.)
-</span></span></code></pre></div><h2 id="models">Models</h2>
-<h3 id="immutability">Immutability</h3>
-<p>Immutable 데이터는 멀티 스레드 환경에서 안전하기 때문에 Model을 정의할 때 data class로 정의하는 것을 권장한다.</p>
-<h3 id="data-model과-ui-model의-차이">Data Model과 UI Model의 차이</h3>
-<p>Data 레이어의 Model은 DataSource에서 사용하는 모델스펙을 반영하므로 속성이 좀 더 많을 수 있다.
-<img src="/2022-07-08/data-models.png" alt="data-models"></p>
-<p>반면에 UI 레이어의 Model은 필요한 속성이 더 적거나 가공된 자료형일 수 있다.
-<img src="/2022-07-08/ui-models.png" alt="ui-models"></p>
-<h2 id="백그라운드-처리">백그라운드 처리</h2>
+</span></span></code></pre></div><h3 id="remotedatasource에서-백그라운드-처리">RemoteDataSource에서 백그라운드 처리</h3>
 <p>네트워크 레이턴시가 발생하는 등의 작업은 백그라운드 스레드에서 실행되도록 한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RemoteArticleDataSource</span>(<span style="color:#f92672">..</span>.) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">fetchNews</span>() {
@@ -320,7 +353,37 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="에러-핸들링">에러 핸들링</h2>
+</span></span></code></pre></div><h3 id="localdatasource에서-저장위치-선택하기">LocalDataSource에서 저장위치 선택하기</h3>
+<ul>
+<li>Room : 쿼리해야 하거나 참조 무결성이 필요하거나 부분 업데이트가 필요한 대규모 데이터 세트의 경우. ex) 뉴스기사</li>
+<li>DataStore : 소규모 데이터 세트. ex) 앱 환경설정</li>
+</ul>
+<h2 id="model">Model</h2>
+<h3 id="멀티스레드에서-안전한-데이터-접근">멀티스레드에서 안전한 데이터 접근</h3>
+<p>멀티 스레드 환경에서 안전한 Immutable 데이터를 정의하기 위해 Model을 data class로 정의하는 것을 권장한다.</p>
+<h3 id="data-model과-ui-model의-차이">Data Model과 UI Model의 차이</h3>
+<p>Data 레이어의 Model은 DataSource에서 사용하는 모델스펙을 반영하므로 속성이 좀 더 많을 수 있다.
+<img src="/2022-07-08/data-models.png" alt="data-models"></p>
+<p>반면에 UI 레이어의 Model은 필요한 속성이 더 적거나 가공된 자료형일 수 있다.
+<img src="/2022-07-08/ui-models.png" alt="ui-models"></p>
+<h2 id="주기적인-데이터-최신화">주기적인 데이터 최신화</h2>
+<h3 id="workmanager를-사용하여-작업-예약">WorkManager를 사용하여 작업 예약</h3>
+<p>데이터를 주기적으로 자동으로 가져오게 만들면 사용자가 앱을 열었을 때 바로 최신 데이터를 사용할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RefreshLatestNewsWorker</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> newsRepository: NewsRepository,
+</span></span><span style="display:flex;"><span>    context: Context,
+</span></span><span style="display:flex;"><span>    params: WorkerParameters
+</span></span><span style="display:flex;"><span>) : CoroutineWorker(context, params) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">suspend</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">doWork</span>(): Result = <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        newsRepository.refreshLatestNews()
+</span></span><span style="display:flex;"><span>        Result.success()
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (error: Throwable) {
+</span></span><span style="display:flex;"><span>        Result.failure()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>앱 시작 시 Worker를 트리거해야 할 땐 AppStartUp 라이브러리를 활용한다.</p>
+<h2 id="data-레이어에서-에러-핸들링">Data 레이어에서 에러 핸들링</h2>
 <p>suspend 함수 에러 핸들링</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>    moviesRepository.setFavorite(id, isFavorite)
@@ -333,13 +396,21 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}.collect {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// collect data
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><h2 id="테스트">테스트</h2>
-<p>Repository 유닛테스트
-<img src="/2022-07-08/testing-repositories.png" alt="ui-models"></p>
-<p>DataSource 유닛테스트
-<img src="/2022-07-08/testing-datasources.png" alt="ui-models"></p>
-<p>UI 테스트
-<img src="/2022-07-08/big-test.png" alt="ui-models"></p>
+</span></span></code></pre></div><h2 id="data-레이어-테스트">Data 레이어 테스트</h2>
+<p>개인적으로는</p>
+<ul>
+<li>FakeDataSource를 만들어서 Repository에서 Source of truth가 잘 동작하는지 테스트 하는 것</li>
+<li>FakeRepository를 만들어서 Domain 레이어의 도메인 로직을 테스트 하는 것</li>
+</ul>
+<p>두 가지가 도움이 많이 됐다. Data 레이어는 DataSource들을 wrapping하는 코드가 대부분이고 Domain 레이어에 크리티컬한 도메인 로직이 들어있기 때문이다.</p>
+<p><strong>멀티레벨 Repository 유닛테스트</strong></p>
+<p>하위 Repository 자리에 FakeRepository로 대체한다.
+<img src="/2022-07-08/testing-repositories.png" alt="testing-repositories"></p>
+<p><strong>DataSource 유닛테스트</strong></p>
+<p>Db 또는 Api 객체의 자리에 FakeDb 또는 FakeApi로 대체한다.
+<img src="/2022-07-08/testing-datasources.png" alt="testing-datasources"></p>
+<p><strong>UI 테스트</strong>
+<img src="/2022-07-08/big-test.png" alt="big-test"></p>
 
     </div>
   </article>
@@ -371,25 +442,36 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
     <div id="toc-footer" style="display: none">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#레이어드-구조">레이어드 구조</a></li>
+    <li><a href="#앱-아키텍쳐의-레이어드-구조">앱 아키텍쳐의 레이어드 구조</a></li>
     <li><a href="#data-레이어의-source-of-truth">Data 레이어의 Source of truth</a></li>
-    <li><a href="#repository의-역할">Repository의 역할</a>
+    <li><a href="#repository">Repository</a>
       <ul>
-        <li><a href="#repository의-메소드">Repository의 메소드</a></li>
-        <li><a href="#거대한-repository의-관심사-분리">거대한 Repository의 관심사 분리</a></li>
+        <li><a href="#repository의-api-노출">Repository의 API 노출</a></li>
+        <li><a href="#repository의-관심사-분리">Repository의 관심사 분리</a></li>
         <li><a href="#repository의-동작-흐름">Repository의 동작 흐름</a></li>
+        <li><a href="#repository에서-외부-scope-사용">Repository에서 외부 Scope 사용</a></li>
       </ul>
     </li>
-    <li><a href="#datasources">DataSources</a></li>
-    <li><a href="#models">Models</a>
+    <li><a href="#datasource">DataSource</a>
       <ul>
-        <li><a href="#immutability">Immutability</a></li>
+        <li><a href="#datasource의-관심사-분리">DataSource의 관심사 분리</a></li>
+        <li><a href="#remotedatasource에서-백그라운드-처리">RemoteDataSource에서 백그라운드 처리</a></li>
+        <li><a href="#localdatasource에서-저장위치-선택하기">LocalDataSource에서 저장위치 선택하기</a></li>
+      </ul>
+    </li>
+    <li><a href="#model">Model</a>
+      <ul>
+        <li><a href="#멀티스레드에서-안전한-데이터-접근">멀티스레드에서 안전한 데이터 접근</a></li>
         <li><a href="#data-model과-ui-model의-차이">Data Model과 UI Model의 차이</a></li>
       </ul>
     </li>
-    <li><a href="#백그라운드-처리">백그라운드 처리</a></li>
-    <li><a href="#에러-핸들링">에러 핸들링</a></li>
-    <li><a href="#테스트">테스트</a></li>
+    <li><a href="#주기적인-데이터-최신화">주기적인 데이터 최신화</a>
+      <ul>
+        <li><a href="#workmanager를-사용하여-작업-예약">WorkManager를 사용하여 작업 예약</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-레이어에서-에러-핸들링">Data 레이어에서 에러 핸들링</a></li>
+    <li><a href="#data-레이어-테스트">Data 레이어 테스트</a></li>
   </ul>
 </nav>
     </div>
@@ -439,7 +521,7 @@ Repository의 역할 데이터 접근 위치를 한 곳으로 모아준다. 데�
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-08-mad-skills-data-layer%2f&name=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4&description=Architecture%3a%20The%20data%20layer%20-%20MAD%20Skills%20%28%ec%98%81%ec%83%81%2c%20%eb%ac%b8%ec%84%9c%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%eb%a0%88%ec%9d%b4%ec%96%b4%eb%93%9c%20%ea%b5%ac%ec%a1%b0%20UI%20Layer%20Domain%20Layer%20Data%20Layer%20Repositories%20RemoteDataSources%20LocalDataSources%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%9d%98%20Source%20of%20truth%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%97%90%20Source%20of%20truth%eb%a5%bc%20%ec%a0%81%ec%9a%a9%ed%95%98%eb%a0%a4%eb%a9%b4%20%ec%97%ac%eb%9f%ac%20%eb%8d%b0%ec%9d%b4%ed%84%b0%ea%b3%b5%ea%b8%89%ec%b2%98%28RemoteDataSource%2c%20LocalDataSource%29%ea%b0%80%20%ec%9e%88%eb%8d%94%eb%9d%bc%eb%8f%84%20%ec%98%a4%ec%a7%81%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%eb%b6%80%ed%84%b0%20%eb%8d%b0%ec%9d%b4%ed%84%b0%eb%a5%bc%20%ea%b3%b5%ea%b8%89%eb%b0%9b%ec%9d%84%20%ec%88%98%20%ec%9e%88%eb%8f%84%eb%a1%9d%20%eb%a7%8c%eb%93%a4%ec%96%b4%ec%a3%bc%ec%96%b4%ec%95%bc%20%ed%95%9c%eb%8b%a4.%0aRepository%ec%9d%98%20%ec%97%ad%ed%95%a0%20%eb%8d%b0%ec%9d%b4%ed%84%b0%20%ec%a0%91%ea%b7%bc%20%ec%9c%84%ec%b9%98%eb%a5%bc%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%20%eb%aa%a8%ec%95%84%ec%a4%80%eb%8b%a4.%20%eb%8d%b0%ec%9d%b4%ed%84%b0%ec%9d%98%20%eb%b3%80%ed%99%94%20%ec%8b%9c%20DataSource%eb%93%a4%ec%9d%98%20%eb%8f%99%ec%9e%91%ec%9d%84%20%ec%8b%a0%ea%b2%bd%20%ec%93%b8%20%ed%95%84%ec%9a%94%20%ec%97%86%ec%9d%b4%20%ea%b4%80%ec%8b%ac%ec%82%ac%eb%a5%bc%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%20%eb%aa%a8%ec%95%84%ec%a4%80%eb%8b%a4." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-08-mad-skills-data-layer%2f&name=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4&description=Architecture%3a%20The%20data%20layer%20-%20MAD%20Skills%20%28%ec%98%81%ec%83%81%2c%20%eb%ac%b8%ec%84%9c%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0a%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%ec%9d%98%20%eb%a0%88%ec%9d%b4%ec%96%b4%eb%93%9c%20%ea%b5%ac%ec%a1%b0%20UI%20Layer%20Domain%20Layer%20Data%20Layer%20Repositories%20RemoteDataSources%20LocalDataSources%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%9d%98%20Source%20of%20truth%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%97%90%20Source%20of%20truth%eb%a5%bc%20%ec%a0%81%ec%9a%a9%ed%95%98%eb%a0%a4%eb%a9%b4%20%ec%97%ac%eb%9f%ac%20%eb%8d%b0%ec%9d%b4%ed%84%b0%ea%b3%b5%ea%b8%89%ec%b2%98%28RemoteDataSource%2c%20LocalDataSource%29%ea%b0%80%20%ec%9e%88%eb%8d%94%eb%9d%bc%eb%8f%84%20%ec%98%a4%ec%a7%81%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%eb%b6%80%ed%84%b0%20%eb%8d%b0%ec%9d%b4%ed%84%b0%eb%a5%bc%20%ea%b3%b5%ea%b8%89%eb%b0%9b%ec%9d%84%20%ec%88%98%20%ec%9e%88%eb%8f%84%eb%a1%9d%20%eb%a7%8c%eb%93%a4%ec%96%b4%ec%a3%bc%ec%96%b4%ec%95%bc%20%ed%95%9c%eb%8b%a4.%0aRepository%20%eb%8d%b0%ec%9d%b4%ed%84%b0%20%ec%a0%91%ea%b7%bc%20%ec%9c%84%ec%b9%98%eb%a5%bc%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%20%eb%aa%a8%ec%95%84%ec%a4%80%eb%8b%a4.%20%eb%8d%b0%ec%9d%b4%ed%84%b0%ec%9d%98%20%eb%b3%80%ed%99%94%20%ec%8b%9c%20DataSource%eb%93%a4%ec%9d%98%20%eb%8f%99%ec%9e%91%ec%9d%84%20%ec%8b%a0%ea%b2%bd%20%ec%93%b8%20%ed%95%84%ec%9a%94%20%ec%97%86%ec%9d%b4%20%ea%b4%80%ec%8b%ac%ec%82%ac%eb%a5%bc%20%ed%95%9c%20%ea%b3%b3%ec%9c%bc%eb%a1%9c%20%eb%aa%a8%ec%95%84%ec%a4%80%eb%8b%a4." aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
