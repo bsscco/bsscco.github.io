@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> MAD Skills 앱 아키텍쳐 - UI 레이어 | ANDROID DEVELOPER BSSCCO</title>
+  <link rel = 'canonical' href = '/posts/2022-07-08-mad-skills-ui-layer/'>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="MAD Skills 앱 아키텍쳐 - UI 레이어" />
+<meta property="og:description" content="Architecture: The UI layer - MAD Skills (영상, 문서) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+UI 레이어 레이어드 구조 UI Layer UI elements State holders Domain Layer Data Layer 역할 Data 레이어에서 가져온 애플리케이션 상태를 시각적으로 나타낸다. 애플리케이션 데이터 변경사항을 UI가 표시할 수 있는 형식으로 변환한 후에 표시한다. UI 상태 역할 UI 상태를 담는 클래스
+data class NewsUiState( val isSignedIn: Boolean = false, val isPremium: Boolean = false, val newsItems: List&lt;NewsItemUiState&gt; = listOf(), val userMessages: List&lt;Message&gt; = listOf() ) data class NewsItemUiState( val title: String, val body: String, val bookmarked: Boolean = false, ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/2022-07-08-mad-skills-ui-layer/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-08T22:00:02+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MAD Skills 앱 아키텍쳐 - UI 레이어"/>
+<meta name="twitter:description" content="Architecture: The UI layer - MAD Skills (영상, 문서) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+UI 레이어 레이어드 구조 UI Layer UI elements State holders Domain Layer Data Layer 역할 Data 레이어에서 가져온 애플리케이션 상태를 시각적으로 나타낸다. 애플리케이션 데이터 변경사항을 UI가 표시할 수 있는 형식으로 변환한 후에 표시한다. UI 상태 역할 UI 상태를 담는 클래스
+data class NewsUiState( val isSignedIn: Boolean = false, val isPremium: Boolean = false, val newsItems: List&lt;NewsItemUiState&gt; = listOf(), val userMessages: List&lt;Message&gt; = listOf() ) data class NewsItemUiState( val title: String, val body: String, val bookmarked: Boolean = false, ."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/styles.21b53826999b56f614a462e7379896ede73d74a5692c12b28e7903a2718c278b00eb8c5d88fef06d852fd6311822698ff8397102b0517b964d57892b541fb785.css" integrity="sha512-IbU4JpmbVvYUpGLnN5iW7ec9dKVpLBKyjnkDonGMJ4sA64xdiP7wbYUv1jEYImmP&#43;DlxArBRe5ZNV4krVB&#43;3hQ=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/categories">Categories</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" /posts/2022-07-08-mad-skills-domain-layer/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&text=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&title=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&is_video=false&description=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4&body=Check out this article: %2fposts%2f2022-07-08-mad-skills-ui-layer%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&title=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&title=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&name=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4&description=Architecture%3a%20The%20UI%20layer%20-%20MAD%20Skills%20%28%ec%98%81%ec%83%81%2c%20%eb%ac%b8%ec%84%9c%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0aUI%20%eb%a0%88%ec%9d%b4%ec%96%b4%20%eb%a0%88%ec%9d%b4%ec%96%b4%eb%93%9c%20%ea%b5%ac%ec%a1%b0%20UI%20Layer%20UI%20elements%20State%20holders%20Domain%20Layer%20Data%20Layer%20%ec%97%ad%ed%95%a0%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%97%90%ec%84%9c%20%ea%b0%80%ec%a0%b8%ec%98%a8%20%ec%95%a0%ed%94%8c%eb%a6%ac%ec%bc%80%ec%9d%b4%ec%85%98%20%ec%83%81%ed%83%9c%eb%a5%bc%20%ec%8b%9c%ea%b0%81%ec%a0%81%ec%9c%bc%eb%a1%9c%20%eb%82%98%ed%83%80%eb%82%b8%eb%8b%a4.%20%ec%95%a0%ed%94%8c%eb%a6%ac%ec%bc%80%ec%9d%b4%ec%85%98%20%eb%8d%b0%ec%9d%b4%ed%84%b0%20%eb%b3%80%ea%b2%bd%ec%82%ac%ed%95%ad%ec%9d%84%20UI%ea%b0%80%20%ed%91%9c%ec%8b%9c%ed%95%a0%20%ec%88%98%20%ec%9e%88%eb%8a%94%20%ed%98%95%ec%8b%9d%ec%9c%bc%eb%a1%9c%20%eb%b3%80%ed%99%98%ed%95%9c%20%ed%9b%84%ec%97%90%20%ed%91%9c%ec%8b%9c%ed%95%9c%eb%8b%a4.%20UI%20%ec%83%81%ed%83%9c%20%ec%97%ad%ed%95%a0%20UI%20%ec%83%81%ed%83%9c%eb%a5%bc%20%eb%8b%b4%eb%8a%94%20%ed%81%b4%eb%9e%98%ec%8a%a4%0adata%20class%20NewsUiState%28%20val%20isSignedIn%3a%20Boolean%20%3d%20false%2c%20val%20isPremium%3a%20Boolean%20%3d%20false%2c%20val%20newsItems%3a%20List%26lt%3bNewsItemUiState%26gt%3b%20%3d%20listOf%28%29%2c%20val%20userMessages%3a%20List%26lt%3bMessage%26gt%3b%20%3d%20listOf%28%29%20%29%20data%20class%20NewsItemUiState%28%20val%20title%3a%20String%2c%20val%20body%3a%20String%2c%20val%20bookmarked%3a%20Boolean%20%3d%20false%2c%20." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&t=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ui-레이어">UI 레이어</a>
+      <ul>
+        <li><a href="#레이어드-구조">레이어드 구조</a></li>
+        <li><a href="#역할">역할</a></li>
+      </ul>
+    </li>
+    <li><a href="#ui-상태">UI 상태</a>
+      <ul>
+        <li><a href="#역할-1">역할</a></li>
+        <li><a href="#immutable">Immutable</a></li>
+        <li><a href="#이름-규칙">이름 규칙</a></li>
+      </ul>
+    </li>
+    <li><a href="#udfuni-directional-flow">UDF(Uni-directional Flow)</a>
+      <ul>
+        <li><a href="#동작-흐름">동작 흐름</a></li>
+        <li><a href="#이점">이점</a></li>
+        <li><a href="#동작-흐름-안에서-로직-구분">동작 흐름 안에서 로직 구분</a></li>
+      </ul>
+    </li>
+    <li><a href="#관찰-가능한-ui-상태">관찰 가능한 UI 상태</a>
+      <ul>
+        <li><a href="#관찰-가능한-상태로-노출하기">관찰 가능한 상태로 노출하기</a></li>
+        <li><a href="#단일-상태-스트림-vs-여러-상태-스트림">단일 상태 스트림 vs 여러 상태 스트림</a></li>
+        <li><a href="#관찰-수명주기">관찰 수명주기</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        MAD Skills 앱 아키텍쳐 - UI 레이어
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-07-08 22:00:02 &#43;0000 UTC" itemprop="datePublished">2022-07-08</time>
+          
+        </div>
+        
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="/categories/android">Android</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/architecture" rel="tag">architecture</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h1 id="architecture-the-ui-layer---mad-skills-영상httpsyoutubep9vr8kbmzee-문서httpsdeveloperandroidcomtopicarchitectureui-layer">Architecture: The UI layer - MAD Skills (<a href="https://youtu.be/p9VR8KbmzEE">영상</a>, <a href="https://developer.android.com/topic/architecture/ui-layer">문서</a>)</h1>
+<p>💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리</p>
+<h2 id="ui-레이어">UI 레이어</h2>
+<h3 id="레이어드-구조">레이어드 구조</h3>
+<ul>
+<li><strong>UI Layer</strong>
+<ul>
+<li>UI elements</li>
+<li>State holders</li>
+</ul>
+</li>
+<li>Domain Layer</li>
+<li>Data Layer</li>
+</ul>
+<p><img src="/2022-07-08/app-architecture-ui-layer.png" alt="ui-layer"></p>
+<h3 id="역할">역할</h3>
+<ul>
+<li>Data 레이어에서 가져온 애플리케이션 상태를 시각적으로 나타낸다.</li>
+<li>애플리케이션 데이터 변경사항을 UI가 표시할 수 있는 형식으로 변환한 후에 표시한다.</li>
+</ul>
+<h2 id="ui-상태">UI 상태</h2>
+<h3 id="역할-1">역할</h3>
+<p>UI 상태를 담는 클래스</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewsUiState</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> isSignedIn: Boolean = <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> isPremium: Boolean = <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> newsItems: List&lt;NewsItemUiState&gt; = listOf(),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> userMessages: List&lt;Message&gt; = listOf()
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewsItemUiState</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> title: String,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> body: String,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> bookmarked: Boolean = <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h3 id="immutable">Immutable</h3>
+<p>동일한 정보의 수정은 데이터 원천 위치를 제외하고 어느 곳에서도 하면 안 된다. 데이터를 아무곳에서나 수정한다면 동일한 정보의 원천 위치가 여러 곳이 되어 데이터 불일치와 버그가 발생할 수 있다.</p>
+<h3 id="이름-규칙">이름 규칙</h3>
+<p>기능 + UiState</p>
+<h2 id="udfuni-directional-flow">UDF(Uni-directional Flow)</h2>
+<h3 id="동작-흐름">동작 흐름</h3>
+<p><img src="/2022-07-08/udf.png" alt="udf"></p>
+<h3 id="이점">이점</h3>
+<ul>
+<li>UI용 정보 소스가 하나로 유지되기 때문에 데이터 일관성을 만족한다.</li>
+<li>상태 소스가 분리되므로 UI와 별개로 테스트할 수 있다.</li>
+<li>사용자 이벤트의 처리 흐름을 파악하기 쉬워 유지보수하기 편하다.</li>
+</ul>
+<h3 id="동작-흐름-안에서-로직-구분">동작 흐름 안에서 로직 구분</h3>
+<h4 id="비지니스-로직">비지니스 로직</h4>
+<p>상태 변경에 따라 진행해야 할 작업</p>
+<p>Domain 또는 Data 레이어에 위치한다.</p>
+<h4 id="ui-로직">UI 로직</h4>
+<p>상태 변경사항을 표하시는 방법</p>
+<p>보통 ViewModel에서 구현하지만 <code>Context</code> 같은 Android 요소를 사용하는 경우 testable을 위해 UI의 State holder에서 구현하기도 한다.</p>
+<h2 id="관찰-가능한-ui-상태">관찰 가능한 UI 상태</h2>
+<h3 id="관찰-가능한-상태로-노출하기">관찰 가능한 상태로 노출하기</h3>
+<p>ViewModel에서 데이터를 직접 가져오지 않고도 UI가 상태 변경사항에 반응할 수 있도록 하기 위해 관찰 가능한 상태 데이터를 노출한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewsViewModel</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> getNewsItemsForCategory: GetNewsItemsForCategory,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>) : ViewModel() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> _uiState = MutableStateFlow(NewsUiState())
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> uiState: StateFlow&lt;NewsUiState&gt; = _uiState.asStateFlow()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> fetchJob: Job? = <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">fetchArticles</span>(category: String) {
+</span></span><span style="display:flex;"><span>        fetchJob<span style="color:#f92672">?.</span>cancel()
+</span></span><span style="display:flex;"><span>        fetchJob = viewModelScope.launch {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">val</span> newsItems = getNewsItemsForCategory(category)
+</span></span><span style="display:flex;"><span>                _uiState.update {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">it</span>.copy(newsItems = newsItems)
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (ioe: IOException) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Handle the error and notify the UI when appropriate.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                _uiState.update {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">val</span> messages = getMessagesFromThrowable(ioe)
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">it</span>.copy(userMessages = messages)
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="단일-상태-스트림-vs-여러-상태-스트림">단일 상태 스트림 vs 여러 상태 스트림</h3>
+<h4 id="단일-상태-스트림의-장점">단일 상태 스트림의 장점</h4>
+<ul>
+<li>편의성
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewsUiState</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> isSignedIn: Boolean = <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> isPremium: Boolean = <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> newsItems: List&lt;NewsItemUiState&gt; = listOf()
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> NewsUiState.canBookmarkNews: Boolean <span style="color:#66d9ef">get</span>() = isSignedIn <span style="color:#f92672">&amp;&amp;</span> isPremium
+</span></span></code></pre></div></li>
+<li>데이터 일관성</li>
+</ul>
+<h4 id="여러-상태-스트림을-선택해야-할-때">여러 상태 스트림을 선택해야 할 때</h4>
+<ul>
+<li>서로 관련 없는 UI 데이를 번들로 묶는 데 드는 비용이 큰 경우</li>
+<li>필드가 많으면서 자주 업데이트 되는 필드가 있는 경우</li>
+</ul>
+<h3 id="관찰-수명주기">관찰 수명주기</h3>
+<p>관찰 가능한 상태를 사용할 땐 UI의 수명주기를 고려해야 한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewsActivity</span> : AppCompatActivity() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> viewModel: NewsViewModel <span style="color:#66d9ef">by</span> viewModels()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onCreate</span>(savedInstanceState: Bundle?) {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        lifecycleScope.launch {
+</span></span><span style="display:flex;"><span>            repeatOnLifecycle(Lifecycle.State.STARTED) {
+</span></span><span style="display:flex;"><span>                viewModel.uiState.collect {
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// Update UI elements
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/posts">Posts</a></li>
+         
+          <li><a href="/categories">Categories</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ui-레이어">UI 레이어</a>
+      <ul>
+        <li><a href="#레이어드-구조">레이어드 구조</a></li>
+        <li><a href="#역할">역할</a></li>
+      </ul>
+    </li>
+    <li><a href="#ui-상태">UI 상태</a>
+      <ul>
+        <li><a href="#역할-1">역할</a></li>
+        <li><a href="#immutable">Immutable</a></li>
+        <li><a href="#이름-규칙">이름 규칙</a></li>
+      </ul>
+    </li>
+    <li><a href="#udfuni-directional-flow">UDF(Uni-directional Flow)</a>
+      <ul>
+        <li><a href="#동작-흐름">동작 흐름</a></li>
+        <li><a href="#이점">이점</a></li>
+        <li><a href="#동작-흐름-안에서-로직-구분">동작 흐름 안에서 로직 구분</a></li>
+      </ul>
+    </li>
+    <li><a href="#관찰-가능한-ui-상태">관찰 가능한 UI 상태</a>
+      <ul>
+        <li><a href="#관찰-가능한-상태로-노출하기">관찰 가능한 상태로 노출하기</a></li>
+        <li><a href="#단일-상태-스트림-vs-여러-상태-스트림">단일 상태 스트림 vs 여러 상태 스트림</a></li>
+        <li><a href="#관찰-수명주기">관찰 수명주기</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&text=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&title=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&is_video=false&description=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4&body=Check out this article: %2fposts%2f2022-07-08-mad-skills-ui-layer%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&title=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&title=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&name=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4&description=Architecture%3a%20The%20UI%20layer%20-%20MAD%20Skills%20%28%ec%98%81%ec%83%81%2c%20%eb%ac%b8%ec%84%9c%29%20%f0%9f%92%a1%ea%b0%9c%eb%85%90%ec%9d%b4%20%ed%97%b7%ea%b0%88%eb%a6%ac%ea%b1%b0%eb%82%98%20%ec%a0%9c%ea%b0%80%20%ec%9e%98%20%eb%aa%a8%eb%a5%b4%ea%b1%b0%eb%82%98%20%eb%a7%8e%ec%9d%80%20%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4%20%ec%9e%98%20%eb%aa%a8%eb%a5%bc%20%ea%b2%83%20%ea%b0%99%ec%9d%80%20%ea%b2%83%20%ec%9c%84%ec%a3%bc%eb%a1%9c%20%ec%a0%95%eb%a6%ac%0aUI%20%eb%a0%88%ec%9d%b4%ec%96%b4%20%eb%a0%88%ec%9d%b4%ec%96%b4%eb%93%9c%20%ea%b5%ac%ec%a1%b0%20UI%20Layer%20UI%20elements%20State%20holders%20Domain%20Layer%20Data%20Layer%20%ec%97%ad%ed%95%a0%20Data%20%eb%a0%88%ec%9d%b4%ec%96%b4%ec%97%90%ec%84%9c%20%ea%b0%80%ec%a0%b8%ec%98%a8%20%ec%95%a0%ed%94%8c%eb%a6%ac%ec%bc%80%ec%9d%b4%ec%85%98%20%ec%83%81%ed%83%9c%eb%a5%bc%20%ec%8b%9c%ea%b0%81%ec%a0%81%ec%9c%bc%eb%a1%9c%20%eb%82%98%ed%83%80%eb%82%b8%eb%8b%a4.%20%ec%95%a0%ed%94%8c%eb%a6%ac%ec%bc%80%ec%9d%b4%ec%85%98%20%eb%8d%b0%ec%9d%b4%ed%84%b0%20%eb%b3%80%ea%b2%bd%ec%82%ac%ed%95%ad%ec%9d%84%20UI%ea%b0%80%20%ed%91%9c%ec%8b%9c%ed%95%a0%20%ec%88%98%20%ec%9e%88%eb%8a%94%20%ed%98%95%ec%8b%9d%ec%9c%bc%eb%a1%9c%20%eb%b3%80%ed%99%98%ed%95%9c%20%ed%9b%84%ec%97%90%20%ed%91%9c%ec%8b%9c%ed%95%9c%eb%8b%a4.%20UI%20%ec%83%81%ed%83%9c%20%ec%97%ad%ed%95%a0%20UI%20%ec%83%81%ed%83%9c%eb%a5%bc%20%eb%8b%b4%eb%8a%94%20%ed%81%b4%eb%9e%98%ec%8a%a4%0adata%20class%20NewsUiState%28%20val%20isSignedIn%3a%20Boolean%20%3d%20false%2c%20val%20isPremium%3a%20Boolean%20%3d%20false%2c%20val%20newsItems%3a%20List%26lt%3bNewsItemUiState%26gt%3b%20%3d%20listOf%28%29%2c%20val%20userMessages%3a%20List%26lt%3bMessage%26gt%3b%20%3d%20listOf%28%29%20%29%20data%20class%20NewsItemUiState%28%20val%20title%3a%20String%2c%20val%20body%3a%20String%2c%20val%20bookmarked%3a%20Boolean%20%3d%20false%2c%20." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2f2022-07-08-mad-skills-ui-layer%2f&t=MAD%20Skills%20%ec%95%b1%20%ec%95%84%ed%82%a4%ed%85%8d%ec%b3%90%20-%20UI%20%eb%a0%88%ec%9d%b4%ec%96%b4" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Booseol Shin 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/categories">Categories</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

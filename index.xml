@@ -6,7 +6,18 @@
     <description>Recent content on ANDROID DEVELOPER BSSCCO</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Booseol Shin</copyright>
-    <lastBuildDate>Fri, 08 Jul 2022 22:00:01 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Jul 2022 22:00:02 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MAD Skills 앱 아키텍쳐 - UI 레이어</title>
+      <link>/posts/2022-07-08-mad-skills-ui-layer/</link>
+      <pubDate>Fri, 08 Jul 2022 22:00:02 +0000</pubDate>
+      
+      <guid>/posts/2022-07-08-mad-skills-ui-layer/</guid>
+      <description>Architecture: The UI layer - MAD Skills (영상, 문서) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
+UI 레이어 레이어드 구조 UI Layer UI elements State holders Domain Layer Data Layer 역할 Data 레이어에서 가져온 애플리케이션 상태를 시각적으로 나타낸다. 애플리케이션 데이터 변경사항을 UI가 표시할 수 있는 형식으로 변환한 후에 표시한다. UI 상태 역할 UI 상태를 담는 클래스
+data class NewsUiState( val isSignedIn: Boolean = false, val isPremium: Boolean = false, val newsItems: List&amp;lt;NewsItemUiState&amp;gt; = listOf(), val userMessages: List&amp;lt;Message&amp;gt; = listOf() ) data class NewsItemUiState( val title: String, val body: String, val bookmarked: Boolean = false, .</description>
+    </item>
+    
     <item>
       <title>MAD Skills 앱 아키텍쳐 - Domain 레이어</title>
       <link>/posts/2022-07-08-mad-skills-domain-layer/</link>
@@ -14,9 +25,10 @@
       
       <guid>/posts/2022-07-08-mad-skills-domain-layer/</guid>
       <description>Architecture: The domain layer - MAD Skills (영상, 문서) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-앱 아키텍쳐의 레이어드 구조 UI Layer Domain Layer Data Layer Domain 레이어의 역할 복잡한 비즈니스 로직이나 여러 ViewModel에서 재사용되는 비즈니스 로직의 캡슐화를 담당한다.
-하나의 기능 당 하나의 UseCase로 구현한다.
-UseCase UseCase의 이점 여러 ViewModel에서 UseCase를 재사용 하므로 코드중복을 방지한다. 도메인 로직만 분리했기 때문에 테스트 가능성을 높인다. UseCase당 하나의 기능만 담당시켜 SRP를 만족시킨다.</description>
+Domain 레이어 레이어드 구조 UI Layer Domain Layer Data Layer 역할 복잡한 비즈니스 로직이나 여러 ViewModel에서 재사용되는 비즈니스 로직의 캡슐화를 담당한다.
+UseCase 역할 Domain 레이어의 비지니스 로직을 구현한다.
+하나의 기능 당 하나의 UseCase
+이점 여러 ViewModel에서 UseCase를 재사용 하므로 코드중복을 방지한다. 도메인 로직만 분리했기 때문에 테스트 가능성을 높인다.</description>
     </item>
     
     <item>
@@ -26,8 +38,8 @@ UseCase UseCase의 이점 여러 ViewModel에서 UseCase를 재사용 하므로 
       
       <guid>/posts/2022-07-08-mad-skills-data-layer/</guid>
       <description>Architecture: The data layer - MAD Skills (영상, 문서) 💡개념이 헷갈리거나 제가 잘 모르거나 많은 사람들이 잘 모를 것 같은 것 위주로 정리
-앱 아키텍쳐의 레이어드 구조 UI Layer Domain Layer Data Layer Repositories RemoteDataSources LocalDataSources Data 레이어의 Source of truth Data 레이어에 Source of truth를 적용하려면 여러 데이터공급처(RemoteDataSource, LocalDataSource)가 있더라도 오직 한 곳으로부터 데이터를 공급받을 수 있도록 만들어주어야 한다.
-Repository 데이터 접근 위치를 한 곳으로 모아준다. 데이터의 변화 시 DataSource들의 동작을 신경 쓸 필요 없이 관심사를 한 곳으로 모아준다.</description>
+Data 레이어 레이어드 구조 UI Layer Domain Layer Data Layer Repositories RemoteDataSources LocalDataSources 역할 앱의 영속적 데이터를 보유하고 관리한다. 영속적 데이터의 접근통로를 제공한다. Source of truth Data 레이어에 Source of truth를 적용하려면 여러 데이터공급처(RemoteDataSource, LocalDataSource)가 있더라도 오직 한 곳으로부터 데이터를 공급받을 수 있도록 만들어주어야 한다.
+Repository 역할 Data 레이어의 데이터 접근 로직을 구현한다.</description>
     </item>
     
     <item>
